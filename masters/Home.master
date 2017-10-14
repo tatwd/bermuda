@@ -1,0 +1,67 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="Home.master.cs" Inherits="Masters_Home" %>
+
+<!DOCTYPE html>
+
+<html>
+<head runat="server">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>百慕大 - 寻找你的寻找</title>
+
+    <!-- import dogo.min.css -->
+    <asp:ContentPlaceHolder id="head" runat="server"></asp:ContentPlaceHolder>
+
+    <link href="~/styles/dogo.min.css" rel="stylesheet" />
+</head>
+<body>
+    <form id="FormContainer" runat="server">
+    <div id="dogo-container">
+        <!-- header 头部 -->
+        <div class="header">
+            <div class="container">
+                <!-- logo 商标 -->
+                <div class="logo">
+                    <img class="logo-img" src="../assets/bmd-logo.svg" alt="logo" />
+                    <h3 class="logo-text">百慕大</h3>
+                </div>
+                
+                <!-- navigation 导航 -->
+                <div class="navi">
+                    <div class="menu">
+                        <!-- 水平菜单 -->
+                        <ul class="menu-row">
+                            <li class="menu-item"><a href="#">LOST</a></li>
+                            <li class="menu-item"><a href="#">FOUND</a></li>
+                            <li class="menu-item"><a href="#">QUESTION</a></li>
+                        </ul>
+                    </div>
+                    <!-- <div class="search"></div> -->
+                </div>
+
+                <!-- sign 登录与注册 -->
+                <div class="sign">
+                    <button class="btn sign-in">登录</button>
+                    <button class="btn sign-up">加入我们</button>
+                    <button class="btn write-lf">失物招领</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- mainer 主体 -->
+        <div class="mainer">
+
+            <!-- content-holder -->
+            <div class="content-holder">
+                <asp:ContentPlaceHolder id="ContentPlaceHolder1" runat="server"></asp:ContentPlaceHolder>
+            </div>
+
+        </div>
+                
+        <!-- footer 脚注 -->
+        <div class="footer"></div>
+
+    </div>
+    </form>
+</body>
+</html>
+<!-- import dogo.min.js -->
+<script src="../scripts/dogo.min.js"></script>

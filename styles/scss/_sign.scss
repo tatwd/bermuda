@@ -1,0 +1,41 @@
+﻿// Sign button
+//
+
+
+.sign {
+    display: inherit;
+    align-items: center;
+    justify-content: flex-end;
+
+    flex-grow: 1;
+}
+
+.btn {
+    outline: 0;
+    border: 0;
+    cursor: pointer;
+    height: 40px;
+
+    background-color: #ddd;
+    padding: 8px 20px;
+    color: #c66;
+}
+
+.sign-in {
+    // background-color: #ddd;
+}
+
+.sign-up,
+.write-lf {
+    border: 2px solid #c66;
+    border-radius: 20px;
+}
+
+.sign-up {
+    margin: 0 15px;
+}
+
+.write-lf {
+    background-color: #c66;
+    color: #fff;
+}
