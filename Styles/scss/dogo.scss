@@ -1,10 +1,14 @@
-﻿body {
-}
+﻿/*!
+ * dogo v1.0.0-alpha.1
+ * @author _king
+ */
 
-#FormContainer {
-    padding: 15px;
+@import "mixins";
+@import "variables";
+@import "reset";
+@import "grid";
+@import "base";
 
-    div {
-        background-color: #ddd;
-    }
-}
+@import "logo";
+@import "navi";
+@import "sign";

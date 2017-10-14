@@ -1,2 +1,3 @@
 # bermuda
-失物招领 Lost &amp; Found
+
+寻找你的寻找。Find Your Find.
