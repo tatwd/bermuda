@@ -21,15 +21,19 @@
 
 .mainer {
     padding: 0 $px-15;
-    background-color: #ccc;
+    // background-color: #ccc;
 }
 
 .footer {
     padding: 50px 15px;
 
-    background-color: #eee;
+    background-color: #d9e7f3;
 
     .copyright {
         text-align: center;
+
+        a {
+            color: $main-color;
+        }
     }
 }

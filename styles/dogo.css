@@ -32,7 +32,7 @@ h4 {
 }
 
 .header .container {
-  width: 80%;
+  width: 75%;
   margin: 0 auto;
   display: flex;
   flex-wrap: wrap;
@@ -40,16 +40,19 @@ h4 {
 
 .mainer {
   padding: 0 15px;
-  background-color: #ccc;
 }
 
 .footer {
   padding: 50px 15px;
-  background-color: #eee;
+  background-color: #d9e7f3;
 }
 
 .footer .copyright {
   text-align: center;
+}
+
+.footer .copyright a {
+  color: #c66b6b;
 }
 
 .logo {
@@ -114,7 +117,6 @@ h4 {
   outline: 0;
   border: 0;
   cursor: pointer;
-  height: 40px;
   background-color: #fff;
   padding: 8px 20px;
   color: #c66;
@@ -140,7 +142,7 @@ h4 {
 }
 
 .content-holder {
-  width: 80%;
+  width: 75%;
   margin: 0 auto;
 }
 
@@ -243,21 +245,23 @@ h4 {
 
 .note-container {
   padding: 15px 0;
-  background-color: #234;
+  background-color: #fff;
   display: flex;
   justify-content: space-between;
 }
 
 .note-container .asidebar {
-  padding: 15px;
+  padding: 15px 0;
 }
 
 .note-container .list {
   flex: 3;
-  background-color: #ddd;
+  background-color: #fff;
+  padding-right: 25px;
 }
 
 .note-container .list .note-tags {
+  padding-top: 15px;
   background-color: #fff;
   display: flex;
   justify-content: flex-start;
@@ -301,7 +305,6 @@ h4 {
 }
 
 .note-container .list .note-list [class*="note-"] {
-  padding: 15px 0;
   margin: 15px 0;
   border-bottom: 1px dashed #c66b6b;
   background-color: #fff;
@@ -331,6 +334,10 @@ h4 {
   height: 48px;
 }
 
+.note-container .list .note-list [class*="note-"] .content {
+  font-size: 13px;
+}
+
 .note-container .list .note-list [class*="note-"] .meta {
   padding: 15px 0;
 }
@@ -344,8 +351,53 @@ h4 {
   padding: 2px 4px;
 }
 
-.note-container .top {
+.note-container .list .note-list .load-more {
   background-color: #888;
+  text-align: center;
+  padding: 10px 15px;
+  border-radius: 10px;
+}
+
+.note-container .list .note-list .load-more a {
+  color: #fff;
+}
+
+.note-container .top {
   flex: 1;
+}
+
+.note-container .top .top-title {
+  color: #c66b6b;
+  text-align: center;
+  padding: 15px;
+  color: #fff;
+  background-color: #c66b6b;
+  border-radius: 5px;
+}
+
+.note-container .top .top-box [class*="top-"] {
+  padding: 15px;
+  background-color: #fff;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.note-container .top .top-box [class*="top-"] .avatar {
+  font-size: 0;
+}
+
+.note-container .top .top-box [class*="top-"] .avatar img {
+  height: 58px;
+  border-radius: 50%;
+}
+
+.note-container .top .top-box [class*="top-"] .name {
+  color: #c66b6b;
+}
+
+.note-container .top .top-box [class*="top-"] .help-num {
+  font-size: 24px;
+  color: #42c02e;
 }
 

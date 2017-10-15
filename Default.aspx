@@ -178,9 +178,137 @@
                     </div>
                 </section>
 
+                <section class="note-4">
+                    <h3 class="title">
+                        <asp:HyperLink runat="server">寻找校园卡</asp:HyperLink>
+                    </h3>
+                    <div class="author">
+                        <%--<a href="#" class="avatar">
+                            <asp:Image runat="server" ImageUrl=""/>
+                        </a>--%>
+                        <a href="#" class="name">小明</a>
+                        <asp:Label runat="server" CssClass="date">2017-10-15</asp:Label>
+                    </div>
+                    <p class="content">
+                        <asp:Label runat="server">本人丢失校院卡</asp:Label>
+                        <asp:Image runat="server" ImageUrl=""/>
+                    </p>
+                    <div class="meta">
+                        <asp:Label runat="server" CssClass="status">已找回</asp:Label>
+                    </div>
+                </section>
+
+                <section class="note-4">
+                    <h3 class="title">
+                        <asp:HyperLink runat="server">寻找校园卡</asp:HyperLink>
+                    </h3>
+                    <div class="author">
+                        <%--<a href="#" class="avatar">
+                            <asp:Image runat="server" ImageUrl=""/>
+                        </a>--%>
+                        <a href="#" class="name">小明</a>
+                        <asp:Label runat="server" CssClass="date">2017-10-15</asp:Label>
+                    </div>
+                    <p class="content">
+                        <asp:Label runat="server">本人丢失校院卡</asp:Label>
+                        <asp:Image runat="server" ImageUrl=""/>
+                    </p>
+                    <div class="meta">
+                        <asp:Label runat="server" CssClass="status">已找回</asp:Label>
+                    </div>
+                </section>
+
+                <div class="load-more">
+                    <!--
+                        Ajax请求 
+                        -->
+                    <a href="#">加载更多</a>
+                </div>
+
             </div>
         </div>
-        <div class="asidebar top">侧边栏</div>
+        <div class="asidebar top">
+            <div class="top">
+                <h3 class="top-title">助人榜 TOP 10</h3>
+                <div class="top-box">
+                    <!-- 
+                        数据取于数据库
+                        ID未加
+                        -->
+
+                    <div class="top-1">
+                        <a class="avatar" href="#">
+                            <asp:Image runat="server" ImageUrl="assets/tag-tmp.svg" AlternateText="avatar"/>
+                        </a>
+                        <asp:Label runat="server" CssClass="name">小明</asp:Label>
+                        <asp:Label runat="server" CssClass="help-num">48</asp:Label>
+                    </div>
+                    <div class="top-2">
+                        <a class="avatar" href="#">
+                            <asp:Image runat="server" ImageUrl="assets/tag-tmp.svg" AlternateText="avatar"/>
+                        </a>
+                        <asp:Label runat="server" CssClass="name">小明</asp:Label>
+                        <asp:Label runat="server" CssClass="help-num">47</asp:Label>
+                    </div>
+                    <div class="top-3">
+                        <a class="avatar" href="#">
+                            <asp:Image runat="server" ImageUrl="assets/tag-tmp.svg" AlternateText="avatar"/>
+                        </a>
+                        <asp:Label runat="server" CssClass="name">小明</asp:Label>
+                        <asp:Label runat="server" CssClass="help-num">36</asp:Label>
+                    </div>
+                    <div class="top-4">
+                        <a class="avatar" href="#">
+                            <asp:Image runat="server" ImageUrl="assets/tag-tmp.svg" AlternateText="avatar"/>
+                        </a>
+                        <asp:Label runat="server" CssClass="name">小明</asp:Label>
+                        <asp:Label runat="server" CssClass="help-num">35</asp:Label>
+                    </div>
+                    <div class="top-5">
+                        <a class="avatar"  href="#">
+                            <asp:Image runat="server" ImageUrl="assets/tag-tmp.svg" AlternateText="avatar"/>
+                        </a>
+                        <asp:Label runat="server" CssClass="name">小明</asp:Label>
+                        <asp:Label runat="server" CssClass="help-num">28</asp:Label>
+                    </div>
+                    <div class="top-6">
+                        <a class="avatar"  href="#">
+                            <asp:Image runat="server" ImageUrl="assets/tag-tmp.svg" AlternateText="avatar"/>
+                        </a>
+                        <asp:Label runat="server" CssClass="name">小明</asp:Label>
+                        <asp:Label runat="server" CssClass="help-num">27</asp:Label>
+                    </div>
+                    <div class="top-7">
+                        <a class="avatar" href="#">
+                            <asp:Image runat="server" ImageUrl="assets/tag-tmp.svg" AlternateText="avatar"/>
+                        </a>
+                        <asp:Label runat="server" CssClass="name">小明</asp:Label>
+                        <asp:Label runat="server" CssClass="help-num">26</asp:Label>
+                    </div>
+                    <div class="top-8">
+                        <a class="avatar" href="#">
+                            <asp:Image runat="server" ImageUrl="assets/tag-tmp.svg" AlternateText="avatar"/>
+                        </a>
+                        <asp:Label runat="server" CssClass="name">小明</asp:Label>
+                        <asp:Label runat="server" CssClass="help-num">25</asp:Label>
+                    </div>
+                    <div class="top-9">
+                        <a class="avatar" href="#">
+                            <asp:Image runat="server" ImageUrl="assets/tag-tmp.svg" AlternateText="avatar"/>
+                        </a>
+                        <asp:Label runat="server" CssClass="name">小明</asp:Label>
+                        <asp:Label runat="server" CssClass="help-num">24</asp:Label>
+                    </div>
+                    <div class="top-10">
+                        <a class="avatar" href="#">
+                            <asp:Image runat="server" ImageUrl="assets/tag-tmp.svg" AlternateText="avatar"/>
+                        </a>
+                        <asp:Label runat="server" CssClass="name">小明</asp:Label>
+                        <asp:Label runat="server" CssClass="help-num">20</asp:Label>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 
 </asp:Content>
