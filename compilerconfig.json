@@ -1,10 +1,10 @@
 ﻿[
   {
-    "outputFile": "styles/dogo.css",
-    "inputFile": "styles/scss/dogo.scss"
-  },
-  {
     "outputFile": "scripts/dogo.js",
     "inputFile": "scripts/src/dogo.js"
+  },
+  {
+    "outputFile": "styles/dogo.css",
+    "inputFile": "styles/scss/dogo.scss"
   }
 ]
