@@ -58,7 +58,8 @@
                 
         <!-- footer 脚注 -->
         <div class="footer">
-            <div class="copyright">Copyright &copy; 2017 by 
+            <div class="copyright">
+                Copyright &copy; 2017 by 
                 <a href="#" class="soso-author">_king</a>
             </div>
         </div>
