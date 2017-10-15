@@ -7,7 +7,7 @@
 
 .header {
     padding: $px-15;
-    background-color: $color-ddd;
+    background-color: $color-fff;
 
     .container {
         width: $main-width;
@@ -16,5 +16,20 @@
         display: $flex;
         flex-wrap: $wrap;
         // justify-content: space-between;
+    }
+}
+
+.mainer {
+    padding: 0 $px-15;
+    background-color: #ccc;
+}
+
+.footer {
+    padding: 35px $px-15;
+
+    background-color: #f5dcdc;
+
+    .copyright {
+        text-align: center;
     }
 }

@@ -1,0 +1,20 @@
+<svg viewBox="0 0 580 344" xmlns="http://www.w3.org/2000/svg">
+ <!-- Created with Method Draw - http://github.com/duopixel/Method-Draw/ -->
+ <defs>
+  <filter id="svg_1_blur">
+   <feGaussianBlur stdDeviation="0" in="SourceGraphic"/>
+  </filter>
+ </defs>
+ <g>
+  <title>background</title>
+  <rect fill="#fce3e3" id="canvas_background" height="346" width="582" y="-1" x="-1"/>
+  <g display="none" overflow="visible" y="0" x="0" height="100%" width="100%" id="canvasGrid">
+   <rect fill="url(#gridpattern)" stroke-width="0" y="0" x="0" height="100%" width="100%"/>
+  </g>
+ </g>
+ <g>
+  <title>Layer 1</title>
+  <text font-weight="bold" filter="url(#svg_1_blur)" stroke="#000" transform="matrix(1,0,0,0.9629629850387573,0,6.870366275310516) " xml:space="preserve" text-anchor="start" font-family="Helvetica, Arial, sans-serif" font-size="39" id="svg_1" y="141.038462" x="231.515625" stroke-width="0" fill="#c66b6b">百慕大</text>
+  <text xml:space="preserve" text-anchor="start" font-family="Helvetica, Arial, sans-serif" font-size="24" id="svg_2" y="206.5" x="218" stroke-opacity="null" stroke-width="0" stroke="#000" fill="#c66b6b">寻找你的寻找</text>
+ </g>
+</svg>

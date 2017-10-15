@@ -3,7 +3,9 @@
 
 .navi {
     display: $flex;
-    flex-grow: 2;
+    
+    -webkit-flex: 2;
+            flex: 2;
 }
 
 .menu {
@@ -23,7 +25,15 @@
         padding: 0 15px;
 
         a {
+            /*&:link {
+                color: $main-color;
+            }*/
+
             color: $main-color;
+
+            &.active {
+                color: $main-color - 20;
+            }
         }
     }
 }

@@ -1,0 +1,155 @@
+﻿// caro
+//
+
+$padding-top: 59.3%;
+$icon-border-size: 3px;
+$icon-border-color: #fff;
+$border-r: 5px;
+
+
+
+.dogo-caro {
+    position: relative;
+
+    // border: 1px solid #234;
+    // padding: 15px;
+}
+
+// 轮播项目
+
+.caro-items {
+    font-size: 0;
+    position: relative;
+
+    // background-color: #234;
+    // padding: 15px;
+    // display: flex;
+    // flex-direction: column;
+
+    &:before {
+        content: "";
+        display: block;
+        padding-top: $padding-top;
+    }
+
+    .item {
+        position: absolute;
+        top: 0;
+        
+        // position: relative;
+        // left: 0;
+        
+        width: 100%;
+
+        opacity: 0;
+        transition: opacity 1s linear;
+        
+        // display: none;
+        // visibility: hidden;
+        // transition: left .6s ease-in-out;
+
+        // background-color: #888;
+        // padding: 15px;
+        
+        a {
+            display: block;
+
+            // border: 1px solid red;
+            // padding: 15px;
+
+            // width: 100%;
+            // height: 100%;
+
+            img {
+                // height: auto;
+                // max-width: 100%;         
+                // border: 1px solid groove;
+            }
+        }
+    }
+
+    .active {
+        opacity: 1;
+
+        // visibility: visible; 
+        // display: block;
+    }
+
+    /*.prev {
+        visibility: visible;
+    }
+
+    .next {
+        visibility: hidden;
+    }*/
+}
+
+// 轮播控制
+
+.caro-ctrls {
+    display: none;
+    position: absolute;
+    top: 45%;
+
+    padding: 12px;
+    background-color: rgba(0, 0, 0, 0.5);
+
+    [class*="icon-ctrl-"] {
+        width: 12px;
+        height: 12px;
+        display: inherit;
+        border-top: $icon-border-size solid $icon-border-color;
+    }
+
+    .icon-ctrl-left {
+        border-left: $icon-border-size solid $icon-border-color;
+        transform: rotate(-45deg);
+        // margin-left: 2px;
+    }
+
+    .icon-ctrl-right {
+        border-right: $icon-border-size solid $icon-border-color;
+        transform: rotate(45deg);
+        // margin-right: 2px;
+    }
+}
+
+.ctrl-left {
+    left: 0;
+    border-top-right-radius: $border-r;
+    border-bottom-right-radius: $border-r;
+}
+
+.ctrl-right {
+    right: 0;
+    border-top-left-radius: $border-r;
+    border-bottom-left-radius: $border-r;
+}
+
+// 轮播指标
+
+.caro-index {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+
+    // left: 42%;
+    // right: 50%;
+
+    padding: 25px;
+    text-align: center;
+
+    .index {
+        display: inline-block;
+        width: 12px;
+        height: 12px;
+        border-radius: 100%;
+        border: 2px solid $main-color;
+    }
+
+    .active {
+        background-color: $main-color;
+        box-shadow: 0 0 3px #888;
+    }
+}

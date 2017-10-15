@@ -29,7 +29,7 @@
                     <div class="menu">
                         <!-- 水平菜单 -->
                         <ul class="menu-row">
-                            <li class="menu-item"><a href="#">LOST</a></li>
+                            <li class="menu-item"><a class="active" href="#">LOST</a></li>
                             <li class="menu-item"><a href="#">FOUND</a></li>
                             <li class="menu-item"><a href="#">QUESTION</a></li>
                         </ul>
@@ -51,13 +51,17 @@
 
             <!-- content-holder -->
             <div class="content-holder">
-                <asp:ContentPlaceHolder id="ContentPlaceHolder1" runat="server"></asp:ContentPlaceHolder>
+                <asp:ContentPlaceHolder id="HoldContainer" runat="server"></asp:ContentPlaceHolder>
             </div>
 
         </div>
                 
         <!-- footer 脚注 -->
-        <div class="footer"></div>
+        <div class="footer">
+            <div class="copyright">Copyright &copy; 2017 by 
+                <a href="#" class="soso-author">_king</a>
+            </div>
+        </div>
 
     </div>
     </form>

@@ -6,8 +6,9 @@
     display: inherit;
     align-items: center;
     justify-content: flex-end;
-
-    flex-grow: 1;
+    
+    -webkit-flex: 1;
+            flex: 1;
 }
 
 .btn {
@@ -16,7 +17,7 @@
     cursor: pointer;
     height: 40px;
 
-    background-color: #ddd;
+    background-color: $color-fff;
     padding: 8px 20px;
     color: #c66;
 }
@@ -27,15 +28,19 @@
 
 .sign-up,
 .write-lf {
-    border: 2px solid #c66;
+    border: 1px solid $main-color;
     border-radius: 20px;
 }
 
 .sign-up {
     margin: 0 15px;
+
+    &:hover {
+        border-color: $main-color - 25;
+    }
 }
 
 .write-lf {
-    background-color: #c66;
+    background-color: $main-color;
     color: #fff;
 }

@@ -1,0 +1,123 @@
+﻿// List container
+//
+
+.note-container {
+   padding: $px-15 0;
+   background-color: #234;
+
+   display: $flex;
+   justify-content: space-between;
+   
+   .asidebar {
+       padding: $px-15;
+   }
+
+   .list {
+       flex: 3;
+
+       background-color: #ddd;
+
+       .note-tags {
+           //padding: $px-15;
+           background-color: #fff;
+
+           display: $flex;
+           justify-content: flex-start;
+           flex-wrap: wrap;
+
+           .tag-btn {
+               display: $flex;
+               align-items: center;
+               border: 1px solid $main-color;
+               border-radius: 5px;
+               cursor: pointer;
+
+               margin-right: 25px;
+               margin-bottom: 25px;
+
+               > img {
+                   height: 32px;
+                   border-top-left-radius: inherit;
+                   border-bottom-left-radius: inherit;
+               }
+
+               > div {
+                   padding: 0 15px;
+                   font-size: 14px;
+                   color: $main-color;
+               }
+           }
+
+           .tag-more-btn {
+               display: $flex;
+               align-items: center;
+               font-size: 14px;
+               color: #888;
+               cursor: pointer;
+
+               margin-right: 25px;
+               margin-bottom: 25px;
+           }
+       }
+
+       .note-list {
+           padding: 15px 0;
+
+           [class*="note-"] {
+               padding: 15px 0;
+               margin: 15px 0;
+               border-bottom: 1px dashed $main-color;
+               background-color: #fff;
+
+               display: flex;
+               flex-direction: column;
+
+               .title {
+                   color: $main-color;
+                   padding: 15px 0;
+               }
+
+               .author {
+                   color: #234;
+                   display: flex;
+                   align-items: center;
+
+                   .avatar,
+                   .name, 
+                   .date {
+                       margin-right: 10px;
+                       color: #888;
+                   }
+
+                   .avatar {
+                       height: 48px;
+                   }
+               }
+
+               .content {
+
+               }
+
+               .meta {
+                   padding: 15px 0;
+
+                   .status {
+                       font-size: 4px;
+                       color: $main-color;
+                       background-color: #fff;
+                       border: 1px solid $main-color;
+                       border-radius: 3px;
+                       padding: 2px 4px;
+                   }
+               }
+           }
+       }
+   }
+
+   .top {
+       background-color: #888;
+
+       flex: 1;
+   }
+
+}
