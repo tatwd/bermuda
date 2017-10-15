@@ -39,9 +39,15 @@
 
                 <!-- sign 登录与注册 -->
                 <div class="sign">
-                    <button class="btn sign-in">登录</button>
-                    <button class="btn sign-up">加入我们</button>
-                    <button class="btn write-lf">失物招领</button>
+                    <div>
+                        <button class="btn sign-in">登录</button>
+                    </div>
+                    <div>
+                        <button class="btn sign-up">加入我们</button>
+                    </div>
+                    <div>
+                        <button class="btn write-lf">失物招领</button>
+                    </div>
                 </div>
             </div>
         </div>

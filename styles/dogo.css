@@ -26,6 +26,37 @@ h4 {
   margin: 0;
 }
 
+@media screen and (max-width: 425px) {
+  .header .container {
+    flex-direction: column;
+  }
+  .header .container .logo {
+    justify-content: center;
+  }
+  .header .container .navi {
+    justify-content: center;
+    width: 100%;
+  }
+  .header .container .sign {
+    flex-direction: column;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .header .container {
+    width: 100%;
+  }
+  .header .container .logo {
+    flex: 1;
+  }
+  .header .container .navi {
+    flex: 1;
+  }
+  .header .container .sign {
+    flex: 1;
+  }
+}
+
 .header {
   padding: 15px;
   background-color: #fff;
@@ -56,7 +87,7 @@ h4 {
 }
 
 .logo {
-  display: inherit;
+  display: flex;
   align-items: center;
   justify-content: flex-start;
   -webkit-flex: 1;
@@ -106,11 +137,15 @@ h4 {
 }
 
 .sign {
-  display: inherit;
+  display: flex;
   align-items: center;
   justify-content: flex-end;
-  -webkit-flex: 1;
-  flex: 1;
+  -webkit-flex: 2;
+  flex: 2;
+}
+
+.sign div {
+  padding: 8px 0;
 }
 
 .btn {
@@ -118,8 +153,9 @@ h4 {
   border: 0;
   cursor: pointer;
   background-color: #fff;
+  color: #c66b6b;
   padding: 8px 20px;
-  color: #c66;
+  max-width: 100%;
 }
 
 .sign-up,
