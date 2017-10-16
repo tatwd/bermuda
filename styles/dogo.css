@@ -297,7 +297,7 @@ h4 {
 }
 
 .note-container .list .note-tags {
-  padding-top: 15px;
+  padding-top: 0;
   background-color: #fff;
   display: flex;
   justify-content: flex-start;

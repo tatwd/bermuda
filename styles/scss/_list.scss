@@ -19,7 +19,7 @@
        padding-right: 25px;
 
        .note-tags {
-           padding-top: $px-15;
+           padding-top: 0; // $px-15
            background-color: #fff;
 
            display: $flex;
