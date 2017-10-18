@@ -15,7 +15,7 @@
             -->
         <div class="caro-items">
             <div class="item active">
-                <a href="#"><asp:image runat="server" ImageUrl="/assets/caro-img/item-1.svg" alt="caro-img-1" /></a>
+                <a href="#"><asp:image runat="server" ImageUrl="assets/caro-img/item-1.svg" alt="caro-img-1" /></a>
             </div>
             <div class="item">
                 <a href="#"><asp:image runat="server" ImageUrl="assets/caro-img/item-2.svg" alt="caro-img-2" /></a>
