@@ -28,8 +28,12 @@
     max-width: 100%;
 }
 
-.sign-in {
+.sign-in,
+.sign-up {
     // background-color: #ddd;
+    a {
+        color: $main-color;
+    }
 }
 
 .sign-up,
@@ -49,4 +53,16 @@
 .write-lf {
     background-color: $main-color;
     color: #fff;
+}
+
+.user-avatar {
+
+    font-size: 0;
+    margin: 0 15px;
+    display: inline-block;
+
+    img {
+        height: 40px;
+        border-radius: 50%;
+    }
 }

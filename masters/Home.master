@@ -8,9 +8,10 @@
     <title>百慕大 - 寻找你的寻找</title>
 
     <!-- import dogo.min.css -->
+    <link href="~/styles/dogo.min.css" rel="stylesheet" />
+    
     <asp:ContentPlaceHolder id="head" runat="server"></asp:ContentPlaceHolder>
 
-    <link href="~/styles/dogo.min.css" rel="stylesheet" />
 </head>
 <body>
     <form id="FormContainer" runat="server">
@@ -29,9 +30,10 @@
                     <div class="menu">
                         <!-- 水平菜单 -->
                         <ul class="menu-row">
-                            <li class="menu-item"><a class="active" href="#">LOST</a></li>
-                            <li class="menu-item"><a href="#">FOUND</a></li>
-                            <li class="menu-item"><a href="#">QUESTION</a></li>
+                            <li class="menu-item"><a class="active" href="#">失物</a></li>
+                            <li class="menu-item"><a href="#">招领</a></li>
+                            <li class="menu-item"><a href="#">活动</a></li>
+                            <li class="menu-item"><a href="#">论坛</a></li>
                         </ul>
                     </div>
                     <!-- <div class="search"></div> -->
@@ -39,11 +41,14 @@
 
                 <!-- sign 登录与注册 -->
                 <div class="sign">
-                    <div>
-                        <button class="btn sign-in">登录</button>
+                    <div id="SignInBox" runat="server">
+                        <button class="btn sign-in"><a href="../pages/SignIn.aspx">登录</a></button>
                     </div>
-                    <div>
-                        <button class="btn sign-up">加入我们</button>
+                    <div id="SignUpBox" runat="server">
+                        <button class="btn sign-up"><a href="../pages/SignUp.aspx">加入我们</a></button>
+                    </div>
+                    <div id="UserAvatar" runat="server">
+                        <a class="user-avatar" href="#"><img src="../assets/tag-tmp.svg" alt="user-avatar"/></a>
                     </div>
                     <div>
                         <button class="btn write-lf">失物招领</button>

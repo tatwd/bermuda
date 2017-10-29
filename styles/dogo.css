@@ -75,7 +75,7 @@ h4 {
 
 .footer {
   padding: 50px 15px;
-  background-color: #d9e7f3;
+  background-color: #fff;
 }
 
 .footer .copyright {
@@ -158,6 +158,11 @@ h4 {
   max-width: 100%;
 }
 
+.sign-in a,
+.sign-up a {
+  color: #c66b6b;
+}
+
 .sign-up,
 .write-lf {
   border: 1px solid #c66b6b;
@@ -175,6 +180,17 @@ h4 {
 .write-lf {
   background-color: #c66b6b;
   color: #fff;
+}
+
+.user-avatar {
+  font-size: 0;
+  margin: 0 15px;
+  display: inline-block;
+}
+
+.user-avatar img {
+  height: 40px;
+  border-radius: 50%;
 }
 
 .content-holder {
