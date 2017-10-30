@@ -171,10 +171,18 @@ h4 {
 
 .sign-up {
   margin: 0 15px;
+  /*a {
+        &:hover {
+            bg
+            color: #fff;
+        }
+    }*/
 }
 
 .sign-up:hover {
-  border-color: #ad5252;
+  border-color: #a84d4d;
+  /*background-color: $main-color;
+        color: #fff;*/
 }
 
 .write-lf {

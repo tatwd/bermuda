@@ -16,13 +16,12 @@ public partial class SignIn : System.Web.UI.Page
     {
         if (!IsPostBack)
         {
-            //Session["Username"] = ""; // 首次加载设置会话变量为空
-
         }
 
         //tipLabel.Text = Session["Username"].ToString();
     }
 
+    // 登录按钮事件
     protected void signInBtn_Click(object sender, EventArgs e)
     {
 
@@ -50,7 +49,7 @@ public partial class SignIn : System.Web.UI.Page
 
         try
         {
-            Connector conn = ConnecterFactory.GetConnector("TestDb");
+            Connector conn = ConnectorFactory.GetConnector("TestDb");
 
             conn.Connect();
 
@@ -60,7 +59,7 @@ public partial class SignIn : System.Web.UI.Page
                 {
                     // tipLabel.Text = "登录成功！";
 
-                    Session["Username"] = username; // session变量保存用户名
+                    Session["Username"] = username; // Session变量保存用户名
                      
                     Response.Redirect("~/Default.aspx"); // 重定向到首页
                 }

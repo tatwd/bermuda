@@ -12,7 +12,7 @@ namespace DbKit
     // Summary:
     //   ConnectorFactory - 连接器生产工厂
     //
-    public class ConnecterFactory
+    public class ConnectorFactory
     {
         // Summary:
         //   连接器类名

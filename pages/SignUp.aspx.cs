@@ -32,6 +32,7 @@ public partial class index : System.Web.UI.Page
         }
     }
 
+    // 注册按钮事件
     protected void signUpBtn_Click(object sender, EventArgs e)
     {
         if (this.IsValid) // 验证通过
@@ -47,15 +48,13 @@ public partial class index : System.Web.UI.Page
 
         string sql = String.Format("select * from [user_info] where [username] = '{0}'", nameBox.Text.Trim());
 
-        string[] parameters = (string[])getUserInfo();
+        string[] parameters = (string[])getUserInfo(); // 获取用户数据
 
         try
         {
-            Connector conn = ConnecterFactory.GetConnector("TestDb");
+            Connector conn = ConnectorFactory.GetConnector("TestDb");
 
-            // conn.Connect();
-
-            if (!conn.HasData(sql))
+            if (!conn.HasData(sql)) // 判断用户是否已经注册
             {
                 conn.ManageDataOffMode("insert", "user_info", parameters); // 插入用户数据
 
@@ -65,8 +64,6 @@ public partial class index : System.Web.UI.Page
             {
                 tipLabel.Text = "该用户已被注册！";
             }
-
-            // conn.CloseAll();
         }
         catch (Exception ex)
         {

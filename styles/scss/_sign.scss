@@ -46,8 +46,18 @@
     margin: 0 15px;
 
     &:hover {
-        border-color: $main-color - 25;
+        border-color: $main-color - 30;
+
+        /*background-color: $main-color;
+        color: #fff;*/
     }
+    
+    /*a {
+        &:hover {
+            bg
+            color: #fff;
+        }
+    }*/
 }
 
 .write-lf {
