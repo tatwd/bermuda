@@ -8,12 +8,12 @@ namespace Model
 {
     class ReplyCurrent
     {
-        public int ReplyCurrentId { get; set; }
-        public int CmntId { get; set; }
-        public int ReplyAuthor { get; set; }
-        public string ReplyContent { get; set; }
+        public int      ReplyCurrentId { get; set; }
+        public int      CmntId { get; set; }
+        public int      ReplyAuthor { get; set; }
+        public string   ReplyContent { get; set; }
         public DateTime ReplyDate { get; set; }
-        public int PraiseCount { get; set; }
+        public int      PraiseCount { get; set; }
 
     }
 }

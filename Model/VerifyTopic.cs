@@ -8,7 +8,7 @@ namespace Model
 {
     class VerifyTopic
     {
-        public  int VerifyTopicId { get; set; }
+        public int VerifyTopicId { get; set; }
         public int TopicId { get; set; }
         public int RootId { get; set; }
         public int IsPassed { get; set; }

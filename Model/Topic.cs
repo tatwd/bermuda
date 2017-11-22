@@ -8,11 +8,11 @@ namespace Model
 {
     class Topic
     {
-        public int TopicId { get; set; }
-        public string TopicName { get; set; }
-        public int CreatorId { get; set; }
-        public string TopicDesc { get; set; }
-        public int JoinCount { get; set; }
+        public int      TopicId { get; set; }
+        public string   TopicName { get; set; }
+        public int      CreatorId { get; set; }
+        public string   TopicDesc { get; set; }
+        public int      JoinCount { get; set; }
         public DateTime CreatDate { get; set; }
     }
 }

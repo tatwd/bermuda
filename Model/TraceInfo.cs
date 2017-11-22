@@ -8,8 +8,8 @@ namespace Model
 {
     class TraceInfo
     {
-        public int InfoId { get; set; }
-        public int TracerId { get; set; }
+        public int      InfoId { get; set; }
+        public int      TracerId { get; set; }
         public DateTime TraceDate { get; set; }
     }
 }
