@@ -11,7 +11,7 @@ namespace Model
         public int      CmntCurrentId {set; get;}
         public int      CurrentId     {set; get;}
         public int      CmntId        {set; get;}
-        public string   CmntContent   { set; get; }
+        public string   CmntContent   {set; get;}
         public DateTime CmntDate      {set; get;}
         public int      PraiseCount   {set; get;}
     }
