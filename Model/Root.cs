@@ -8,12 +8,12 @@ namespace Model
 {
     public class Root
     {
-        public int RootId{set; get;}
-        public char RootName{set; get;}
-        public int Permission{set; get;}
-        public char PhoneNumber{set; get;}
-        public char Email{set; get;}
-        public char Avatar{set; get;}
-        public char Remark{set; get;}
+        public int    RootId      {set; get;}
+        public string RootName    {set; get;}
+        public int    Permission  {set; get;}
+        public string PhoneNumber {set; get;}
+        public string Email       {set; get;}
+        public string Avatar      {set; get;}
+        public string Remark      {set; get;}
     }
 }

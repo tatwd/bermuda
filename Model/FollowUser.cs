@@ -9,7 +9,7 @@ namespace Model
     public class FollowUser
     {
         public int FollowUserId { set; get; }
-        public int FollowingId { set; get; }
-        public int FollowerId { set; get; }
+        public int FollowingId  { set; get; }
+        public int FollowerId   { set; get; }
     }
 }

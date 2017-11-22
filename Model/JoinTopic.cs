@@ -9,7 +9,7 @@ namespace Model
     public class JoinTopic
     {
         public int JoinTopicId { set; get; }
-        public int TopicId { set; get; }
-        public int CurrentId { set; get; }
+        public int TopicId     { set; get; }
+        public int CurrentId   { set; get; }
     }
 }

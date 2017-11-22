@@ -8,10 +8,10 @@ namespace Model
 {
     public class FavCurrent
     {
-        public int FavCurrentId { set; get; }
-        public int CurrentId { set; get; }
-        public int FavUser { set; get; }
-        public DateTime FavDate{set; get;}
+        public int      FavCurrentId { set; get; }
+        public int      CurrentId    { set; get; }
+        public int      FavUser      { set; get; }
+        public DateTime FavDate      {set; get;}
         
     }
 }

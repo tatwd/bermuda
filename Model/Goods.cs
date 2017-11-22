@@ -8,10 +8,10 @@ namespace Model
 {
     public class Goods
     {
-        public int GoodsId { set; get; }
-        public int OwnerId { set; get; }
-        public char GoodsName { set; get; }
-        public int Qty { set; get; }
-        public char Img { set; get; }
+        public int    GoodsId   { set; get; }
+        public int    OwnerId   { set; get; }
+        public string GoodsName { set; get; }
+        public int    Qty       { set; get; }
+        public char   Img       { set; get; }
     }
 }

@@ -8,11 +8,11 @@ namespace Model
 {
     public class User
     {
-        public int UserId{set; get;}
-        public char UserName{set; get;}
-        public char PhoneNumber{set; get;}
-        public char Email{set; get;}
-        public char UserType{set; get;}
-        public char pwd{set; get;}
+        public int    UserId      {set; get;}
+        public string UserName    {set; get;}
+        public string PhoneNumber {set; get;}
+        public string Email       {set; get;}
+        public string UserType    {set; get;}
+        public string pwd         {set; get;}
     }
 }
