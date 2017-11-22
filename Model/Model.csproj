@@ -50,6 +50,15 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Root.cs" />
     <Compile Include="User.cs" />
+    <Compile Include="LfInfo.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ReplyCurrent.cs" />
+    <Compile Include="ReplyGoods.cs" />
+    <Compile Include="ReplyInfo.cs" />
+    <Compile Include="Topic.cs" />
+    <Compile Include="TraceInfo.cs" />
+    <Compile Include="UserCurrent.cs" />
+    <Compile Include="VerifyTopic.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
