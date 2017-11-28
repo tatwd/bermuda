@@ -40,11 +40,25 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Current.cs" />
+    <Compile Include="CurrentCmnt.cs" />
+    <Compile Include="CurrentReply.cs" />
+    <Compile Include="CurrentStar.cs" />
+    <Compile Include="Follow.cs" />
+    <Compile Include="Goods.cs" />
+    <Compile Include="GoodsCmnt.cs" />
+    <Compile Include="GoodsReply.cs" />
+    <Compile Include="Notice.cs" />
+    <Compile Include="NoticeCmnt.cs" />
+    <Compile Include="NoticeReply.cs" />
+    <Compile Include="NoticeTrace.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Topic .cs" />
     <Compile Include="TopicJoin.cs" />
     <Compile Include="TopicVerify.cs" />
+    <Compile Include="Root.cs" />
+    <Compile Include="User.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="README.md" />
