@@ -12,6 +12,6 @@ namespace Model
         public int      TopicId    { get; set; }
         public int      RootId     { get; set; }
         public DateTime VerifyDate { get; set; }
-        public int      IsPassed   { get; set; }
+        public byte     IsPassed   { get; set; }
     }
 }
