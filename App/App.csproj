@@ -66,6 +66,8 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="assets\logo.svg" />
+    <Content Include="assets\avatar.svg" />
     <Content Include="dist\css\dogo.css" />
     <Content Include="dist\css\dogo.min.css">
       <DependentUpon>dogo.css</DependentUpon>
@@ -74,6 +76,7 @@
     <Content Include="dist\js\dogo.min.js">
       <DependentUpon>dogo.js</DependentUpon>
     </Content>
+    <Content Include="favicon.ico" />
     <Content Include="Home.aspx" />
     <Content Include="layout\SignIn.aspx" />
     <Content Include="packages.config" />
