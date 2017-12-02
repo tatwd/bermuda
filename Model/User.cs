@@ -8,13 +8,13 @@ namespace Model
 {
     public class User
     {
-        public int    Id          { set; get; }
+        public long   Id          { set; get; }
         public string Name        { set; get; }
         public string PhoneNumber { set; get; }
         public string Email       { set; get; }
         public string Type        { set; get; }
         public string Pwd         { set; get; }
         public string Avatar      { set; get; }
-        public string Rate        { set; get; }
+        public int    Rate        { set; get; }
     }
 }
