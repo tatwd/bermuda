@@ -8,7 +8,7 @@ namespace Model
 {
     public class Root
     {
-        public int    Id          { set; get; }
+        public long   Id          { set; get; }
         public string Name        { set; get; }
         public int    Permission  { set; get; }
         public string PhoneNumber { set; get; }

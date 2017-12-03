@@ -8,8 +8,8 @@ namespace Model
 {
     public class TopicJoin
     {
-        public int Id        { get; set; }
-        public int TopicId   { get; set; }
-        public int CurrentId { get; set; }
+        public long Id        { get; set; }
+        public long TopicId   { get; set; }
+        public long CurrentId { get; set; }
     }
 }

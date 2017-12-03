@@ -8,8 +8,8 @@ namespace Model
 {
     public class Notice
     {
-        public int      Id           { set; get; }
-        public int      UserId       { set; get; }
+        public long     Id           { set; get; }
+        public long     UserId       { set; get; }
         public string   Type         { set; get; }
         public string   Title        { set; get; }
         public string   GoodsSpecies { set; get; }

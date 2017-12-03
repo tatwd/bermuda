@@ -8,9 +8,9 @@ namespace Model
 {
     public class CurrentCmnt
     {
-        public int      Id          { set; get; }
-        public int      CurrentId   { set; get; }
-        public int      UserId      { set; get; }
+        public long     Id          { set; get; }
+        public long     CurrentId   { set; get; }
+        public long     UserId      { set; get; }
         public string   Contents    { set; get; }
         public DateTime CmntDate    { set; get; }
         public int      PraiseCount { set; get; }

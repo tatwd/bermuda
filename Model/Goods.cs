@@ -8,8 +8,8 @@ namespace Model
 {
     public class Goods
     {
-        public int    Id       { set; get; }
-        public int    UserId   { set; get; }
+        public long   Id       { set; get; }
+        public long   UserId   { set; get; }
         public string Name     { set; get; }
         public string Type     { set; get; }
         public string Category { set; get; }

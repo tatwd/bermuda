@@ -8,9 +8,9 @@ namespace Model
 {
     public class Follow
     {
-        public int Id          { set; get; }
-        public int UserId      { set; get; }
-        public int FollowingId { set; get; }
+        public long Id          { set; get; }
+        public long UserId      { set; get; }
+        public long FollowingId { set; get; }
 
     }
 }

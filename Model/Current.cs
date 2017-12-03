@@ -8,9 +8,9 @@ namespace Model
 {
     public class Current
     {
-        public int      Id          { set; get; }
-        public int      UserId      { set; get; }
-        public int      TopicId     { set; get; }
+        public long     Id          { set; get; }
+        public long     UserId      { set; get; }
+        public long     TopicId     { set; get; }
         public string   Title       { set; get; }
         public string   Contents    { set; get; }
         public DateTime PublishDate { set; get; }

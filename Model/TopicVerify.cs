@@ -8,9 +8,9 @@ namespace Model
 {
     public class TopicVerify
     {
-        public int      Id         { get; set; }
-        public int      TopicId    { get; set; }
-        public int      RootId     { get; set; }
+        public long     Id         { get; set; }
+        public long     TopicId    { get; set; }
+        public long     RootId     { get; set; }
         public DateTime VerifyDate { get; set; }
         public byte     IsPassed   { get; set; }
     }
