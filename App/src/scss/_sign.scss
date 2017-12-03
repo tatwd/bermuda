@@ -36,14 +36,6 @@
             max-width: 64px;
         }
     }
-
-    > .logo-text {
-        color: $main-color;
-
-        > h1 {
-            font-weight: 600;
-        }
-    }
 }
 
 .sign-container {
@@ -56,12 +48,14 @@
     .sign-header {
         > h1 {
             color: $main-color;
-            margin-bottom: 5px;
+            margin-bottom: 15px;
         }
 
         > h2 {
             color: $text-color;
-            font-weight: 500;
+            font-weight: 600;
+            font-size: 20px;
         }
     }
 }
+

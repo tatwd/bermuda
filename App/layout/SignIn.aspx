@@ -28,7 +28,13 @@
                         <h2>寻找你的寻找</h2>
                     </div>
                     <div class="sign-body">
+                        <div class="sign-input">
+                            <div><asp:TextBox ID="NameMail" runat="server" placeholder="用户名"></asp:TextBox></div>
+                            <div><asp:TextBox ID="Password" runat="server" placeholder="密码"></asp:TextBox></div>
+                        </div>
+                        <div class="sign-btn">
 
+                        </div>
                     </div>
                 </div>
             </div>
