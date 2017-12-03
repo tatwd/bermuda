@@ -89,6 +89,7 @@
     <Content Include="README.md" />
     <Content Include="src\scss\_reset.scss" />
     <Content Include="src\scss\_variables.scss" />
+    <Content Include="src\scss\_sign.scss" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

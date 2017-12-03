@@ -18,7 +18,7 @@ namespace App
 
             string tip = (user != null) ? "成功" : "失败";
 
-            Response.Write(tip + " - " + user.Email);
+            Response.Write(tip + " - " + user.Name);
         }
     }
 }

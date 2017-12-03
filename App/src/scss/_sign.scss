@@ -1,0 +1,67 @@
+﻿// Sign Page Styles
+//
+
+.text-center {
+    text-align: center;
+}
+
+.container {
+    //display: flex;
+
+    //background-color: #ddd;
+}
+
+.copy-right {
+    padding: 15px;
+    font-size: 14px;
+    color: $text-color;
+    opacity: 0.8;
+
+    > span:nth-child(2) {
+        margin-left: 15px;
+        margin-right: 15px;
+    }
+}
+
+//------
+
+.sign-logo {
+    padding-top: 32px;
+    padding-bottom: 32px;
+
+    > .logo-img {
+        font-size: 0;
+
+        img {
+            max-width: 64px;
+        }
+    }
+
+    > .logo-text {
+        color: $main-color;
+
+        > h1 {
+            font-weight: 600;
+        }
+    }
+}
+
+.sign-container {
+    height: 450px;
+    background-color: #ddd;
+    
+    max-width: 340px;
+    margin: 0 auto;
+
+    .sign-header {
+        > h1 {
+            color: $main-color;
+            margin-bottom: 5px;
+        }
+
+        > h2 {
+            color: $text-color;
+            font-weight: 500;
+        }
+    }
+}

@@ -2,8 +2,86 @@
  * dogo 1.0.0-alpha.1
  * by _king
  */
+html {
+  box-sizing: border-box;
+  font-family: sans-serif;
+}
+
 body {
-  padding: 0;
   margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5 {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+a,
+a:link {
+  text-decoration: none;
+  color: #555;
+}
+
+a:hover {
+  color: #c66b6b;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.copy-right {
+  padding: 15px;
+  font-size: 14px;
+  color: #555;
+  opacity: 0.8;
+}
+
+.copy-right > span:nth-child(2) {
+  margin-left: 15px;
+  margin-right: 15px;
+}
+
+.sign-logo {
+  padding-top: 32px;
+  padding-bottom: 32px;
+}
+
+.sign-logo > .logo-img {
+  font-size: 0;
+}
+
+.sign-logo > .logo-img img {
+  max-width: 64px;
+}
+
+.sign-logo > .logo-text {
+  color: #c66b6b;
+}
+
+.sign-logo > .logo-text > h1 {
+  font-weight: 600;
+}
+
+.sign-container {
+  height: 450px;
+  background-color: #ddd;
+  max-width: 340px;
+  margin: 0 auto;
+}
+
+.sign-container .sign-header > h1 {
+  color: #c66b6b;
+  margin-bottom: 5px;
+}
+
+.sign-container .sign-header > h2 {
+  color: #555;
+  font-weight: 500;
 }
 
