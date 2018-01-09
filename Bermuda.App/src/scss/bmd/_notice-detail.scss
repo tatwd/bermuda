@@ -1,0 +1,97 @@
+﻿// 启示详情页样式
+//
+
+.notice-detail {
+    background-color: #fff;
+    box-shadow: 0 1px 3px rgba(0,0,0,.1);
+    margin-top: 15px;
+    padding: 25px;
+
+    max-width: 640px;
+    @extend .margin-center;
+
+    position: relative;
+
+    .title {
+        margin-bottom: 15px;
+
+        .status {
+            border: 1px solid $main-color;
+            color: $main-color;
+
+            padding: 6px 8px;
+            margin-left: 10px;
+            border-radius: 4px;
+
+            position: relative;
+
+            > i {
+                position: absolute;
+                top: 30%;
+                left: -6px;
+
+                background-color: #fff;
+            }
+        }
+    }
+
+    .user {
+        img {
+            border: 1px solid #dcdcdc;
+            border-radius: 50%;
+            width: 40px;
+        }
+    }
+
+    .content {
+        p {
+            margin: 15px 0;
+        }
+
+        .has-img {
+            max-height: 380px;
+            margin-bottom: 15px;
+
+            border: 1px solid #ddd;
+            padding: 3px;
+
+            display: inline-flex;
+
+            > .goods-img {
+                max-width: 100%;
+                max-height: inherit;
+
+                &:hover {
+                    cursor: -webkit-zoom-in;
+                    cursor: -moz-zoom-in;
+                    cursor: zoom-in;
+                }
+            }
+        }
+    }
+
+    .meta {
+        color: #969696;
+
+        > input {
+            padding: 8px 15px;
+            background-color: $main-color;
+            border-radius: 3px;
+            color: #fff;
+
+            margin-right: 15px;
+        }
+    }
+}
+
+.notice-comment {
+    background-color: #fff;
+    box-shadow: 0 1px 3px rgba(0,0,0,.1);
+    padding: 25px;
+    
+    max-width: 640px;
+    @extend .margin-center;
+
+    margin-top: 15px;
+    margin-bottom: 15px;
+}

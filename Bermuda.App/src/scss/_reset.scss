@@ -1,0 +1,80 @@
+﻿// Reset default styles
+//
+
+html {
+    box-sizing: border-box;
+    font-family: sans-serif;
+    //-webkit-text-size-adjust: 100%;
+    //-ms-text-size-adjust: 100%;
+}
+
+body {
+    margin: 0;
+    font-family: $font-family-base;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5 {
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+p {
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+a,
+a:link {
+    text-decoration: none;
+}
+
+a {
+    color: $text-color;
+}
+
+a:hover {
+    color: $main-color;
+}
+
+input {
+    border: 0;
+    padding: 0;
+    background-color: #fff;
+}
+
+input[type="submit"] {
+    outline: none;
+    cursor: pointer;
+}
+
+ul {
+    list-style: none;
+    padding-left: 0;
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+button {
+    background-color: #fff;
+    border: 0;
+    outline: none;
+}
+
+textarea {
+    resize: none;
+    padding: 0;
+    overflow-y: hidden;
+    font-family: inherit;
+
+    &:disabled {
+        background-color: #fff;
+    }
+}
+
+img {
+    vertical-align: top;
+}

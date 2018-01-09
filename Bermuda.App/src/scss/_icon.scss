@@ -1,0 +1,37 @@
+﻿// Icon styles
+//
+
+// 直角图标
+@mixin right-angle($deg, $size, $color, $direction) {
+    border-top: $size solid $color;
+    border-#{$direction}: $size solid $color;
+    transform: rotate($deg);
+    -ms-transform: rotate($deg);
+    -moz-transform: rotate($deg);
+    -webkit-transform: rotate($deg);
+   
+}
+
+@mixin icon-size($width, $height) {
+    display: inline-block;
+    height: $height;
+    width: $width;
+}
+
+.icon-angle-left {
+    @include right-angle(-45deg, 1px, $main-color, left);
+
+    @include icon-size(10px, 10px);
+}
+
+.icon-angle-right {
+    @include right-angle(45deg, 1px, $main-color, right);
+
+    @include icon-size(10px, 10px);
+}
+
+.icon-angle-top {
+    @include right-angle(45deg, 1px, #dcdcdc, left);
+
+    @include icon-size(10px, 10px);
+}

@@ -1,0 +1,13 @@
+﻿// 动态详情页
+//
+
+.current-detail {
+    @extend .notice-detail;
+
+    > .main {
+
+        > .content {
+            margin: 15px 0;
+        }
+    }
+}

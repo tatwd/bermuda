@@ -1,0 +1,89 @@
+﻿// 话题列表
+
+.topic-list {
+    
+    > .list-head {
+        @extend .flex-box;
+        @extend .items-center;
+        @extend .justify-center;
+        @extend .margin-tb-15;
+
+        color: $main-color;
+
+        img {
+            width: 25px;
+            margin-right: 5px;
+        }
+    }
+    
+    > .list-main {
+
+        .topic-card {
+
+            overflow: visible;
+
+            justify-content: space-between;
+
+            > .item {
+                //margin-right: 45px;
+                margin-top: 80px;
+                padding: 0 40px;
+
+                /*&:last-child {
+                    margin-right: 0;
+                }*/
+                margin-right: 0;
+
+                // @inlude set-box-shadow;
+                    
+                background-color: #fff;
+                border: 1px solid #ddd;
+                border-radius: 3px;
+
+                &:hover {
+                    box-shadow: 0 2px 4px #dcdcdc;
+                }
+
+                display: inline-flex;
+                justify-content: center;
+
+                > .content {
+                    width: 200px;
+                    @extend .pos-relative;
+                    /*@inlude set-box-shadow;
+                    
+                    background-color: #fff;
+                    border: 1px solid #ddd;
+                    border-radius: 3px;*/
+
+                    height: 100%;
+                    
+                    > .topic-img {
+                        @extend .pos-absolute;
+                        @extend .pos-center;
+                        @extend .text-center;
+
+                        top: -40px;
+                        
+                        img {
+                            border-radius: 8px;
+                            height: 80px;
+                            width: 80px;
+                            border: 1px solid #dcdcdc;
+                        }
+                    }
+
+                    > .topic-desc {
+                        padding-top: 40px;
+                        padding-bottom: 40px;
+
+                        > .detail {
+                            height: 45px;
+                            //overflow: hidden;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

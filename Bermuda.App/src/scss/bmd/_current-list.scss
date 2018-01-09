@@ -1,0 +1,55 @@
+﻿// 动态列表
+//
+
+.current-list {
+    // border: 1px solid red;
+
+    > [id*="current-"] {
+        @include set-box-shadow;
+        
+        padding: 15px;
+        background-color: #fff;
+        margin-top: 0;
+
+        &:last-child {
+            margin-top: 0;
+            margin-bottom: 0;
+        }
+
+        > .user {
+            @extend .flex-box;
+            @extend .items-center;
+
+            > .author {
+                @extend .flex-box;
+                @extend .items-center;
+
+                @include avatar-radius(30px);
+            }
+        }
+
+        > .content {
+            > .title {
+                margin-top: 10px;
+                color: $text-color;
+            }
+
+            > .main {
+                margin-top: 10px;
+            }
+        }
+
+        > .meta {
+            @extend .flex-box;
+
+            margin-top: 10px;
+
+            > .topic-name {
+                border: 1px solid $main-color;
+                border-radius: 3px;
+                padding: 2px 6px;
+                color: $main-color;
+            }
+        }
+    }
+}

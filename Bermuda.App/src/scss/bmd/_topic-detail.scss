@@ -1,0 +1,42 @@
+﻿// 话题详情
+//
+
+.topic-detail {
+
+    > .topic-head {
+        @include set-box-shadow;
+
+        background-color: #fff;
+        margin-right: 15px;
+        align-self: flex-start;
+        
+        padding: 25px 20px;
+
+        > .topic-img {
+            > div {
+                width: 96px;
+                height: 96px;
+
+                > img {
+                    width: 100%;
+                    height: 100%;
+                    border: 1px solid #ddd;
+                    border-radius: 5px;
+                }
+            }
+        }
+    }
+
+    > .topic-main {
+        //@include set-box-shadow;
+
+        //background-color: #fff;
+        margin-right: 25px;
+        align-self: flex-start;
+        //padding: 20px;
+
+        .count {
+            margin-left: 4px;
+        }
+    }
+}

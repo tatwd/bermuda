@@ -1,0 +1,18 @@
+﻿// 验证控件
+//
+
+.validator {
+    //border: 1px solid $main-color;
+    color: $main-color;
+    font-size: 14px;
+    padding: 5px 8px;
+    background-color: #fff;
+    border-radius: 3px;
+
+    position: absolute;
+    top: 11px;
+    right: 6px;
+
+    opacity: 0;
+    transition: opacity 0.5s linear;
+}

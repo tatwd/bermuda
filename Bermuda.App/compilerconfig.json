@@ -1,0 +1,13 @@
+﻿[
+  {
+    "outputFile": "dist/css/dogo.css",
+    "inputFile": "src/scss/dogo.scss",
+    "options": {
+      "outputStyle": "expanded"
+    }
+  },
+  {
+    "outputFile": "dist/js/dogo.js",
+    "inputFile": "src/js/dogo.js"
+  }
+]

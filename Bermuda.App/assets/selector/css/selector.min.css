@@ -1,0 +1,4 @@
+/*! 
+ * selector 1.0.0-alpha.1
+ * by _king
+ */select{display:none}ul{margin:0;padding:0;list-style:none}.selector{display:inline-block;position:relative;width:160px}.selector>.selected-item{border:1px solid #e6e6e6;padding:8px 10px;display:block;cursor:pointer;white-space:nowrap;display:flex;justify-content:space-between}.selector>.selected-item .icon-triangle::after{content:"";display:inline-block;vertical-align:middle;width:0;height:0;border:4px solid #c66;border-right-color:transparent;border-bottom-color:transparent;border-left-color:transparent}.selector>.options{border:1px solid #e6e6e6;border-radius:3px;border-top:1px sloid transparent;background-color:#fff;position:absolute;left:0;right:0;top:100%;display:none;cursor:pointer}.selector>.options>.item{padding:8px 10px}.selector>.options>.item:hover{background-color:#f2f2f2}

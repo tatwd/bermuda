@@ -1,0 +1,242 @@
+﻿// 动态编辑页
+//
+
+$edit-text-color: #b2b2b2;
+
+body {
+    // height: 100%;
+}
+
+#CurrentEditForm {
+    // background-color: #fff;
+    // height: 100%;
+}
+
+.current-logo {
+    padding: 15px;
+    align-self: flex-start;
+
+    @extend .flex-box;
+    justify-content: center;
+
+    a {
+        display: block;
+
+        img {
+            width: 42px;
+        }
+    }
+}
+
+.editor-container {
+    max-width: 666px;
+    margin: 0 auto;
+    padding: 15px 25px;
+    background-color: #fff;
+    
+    @include set-box-shadow;
+
+    textarea {
+        border: none;
+        padding: 5px;
+        //color: $text-color;
+        //opacity: .8;
+        color: $edit-text-color;
+    }
+
+    > .editor-header {
+        color: $main-color;
+    }
+
+    > .input-topic {
+        margin-top: 15px;
+        margin-bottom: 15px;
+
+        textarea {
+            font-size: 16px;
+            font-weight: 600;
+        }
+    }
+
+    > .input-title {
+        @extend .input-topic;
+
+        textarea {
+            font-size: 25px;
+            font-weight: 600;
+        }
+    }
+
+    > .rich-editor {
+        min-height: 600px;
+        //max-height: 100%;
+
+        #wang-editor  {
+            max-height: 100%;
+
+            .w-e-text-container {
+                border: none;
+            }
+
+            .w-e-text {
+              overflow-y: hidden;
+              color: $edit-text-color;
+            }
+        }
+    }
+}
+
+.current-pub-container {
+    align-self: flex-start;
+    padding: 15px;
+
+    @extend .flex-col;
+    @extend .items-center;
+
+    > .pub-btn {
+
+        > button {
+            padding: 6px 20px;
+            border: 1px solid $main-color;
+            border-radius: 3px;
+            color: $main-color;
+            cursor: pointer;
+
+            &:hover {
+                background-color: $main-color;
+                color: #fff;
+            }
+        }
+
+        .clicked {
+            background-color: $main-color;
+            color: #fff;
+        }
+    }
+
+    > .select-topic {
+        background-color: #fff;
+        margin-top: 15px;
+        padding: 25px;
+        max-width: 240px;
+        // border-radius: 3px;
+
+        @include set-box-shadow;
+
+        position: relative;
+        opacity: 0;
+        transition: opacity .3s linear;
+
+        > .icon {
+            position: absolute;
+            top: -8px;
+            left: 47%;
+
+            height: 15px;
+            width: 15px;
+            background-color: inherit;
+            // border-color: #f7f7f7;
+            // box-shadow: 0 0 1px rgba(0, 0, 0, .1) ;
+        }
+
+        > .title {
+            margin-bottom: 15px;
+        }
+
+        > .search-input {
+
+            // @extend .flex-box;
+
+            position: relative;
+
+            input {
+                @extend .input-block;
+                padding: 5px;
+                border: 1px solid #e8e8e8;
+                border-radius: 3px;
+            }
+
+            > .search-items {
+                position: absolute;
+                top: 30px;
+                background-color: #fff;
+                width: 100%;
+
+                > select {
+                    @extend .none-block;
+                }
+
+                > .multiple-search-selector {
+                    padding: 5px;
+
+                    > .options {
+                        > .item {
+                            display: none;
+                            cursor: pointer;
+                            margin-bottom: 5px;
+                            font-size: 14px;
+                        }
+
+                        > .active {
+                            display: block;
+                        }
+                    }
+
+                
+                }
+            }
+        }
+
+
+        > .selected-items {
+
+            margin-bottom: 15px;
+
+            > .item {
+                background-color: #f1f1f1;
+                color: $text-color;
+                display: inline-block;
+                padding: 4px 6px;
+                border-radius: 3px;
+                cursor: pointer;
+                margin-right: 5px;
+                font-size: 14px;
+
+                > .icon-delete {
+                    &:after {
+                        content: "X";
+                        display: inline-block;
+                        color: $main-color;
+                        margin-left: 5px;
+                        font-style: normal;
+                        font-size: 12px;
+                        font-weight: 600;
+                    }
+                }
+            }
+
+        }
+
+        > .submit-btn {
+            margin-top: 15px;
+
+            .cancel-btn {
+                font-size: 14px;
+                cursor: pointer;
+                color: $text-color;
+            }
+
+            input {
+                padding: 6px 20px;
+                border: 1px solid $main-color;
+                border-radius: 3px;
+                color: $main-color;
+
+                &:hover {
+                    background-color: $main-color;
+                    color: #fff;
+                }
+            }
+        }
+    }
+}

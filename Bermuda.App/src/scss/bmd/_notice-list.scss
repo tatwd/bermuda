@@ -1,0 +1,133 @@
+﻿
+// 失物招领信息
+.notice-list {
+    margin-right: 15px;
+
+    //@include tmp-border;
+
+    [id*="notice-"] {
+        box-shadow: 0 1px 3px rgba(0,0,0,.1);
+
+        //border-bottom: 1px solid #ccc;
+        //@include tmp-border;
+        //border-bottom: 1px solid #dddfff;
+        
+        margin-top: 0;
+        margin-bottom: 25px;
+
+        padding: 15px;
+        background-color: #fff;
+
+        &:last-child {
+            margin-bottom: 0;
+        }
+    }
+
+    .content {
+        color: $text-color;
+        align-self: flex-start;
+        padding-right: 10px;
+
+        img {
+            width: 24px;
+            vertical-align: middle;
+        }
+
+        p {
+            margin: 8px 0;
+            color: $text-color;
+
+            img {
+                width: 16px;
+                margin-right: 10px;
+            }
+
+            &:last-child {
+                
+                img {
+                    align-self: flex-start;
+                    margin-top: 1.5px;
+                }
+            }
+        }
+    }
+
+    .goods-img {
+
+        align-self: center;
+        
+        a {
+            //width: 150px;
+            height: 100px;
+            overflow: hidden;
+            border-radius: 3px;
+            border: 1px solid #f0f0f0;
+            position: relative;
+        }
+
+
+        img {
+            max-width: 100%;
+            height: auto;
+            border-radius: inherit;
+            
+            //position: absolute;
+        }
+    }
+
+    .user-meta {
+        margin-top: 15px;
+
+        justify-content: space-between;
+        align-items: center;
+
+        > .user {
+            @include avatar-radius(30px);
+
+            img {
+                margin-right: 5px;
+                border: 1px solid #ddd;
+            }
+        }
+
+        > .meta {
+            .cmnt {
+                margin-right: 5px;
+
+                .count {
+                    margin-left: 5px;
+                    font-size: 14px;
+                    color: #969696;
+                }
+            }
+
+            .trace {
+                //border: 1px solid $main-color;
+                margin-left: 10px;
+
+                font-size: 14px;
+                padding: 8px 10px;
+                border-radius: 3px;
+                background-color: $main-color;//#f2d2d2;
+
+                /*span {
+                    color: #fff;
+                    margin-left: 5px;
+                }*/
+
+                input {
+                    background-color: inherit;
+                    color: #fff;
+                    margin-left: 5px;
+                    outline: 0;
+                    cursor: inherit;
+                }
+
+                &:hover {
+                    opacity: 0.8;
+                    cursor: pointer;
+                }
+            }
+        }
+    }
+}

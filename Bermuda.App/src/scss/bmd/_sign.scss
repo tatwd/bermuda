@@ -1,0 +1,150 @@
+﻿// Sign Page Styles
+//
+
+.sign-header {
+    background-color: inherit;
+    box-shadow: none;
+}
+
+.sign-logo {
+    padding-top: 15px;
+    padding-bottom: 15px;
+
+    > .logo-img {
+        font-size: 0;
+
+        img {
+            max-width: 64px;
+        }
+    }
+}
+
+.sign-container {
+    //height: 450px;
+    //background-color: #ddd;
+    
+    max-width: 340px;
+    margin: 0 auto;
+
+    .sign-head {
+
+        margin-bottom: 32px;
+
+        > h1 {
+            color: $main-color;
+            margin-bottom: 15px;
+        }
+
+        > h2 {
+            color: $text-color;
+            font-weight: 600;
+            font-size: 20px;
+        }
+    }
+}
+
+.sign-body {
+    padding: 15px 25px;
+    //border: 1px solid #d8dee2;
+
+    .sign-input {
+        border: 1px solid #d8dee2;
+        border-radius: 2px;
+        margin-bottom: 15px;
+
+        > div {
+            display: flex;
+            position: relative;
+        }
+
+        input {
+            opacity: 0.6;
+            padding: 20px;
+            margin: 0 auto;
+            outline: none;
+        }
+    }
+
+    .remember-forget {
+        font-size: 14px;
+        color: $text-color;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 15px;
+
+        opacity: 0.8;
+
+        .remember-me {
+            display: flex;
+            align-items: center;
+
+            > input {
+                margin: 0 {
+                    right: 5px;
+                }
+
+                border-color: $main-color;
+            }
+        }
+    }
+
+    .sign-btn {
+
+        &:hover {
+            opacity: 0.8;
+        }
+
+        input {
+            padding: 10px;
+            outline: none;
+            cursor: pointer;
+            color: #fff;
+            background-color: $main-color;
+            border-radius: 3px;
+            font-size: 18px;
+        }
+    }
+
+    .goto-signup,
+    .goto-signin {
+        font-size: 16px;
+        margin-top: 15px;
+        opacity: 0.6;
+    }
+
+    .verify-code {
+        margin-bottom: 15px;
+
+        display: flex;
+        
+        input {
+            outline: none;
+            padding: 8px 15px;
+            border-radius: 2px;
+        }
+
+        .code-input {
+            border: 1px solid #d8dee2;
+            margin-right: 15px;
+            display: flex;
+
+            > input {
+                opacity: 0.6;
+            }
+        }
+
+        .code-send {
+            background-color: $main-color;
+            color: #fff;
+            cursor: pointer;
+            width: 140px;
+            text-align: center;
+
+            &:hover {
+                opacity: 0.8;
+            }
+        }
+    }
+}
+

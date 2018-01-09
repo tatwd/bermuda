@@ -1,0 +1,104 @@
+﻿// 编辑个人资料
+
+.edit-info-container {
+    max-width: 520px;
+    margin: 0 auto;
+    margin-top: 15px;
+    margin-bottom: 15px;
+
+    //@extend .flex-col;
+    //@extend .justify-center;
+
+    padding: 20px;
+
+    @include set-box-shadow;
+    background-color: #fff;
+
+    > .edit-head {
+        color: $main-color;
+        margin: 25px 0;
+    }
+
+    > .edit-main {
+
+        .icon-ok {
+            &:after {
+                content: "✔";
+                display: inline-block;
+                color: $main-color;
+                margin-left: 5px;
+            }
+        }
+
+        .edit-items {
+            max-width: 360px;
+            margin: 0 auto;
+
+            > .item {
+                @extend .margin-tb-15;
+                @extend .flex-box;
+            }
+
+
+            .update-text {
+                padding: 6px 8px;
+                border: 1px solid #f0f0f0;
+                border-radius: 3px;
+            }
+
+            > .edit-avatar {
+                img {
+                    width: 120px;
+                    margin: 0 auto;
+                    border: 1px solid #dcdcdc;
+                    border-radius: 50%;
+                }
+            }
+        
+            .edit-btns {
+                @extend .none-opacity;
+            
+                margin-top: 6px;
+                visibility: hidden;
+            }
+
+            .show-btn {
+                opacity: 1;
+                visibility: visible;
+            }
+
+            .show-edit-btn {
+                @extend .fs-12;
+            
+                padding: 6px 8px;
+                background-color: #f0f0f0;
+                color: $text-color;
+                border-radius: 3px;
+                margin-left: 10px;
+
+                &:hover {
+                    color: $text-color;
+                }
+            }
+
+            .submit-btn {
+                @extend .show-edit-btn;
+                background-color: $main-color;
+                color: #fff;
+
+                margin-left: 0;
+
+                &:hover {
+                    color: #fff;
+                }
+            }
+
+            .cancel-btn {
+                @extend .show-edit-btn;
+            }
+
+        
+        }
+    }
+
+}

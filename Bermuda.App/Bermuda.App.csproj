@@ -1,0 +1,373 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" Condition="Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" />
+  <Import Project="..\packages\Microsoft.Net.Compilers.1.0.0\build\Microsoft.Net.Compilers.props" Condition="Exists('..\packages\Microsoft.Net.Compilers.1.0.0\build\Microsoft.Net.Compilers.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{3747C767-6817-4C1A-8AEA-56DA469E32F0}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Bermuda.App</RootNamespace>
+    <AssemblyName>Bermuda.App</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <UseIISExpress>true</UseIISExpress>
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <UseGlobalApplicationHostFile />
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="packages.config" />
+    <Content Include="assets\rich-editor\wang-editor\dist\fonts\w-e-icon.woff" />
+    <Content Include="assets\rich-editor\wang-editor\dist\wangEditor.min.js.map" />
+    <Content Include="compilerconfig.json" />
+    <Content Include="compilerconfig.json.defaults" />
+    <Content Include="src\scss\bmd\_canvas.scss" />
+    <Content Include="src\scss\bmd\_comment.scss" />
+    <Content Include="src\scss\bmd\_current-detail.scss" />
+    <Content Include="src\scss\bmd\_current-edit.scss" />
+    <Content Include="src\scss\bmd\_current-list.scss" />
+    <Content Include="src\scss\bmd\_edit-info.scss" />
+    <Content Include="src\scss\bmd\_filter.scss" />
+    <Content Include="src\scss\bmd\_hot-top.scss" />
+    <Content Include="src\scss\bmd\_hot-topic.scss" />
+    <Content Include="src\scss\bmd\_master.scss" />
+    <Content Include="src\scss\bmd\_mixins.scss" />
+    <Content Include="src\scss\bmd\_notice-detail.scss" />
+    <Content Include="src\scss\bmd\_notice-list.scss" />
+    <Content Include="src\scss\bmd\_profile.scss" />
+    <Content Include="src\scss\bmd\_prompt.scss" />
+    <Content Include="src\scss\bmd\_pub-notice.scss" />
+    <Content Include="src\scss\bmd\_reset-pwd.scss" />
+    <Content Include="src\scss\bmd\_sidebar.scss" />
+    <Content Include="src\scss\bmd\_sign.scss" />
+    <Content Include="src\scss\bmd\_species-detail.scss" />
+    <Content Include="src\scss\bmd\_topic-detail.scss" />
+    <Content Include="src\scss\bmd\_topic-edit.scss" />
+    <Content Include="src\scss\bmd\_topic-list.scss" />
+    <Content Include="src\scss\bmd\_validator.scss" />
+    <Content Include="src\scss\bmd\_zoom-img.scss" />
+    <Content Include="src\scss\dogo.scss" />
+    <Content Include="src\scss\_base.scss" />
+    <Content Include="src\scss\_bmd.scss" />
+    <Content Include="src\scss\_caro-slider.scss" />
+    <Content Include="src\scss\_icon.scss" />
+    <Content Include="src\scss\_mixins.scss" />
+    <Content Include="src\scss\_reset.scss" />
+    <Content Include="src\scss\_variables.scss" />
+    <Content Include="master\Default.Master" />
+    <Content Include="README.md" />
+    <None Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+    <None Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="404.html" />
+    <Content Include="assets\avatar-tmp.svg" />
+    <Content Include="assets\goods-tmp.svg" />
+    <Content Include="assets\icon\cmnt.svg" />
+    <Content Include="assets\icon\date.svg" />
+    <Content Include="assets\icon\desc.svg" />
+    <Content Include="assets\icon\fire.svg" />
+    <Content Include="assets\icon\heart.svg" />
+    <Content Include="assets\icon\place.svg" />
+    <Content Include="assets\icon\praise.svg" />
+    <Content Include="assets\icon\reply.svg" />
+    <Content Include="assets\icon\star.svg" />
+    <Content Include="assets\icon\status-0.svg" />
+    <Content Include="assets\icon\status-1.svg" />
+    <Content Include="assets\icon\tag.svg" />
+    <Content Include="assets\icon\talent.svg" />
+    <Content Include="assets\icon\trace.svg" />
+    <Content Include="assets\icon\upload-img.svg" />
+    <Content Include="assets\icon\write.svg" />
+    <Content Include="assets\img\notice\book.jpg" />
+    <Content Include="assets\img\notice\glasses.jpg" />
+    <Content Include="assets\img\notice\wallet.jpg" />
+    <Content Include="assets\img\species\acce.jpg" />
+    <Content Include="assets\img\species\bag.jpg" />
+    <Content Include="assets\img\species\book.jpg" />
+    <Content Include="assets\img\species\card.jpg" />
+    <Content Include="assets\img\species\cred.jpg" />
+    <Content Include="assets\img\species\elect.jpg" />
+    <Content Include="assets\img\species\living.jpg" />
+    <Content Include="assets\img\species\money.jpg" />
+    <Content Include="assets\img\species\stati.jpg" />
+    <Content Include="assets\img\topic\bike.jpg" />
+    <Content Include="assets\img\topic\help.jpg" />
+    <Content Include="assets\logo.svg" />
+    <Content Include="assets\rich-editor\wang-editor\dist\wangEditor.css" />
+    <Content Include="assets\rich-editor\wang-editor\dist\wangEditor.js" />
+    <Content Include="assets\rich-editor\wang-editor\dist\wangEditor.min.css" />
+    <Content Include="assets\rich-editor\wang-editor\dist\wangEditor.min.js" />
+    <Content Include="assets\selector\css\selector.css" />
+    <Content Include="assets\selector\css\selector.min.css" />
+    <Content Include="assets\selector\js\selector.js" />
+    <Content Include="assets\selector\js\selector.min.js" />
+    <Content Include="assets\slogan-bg.svg" />
+    <Content Include="assets\topic-tmp.svg" />
+    <Content Include="dist\css\dogo.css" />
+    <Content Include="dist\css\dogo.min.css">
+      <DependentUpon>dogo.css</DependentUpon>
+    </Content>
+    <Content Include="dist\js\dogo.js" />
+    <Content Include="dist\js\dogo.min.js">
+      <DependentUpon>dogo.js</DependentUpon>
+    </Content>
+    <Content Include="favicon.ico" />
+    <Content Include="Global.asax" />
+    <Content Include="Home.aspx" />
+    <Content Include="layout\CurrentDetail.aspx" />
+    <Content Include="layout\CurrentEdit.aspx" />
+    <Content Include="layout\NoticeDetail.aspx" />
+    <Content Include="layout\Profile.aspx" />
+    <Content Include="layout\Publish.aspx" />
+    <Content Include="layout\PwdReset.aspx" />
+    <Content Include="layout\SignIn.aspx" />
+    <Content Include="layout\SignUp.aspx" />
+    <Content Include="layout\SpeciesDetail.aspx" />
+    <Content Include="layout\TopicDetail.aspx" />
+    <Content Include="layout\TopicList.aspx" />
+    <Content Include="layout\UserInfoEdit.aspx" />
+    <Content Include="public\img\10001\2018010411473838-memoy.jpg" />
+    <Content Include="public\img\10001\2018010712392431-renwen.jpg" />
+    <Content Include="public\img\10002\2017122911003631-ubuntukylin.svg" />
+    <Content Include="public\img\10002\2018010810361507-wawa.jpg" />
+    <Content Include="public\img\10003\2017123116010847-wawa.jpg" />
+    <Content Include="public\img\10003\2018010321155701-avatar.jpg" />
+    <Content Include="public\img\10003\2018010321475303-avatar.jpg" />
+    <Content Include="public\img\10004\2018010321404722-avatar.jpg" />
+    <Content Include="public\img\10005\2018010409313398-20180104_092526.jpg" />
+    <Content Include="public\img\10006\2018010713410977-1.jpg" />
+    <Content Include="public\img\10006\2018010714000383-2.jpg" />
+    <Content Include="public\img\10006\2018010714152234-3.jpg" />
+    <Content Include="public\img\10006\2018010714174787-4.jpg" />
+    <Content Include="public\img\10006\2018010714285322-5.jpg" />
+    <Content Include="public\img\10006\2018010714315352-6.jpg" />
+    <Content Include="public\img\10006\2018010714330658-7.jpg" />
+    <Content Include="public\img\10006\2018010714380003-8.jpg" />
+    <Content Include="public\img\10006\2018010714573103-9.jpg" />
+    <Content Include="public\img\10006\2018010715053790-1.jpg" />
+    <Content Include="src\js\dogo.js" />
+    <Content Include="Web.config" />
+    <Content Include="_data\bermuda-1.0.0-alpha.2-no-data.sql" />
+    <Content Include="_data\bermuda-1.0.0-alpha.2.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Home.aspx.cs">
+      <DependentUpon>Home.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Home.aspx.designer.cs">
+      <DependentUpon>Home.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="layout\CurrentDetail.aspx.cs">
+      <DependentUpon>CurrentDetail.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="layout\CurrentDetail.aspx.designer.cs">
+      <DependentUpon>CurrentDetail.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="layout\CurrentEdit.aspx.cs">
+      <DependentUpon>CurrentEdit.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="layout\CurrentEdit.aspx.designer.cs">
+      <DependentUpon>CurrentEdit.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="layout\NoticeDetail.aspx.cs">
+      <DependentUpon>NoticeDetail.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="layout\NoticeDetail.aspx.designer.cs">
+      <DependentUpon>NoticeDetail.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="layout\Profile.aspx.cs">
+      <DependentUpon>Profile.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="layout\Profile.aspx.designer.cs">
+      <DependentUpon>Profile.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="layout\Publish.aspx.cs">
+      <DependentUpon>Publish.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="layout\Publish.aspx.designer.cs">
+      <DependentUpon>Publish.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="layout\PwdReset.aspx.cs">
+      <DependentUpon>PwdReset.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="layout\PwdReset.aspx.designer.cs">
+      <DependentUpon>PwdReset.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="layout\SignIn.aspx.cs">
+      <DependentUpon>SignIn.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="layout\SignIn.aspx.designer.cs">
+      <DependentUpon>SignIn.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="layout\SignUp.aspx.cs">
+      <DependentUpon>SignUp.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="layout\SignUp.aspx.designer.cs">
+      <DependentUpon>SignUp.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="layout\SpeciesDetail.aspx.cs">
+      <DependentUpon>SpeciesDetail.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="layout\SpeciesDetail.aspx.designer.cs">
+      <DependentUpon>SpeciesDetail.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="layout\TopicDetail.aspx.cs">
+      <DependentUpon>TopicDetail.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="layout\TopicDetail.aspx.designer.cs">
+      <DependentUpon>TopicDetail.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="layout\TopicList.aspx.cs">
+      <DependentUpon>TopicList.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="layout\TopicList.aspx.designer.cs">
+      <DependentUpon>TopicList.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="layout\UserInfoEdit.aspx.cs">
+      <DependentUpon>UserInfoEdit.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="layout\UserInfoEdit.aspx.designer.cs">
+      <DependentUpon>UserInfoEdit.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="master\Default.Master.cs">
+      <DependentUpon>Default.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="master\Default.Master.designer.cs">
+      <DependentUpon>Default.Master</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="_code\PathHelper.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="src\scss\mixins\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Bermuda.Bll\Bermuda.Bll.csproj">
+      <Project>{ee1c8441-6f50-4973-9c33-0f3cca69ef22}</Project>
+      <Name>Bermuda.Bll</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Bermuda.Common\Bermuda.Common.csproj">
+      <Project>{162228da-34e3-4753-9c18-d6672bb89621}</Project>
+      <Name>Bermuda.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Bermuda.Dal\Bermuda.Dal.csproj">
+      <Project>{dde36abc-d3b8-45f4-aeb9-877a6932ff71}</Project>
+      <Name>Bermuda.Dal</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Bermuda.Model\Bermuda.Model.csproj">
+      <Project>{7203b9e2-afc7-4558-a3e3-d7e100937184}</Project>
+      <Name>Bermuda.Model</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>51232</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:50057/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>这台计算机上缺少此项目引用的 NuGet 程序包。使用“NuGet 程序包还原”可下载这些程序包。有关更多信息，请参见 http://go.microsoft.com/fwlink/?LinkID=322105。缺少的文件是 {0}。</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\Microsoft.Net.Compilers.1.0.0\build\Microsoft.Net.Compilers.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.Net.Compilers.1.0.0\build\Microsoft.Net.Compilers.props'))" />
+    <Error Condition="!Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
+  </Target>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

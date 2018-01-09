@@ -1,0 +1,14 @@
+﻿// 种类详情页
+//
+
+.species-detail {
+    @extend .topic-detail;
+
+    .species-head {
+        @extend .topic-head;
+    }
+
+    .species-main {
+        @extend .topic-main;
+    }
+}

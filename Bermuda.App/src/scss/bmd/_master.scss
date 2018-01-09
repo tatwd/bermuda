@@ -1,0 +1,116 @@
+﻿// Master Page Style
+//
+
+body {
+    background-color: #f1f1f1;
+}
+
+// header
+
+.header {
+    padding: 8px 0;
+    border-bottom: 1px solid transparent;
+
+    background-color: #fff;
+    box-shadow: 0 1px 3px rgba(0,0,0,.1);
+}
+
+.logo {
+    justify-content: flex-start;
+
+    img {
+        width: 54px;
+    }
+
+    .logo-text {
+        margin-left: 15px;
+
+        a {
+            color: $main-color;
+        }
+    }
+}
+
+.menu {
+    .active {
+        color: $main-color;
+    }
+}
+
+.link-signin {
+    display: none;
+    color: $main-color;
+}
+
+.user-profile {
+    padding: 0 15px;
+    position: relative;
+
+    .user-avatar {
+        vertical-align: middle;
+
+        @include avatar-radius(40px);
+
+        img {
+            border: 1px solid #dcdcdc;
+        }
+
+
+        
+    }
+
+    > .profile {
+        position: absolute;
+        left: 0;
+        right: 0;
+        visibility: hidden;
+        z-index: 1;
+
+        border: 1px solid #dcdcdc;
+        margin-top: 8px;
+        background-color: #fff;
+        border-radius: 3px;
+        
+        opacity: 0;
+        transition: opacity .3s linear;
+
+        > i {
+            position: absolute;
+            top: -7.5px;
+            left: 42%;
+            background-color: inherit;
+        }
+
+        > ul {
+            > li {
+                padding: 8px 0;
+                font-size: 14px;
+            }
+        }
+    }
+}
+
+.publish-btn {
+    margin-left: 15px;
+    //border-radius: 3px;
+
+    img {
+        margin-right: 5px;
+    }
+}
+
+// mainer
+
+.mainer, 
+.footer {
+    //background-color: #f6f6f6;
+}
+
+// footer
+
+.copy-right {
+    font-size: 14px;
+    opacity: 0.8;
+    
+    padding: 15px;
+}

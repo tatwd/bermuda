@@ -1,0 +1,58 @@
+﻿// 重设密码
+
+.reset-pwd-container {
+    max-width: 320px;
+    min-height: 320px; 
+
+    @extend .margin-center;
+    margin-top: 15px;
+    margin-bottom: 15px;
+    padding: 15px;
+
+    @include set-box-shadow;
+    background-color: #fff;
+    
+    > h2 {
+        color: $main-color;
+    }
+
+    > .input-container {
+
+        @extend .margin-center;
+        margin-top: 15px;
+        margin-bottom: 15px;
+        max-width: 220px;
+
+        input {
+            padding: 6px 10px;
+        }
+
+        .resend-code {
+            margin-left: 5px;
+
+            > input {
+                background-color: #f0f0f0;
+                border-radius: 3px;
+                color: $text-color;
+            }
+        }
+    }
+
+    > .btn-container {
+        @extend .margin-center;
+        margin-top: 15px;
+        margin-bottom: 15px;
+        max-width: 200px;
+
+        input {
+            background-color: $main-color;
+            color: #fff;
+
+            display: block;
+            width: 100%;
+
+            padding: 6px 15px;
+            border-radius: 3px;
+        }
+    }
+}
