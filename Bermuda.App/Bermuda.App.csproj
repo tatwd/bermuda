@@ -308,7 +308,6 @@
       <DependentUpon>Default.Master</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="_code\PathHelper.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="src\scss\mixins\" />

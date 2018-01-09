@@ -15,14 +15,13 @@
         if (!caro) {
             return;
         }
-        //console.log(caro);
 
         const item = caro.querySelectorAll('.item');
 
         let length = item.length;
         console.log('length:', length);
 
-        const slideSize = item[0].offsetWidth + 14;
+        const slideSize = item[0].offsetWidth;
         console.log('slideSize:', slideSize);
 
         // 设置滑动的次数
@@ -35,29 +34,10 @@
 
         let timer = $.setInterval(() => {
 
-            //if (i <=  count) {
-            //    caro.style.transform = `translateX(-${transX}px)`;
-            //} else {
-            //    i = 0;
-            //    transX = (i % count) * slideSize;
-
-            //    // console.log(transX);
-
-            //    caro.style.transform = `translateX(${transX}px)`;
-            //}
-
             //let size = (slideSize * ((i % count) + 1));
             let left = -Math.pow(-1, (i / count) ^ 0); // 指数取整
 
-            //transX = size * left;
-            //console.log(size, left, transX);
-
-
-            //caro.style.transform = `translateX(${transX}px)`;
-
-            //console.log(transX);
-
-            if (left = -1) {
+            if (left == -1) {
                 caro.style.transform = `translateX(-${transX}px)`;
             } else {
                 caro.style.transform = `translateX(${transX}px)`;

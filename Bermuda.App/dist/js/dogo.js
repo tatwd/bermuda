@@ -25,14 +25,13 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         if (!caro) {
             return;
         }
-        //console.log(caro);
 
         var item = caro.querySelectorAll('.item');
 
         var length = item.length;
         console.log('length:', length);
 
-        var slideSize = item[0].offsetWidth + 14;
+        var slideSize = item[0].offsetWidth;
         console.log('slideSize:', slideSize);
 
         // 设置滑动的次数
@@ -45,28 +44,10 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
         var timer = $.setInterval(function () {
 
-            //if (i <=  count) {
-            //    caro.style.transform = `translateX(-${transX}px)`;
-            //} else {
-            //    i = 0;
-            //    transX = (i % count) * slideSize;
-
-            //    // console.log(transX);
-
-            //    caro.style.transform = `translateX(${transX}px)`;
-            //}
-
             //let size = (slideSize * ((i % count) + 1));
             var left = -Math.pow(-1, i / count ^ 0); // 指数取整
 
-            //transX = size * left;
-            //console.log(size, left, transX);
-
-            //caro.style.transform = `translateX(${transX}px)`;
-
-            //console.log(transX);
-
-            if (left = -1) {
+            if (left == -1) {
                 caro.style.transform = 'translateX(-' + transX + 'px)';
             } else {
                 caro.style.transform = 'translateX(' + transX + 'px)';
