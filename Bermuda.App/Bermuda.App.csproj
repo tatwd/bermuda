@@ -66,11 +66,13 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="dist\js\dogo.js" />
+    <Content Include="dist\js\dogo.min.js">
+      <DependentUpon>dogo.js</DependentUpon>
+    </Content>
     <Content Include="packages.config" />
     <Content Include="assets\rich-editor\wang-editor\dist\fonts\w-e-icon.woff" />
     <Content Include="assets\rich-editor\wang-editor\dist\wangEditor.min.js.map" />
-    <Content Include="compilerconfig.json" />
-    <Content Include="compilerconfig.json.defaults" />
     <Content Include="src\scss\bmd\_canvas.scss" />
     <Content Include="src\scss\bmd\_comment.scss" />
     <Content Include="src\scss\bmd\_current-detail.scss" />
@@ -106,6 +108,10 @@
     <Content Include="src\scss\_variables.scss" />
     <Content Include="master\Default.Master" />
     <Content Include="README.md" />
+    <None Include="compilerconfig.json" />
+    <None Include="compilerconfig.json.defaults">
+      <DependentUpon>compilerconfig.json</DependentUpon>
+    </None>
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -161,10 +167,6 @@
     <Content Include="dist\css\dogo.css" />
     <Content Include="dist\css\dogo.min.css">
       <DependentUpon>dogo.css</DependentUpon>
-    </Content>
-    <Content Include="dist\js\dogo.js" />
-    <Content Include="dist\js\dogo.min.js">
-      <DependentUpon>dogo.js</DependentUpon>
     </Content>
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
