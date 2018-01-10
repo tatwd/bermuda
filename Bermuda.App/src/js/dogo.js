@@ -17,8 +17,9 @@
         }
 
         const item      = caro.querySelectorAll('.item');
-        const slideSize = item[0].offsetWidth + 14;
-        const count     = item.lengt - 7; // 设置滑动的次数
+        const slideSize = item[0].offsetWidth ;
+
+        const count = item.length - 7; // 设置滑动的次数
         
         let i      = 0;
         let transX = slideSize; // 向左
@@ -27,16 +28,32 @@
 
             let left = -Math.pow(-1, (i / count) ^ 0); // 指数取整
 
-            if (left > 0)  {
-                if (i%count == 0) {
-                    transX = 0;
-                }
+            if (i % count == 0 && i != 0) {
+                transX = 0;
             }
 
-            caro.style.transform = `translateX(-${transX}px)`;
+            if (left < 0) {
 
+                caro.style.transform = `translateX(-${transX}px)`;
+
+                //if (i % count == 0) {
+                //    transX = 0;
+                //}
+                //transX += slideSize;
+
+
+            } else {
+                //if (i % count == 0) {
+                //    transX = 0;
+                //}
+                //console.log(i % count, transX);
+                caro.style.transform = `translateX(-${transX}px)`;
+
+                //transX -= slideSize;
+            }
             transX += slideSize;
             i++;
+            
         }, 2000);
 
     };

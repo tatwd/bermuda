@@ -6,7 +6,6 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 
 using System.Text;
-using Bermuda.App.CodeUtil; // Use or not use, this is question...
 using Bermuda.Model;
 using Bermuda.Bll;
 
