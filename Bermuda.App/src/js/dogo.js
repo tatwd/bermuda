@@ -45,7 +45,7 @@
             
             transX = slideSize * (i % count + 1);
 
-            console.log(i, left, i % count, transX);
+            //console.log(i, left, i % count, transX);
 
             i++;
         }, 2000);

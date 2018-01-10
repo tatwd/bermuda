@@ -55,7 +55,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
             transX = slideSize * (i % count + 1);
 
-            console.log(i, left, i % count, transX);
+            //console.log(i, left, i % count, transX);
 
             i++;
         }, 2000);

@@ -272,7 +272,7 @@ namespace Bermuda.App
                 {
                     string _followingId = btn.Attributes["data-user-id"].ToString();
 
-                    long followingId = !String.IsNullOrEmpty(_followingId) ? long.Parse(_followingId) : 0;
+                    Int64 followingId = !String.IsNullOrEmpty(_followingId) ? Int64.Parse(_followingId) : 0;
 
                     if (followingId == 0 || followingId == user.Id) // 不能关注自己
                     {
