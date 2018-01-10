@@ -16,37 +16,26 @@
             return;
         }
 
-        const item = caro.querySelectorAll('.item');
-
-        let length = item.length;
-        console.log('length:', length);
-
-        const slideSize = item[0].offsetWidth;
-        console.log('slideSize:', slideSize);
-
-        // 设置滑动的次数
-
-        const count = length - 7;
-        console.log("count:", count);
-
-        let i = 0;
+        const item      = caro.querySelectorAll('.item');
+        const slideSize = item[0].offsetWidth + 14;
+        const count     = item.lengt - 7; // 设置滑动的次数
+        
+        let i      = 0;
         let transX = slideSize; // 向左
 
         let timer = $.setInterval(() => {
 
-            //let size = (slideSize * ((i % count) + 1));
             let left = -Math.pow(-1, (i / count) ^ 0); // 指数取整
 
-            if (left == -1) {
-                caro.style.transform = `translateX(-${transX}px)`;
-            } else {
-                caro.style.transform = `translateX(${transX}px)`;
+            if (left > 0)  {
+                if (i%count == 0) {
+                    transX = 0;
+                }
             }
-            
-            transX = slideSize * (i % count + 1);
 
-            //console.log(i, left, i % count, transX);
+            caro.style.transform = `translateX(-${transX}px)`;
 
+            transX += slideSize;
             i++;
         }, 2000);
 

@@ -27,36 +27,25 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         }
 
         var item = caro.querySelectorAll('.item');
-
-        var length = item.length;
-        console.log('length:', length);
-
-        var slideSize = item[0].offsetWidth;
-        console.log('slideSize:', slideSize);
-
-        // 设置滑动的次数
-
-        var count = length - 7;
-        console.log("count:", count);
+        var slideSize = item[0].offsetWidth + 14;
+        var count = item.lengt - 7; // 设置滑动的次数
 
         var i = 0;
         var transX = slideSize; // 向左
 
         var timer = $.setInterval(function () {
 
-            //let size = (slideSize * ((i % count) + 1));
             var left = -Math.pow(-1, i / count ^ 0); // 指数取整
 
-            if (left == -1) {
-                caro.style.transform = 'translateX(-' + transX + 'px)';
-            } else {
-                caro.style.transform = 'translateX(' + transX + 'px)';
+            if (left > 0) {
+                if (i % count == 0) {
+                    transX = 0;
+                }
             }
 
-            transX = slideSize * (i % count + 1);
+            caro.style.transform = 'translateX(-' + transX + 'px)';
 
-            //console.log(i, left, i % count, transX);
-
+            transX += slideSize;
             i++;
         }, 2000);
     };
