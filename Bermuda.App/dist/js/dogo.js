@@ -32,34 +32,17 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         var count = item.length - 7; // 设置滑动的次数
 
         var i = 0;
-        var transX = slideSize; // 向左
+        var left = 0; // < 0 向左
+        var transX = 0;
 
         var timer = $.setInterval(function () {
 
-            var left = -Math.pow(-1, i / count ^ 0); // 指数取整
+            left = -Math.pow(-1, i / count ^ 0); // 指数取整
 
-            if (i % count == 0 && i != 0) {
-                transX = slideSize;
-            }
+            transX = left < 0 ? transX - slideSize : transX + slideSize;
 
-            if (left < 0) {
+            caro.style.transform = 'translateX(' + transX + 'px)';
 
-                caro.style.transform = 'translateX(-' + transX + 'px)';
-
-                //if (i % count == 0) {
-                //    transX = 0;
-                //}
-                //transX += slideSize;
-            } else {
-                    //if (i % count == 0) {
-                    //    transX = 0;
-                    //}
-                    //console.log(i % count, transX);
-                    caro.style.transform = 'translateX(-' + transX + 'px)';
-
-                    //transX -= slideSize;
-                }
-            transX += slideSize;
             i++;
         }, 2000);
     };
