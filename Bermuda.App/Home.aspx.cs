@@ -28,7 +28,7 @@ namespace Bermuda.App
         protected void Display()
         {
             DisplaySomeControls();  // 设置部分按钮的显示
-            DisplayHotTopic       ();  // 显示前 7 条热门话题
+            DisplayHotTopic    ();  // 显示前 7 条热门话题
             DisplayNotice      ();  // 显示前 6 条失物招领启示
             DisplayHotSpecies  ();  // 显示失物招领热门种类
             DisplayHotCurrent  ();  // 显示前 5 条热门动态
