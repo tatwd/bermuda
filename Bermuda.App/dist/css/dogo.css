@@ -893,10 +893,11 @@ body {
   padding: 8px 10px;
   border-radius: 3px;
   background-color: #c66b6b;
-  /*span {
-                    color: #fff;
-                    margin-left: 5px;
-                }*/
+}
+
+.notice-list .user-meta > .meta .trace span {
+  color: #fff;
+  margin-left: 5px;
 }
 
 .notice-list .user-meta > .meta .trace input {
