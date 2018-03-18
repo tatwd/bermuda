@@ -1,0 +1,53 @@
+﻿<!-- header 头部 -->
+<div class="header">
+    <div class="container flex-box">
+        <!-- logo 商标 -->
+        <div class="flex-box col-1 items-center logo">
+            <img class="logo-img" src="~/assets/logo.svg" alt="logo" />
+            <h2 class="logo-text"><a href="/">百慕大</a></h2>
+        </div>
+
+        <!-- navigation 导航 -->
+        <div class="col-3 flex-box items-center">
+            <div class="menu">
+                <!-- 水平菜单 -->
+                <ul class="flex-row">
+                    <li class="item"><a class="active" href="/">首页</a></li>
+                    <li class="item"><a href="#">话题</a></li>
+                    @*<li class="item"><a href="#">动态</a></li>*@
+                </ul>
+            </div>
+            <!-- <div class="search"></div> -->
+        </div>
+
+        <!-- 发布 + -->
+        <div class="col-1 flex-box items-center justify-end">
+            <a class="link-signin" href="#">登录</a>
+            @*<div ID="UserProfile">
+                <div class="flex-box">
+                    <div class="user-profile">
+                        <a class="link-img user-avatar" href="javascript:void(0);">
+                            <asp:Image ID="UserAvatar" runat="server" AlternateText="user-avatar" />
+                        </a>
+                        <div class="profile text-center">
+                            <i class="icon-angle-top"></i>
+                            <ul>
+                                <li><a href="/layout/Profile.aspx">主页</a></li>
+                                <li><asp:LinkButton ID="SignOutBtn" runat="server" Text="退出" OnClick="SignOutBtn_Click"></asp:LinkButton></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>*@
+            <div class="publish-btn">
+                <a id="PublishBtn" class="link-btn" title="发布失物招领">
+                    <div class="flex-center">
+                        <img src="/assets/icon/write.svg" alt="icon-write" />
+                        <span>发布</span>
+                        @*<svg viewBox="0 0 16 16" width="16" height="16" style="margin-left: 3px;"><path d="M2 10 L14 10 Z M8 4 L8 16 Z" style="stroke:#fff;stroke-linecap:round;" /></svg>*@
+                    </div>
+                </a>
+            </div>
+        </div>
+    </div>
+</div>

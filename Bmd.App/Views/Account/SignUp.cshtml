@@ -1,0 +1,55 @@
+﻿@model Bmd.App.Models.SignUpViewModel
+@{
+    ViewBag.Title = "注册";
+    Layout = "~/Views/Shared/_AccountLayout.cshtml";
+}
+
+@using (Html.BeginForm("SignUp", "Account", FormMethod.Post))
+{
+    <div class="sign-input">
+        <div class="item">
+            @Html.TextBoxFor(m => m.Name, new { id = "Username", @class = "input-block", placeholder = "用户名", autofocus = "autofocus" })
+            @Html.ValidationMessageFor(m => m.Name, "", new { @class = "validator" })
+        </div>
+        <div class="item">
+            @Html.TextBoxFor(m => m.Email, new { id = "Email", @class = "input-block", placeholder = "邮箱" })
+            @Html.ValidationMessageFor(m => m.Email, "", new { @class = "validator" })
+        </div>
+        <div class="item">
+            @Html.PasswordFor(m => m.Pwd, new { id = "Password", @class = "input-block", placeholder = "密码（不少于 6 位）" })
+            @Html.ValidationMessageFor(m => m.Pwd, "", new { @class = "validator" })
+        </div>
+        <div class="item">
+            @Html.PasswordFor(m => m.ConfirmPwd, new { id = "RepeatPwd", @class = "input-block", placeholder = "确认密码" })
+            @Html.ValidationMessageFor(m => m.ConfirmPwd, "", new { @class = "validator" })
+        </div>
+    </div>
+
+    <!-- 验证码 -->
+    <div class="verify-code">
+        @*<div class="code-input">
+            <input id="VerifyCode" class="input-block" placeholder="输入验证码" />
+        </div>
+        <input id="SendVerifyCode" class="code-send" value="邮箱接收验证码"/>*@
+        <!-- Ajax UpdatePanel -->
+        @*<asp:UpdatePanel ID="UpVerifyCode" runat="server">
+            <ContentTemplate>
+                <asp:Button ID="SendVerifyCode" CssClass="code-send" runat="server" Text="邮箱接收验证码" OnClick="SendVerifyCode_Click" />
+                <asp:Timer ID="TimerSend" runat="server" Interval="1000" OnTick="TimerSend_Tick" Enabled="false"></asp:Timer>
+            </ContentTemplate>
+        </asp:UpdatePanel>*@
+    </div>
+
+    <div class="sign-btn">
+        <div>
+            <div id="UpSignBtn">
+                <input id="SignUpBtn" class="input-block" value="注册" type="submit"/>
+            </div>
+        </div>
+    </div>
+    <div class="goto-signin text-center">
+        @Html.ActionLink("已有账号？马上登录！", "SignIn", "Account")
+    </div>
+}
+
+

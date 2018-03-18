@@ -1,0 +1,29 @@
+﻿@model IList<Bmd.App.Models.HotCurrentViewModel>
+@*
+    热门动态
+*@
+<div class="hot-current">
+    <div class="flex-box items-center title fs-15">
+        <img src="/assets/icon/fire.svg" alt="icon-fire">热门动态
+    </div>
+    <div class="body">
+        @foreach (var item in Model)
+        {
+            <div class="item">
+                <div class="current-title fs-14">
+                    <a href="#">@item.current.Title</a>
+                </div>
+                <div class="user-info fs-12">
+                    <span class="user-name">
+                        <a href="#">@item.bmdUser.Name</a>
+                    </span>
+                    <span class="praise-count">- 赞 · @item.current.PraiseCount</span>
+                </div>
+            </div>
+        }
+        <div class="text-center fs-14 more">
+            <a href="#">查看全部</a>
+        </div>
+    </div>
+</div>
+

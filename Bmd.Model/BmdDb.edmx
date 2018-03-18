@@ -1,0 +1,579 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="BmdModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="bmd_root">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name" Type="varchar" MaxLength="40" />
+          <Property Name="permission" Type="int" />
+          <Property Name="phone_number" Type="varchar" MaxLength="11" />
+          <Property Name="email" Type="varchar" MaxLength="200" />
+          <Property Name="avatar" Type="varchar" MaxLength="200" />
+          <Property Name="remark" Type="varchar" MaxLength="200" />
+        </EntityType>
+        <EntityType Name="bmd_user">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name" Type="varchar" MaxLength="40" Nullable="false" />
+          <Property Name="phone_number" Type="varchar" MaxLength="11" />
+          <Property Name="email" Type="varchar" MaxLength="200" />
+          <Property Name="type" Type="varchar" MaxLength="20" />
+          <Property Name="pwd" Type="varchar" MaxLength="16" Nullable="false" />
+          <Property Name="avatar" Type="varchar" MaxLength="200" />
+          <Property Name="rate" Type="int" />
+          <Property Name="following_count" Type="bigint" />
+          <Property Name="follower_count" Type="bigint" />
+        </EntityType>
+        <EntityType Name="current">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="user_id" Type="bigint" />
+          <Property Name="title" Type="varchar" MaxLength="100" />
+          <Property Name="contents" Type="text" />
+          <Property Name="publish_date" Type="datetime" />
+          <Property Name="cmnt_count" Type="bigint" />
+          <Property Name="star_count" Type="bigint" />
+          <Property Name="praise_count" Type="bigint" />
+        </EntityType>
+        <EntityType Name="current_cmnt">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="current_id" Type="bigint" />
+          <Property Name="user_id" Type="bigint" />
+          <Property Name="contents" Type="varchar" MaxLength="280" />
+          <Property Name="cmnt_date" Type="datetime" />
+          <Property Name="praise_count" Type="bigint" />
+          <Property Name="reply_count" Type="bigint" />
+        </EntityType>
+        <EntityType Name="current_reply">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="cmnt_id" Type="bigint" />
+          <Property Name="aims_id" Type="bigint" />
+          <Property Name="user_id" Type="bigint" />
+          <Property Name="contents" Type="varchar" MaxLength="280" />
+          <Property Name="reply_date" Type="datetime" />
+          <Property Name="praise_count" Type="bigint" />
+        </EntityType>
+        <EntityType Name="current_star">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="current_id" Type="bigint" />
+          <Property Name="user_id" Type="bigint" />
+          <Property Name="star_date" Type="datetime" />
+        </EntityType>
+        <EntityType Name="follow">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="user_id" Type="bigint" />
+          <Property Name="following_id" Type="bigint" />
+        </EntityType>
+        <EntityType Name="notice">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="user_id" Type="bigint" />
+          <Property Name="species_id" Type="bigint" />
+          <Property Name="type" Type="char" MaxLength="8" />
+          <Property Name="title" Type="varchar" MaxLength="100" />
+          <Property Name="place" Type="varchar" MaxLength="100" />
+          <Property Name="location" Type="varchar" MaxLength="200" />
+          <Property Name="lf_date" Type="varchar" MaxLength="100" />
+          <Property Name="img" Type="varchar" MaxLength="200" />
+          <Property Name="contact_way" Type="varchar" MaxLength="200" />
+          <Property Name="detail" Type="varchar" MaxLength="280" />
+          <Property Name="publish_date" Type="datetime" />
+          <Property Name="cmnt_count" Type="bigint" />
+          <Property Name="trace_count" Type="bigint" />
+          <Property Name="status" Type="varchar" MaxLength="20" />
+        </EntityType>
+        <EntityType Name="notice_cmnt">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="notice_id" Type="bigint" />
+          <Property Name="user_id" Type="bigint" />
+          <Property Name="contents" Type="varchar" MaxLength="280" />
+          <Property Name="cmnt_date" Type="datetime" />
+          <Property Name="reply_count" Type="bigint" />
+          <Property Name="praise_count" Type="bigint" />
+        </EntityType>
+        <EntityType Name="notice_reply">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="cmnt_id" Type="bigint" />
+          <Property Name="aims_id" Type="bigint" />
+          <Property Name="user_id" Type="bigint" />
+          <Property Name="contents" Type="varchar" MaxLength="280" />
+          <Property Name="reply_date" Type="datetime" />
+          <Property Name="praise_count" Type="bigint" />
+        </EntityType>
+        <EntityType Name="notice_trace">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="notice_id" Type="bigint" />
+          <Property Name="user_id" Type="bigint" />
+          <Property Name="trace_date" Type="datetime" />
+        </EntityType>
+        <EntityType Name="species">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name" Type="varchar" MaxLength="20" />
+          <Property Name="img" Type="varchar" MaxLength="200" />
+          <Property Name="notice_count" Type="bigint" />
+        </EntityType>
+        <EntityType Name="topic">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name" Type="varchar" MaxLength="50" />
+          <Property Name="user_id" Type="bigint" />
+          <Property Name="detail" Type="varchar" MaxLength="100" />
+          <Property Name="join_count" Type="bigint" />
+          <Property Name="create_date" Type="datetime" />
+          <Property Name="img" Type="varchar" MaxLength="200" />
+          <Property Name="is_passed" Type="tinyint" />
+        </EntityType>
+        <EntityType Name="topic_join">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="topic_id" Type="bigint" />
+          <Property Name="current_id" Type="bigint" />
+        </EntityType>
+        <EntityContainer Name="BmdModelStoreContainer">
+          <EntitySet Name="bmd_root" EntityType="Self.bmd_root" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="bmd_user" EntityType="Self.bmd_user" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="current" EntityType="Self.current" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="current_cmnt" EntityType="Self.current_cmnt" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="current_reply" EntityType="Self.current_reply" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="current_star" EntityType="Self.current_star" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="follow" EntityType="Self.follow" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="notice" EntityType="Self.notice" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="notice_cmnt" EntityType="Self.notice_cmnt" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="notice_reply" EntityType="Self.notice_reply" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="notice_trace" EntityType="Self.notice_trace" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="species" EntityType="Self.species" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="topic" EntityType="Self.topic" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="topic_join" EntityType="Self.topic_join" Schema="dbo" store:Type="Tables" />
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="BmdModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="BmdRoot">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
+          <Property Name="Permission" Type="Int32" />
+          <Property Name="PhoneNumber" Type="String" MaxLength="11" FixedLength="false" Unicode="false" />
+          <Property Name="Email" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="Avatar" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="Remark" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="BmdUser">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="40" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="PhoneNumber" Type="String" MaxLength="11" FixedLength="false" Unicode="false" />
+          <Property Name="Email" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="Type" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Pwd" Type="String" MaxLength="16" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Avatar" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="Rate" Type="Int32" />
+          <Property Name="FollowingCount" Type="Int64" />
+          <Property Name="FollowerCount" Type="Int64" />
+        </EntityType>
+        <EntityType Name="Current">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserId" Type="Int64" />
+          <Property Name="Title" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Contents" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="PublishDate" Type="DateTime" Precision="3" />
+          <Property Name="CmntCount" Type="Int64" />
+          <Property Name="StarCount" Type="Int64" />
+          <Property Name="PraiseCount" Type="Int64" />
+        </EntityType>
+        <EntityType Name="CurrentCmnt">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CurrentId" Type="Int64" />
+          <Property Name="UserId" Type="Int64" />
+          <Property Name="Contents" Type="String" MaxLength="280" FixedLength="false" Unicode="false" />
+          <Property Name="CmntDate" Type="DateTime" Precision="3" />
+          <Property Name="PraiseCount" Type="Int64" />
+          <Property Name="ReplyCount" Type="Int64" />
+        </EntityType>
+        <EntityType Name="CurrentReply">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CmntId" Type="Int64" />
+          <Property Name="AimsId" Type="Int64" />
+          <Property Name="UserId" Type="Int64" />
+          <Property Name="Contents" Type="String" MaxLength="280" FixedLength="false" Unicode="false" />
+          <Property Name="ReplyDate" Type="DateTime" Precision="3" />
+          <Property Name="PraiseCount" Type="Int64" />
+        </EntityType>
+        <EntityType Name="CurrentStar">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CurrentId" Type="Int64" />
+          <Property Name="UserId" Type="Int64" />
+          <Property Name="StarDate" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="Follow">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserId" Type="Int64" />
+          <Property Name="FollowingId" Type="Int64" />
+        </EntityType>
+        <EntityType Name="Notice">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserId" Type="Int64" />
+          <Property Name="SpeciesId" Type="Int64" />
+          <Property Name="Type" Type="String" MaxLength="8" FixedLength="true" Unicode="false" />
+          <Property Name="Title" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Place" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Location" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="LfDate" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Img" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="ContactWay" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="Detail" Type="String" MaxLength="280" FixedLength="false" Unicode="false" />
+          <Property Name="PublishDate" Type="DateTime" Precision="3" />
+          <Property Name="CmntCount" Type="Int64" />
+          <Property Name="TraceCount" Type="Int64" />
+          <Property Name="Status" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="NoticeCmnt">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NoticeId" Type="Int64" />
+          <Property Name="UserId" Type="Int64" />
+          <Property Name="Contents" Type="String" MaxLength="280" FixedLength="false" Unicode="false" />
+          <Property Name="CmntDate" Type="DateTime" Precision="3" />
+          <Property Name="ReplyCount" Type="Int64" />
+          <Property Name="PraiseCount" Type="Int64" />
+        </EntityType>
+        <EntityType Name="NoticeReply">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CmntId" Type="Int64" />
+          <Property Name="AimsId" Type="Int64" />
+          <Property Name="UserId" Type="Int64" />
+          <Property Name="Contents" Type="String" MaxLength="280" FixedLength="false" Unicode="false" />
+          <Property Name="ReplyDate" Type="DateTime" Precision="3" />
+          <Property Name="PraiseCount" Type="Int64" />
+        </EntityType>
+        <EntityType Name="NoticeTrace">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NoticeId" Type="Int64" />
+          <Property Name="UserId" Type="Int64" />
+          <Property Name="TraceDate" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="Species">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Img" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="NoticeCount" Type="Int64" />
+        </EntityType>
+        <EntityType Name="Topic">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="UserId" Type="Int64" />
+          <Property Name="Detail" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="JoinCount" Type="Int64" />
+          <Property Name="CreateDate" Type="DateTime" Precision="3" />
+          <Property Name="Img" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="IsPassed" Type="Byte" />
+        </EntityType>
+        <EntityType Name="TopicJoin">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TopicId" Type="Int64" />
+          <Property Name="CurrentId" Type="Int64" />
+        </EntityType>
+        <EntityContainer Name="BmdEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="BmdRoot" EntityType="BmdModel.BmdRoot" />
+          <EntitySet Name="bmd_user" EntityType="BmdModel.BmdUser" />
+          <EntitySet Name="Current" EntityType="BmdModel.Current" />
+          <EntitySet Name="current_cmnt" EntityType="BmdModel.CurrentCmnt" />
+          <EntitySet Name="current_reply" EntityType="BmdModel.CurrentReply" />
+          <EntitySet Name="current_star" EntityType="BmdModel.CurrentStar" />
+          <EntitySet Name="follow" EntityType="BmdModel.Follow" />
+          <EntitySet Name="Notice" EntityType="BmdModel.Notice" />
+          <EntitySet Name="notice_cmnt" EntityType="BmdModel.NoticeCmnt" />
+          <EntitySet Name="notice_reply" EntityType="BmdModel.NoticeReply" />
+          <EntitySet Name="notice_trace" EntityType="BmdModel.NoticeTrace" />
+          <EntitySet Name="Species" EntityType="BmdModel.Species" />
+          <EntitySet Name="Topic" EntityType="BmdModel.Topic" />
+          <EntitySet Name="topic_join" EntityType="BmdModel.TopicJoin" />
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="BmdModelStoreContainer" CdmEntityContainer="BmdEntities">
+          <EntitySetMapping Name="BmdRoot">
+            <EntityTypeMapping TypeName="BmdModel.BmdRoot">
+              <MappingFragment StoreEntitySet="bmd_root">
+                <ScalarProperty Name="Id" ColumnName="id" />
+                <ScalarProperty Name="Name" ColumnName="name" />
+                <ScalarProperty Name="Permission" ColumnName="permission" />
+                <ScalarProperty Name="PhoneNumber" ColumnName="phone_number" />
+                <ScalarProperty Name="Email" ColumnName="email" />
+                <ScalarProperty Name="Avatar" ColumnName="avatar" />
+                <ScalarProperty Name="Remark" ColumnName="remark" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="bmd_user">
+            <EntityTypeMapping TypeName="BmdModel.BmdUser">
+              <MappingFragment StoreEntitySet="bmd_user">
+                <ScalarProperty Name="Id" ColumnName="id" />
+                <ScalarProperty Name="Name" ColumnName="name" />
+                <ScalarProperty Name="PhoneNumber" ColumnName="phone_number" />
+                <ScalarProperty Name="Email" ColumnName="email" />
+                <ScalarProperty Name="Type" ColumnName="type" />
+                <ScalarProperty Name="Pwd" ColumnName="pwd" />
+                <ScalarProperty Name="Avatar" ColumnName="avatar" />
+                <ScalarProperty Name="Rate" ColumnName="rate" />
+                <ScalarProperty Name="FollowingCount" ColumnName="following_count" />
+                <ScalarProperty Name="FollowerCount" ColumnName="follower_count" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Current">
+            <EntityTypeMapping TypeName="BmdModel.Current">
+              <MappingFragment StoreEntitySet="current">
+                <ScalarProperty Name="Id" ColumnName="id" />
+                <ScalarProperty Name="UserId" ColumnName="user_id" />
+                <ScalarProperty Name="Title" ColumnName="title" />
+                <ScalarProperty Name="Contents" ColumnName="contents" />
+                <ScalarProperty Name="PublishDate" ColumnName="publish_date" />
+                <ScalarProperty Name="CmntCount" ColumnName="cmnt_count" />
+                <ScalarProperty Name="StarCount" ColumnName="star_count" />
+                <ScalarProperty Name="PraiseCount" ColumnName="praise_count" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="current_cmnt">
+            <EntityTypeMapping TypeName="BmdModel.CurrentCmnt">
+              <MappingFragment StoreEntitySet="current_cmnt">
+                <ScalarProperty Name="Id" ColumnName="id" />
+                <ScalarProperty Name="CurrentId" ColumnName="current_id" />
+                <ScalarProperty Name="UserId" ColumnName="user_id" />
+                <ScalarProperty Name="Contents" ColumnName="contents" />
+                <ScalarProperty Name="CmntDate" ColumnName="cmnt_date" />
+                <ScalarProperty Name="PraiseCount" ColumnName="praise_count" />
+                <ScalarProperty Name="ReplyCount" ColumnName="reply_count" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="current_reply">
+            <EntityTypeMapping TypeName="BmdModel.CurrentReply">
+              <MappingFragment StoreEntitySet="current_reply">
+                <ScalarProperty Name="Id" ColumnName="id" />
+                <ScalarProperty Name="CmntId" ColumnName="cmnt_id" />
+                <ScalarProperty Name="AimsId" ColumnName="aims_id" />
+                <ScalarProperty Name="UserId" ColumnName="user_id" />
+                <ScalarProperty Name="Contents" ColumnName="contents" />
+                <ScalarProperty Name="ReplyDate" ColumnName="reply_date" />
+                <ScalarProperty Name="PraiseCount" ColumnName="praise_count" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="current_star">
+            <EntityTypeMapping TypeName="BmdModel.CurrentStar">
+              <MappingFragment StoreEntitySet="current_star">
+                <ScalarProperty Name="Id" ColumnName="id" />
+                <ScalarProperty Name="CurrentId" ColumnName="current_id" />
+                <ScalarProperty Name="UserId" ColumnName="user_id" />
+                <ScalarProperty Name="StarDate" ColumnName="star_date" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="follow">
+            <EntityTypeMapping TypeName="BmdModel.Follow">
+              <MappingFragment StoreEntitySet="follow">
+                <ScalarProperty Name="Id" ColumnName="id" />
+                <ScalarProperty Name="UserId" ColumnName="user_id" />
+                <ScalarProperty Name="FollowingId" ColumnName="following_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Notice">
+            <EntityTypeMapping TypeName="BmdModel.Notice">
+              <MappingFragment StoreEntitySet="notice">
+                <ScalarProperty Name="Id" ColumnName="id" />
+                <ScalarProperty Name="UserId" ColumnName="user_id" />
+                <ScalarProperty Name="SpeciesId" ColumnName="species_id" />
+                <ScalarProperty Name="Type" ColumnName="type" />
+                <ScalarProperty Name="Title" ColumnName="title" />
+                <ScalarProperty Name="Place" ColumnName="place" />
+                <ScalarProperty Name="Location" ColumnName="location" />
+                <ScalarProperty Name="LfDate" ColumnName="lf_date" />
+                <ScalarProperty Name="Img" ColumnName="img" />
+                <ScalarProperty Name="ContactWay" ColumnName="contact_way" />
+                <ScalarProperty Name="Detail" ColumnName="detail" />
+                <ScalarProperty Name="PublishDate" ColumnName="publish_date" />
+                <ScalarProperty Name="CmntCount" ColumnName="cmnt_count" />
+                <ScalarProperty Name="TraceCount" ColumnName="trace_count" />
+                <ScalarProperty Name="Status" ColumnName="status" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="notice_cmnt">
+            <EntityTypeMapping TypeName="BmdModel.NoticeCmnt">
+              <MappingFragment StoreEntitySet="notice_cmnt">
+                <ScalarProperty Name="Id" ColumnName="id" />
+                <ScalarProperty Name="NoticeId" ColumnName="notice_id" />
+                <ScalarProperty Name="UserId" ColumnName="user_id" />
+                <ScalarProperty Name="Contents" ColumnName="contents" />
+                <ScalarProperty Name="CmntDate" ColumnName="cmnt_date" />
+                <ScalarProperty Name="ReplyCount" ColumnName="reply_count" />
+                <ScalarProperty Name="PraiseCount" ColumnName="praise_count" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="notice_reply">
+            <EntityTypeMapping TypeName="BmdModel.NoticeReply">
+              <MappingFragment StoreEntitySet="notice_reply">
+                <ScalarProperty Name="Id" ColumnName="id" />
+                <ScalarProperty Name="CmntId" ColumnName="cmnt_id" />
+                <ScalarProperty Name="AimsId" ColumnName="aims_id" />
+                <ScalarProperty Name="UserId" ColumnName="user_id" />
+                <ScalarProperty Name="Contents" ColumnName="contents" />
+                <ScalarProperty Name="ReplyDate" ColumnName="reply_date" />
+                <ScalarProperty Name="PraiseCount" ColumnName="praise_count" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="notice_trace">
+            <EntityTypeMapping TypeName="BmdModel.NoticeTrace">
+              <MappingFragment StoreEntitySet="notice_trace">
+                <ScalarProperty Name="Id" ColumnName="id" />
+                <ScalarProperty Name="NoticeId" ColumnName="notice_id" />
+                <ScalarProperty Name="UserId" ColumnName="user_id" />
+                <ScalarProperty Name="TraceDate" ColumnName="trace_date" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Species">
+            <EntityTypeMapping TypeName="BmdModel.Species">
+              <MappingFragment StoreEntitySet="species">
+                <ScalarProperty Name="Id" ColumnName="id" />
+                <ScalarProperty Name="Name" ColumnName="name" />
+                <ScalarProperty Name="Img" ColumnName="img" />
+                <ScalarProperty Name="NoticeCount" ColumnName="notice_count" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Topic">
+            <EntityTypeMapping TypeName="BmdModel.Topic">
+              <MappingFragment StoreEntitySet="topic">
+                <ScalarProperty Name="Id" ColumnName="id" />
+                <ScalarProperty Name="Name" ColumnName="name" />
+                <ScalarProperty Name="UserId" ColumnName="user_id" />
+                <ScalarProperty Name="Detail" ColumnName="detail" />
+                <ScalarProperty Name="JoinCount" ColumnName="join_count" />
+                <ScalarProperty Name="CreateDate" ColumnName="create_date" />
+                <ScalarProperty Name="Img" ColumnName="img" />
+                <ScalarProperty Name="IsPassed" ColumnName="is_passed" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="topic_join">
+            <EntityTypeMapping TypeName="BmdModel.TopicJoin">
+              <MappingFragment StoreEntitySet="topic_join">
+                <ScalarProperty Name="Id" ColumnName="id" />
+                <ScalarProperty Name="TopicId" ColumnName="topic_id" />
+                <ScalarProperty Name="CurrentId" ColumnName="current_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="无" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

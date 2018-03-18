@@ -1,0 +1,20 @@
+﻿@model Bmd.App.Models.IndexViewModel
+@{
+    ViewBag.Title = "百慕大 - 寻找你的寻找";
+}
+
+@Html.Partial("_Sidebar")
+<div class="container flex-col">
+    @Html.Partial("_HotTopic", Model.HotTopicsVm)
+
+    <div class="flex-box-inline">
+        <div class="col-8">
+            @Html.Partial("_NoticeList", Model.NoticeVm)
+        </div>
+        <div class="col-4 hot-top">
+            @Html.Partial("_HotSpecies", Model.HotSpeciesVm)
+            @Html.Partial("_HotCurrent", Model.HotCurrentVm)
+            @Html.Partial("_TopUser", Model.TopUserVm)
+        </div>
+    </div>
+</div>

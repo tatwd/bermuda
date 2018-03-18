@@ -1,0 +1,22 @@
+﻿@model IList<Bmd.App.Models.HotSpeciesViewModel>
+@*
+    热门种类
+*@
+<div class="hot-species">
+    <div class="flex-box items-center title fs-15">
+        <img src="/assets/icon/tag.svg" alt="icon-tag">物以类聚
+    </div>
+    <div class="wrap-card body">
+        @*<a class="more" href="/layout/SpeciesAll.aspx">
+            更多分类<i class="icon-angle-right"></i>
+        </a>*@
+
+        @foreach (var item in Model)
+        {
+            <a class="item" href="#">
+                <img class="col-1" src="@item.Img" alt="species image" />
+                <span class="col-1">@item.Name</span>
+            </a>
+        }
+    </div>
+</div>

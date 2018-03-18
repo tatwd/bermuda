@@ -1,0 +1,39 @@
+﻿@model Bmd.App.Models.SignInViewModel
+@{
+    ViewBag.Title = "登录";
+    Layout = "~/Views/Shared/_AccountLayout.cshtml";
+}
+
+@using (Html.BeginForm("SignIn", "Account", FormMethod.Post)) // Html.BeginForm("SignIn", "Account", FormMethod.Post))
+{
+    <div class="sign-input">
+        <div class="item">
+            @Html.TextBoxFor(m => m.Name, new { id = "NameMail", @class = "input-block", placeholder = "用户名", autofocus = "autofocus" })
+            @Html.ValidationMessageFor(m => m.Name, "", new { @class = "validator" })
+        </div>
+        <div class="item">
+            @Html.PasswordFor(m => m.Pwd, new { id = "Password", @class = "input-block", placeholder = "密码" })
+            @Html.ValidationMessageFor(m => m.Pwd, "", new { id = "RfvPassword", @class = "validator" })
+        </div>
+    </div>
+    <div class="remember-forget">
+        <div class="remember-me">
+            @Html.CheckBoxFor(m => m.RememberMe, new { id = "RememberMeCb", value = false })
+            <span>记住我</span>
+        </div>
+        <div class="forget-pwd">
+            <a href="#">忘记密码？</a>
+        </div>
+    </div>
+    <div class="sign-btn">
+        <div>
+            <div id="UpSignBtn">
+                <input id="SignInBtn" class="input-block" type="submit" value="登录"/>
+            </div>
+        </div>
+    </div>
+    <div class="goto-signup text-center">
+        @Html.ActionLink("没有账号？马上注册！", "SignUp", "Account")
+    </div>
+}
+

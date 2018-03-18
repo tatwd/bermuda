@@ -1,0 +1,78 @@
+﻿@model IList<Bmd.App.Models.NoticeViewModel>
+
+@*
+    条件过滤器
+*@
+<div id="UpListFilter" class="filter">
+    <ul class="tablist">
+        <li class="item">
+            <span><button id="AllNotice" class="active-btn">全部</button></span>
+        </li>
+        <li class="item">
+            <span><button id="LostNotice">寻物启示</button></span>
+        </li>
+        <li class="item">
+            <span><button id="FoundNotice">招领启示</button></span>
+        </li>
+    </ul>
+</div>
+@*
+    让 UpListFilter 中的控件按钮来触发此 UpdatePanel 中的内容更新
+*@
+<div id="UpListNotice" class="update-panel">
+    <!-- 从失物招领中取出启示，按时间降序 -->
+    <div class="list-box notice-list">
+        @foreach (var item in Model)
+        {
+            @* 项 *@
+            <div class="item" id="notice-id">
+                <div class="flex-box">
+                    <div class="col-3 content">
+                        <h3>
+                            <a href="#" target="_bank">@item.notices.Title</a>
+                        </h3>
+                        <p class="flex-box items-center fs-14">
+                            <img src="/assets/icon/place.svg" alt="icon-place">
+                            @item.notices.Place
+                        </p>
+                        <p class="flex-box items-center fs-14">
+                            <img src="/assets/icon/date.svg" alt="icon-date">
+                            @item.notices.LfDate
+                        </p>
+                        <p class="flex-box items-center fs-14">
+                            <img src="/assets/icon/desc.svg" alt="icon-desc">
+                            @item.notices.Detail
+                        </p>
+                    </div>
+                    <div class="col-1 goods-img">
+                        <a class="link-img text-right" href="#">
+                            <img src="@item.notices.Img" alt="goods-img" />
+                        </a>
+                    </div>
+                </div>
+                <div class="flex-box user-meta">
+                    <div class="user flex-box items-center">
+                        <a class="link-img" href="#">
+                            <img src="@item.bmdUser.Avatar" alt="avatar" />
+                        </a>
+                        <a href="#">@item.bmdUser.Name</a>
+                        <span class="margin-lr-15 fs-12">发布于 @item.notices.PublishDate</span>
+                    </div>
+                    <div class="flex-row meta">
+                        <a class="flex-box items-center cmnt" href="#">
+                            <img src="/assets/icon/cmnt.svg" alt="icon-cmnt" />
+                            <span class="count">@item.notices.CmntCount</span>
+                        </a>
+                        <div id="UpTraceBtn" class="trace">
+                            <a class="flex-box items-center" href="javascript:;">
+                                <img src="/assets/icon/trace.svg" alt="icon-trace" />
+                                <span id="TraceBtn" data-notice-id="1">追踪 · @item.notices.TraceCount</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+
+</div>

@@ -1,0 +1,24 @@
+﻿@model IList<Bmd.App.Models.TopUserViewModel>
+@*
+    用户排行
+*@
+<div class="bmd-top">
+    <div class="flex-box items-center title fs-15">
+        <img src="/assets/icon/talent.svg" alt="icon-talent">百慕达人
+    </div>
+    <div class="body">
+        @foreach (var item in Model)
+        {
+            <div class="item flex-box items-center">
+                <a class="col-2 flex-box items-center user" href="#">
+                    <img src="@item.bmdUser.Avatar" alt="avatar" />
+                    <span class="name">@item.bmdUser.Name</span>
+                </a>
+                <span class="col-1 help-count">助人 · @item.HelpCount</span>
+                <span ID="UpBmdTop" runat="server" class="col-1 text-right follow-btn">
+                    <button id="FollowBtn" data-user-id="user_id">关注</button>
+                </span>
+            </div>
+        }
+    </div>
+</div>

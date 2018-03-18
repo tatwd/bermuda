@@ -1,0 +1,15 @@
+<svg fill="none" viewBox="0 0 640 640" xmlns="http://www.w3.org/2000/svg">
+ <!-- Created with SVG-edit - http://svg-edit.googlecode.com/ -->
+
+ <g>
+  <title>background</title>
+  <rect fill="none" id="canvas_background" height="402" width="582" y="-1" x="-1"/>
+ </g>
+ <g>
+  <title>Layer 1</title>
+  <path fill="none" stroke="#000000" stroke-width="0" d="m117.9973,513.37227l261.14288,-457.00003l261.14288,457.00003l-522.28575,0l-0.00001,0z" id="svg_1" transform="rotate(15 379.14019775390585,284.8722534179686) "/>
+  <path transform="rotate(15 339.10198974609347,430.85443115234375) " id="svg_3" fill="#773a3a" stroke-width="0" d="m77.9591,507.60602l261.14288,-153.50322l261.14288,153.50322l-522.28575,0l-0.00001,0z" stroke="#000000"/>
+  <path id="svg_5" fill="#c66b6b" stroke-width="0" d="m168.28686,413.62916l263.19938,-151.39139l263.19938,151.39139l-526.39876,0l-0.00001,0l0.00001,0z" transform="rotate(-104.73999786376953 431.4862060546874,337.93347167968744) " stroke="#000000"/>
+  <path transform="rotate(134.77000427246094 306.02850341796875,304.09686279296875) " id="svg_6" fill="#f2abab" stroke-width="0" d="m42.47799,379.18317l263.55048,-150.1726l263.55048,150.1726l-527.10094,0l-0.00001,0l-0.00001,0z" stroke="#000000"/>
+ </g>
+</svg>
