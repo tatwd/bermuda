@@ -1,3 +1,3 @@
-﻿# Bermuda
+﻿# Bermuda-MVC
 
-寻找你的寻找。Find Your Find. dev-mvc
+寻找你的寻找。Find Your Find.
