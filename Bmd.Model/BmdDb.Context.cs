@@ -32,7 +32,7 @@ namespace Bmd.Model
         public virtual DbSet<CurrentReply> currentReply { get; set; }
         public virtual DbSet<CurrentStar> currentStar { get; set; }
         public virtual DbSet<Follow> follow { get; set; }
-        public virtual DbSet<Notice> notices { get; set; }
+        public virtual DbSet<Notice> notice { get; set; }
         public virtual DbSet<NoticeCmnt> noticeCmnt { get; set; }
         public virtual DbSet<NoticeReply> noticeReply { get; set; }
         public virtual DbSet<NoticeTrace> noticeTrace { get; set; }

@@ -52,7 +52,7 @@ namespace Bmd.App.Controllers
         {
             IList<NoticeViewModel> vm = new List<NoticeViewModel>();
 
-            var _notices = db.notices.OrderByDescending(n => n.PublishDate).Take(5);
+            var _notices = db.notice.OrderByDescending(n => n.PublishDate).Take(5);
 
             foreach (var _notice in _notices)
             {
@@ -123,7 +123,7 @@ namespace Bmd.App.Controllers
 
             foreach (var user in users)
             {
-                var _helpCount = db.notices
+                var _helpCount = db.notice
                     .Where(n => n.Type == "招领启示" && n.Status == "已领回")
                     .Where(n => n.UserId == user.Id)
                     .Count();
