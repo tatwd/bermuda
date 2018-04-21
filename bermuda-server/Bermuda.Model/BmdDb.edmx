@@ -1,0 +1,850 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="BmdDbModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="BmdConsignee">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserId" Type="bigint" />
+          <Property Name="Consignee" Type="varchar" MaxLength="50" />
+          <Property Name="Address" Type="varchar" MaxLength="200" />
+          <Property Name="PhoneNum" Type="char" MaxLength="11" />
+        </EntityType>
+        <EntityType Name="BmdCurrent">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserId" Type="bigint" />
+          <Property Name="Title" Type="varchar" MaxLength="100" />
+          <Property Name="Contents" Type="text" />
+          <Property Name="PubDate" Type="datetime" />
+          <Property Name="CmntCount" Type="bigint" />
+          <Property Name="StarCount" Type="bigint" />
+          <Property Name="PraiseCount" Type="bigint" />
+        </EntityType>
+        <EntityType Name="BmdCurrentCmnt">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CurrentId" Type="bigint" />
+          <Property Name="UserId" Type="bigint" />
+          <Property Name="Contents" Type="varchar" MaxLength="280" />
+          <Property Name="CmntDate" Type="datetime" />
+          <Property Name="PraiseCount" Type="bigint" />
+          <Property Name="ReplyCount" Type="bigint" />
+        </EntityType>
+        <EntityType Name="BmdCurrentCmntPraise">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CmntId" Type="bigint" />
+          <Property Name="UserId" Type="bigint" />
+          <Property Name="PraiseDate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="BmdCurrentCmntReply">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CmntId" Type="bigint" />
+          <Property Name="AimsId" Type="bigint" />
+          <Property Name="UserId" Type="bigint" />
+          <Property Name="Contents" Type="varchar" MaxLength="280" />
+          <Property Name="ReplyDate" Type="datetime" />
+          <Property Name="PraiseCount" Type="bigint" />
+        </EntityType>
+        <EntityType Name="BmdCurrentCmntReplyPraise">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ReplyId" Type="bigint" />
+          <Property Name="UserId" Type="bigint" />
+          <Property Name="PraiseDate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="BmdCurrentPraise">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CurrentId" Type="bigint" />
+          <Property Name="UserId" Type="bigint" />
+          <Property Name="PraiseDate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="BmdCurrentStar">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CurrentId" Type="bigint" />
+          <Property Name="UserId" Type="bigint" />
+          <Property Name="StarDate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="BmdNotice">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserId" Type="bigint" />
+          <Property Name="SpecieId" Type="bigint" />
+          <Property Name="Type" Type="char" MaxLength="8" />
+          <Property Name="Title" Type="varchar" MaxLength="100" />
+          <Property Name="Place" Type="varchar" MaxLength="100" />
+          <Property Name="FullPlace" Type="varchar" MaxLength="200" />
+          <Property Name="LfDate" Type="varchar" MaxLength="100" />
+          <Property Name="Img" Type="varchar" MaxLength="200" />
+          <Property Name="ContactWay" Type="varchar" MaxLength="100" />
+          <Property Name="Detail" Type="varchar" MaxLength="280" />
+          <Property Name="PubDate" Type="datetime" />
+          <Property Name="CmntCount" Type="bigint" />
+          <Property Name="TraceCount" Type="bigint" />
+          <Property Name="Status" Type="tinyint" />
+        </EntityType>
+        <EntityType Name="BmdNoticeCmnt">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserId" Type="bigint" />
+          <Property Name="NoticeId" Type="bigint" />
+          <Property Name="Contents" Type="varchar" MaxLength="280" />
+          <Property Name="CmntDate" Type="datetime" />
+          <Property Name="ReplyCount" Type="bigint" />
+        </EntityType>
+        <EntityType Name="BmdNoticeCmntReply">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CmntId" Type="bigint" />
+          <Property Name="AimsId" Type="bigint" />
+          <Property Name="UserId" Type="bigint" />
+          <Property Name="Contents" Type="varchar" MaxLength="280" />
+          <Property Name="ReplyDate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="BmdNoticeSpecie">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="20" />
+          <Property Name="Img" Type="varchar" MaxLength="200" />
+          <Property Name="NoticeCount" Type="bigint" />
+        </EntityType>
+        <EntityType Name="BmdNoticeTrace">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NoticeId" Type="bigint" />
+          <Property Name="UserId" Type="bigint" />
+          <Property Name="TraceDate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="BmdOrder">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="BuyerId" Type="bigint" />
+          <Property Name="SellerId" Type="bigint" />
+          <Property Name="ConsigneeId" Type="bigint" />
+          <Property Name="CreateDate" Type="datetime" />
+          <Property Name="TotalPrice" Type="decimal" Precision="8" Scale="2" />
+        </EntityType>
+        <EntityType Name="BmdOrderItem">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="OrderId" Type="bigint" />
+          <Property Name="ProductId" Type="bigint" />
+          <Property Name="Qty" Type="int" />
+        </EntityType>
+        <EntityType Name="BmdProduct">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserId" Type="bigint" />
+          <Property Name="Name" Type="varchar" MaxLength="50" />
+          <Property Name="Category" Type="varchar" MaxLength="10" />
+          <Property Name="Tag" Type="varchar" MaxLength="10" />
+          <Property Name="Price" Type="decimal" Precision="8" Scale="2" />
+          <Property Name="Qty" Type="int" />
+          <Property Name="Img" Type="varchar" MaxLength="200" />
+          <Property Name="Tale" Type="text" />
+        </EntityType>
+        <EntityType Name="BmdRoot">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="50" />
+          <Property Name="Permission" Type="tinyint" />
+          <Property Name="PhoneNum" Type="varchar" MaxLength="11" />
+          <Property Name="Email" Type="varchar" MaxLength="200" />
+          <Property Name="Avatar" Type="varchar" MaxLength="200" />
+          <Property Name="Remark" Type="varchar" MaxLength="200" />
+        </EntityType>
+        <EntityType Name="BmdShoppingCart">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserId" Type="bigint" />
+          <Property Name="ProductId" Type="bigint" />
+          <Property Name="Qty" Type="int" />
+          <Property Name="CreateDate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="BmdTopic">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserId" Type="bigint" />
+          <Property Name="Name" Type="varchar" MaxLength="50" />
+          <Property Name="Detail" Type="varchar" MaxLength="100" />
+          <Property Name="JoinCount" Type="bigint" />
+          <Property Name="CreateDate" Type="datetime" />
+          <Property Name="Img" Type="varchar" MaxLength="200" />
+          <Property Name="IsPassed" Type="tinyint" />
+        </EntityType>
+        <EntityType Name="BmdTopicJoin">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TopicId" Type="bigint" />
+          <Property Name="CurrentId" Type="bigint" />
+          <Property Name="JoinDate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="BmdUser">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Sex" Type="char" MaxLength="2" />
+          <Property Name="PhoneNum" Type="varchar" MaxLength="11" />
+          <Property Name="Email" Type="varchar" MaxLength="200" />
+          <Property Name="Type" Type="varchar" MaxLength="20" />
+          <Property Name="Pwd" Type="varchar" MaxLength="16" Nullable="false" />
+          <Property Name="Avatar" Type="varchar" MaxLength="200" />
+          <Property Name="FollowingCount" Type="bigint" />
+          <Property Name="FollowerCount" Type="bigint" />
+          <Property Name="Rate" Type="decimal" Precision="2" Scale="1" />
+          <Property Name="Credit" Type="int" />
+        </EntityType>
+        <EntityType Name="BmdUserFollow">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserId" Type="bigint" />
+          <Property Name="FollowingId" Type="bigint" />
+        </EntityType>
+        <EntityContainer Name="BmdDbModelStoreContainer">
+          <EntitySet Name="BmdConsignee" EntityType="Self.BmdConsignee" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="BmdCurrent" EntityType="Self.BmdCurrent" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="BmdCurrentCmnt" EntityType="Self.BmdCurrentCmnt" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="BmdCurrentCmntPraise" EntityType="Self.BmdCurrentCmntPraise" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="BmdCurrentCmntReply" EntityType="Self.BmdCurrentCmntReply" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="BmdCurrentCmntReplyPraise" EntityType="Self.BmdCurrentCmntReplyPraise" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="BmdCurrentPraise" EntityType="Self.BmdCurrentPraise" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="BmdCurrentStar" EntityType="Self.BmdCurrentStar" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="BmdNotice" EntityType="Self.BmdNotice" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="BmdNoticeCmnt" EntityType="Self.BmdNoticeCmnt" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="BmdNoticeCmntReply" EntityType="Self.BmdNoticeCmntReply" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="BmdNoticeSpecie" EntityType="Self.BmdNoticeSpecie" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="BmdNoticeTrace" EntityType="Self.BmdNoticeTrace" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="BmdOrder" EntityType="Self.BmdOrder" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="BmdOrderItem" EntityType="Self.BmdOrderItem" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="BmdProduct" EntityType="Self.BmdProduct" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="BmdRoot" EntityType="Self.BmdRoot" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="BmdShoppingCart" EntityType="Self.BmdShoppingCart" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="BmdTopic" EntityType="Self.BmdTopic" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="BmdTopicJoin" EntityType="Self.BmdTopicJoin" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="BmdUser" EntityType="Self.BmdUser" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="BmdUserFollow" EntityType="Self.BmdUserFollow" Schema="dbo" store:Type="Tables" />
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="BmdDbModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="BmdConsignee">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserId" Type="Int64" />
+          <Property Name="Consignee" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Address" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="PhoneNum" Type="String" MaxLength="11" FixedLength="true" Unicode="false" />
+        </EntityType>
+        <EntityType Name="BmdCurrent">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserId" Type="Int64" />
+          <Property Name="Title" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Contents" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="PubDate" Type="DateTime" Precision="3" />
+          <Property Name="CmntCount" Type="Int64" />
+          <Property Name="StarCount" Type="Int64" />
+          <Property Name="PraiseCount" Type="Int64" />
+        </EntityType>
+        <EntityType Name="BmdCurrentCmnt">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CurrentId" Type="Int64" />
+          <Property Name="UserId" Type="Int64" />
+          <Property Name="Contents" Type="String" MaxLength="280" FixedLength="false" Unicode="false" />
+          <Property Name="CmntDate" Type="DateTime" Precision="3" />
+          <Property Name="PraiseCount" Type="Int64" />
+          <Property Name="ReplyCount" Type="Int64" />
+        </EntityType>
+        <EntityType Name="BmdCurrentCmntPraise">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CmntId" Type="Int64" />
+          <Property Name="UserId" Type="Int64" />
+          <Property Name="PraiseDate" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="BmdCurrentCmntReply">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CmntId" Type="Int64" />
+          <Property Name="AimsId" Type="Int64" />
+          <Property Name="UserId" Type="Int64" />
+          <Property Name="Contents" Type="String" MaxLength="280" FixedLength="false" Unicode="false" />
+          <Property Name="ReplyDate" Type="DateTime" Precision="3" />
+          <Property Name="PraiseCount" Type="Int64" />
+        </EntityType>
+        <EntityType Name="BmdCurrentCmntReplyPraise">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ReplyId" Type="Int64" />
+          <Property Name="UserId" Type="Int64" />
+          <Property Name="PraiseDate" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="BmdCurrentPraise">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CurrentId" Type="Int64" />
+          <Property Name="UserId" Type="Int64" />
+          <Property Name="PraiseDate" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="BmdCurrentStar">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CurrentId" Type="Int64" />
+          <Property Name="UserId" Type="Int64" />
+          <Property Name="StarDate" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="BmdNotice">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserId" Type="Int64" />
+          <Property Name="SpecieId" Type="Int64" />
+          <Property Name="Type" Type="String" MaxLength="8" FixedLength="true" Unicode="false" />
+          <Property Name="Title" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Place" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="FullPlace" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="LfDate" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Img" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="ContactWay" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Detail" Type="String" MaxLength="280" FixedLength="false" Unicode="false" />
+          <Property Name="PubDate" Type="DateTime" Precision="3" />
+          <Property Name="CmntCount" Type="Int64" />
+          <Property Name="TraceCount" Type="Int64" />
+          <Property Name="Status" Type="Byte" />
+        </EntityType>
+        <EntityType Name="BmdNoticeCmnt">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserId" Type="Int64" />
+          <Property Name="NoticeId" Type="Int64" />
+          <Property Name="Contents" Type="String" MaxLength="280" FixedLength="false" Unicode="false" />
+          <Property Name="CmntDate" Type="DateTime" Precision="3" />
+          <Property Name="ReplyCount" Type="Int64" />
+        </EntityType>
+        <EntityType Name="BmdNoticeCmntReply">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CmntId" Type="Int64" />
+          <Property Name="AimsId" Type="Int64" />
+          <Property Name="UserId" Type="Int64" />
+          <Property Name="Contents" Type="String" MaxLength="280" FixedLength="false" Unicode="false" />
+          <Property Name="ReplyDate" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="BmdNoticeSpecie">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Img" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="NoticeCount" Type="Int64" />
+        </EntityType>
+        <EntityType Name="BmdNoticeTrace">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NoticeId" Type="Int64" />
+          <Property Name="UserId" Type="Int64" />
+          <Property Name="TraceDate" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="BmdOrder">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="BuyerId" Type="Int64" />
+          <Property Name="SellerId" Type="Int64" />
+          <Property Name="ConsigneeId" Type="Int64" />
+          <Property Name="CreateDate" Type="DateTime" Precision="3" />
+          <Property Name="TotalPrice" Type="Decimal" Precision="8" Scale="2" />
+        </EntityType>
+        <EntityType Name="BmdOrderItem">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="OrderId" Type="Int64" />
+          <Property Name="ProductId" Type="Int64" />
+          <Property Name="Qty" Type="Int32" />
+        </EntityType>
+        <EntityType Name="BmdProduct">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserId" Type="Int64" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Category" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="Tag" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="Price" Type="Decimal" Precision="8" Scale="2" />
+          <Property Name="Qty" Type="Int32" />
+          <Property Name="Img" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="Tale" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="BmdRoot">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Permission" Type="Byte" />
+          <Property Name="PhoneNum" Type="String" MaxLength="11" FixedLength="false" Unicode="false" />
+          <Property Name="Email" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="Avatar" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="Remark" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="BmdShoppingCart">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserId" Type="Int64" />
+          <Property Name="ProductId" Type="Int64" />
+          <Property Name="Qty" Type="Int32" />
+          <Property Name="CreateDate" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="BmdTopic">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserId" Type="Int64" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Detail" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="JoinCount" Type="Int64" />
+          <Property Name="CreateDate" Type="DateTime" Precision="3" />
+          <Property Name="Img" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="IsPassed" Type="Byte" />
+        </EntityType>
+        <EntityType Name="BmdTopicJoin">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TopicId" Type="Int64" />
+          <Property Name="CurrentId" Type="Int64" />
+          <Property Name="JoinDate" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="BmdUser">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Sex" Type="String" MaxLength="2" FixedLength="true" Unicode="false" />
+          <Property Name="PhoneNum" Type="String" MaxLength="11" FixedLength="false" Unicode="false" />
+          <Property Name="Email" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="Type" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Pwd" Type="String" MaxLength="16" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Avatar" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="FollowingCount" Type="Int64" />
+          <Property Name="FollowerCount" Type="Int64" />
+          <Property Name="Rate" Type="Decimal" Precision="2" Scale="1" />
+          <Property Name="Credit" Type="Int32" />
+        </EntityType>
+        <EntityType Name="BmdUserFollow">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserId" Type="Int64" />
+          <Property Name="FollowingId" Type="Int64" />
+        </EntityType>
+        <EntityContainer Name="BmdDbEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="BmdConsignees" EntityType="Self.BmdConsignee" />
+          <EntitySet Name="BmdCurrents" EntityType="Self.BmdCurrent" />
+          <EntitySet Name="BmdCurrentCmnts" EntityType="Self.BmdCurrentCmnt" />
+          <EntitySet Name="BmdCurrentCmntPraises" EntityType="Self.BmdCurrentCmntPraise" />
+          <EntitySet Name="BmdCurrentCmntReplies" EntityType="Self.BmdCurrentCmntReply" />
+          <EntitySet Name="BmdCurrentCmntReplyPraises" EntityType="Self.BmdCurrentCmntReplyPraise" />
+          <EntitySet Name="BmdCurrentPraises" EntityType="Self.BmdCurrentPraise" />
+          <EntitySet Name="BmdCurrentStars" EntityType="Self.BmdCurrentStar" />
+          <EntitySet Name="BmdNotices" EntityType="Self.BmdNotice" />
+          <EntitySet Name="BmdNoticeCmnts" EntityType="Self.BmdNoticeCmnt" />
+          <EntitySet Name="BmdNoticeCmntReplies" EntityType="Self.BmdNoticeCmntReply" />
+          <EntitySet Name="BmdNoticeSpecies" EntityType="Self.BmdNoticeSpecie" />
+          <EntitySet Name="BmdNoticeTraces" EntityType="Self.BmdNoticeTrace" />
+          <EntitySet Name="BmdOrders" EntityType="Self.BmdOrder" />
+          <EntitySet Name="BmdOrderItems" EntityType="Self.BmdOrderItem" />
+          <EntitySet Name="BmdProducts" EntityType="Self.BmdProduct" />
+          <EntitySet Name="BmdRoots" EntityType="Self.BmdRoot" />
+          <EntitySet Name="BmdShoppingCarts" EntityType="Self.BmdShoppingCart" />
+          <EntitySet Name="BmdTopics" EntityType="Self.BmdTopic" />
+          <EntitySet Name="BmdTopicJoins" EntityType="Self.BmdTopicJoin" />
+          <EntitySet Name="BmdUsers" EntityType="Self.BmdUser" />
+          <EntitySet Name="BmdUserFollows" EntityType="Self.BmdUserFollow" />
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="BmdDbModelStoreContainer" CdmEntityContainer="BmdDbEntities">
+          <EntitySetMapping Name="BmdConsignees">
+            <EntityTypeMapping TypeName="BmdDbModel.BmdConsignee">
+              <MappingFragment StoreEntitySet="BmdConsignee">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="Consignee" ColumnName="Consignee" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="PhoneNum" ColumnName="PhoneNum" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="BmdCurrents">
+            <EntityTypeMapping TypeName="BmdDbModel.BmdCurrent">
+              <MappingFragment StoreEntitySet="BmdCurrent">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="Contents" ColumnName="Contents" />
+                <ScalarProperty Name="PubDate" ColumnName="PubDate" />
+                <ScalarProperty Name="CmntCount" ColumnName="CmntCount" />
+                <ScalarProperty Name="StarCount" ColumnName="StarCount" />
+                <ScalarProperty Name="PraiseCount" ColumnName="PraiseCount" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="BmdCurrentCmnts">
+            <EntityTypeMapping TypeName="BmdDbModel.BmdCurrentCmnt">
+              <MappingFragment StoreEntitySet="BmdCurrentCmnt">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="CurrentId" ColumnName="CurrentId" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="Contents" ColumnName="Contents" />
+                <ScalarProperty Name="CmntDate" ColumnName="CmntDate" />
+                <ScalarProperty Name="PraiseCount" ColumnName="PraiseCount" />
+                <ScalarProperty Name="ReplyCount" ColumnName="ReplyCount" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="BmdCurrentCmntPraises">
+            <EntityTypeMapping TypeName="BmdDbModel.BmdCurrentCmntPraise">
+              <MappingFragment StoreEntitySet="BmdCurrentCmntPraise">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="CmntId" ColumnName="CmntId" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="PraiseDate" ColumnName="PraiseDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="BmdCurrentCmntReplies">
+            <EntityTypeMapping TypeName="BmdDbModel.BmdCurrentCmntReply">
+              <MappingFragment StoreEntitySet="BmdCurrentCmntReply">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="CmntId" ColumnName="CmntId" />
+                <ScalarProperty Name="AimsId" ColumnName="AimsId" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="Contents" ColumnName="Contents" />
+                <ScalarProperty Name="ReplyDate" ColumnName="ReplyDate" />
+                <ScalarProperty Name="PraiseCount" ColumnName="PraiseCount" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="BmdCurrentCmntReplyPraises">
+            <EntityTypeMapping TypeName="BmdDbModel.BmdCurrentCmntReplyPraise">
+              <MappingFragment StoreEntitySet="BmdCurrentCmntReplyPraise">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="ReplyId" ColumnName="ReplyId" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="PraiseDate" ColumnName="PraiseDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="BmdCurrentPraises">
+            <EntityTypeMapping TypeName="BmdDbModel.BmdCurrentPraise">
+              <MappingFragment StoreEntitySet="BmdCurrentPraise">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="CurrentId" ColumnName="CurrentId" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="PraiseDate" ColumnName="PraiseDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="BmdCurrentStars">
+            <EntityTypeMapping TypeName="BmdDbModel.BmdCurrentStar">
+              <MappingFragment StoreEntitySet="BmdCurrentStar">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="CurrentId" ColumnName="CurrentId" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="StarDate" ColumnName="StarDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="BmdNotices">
+            <EntityTypeMapping TypeName="BmdDbModel.BmdNotice">
+              <MappingFragment StoreEntitySet="BmdNotice">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="SpecieId" ColumnName="SpecieId" />
+                <ScalarProperty Name="Type" ColumnName="Type" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="Place" ColumnName="Place" />
+                <ScalarProperty Name="FullPlace" ColumnName="FullPlace" />
+                <ScalarProperty Name="LfDate" ColumnName="LfDate" />
+                <ScalarProperty Name="Img" ColumnName="Img" />
+                <ScalarProperty Name="ContactWay" ColumnName="ContactWay" />
+                <ScalarProperty Name="Detail" ColumnName="Detail" />
+                <ScalarProperty Name="PubDate" ColumnName="PubDate" />
+                <ScalarProperty Name="CmntCount" ColumnName="CmntCount" />
+                <ScalarProperty Name="TraceCount" ColumnName="TraceCount" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="BmdNoticeCmnts">
+            <EntityTypeMapping TypeName="BmdDbModel.BmdNoticeCmnt">
+              <MappingFragment StoreEntitySet="BmdNoticeCmnt">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="NoticeId" ColumnName="NoticeId" />
+                <ScalarProperty Name="Contents" ColumnName="Contents" />
+                <ScalarProperty Name="CmntDate" ColumnName="CmntDate" />
+                <ScalarProperty Name="ReplyCount" ColumnName="ReplyCount" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="BmdNoticeCmntReplies">
+            <EntityTypeMapping TypeName="BmdDbModel.BmdNoticeCmntReply">
+              <MappingFragment StoreEntitySet="BmdNoticeCmntReply">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="CmntId" ColumnName="CmntId" />
+                <ScalarProperty Name="AimsId" ColumnName="AimsId" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="Contents" ColumnName="Contents" />
+                <ScalarProperty Name="ReplyDate" ColumnName="ReplyDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="BmdNoticeSpecies">
+            <EntityTypeMapping TypeName="BmdDbModel.BmdNoticeSpecie">
+              <MappingFragment StoreEntitySet="BmdNoticeSpecie">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Img" ColumnName="Img" />
+                <ScalarProperty Name="NoticeCount" ColumnName="NoticeCount" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="BmdNoticeTraces">
+            <EntityTypeMapping TypeName="BmdDbModel.BmdNoticeTrace">
+              <MappingFragment StoreEntitySet="BmdNoticeTrace">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="NoticeId" ColumnName="NoticeId" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="TraceDate" ColumnName="TraceDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="BmdOrders">
+            <EntityTypeMapping TypeName="BmdDbModel.BmdOrder">
+              <MappingFragment StoreEntitySet="BmdOrder">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="BuyerId" ColumnName="BuyerId" />
+                <ScalarProperty Name="SellerId" ColumnName="SellerId" />
+                <ScalarProperty Name="ConsigneeId" ColumnName="ConsigneeId" />
+                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+                <ScalarProperty Name="TotalPrice" ColumnName="TotalPrice" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="BmdOrderItems">
+            <EntityTypeMapping TypeName="BmdDbModel.BmdOrderItem">
+              <MappingFragment StoreEntitySet="BmdOrderItem">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="OrderId" ColumnName="OrderId" />
+                <ScalarProperty Name="ProductId" ColumnName="ProductId" />
+                <ScalarProperty Name="Qty" ColumnName="Qty" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="BmdProducts">
+            <EntityTypeMapping TypeName="BmdDbModel.BmdProduct">
+              <MappingFragment StoreEntitySet="BmdProduct">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Category" ColumnName="Category" />
+                <ScalarProperty Name="Tag" ColumnName="Tag" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="Qty" ColumnName="Qty" />
+                <ScalarProperty Name="Img" ColumnName="Img" />
+                <ScalarProperty Name="Tale" ColumnName="Tale" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="BmdRoots">
+            <EntityTypeMapping TypeName="BmdDbModel.BmdRoot">
+              <MappingFragment StoreEntitySet="BmdRoot">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Permission" ColumnName="Permission" />
+                <ScalarProperty Name="PhoneNum" ColumnName="PhoneNum" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Avatar" ColumnName="Avatar" />
+                <ScalarProperty Name="Remark" ColumnName="Remark" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="BmdShoppingCarts">
+            <EntityTypeMapping TypeName="BmdDbModel.BmdShoppingCart">
+              <MappingFragment StoreEntitySet="BmdShoppingCart">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="ProductId" ColumnName="ProductId" />
+                <ScalarProperty Name="Qty" ColumnName="Qty" />
+                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="BmdTopics">
+            <EntityTypeMapping TypeName="BmdDbModel.BmdTopic">
+              <MappingFragment StoreEntitySet="BmdTopic">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Detail" ColumnName="Detail" />
+                <ScalarProperty Name="JoinCount" ColumnName="JoinCount" />
+                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+                <ScalarProperty Name="Img" ColumnName="Img" />
+                <ScalarProperty Name="IsPassed" ColumnName="IsPassed" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="BmdTopicJoins">
+            <EntityTypeMapping TypeName="BmdDbModel.BmdTopicJoin">
+              <MappingFragment StoreEntitySet="BmdTopicJoin">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="TopicId" ColumnName="TopicId" />
+                <ScalarProperty Name="CurrentId" ColumnName="CurrentId" />
+                <ScalarProperty Name="JoinDate" ColumnName="JoinDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="BmdUsers">
+            <EntityTypeMapping TypeName="BmdDbModel.BmdUser">
+              <MappingFragment StoreEntitySet="BmdUser">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Sex" ColumnName="Sex" />
+                <ScalarProperty Name="PhoneNum" ColumnName="PhoneNum" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Type" ColumnName="Type" />
+                <ScalarProperty Name="Pwd" ColumnName="Pwd" />
+                <ScalarProperty Name="Avatar" ColumnName="Avatar" />
+                <ScalarProperty Name="FollowingCount" ColumnName="FollowingCount" />
+                <ScalarProperty Name="FollowerCount" ColumnName="FollowerCount" />
+                <ScalarProperty Name="Rate" ColumnName="Rate" />
+                <ScalarProperty Name="Credit" ColumnName="Credit" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="BmdUserFollows">
+            <EntityTypeMapping TypeName="BmdDbModel.BmdUserFollow">
+              <MappingFragment StoreEntitySet="BmdUserFollow">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="FollowingId" ColumnName="FollowingId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="无" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
