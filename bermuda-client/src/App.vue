@@ -1,23 +1,31 @@
 <template>
   <div id="app">
-    <img src="./assets/logo.png">
-    <router-view/>
+    <v-app>
+      <Navbar/>
+      <v-content>
+        <v-container>
+
+          <img src="./assets/logo.png">
+          <router-view/>
+
+        </v-container>
+      </v-content>
+      <v-footer app>footer</v-footer>
+    </v-app>
   </div>
 </template>
 
 <script>
+import Navbar from './shared/Navbar'
+
 export default {
-  name: 'App'
+  name: 'App',
+  components: {
+    Navbar
+  }
 }
 </script>
 
 <style>
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
+
 </style>
