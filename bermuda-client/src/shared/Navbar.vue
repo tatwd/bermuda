@@ -1,54 +1,56 @@
 <template>
-
   <div id="bmd-navbar">
     <!-- <v-navigation-drawer app>nav-drawer</v-navigation-drawer> -->
-    <!-- <v-toolbar app>
-      <v-container grid-list-xl my-0 py-0>
-        <v-layout row wrap>
-          <v-toolbar-title>
-            <h3>
-              <router-link to="!#" style="text-decoration:none;">百慕大</router-link>
-            </h3>
-          </v-toolbar-title>
-          <v-toolbar-items>
-            <v-btn flat v-for="item in ['首页', '话题', '商城']" :key="item">
+    <v-toolbar app>
+      <v-avatar size="64">
+        <img src="../assets/bmd-logo.svg" alt="logo">
+      </v-avatar>
+      <v-toolbar-title>
+        <h3>
+          <router-link to="!#" style="text-decoration:none;">百慕大</router-link>
+        </h3>
+      </v-toolbar-title>
+      <v-toolbar-items class="mx-5">
+        <v-btn class="subheading" flat v-for="item in ['首页', '话题', '商城']" :key="item" :to="item">
+          {{ item }}
+        </v-btn>
+      </v-toolbar-items>
+      <!-- <v-spacer></v-spacer> -->
+      <v-text-field
+        solo-inverted
+        flat
+        label="搜索"
+        prepend-icon="search"
+      ></v-text-field>
+      <v-spacer></v-spacer>
+
+      <v-menu
+        bottom
+        left
+        offset-y
+        transition="slide-y-transition"
+        full-width
+      >
+        <v-avatar slot="activator" size="40">
+            <img src="../assets/avatar-tmp.svg" alt="avatar">
+          </v-avatar>
+        <v-list>
+          <v-list-tile
+            v-for="item in ['个人中心', '注销']"
+            :key="item"
+          >
+            <v-list-tile-title>
               {{ item }}
-            </v-btn>
-          </v-toolbar-items>
-        </v-layout>
-      </v-container>
-    </v-toolbar> -->
-    <v-card app>
-      <v-container py-0>
-        <v-layout row child-flex wrap>
-          <v-toolbar flat>
-            <v-avatar size="64">
-              <img src="../assets/bmd-logo.svg" alt="logo">
-            </v-avatar>
-            <v-toolbar-title>
-              <h3>
-                <router-link to="!#">百慕大</router-link>
-              </h3>
-            </v-toolbar-title>
-            <v-toolbar-items>
-              <v-btn
-                flat
-                v-for="item in ['首页', '话题', '商城']"
-                :key="item"
-              >
-                {{ item }}
-              </v-btn>
-            </v-toolbar-items>
-            <v-spacer></v-spacer>
-            <!-- <v-text-flied ></v-text-flied> -->
-            <v-btn icon class="hidden-xs-only">
-              <v-icon>search</v-icon>
-            </v-btn>
-            <v-btn>发布</v-btn>
-          </v-toolbar>
-        </v-layout>
-      </v-container>
-    </v-card>
+            </v-list-tile-title>
+          </v-list-tile>
+        </v-list>
+      </v-menu>
+
+      <v-btn class="mr-3" color="info" large>
+        <v-icon left>create</v-icon>
+        发布
+      </v-btn>
+    </v-toolbar>
   </div>
 </template>
 
@@ -68,5 +70,6 @@ export default {
 <style scoped>
 a {
   text-decoration: none;
+  color: #c66;
 }
 </style>

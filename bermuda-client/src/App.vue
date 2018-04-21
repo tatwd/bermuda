@@ -2,6 +2,7 @@
   <div id="app">
     <v-app>
       <Navbar/>
+
       <v-content>
         <v-container>
 
