@@ -1,12 +1,16 @@
 <template>
-  <div class="example"></div>
+  <div class="example">
+    <h1>{{ example }}</h1>
+  </div>
 </template>
 
 <script>
 export default {
   name: 'Example',
   data () {
-    return {}
+    return {
+      example: 'Hello Example Component'
+    }
   }
 }
 </script>

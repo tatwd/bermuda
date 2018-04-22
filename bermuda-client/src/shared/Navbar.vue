@@ -10,13 +10,14 @@
           <router-link to="!#" style="text-decoration:none;">百慕大</router-link>
         </h3>
       </v-toolbar-title>
-      <v-toolbar-items class="mx-5">
+      <v-toolbar-items class="mx-5 hidden-sm-and-down">
         <v-btn class="subheading" flat v-for="item in ['首页', '话题', '商城']" :key="item" :to="item">
           {{ item }}
         </v-btn>
       </v-toolbar-items>
       <!-- <v-spacer></v-spacer> -->
       <v-text-field
+        class="hidden-sm-and-down"
         solo-inverted
         flat
         label="搜索"
@@ -25,6 +26,7 @@
       <v-spacer></v-spacer>
 
       <v-menu
+        v-if="isSignIn"
         bottom
         left
         offset-y
@@ -46,7 +48,7 @@
         </v-list>
       </v-menu>
 
-      <v-btn class="mr-3" color="info" large>
+      <v-btn class="mr-3 mx-5 hidden-sm-and-down" color="info">
         <v-icon left>create</v-icon>
         发布
       </v-btn>
@@ -58,7 +60,9 @@
 export default {
   name: 'Navbar',
   data () {
-    return {}
+    return {
+      isSignIn: false
+    }
   },
   methods: {
     showSearchInput () {}
