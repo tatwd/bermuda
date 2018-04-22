@@ -9,7 +9,7 @@ export default {
   name: 'Example',
   data () {
     return {
-      example: 'Hello Example Component'
+      example: 'Example Component'
     }
   }
 }

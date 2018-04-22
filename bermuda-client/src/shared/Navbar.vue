@@ -20,7 +20,7 @@
       </v-avatar>
       <v-toolbar-title>
         <h3>
-          <router-link to="!#" style="text-decoration:none;">百慕大</router-link>
+          <router-link to="/" style="text-decoration:none;">百慕大</router-link>
         </h3>
       </v-toolbar-title>
       <v-toolbar-items class="mx-5 hidden-sm-and-down">
@@ -39,8 +39,8 @@
       <v-spacer></v-spacer>
 
       <v-toolbar-side-icon
-        @click.native.stop="sidedNav = !sidedNav"
         class="hidden-sm-and-up"
+        @click.native.stop="sidedNav = !sidedNav"
       ></v-toolbar-side-icon>
 
       <v-menu

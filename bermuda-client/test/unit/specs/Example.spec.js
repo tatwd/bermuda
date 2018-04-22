@@ -6,6 +6,6 @@ describe('Example.vue', () => {
     const Constructor = Vue.extend(Example)
     const vm = new Constructor().$mount()
     expect(vm.$el.querySelector('.example h1').textContent)
-      .toEqual('Hello Example Component')
+      .toEqual('Example Component')
   })
 })

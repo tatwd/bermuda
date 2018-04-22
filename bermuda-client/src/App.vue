@@ -4,12 +4,8 @@
       <Navbar/>
 
       <v-content>
-        <v-container>
-
-          <img src="./assets/logo.png">
-          <router-view/>
-
-        </v-container>
+        <!-- <img src="./assets/logo.png"> -->
+        <router-view/>
       </v-content>
       <v-footer app>footer</v-footer>
     </v-app>
