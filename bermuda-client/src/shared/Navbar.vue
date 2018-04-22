@@ -1,6 +1,19 @@
 <template>
   <div id="bmd-navbar">
-    <!-- <v-navigation-drawer app>nav-drawer</v-navigation-drawer> -->
+    <v-navigation-drawer
+      v-model="sidedNav"
+      app
+    >
+      <v-list>
+        <v-list-tile to="#">
+          <v-list-tile-action>
+            <v-icon>supervisor_account</v-icon>
+          </v-list-tile-action>
+          <v-list-tile-content>test content</v-list-tile-content>
+        </v-list-tile>
+      </v-list>
+    </v-navigation-drawer>
+
     <v-toolbar app>
       <v-avatar size="64">
         <img src="../assets/bmd-logo.svg" alt="logo">
@@ -18,12 +31,17 @@
       <!-- <v-spacer></v-spacer> -->
       <v-text-field
         class="hidden-sm-and-down"
-        solo-inverted
+        solo
         flat
         label="搜索"
         prepend-icon="search"
       ></v-text-field>
       <v-spacer></v-spacer>
+
+      <v-toolbar-side-icon
+        @click.native.stop="sidedNav = !sidedNav"
+        class="hidden-sm-and-up"
+      ></v-toolbar-side-icon>
 
       <v-menu
         v-if="isSignIn"
@@ -61,7 +79,8 @@ export default {
   name: 'Navbar',
   data () {
     return {
-      isSignIn: false
+      isSignIn: false,
+      sidedNav: false
     }
   },
   methods: {
