@@ -29,34 +29,24 @@
             grow
             flat
             v-model="model"
+            color="info"
+            dark
           >
             <v-tab
               v-for="item in ['所有启示', '寻物启示', '招领启示']"
               :key="item"
-              @click="fetchData(item)"
+              @click="toggleFilter(item)"
             >
               {{ item }}
             </v-tab>
           </v-tabs>
-          <v-tabs-items
-            v-model="model"
-          >
-            <v-tab-item
-              v-for="i in 3"
-              :key="i"
-            >
-              <v-list>
-                <v-list-tile
-                  class="elevation-2"
-                  v-for="item in 3"
-                  :key="item"
-                >
-                  <v-list-tile-content>{{ item }}</v-list-tile-content>
-                </v-list-tile>
-              </v-list>
-            </v-tab-item>
-          </v-tabs-items>
+          <!-- notice list -->
+          <!-- <NoticeList/> -->
+          <notice-list
+            :notices="notices"
+          ></notice-list>
         </v-flex>
+
         <v-flex md4 xs12 order-xs1 order-md2>4</v-flex>
       </v-layout>
     </v-container>
@@ -64,8 +54,13 @@
 </template>
 
 <script>
+import NoticeList from '@/shared/NoticeList'
+
 export default {
   name: 'Home',
+  components: {
+    NoticeList
+  },
   data () {
     return {
       gradient: 'to top right, rgba(63, 81, 181, .7), ragba(25, 32, 72, .7)',
@@ -73,12 +68,22 @@ export default {
         title: '寻找你的寻找',
         small: '一切执于对美好校园生活的凝练'
       },
-      model: null
+      model: null,
+      notices: [
+        { id: 1, title: 'test title 1', type: 'a' },
+        { id: 2, title: 'test title 2', type: 'f' },
+      ],
+      filter: 'a'
     }
   },
+  filters: {
+  },
   methods: {
-    fetchData (event) {
-      console.log(event, 'ok')
+    fetchData () {
+      // todo here
+    },
+    toggleFilter (value) {
+      console.log(value, 'ok')
     }
   }
 }
