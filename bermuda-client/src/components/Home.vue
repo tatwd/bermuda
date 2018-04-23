@@ -24,11 +24,38 @@
       <v-layout row wrap>
         <v-flex md8 xs12 order-xs2 order-md1>
           <v-tabs
-            fixed-tabs
-            dark
+            slider-color="primary"
+            slot="extension"
+            grow
+            flat
+            v-model="model"
           >
-            <v-tab v-for="i in 3" :key="i">{{ i }}</v-tab>
+            <v-tab
+              v-for="item in ['所有启示', '寻物启示', '招领启示']"
+              :key="item"
+              @click="fetchData(item)"
+            >
+              {{ item }}
+            </v-tab>
           </v-tabs>
+          <v-tabs-items
+            v-model="model"
+          >
+            <v-tab-item
+              v-for="i in 3"
+              :key="i"
+            >
+              <v-list>
+                <v-list-tile
+                  class="elevation-2"
+                  v-for="item in 3"
+                  :key="item"
+                >
+                  <v-list-tile-content>{{ item }}</v-list-tile-content>
+                </v-list-tile>
+              </v-list>
+            </v-tab-item>
+          </v-tabs-items>
         </v-flex>
         <v-flex md4 xs12 order-xs1 order-md2>4</v-flex>
       </v-layout>
@@ -45,7 +72,13 @@ export default {
       sloganMsg: {
         title: '寻找你的寻找',
         small: '一切执于对美好校园生活的凝练'
-      }
+      },
+      model: null
+    }
+  },
+  methods: {
+    fetchData (event) {
+      console.log(event, 'ok')
     }
   }
 }
