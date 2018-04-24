@@ -28,16 +28,15 @@
             slot="extension"
             grow
             flat
-            v-model="model"
             color="info"
             dark
           >
             <v-tab
-              v-for="item in ['所有启示', '寻物启示', '招领启示']"
-              :key="item"
-              @click="toggleFilter(item)"
+              v-for="item in filterArr"
+              :key="item.alias"
+              @click="toggleFilter(item.alias)"
             >
-              {{ item }}
+              {{ item.text }}
             </v-tab>
           </v-tabs>
           <!-- notice list -->
@@ -68,22 +67,40 @@ export default {
         title: '寻找你的寻找',
         small: '一切执于对美好校园生活的凝练'
       },
-      model: null,
-      notices: [
-        { id: 1, title: 'test title 1', type: 'a' },
-        { id: 2, title: 'test title 2', type: 'f' },
+      notices: null,
+      cacheData: null,
+      filterArr: [
+        { text: '所有启示', alias: 'all' },
+        { text: '寻物启示', alias: 'lost' },
+        { text: '招领启示', alias: 'found' },
       ],
       filter: 'a'
     }
   },
   filters: {
   },
+  watch: {
+  },
+  created () {
+    this.fetchData()
+  },
   methods: {
     fetchData () {
-      // todo here
+      this.notices = [
+        { id: 1, title: 'test title 1', type: 'all' },
+        { id: 2, title: 'test title 2', type: 'found' },
+        { id: 3, title: 'test title 3', type: 'lost' },
+        { id: 4, title: 'test title 4', type: 'found' },
+      ]
+      this.cacheData = this.notices
     },
     toggleFilter (value) {
-      console.log(value, 'ok')
+      if(value === 'all') {
+        this.notices = this.cacheData
+        return
+      }
+      this.notices = this.cacheData
+        .filter(x => x.type === value)
     }
   }
 }
