@@ -22,7 +22,7 @@
     </v-jumbotron>
     <v-container>
       <v-layout row wrap>
-        <v-flex md8 xs12 order-xs2 order-md1>
+        <v-flex md7 xs12 order-xs2 order-md1>
           <v-tabs
             slider-color="primary"
             slot="extension"
@@ -46,7 +46,9 @@
           ></notice-list>
         </v-flex>
 
-        <v-flex md4 xs12 order-xs1 order-md2>4</v-flex>
+        <v-flex md5 xs12 order-xs1 order-md2>
+
+        </v-flex>
       </v-layout>
     </v-container>
   </div>
@@ -86,11 +88,32 @@ export default {
   },
   methods: {
     fetchData () {
+      // init test data
       this.notices = [
-        { id: 1, title: 'test title 1', type: 'all' },
-        { id: 2, title: 'test title 2', type: 'found' },
-        { id: 3, title: 'test title 3', type: 'lost' },
-        { id: 4, title: 'test title 4', type: 'found' },
+        {
+          id: 1,
+          title: 'test title 1',
+          type: 'all',
+          img: 'https://images.pexels.com/photos/877695/pexels-photo-877695.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260'
+        },
+        {
+          id: 2,
+          title: 'test title 2',
+          type: 'found',
+          img: 'https://images.pexels.com/photos/837500/pexels-photo-837500.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260'
+        },
+        {
+          id: 3,
+          title: 'test title 3',
+          type: 'lost',
+          img: 'https://images.pexels.com/photos/1025585/pexels-photo-1025585.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260'
+        },
+        {
+          id: 4,
+          title: 'test title 4',
+          type: 'found',
+          img: 'https://images.pexels.com/photos/1023949/pexels-photo-1023949.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260'
+        },
       ]
       this.cacheData = this.notices
     },

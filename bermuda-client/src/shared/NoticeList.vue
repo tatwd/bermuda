@@ -11,12 +11,14 @@
         <v-layout row wrap>
           <v-flex xs3>
             <v-card-media
-              src="https://images.pexels.com/photos/877695/pexels-photo-877695.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260"
+              :src="notice.img"
               height="128px"
             ></v-card-media>
           </v-flex>
           <v-flex xs9>
-            <v-card-title>{{ notice.title }}</v-card-title>
+            <v-card-title>
+              {{ notice.title }}
+            </v-card-title>
             <v-card-actions>action</v-card-actions>
           </v-flex>
         </v-layout>
