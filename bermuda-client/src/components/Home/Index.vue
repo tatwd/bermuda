@@ -22,6 +22,9 @@
     </v-jumbotron>
     <v-container>
       <v-layout row wrap>
+        <v-flex md12 xs12>
+          <HotTopics/>
+        </v-flex>
         <v-flex md7 xs12 order-xs2 order-md1>
           <v-tabs
             slider-color="primary"
@@ -56,11 +59,13 @@
 
 <script>
 import NoticeList from '@/shared/NoticeList'
+import HotTopics from './HotTopics'
 
 export default {
-  name: 'Home',
+  name: 'HomeIndex',
   components: {
-    NoticeList
+    NoticeList,
+    HotTopics
   },
   data () {
     return {

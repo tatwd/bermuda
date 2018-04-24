@@ -2,7 +2,7 @@ import Vue from 'vue'
 import Router from 'vue-router'
 
 // import Example from '@/components/Example'
-import Home from '@/components/Home'
+import HomeIndex from '@/components/Home/Index'
 
 Vue.use(Router)
 
@@ -10,8 +10,8 @@ export default new Router({
   routes: [
     {
       path: '/',
-      name: 'Home',
-      component: Home
+      name: 'HomeIndex',
+      component: HomeIndex
     }
   ],
   mode: 'hash'
