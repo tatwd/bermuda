@@ -7,7 +7,7 @@
         <!-- <img src="./assets/logo.png"> -->
         <router-view/>
       </v-content>
-      <v-footer app>footer</v-footer>
+      <v-footer>footer</v-footer>
     </v-app>
   </div>
 </template>

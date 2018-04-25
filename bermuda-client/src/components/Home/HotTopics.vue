@@ -34,11 +34,23 @@ export default {
     return {}
   },
   created () {
-    // console.log(cardSlider)
-    // cardSlider({
-    //   element: document.querySelector('.hot-topics__slider'),
 
-    // })
+    // add DOMContentLoaded for document
+    document.addEventListener('DOMContentLoaded', () => {
+      const hotTopicSlider = document.querySelector('.hot-topics__slider')
+      const x = 176
+      console.log(
+
+      )
+      cardSlider({
+        element: hotTopicSlider,
+        duration: .5,
+        trans: { x:  x},
+        interval: 3000,
+        timing: 'ease-in-out'
+      })
+    })
+
   }
 }
 </script>
