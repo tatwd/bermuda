@@ -24,7 +24,7 @@
     <v-container>
       <v-layout row wrap>
         <v-flex md12 xs12>
-          <HotTopics/>
+          <HotTopic/>
         </v-flex>
         <v-flex md7 xs12 order-xs2 order-md1>
           <v-tabs
@@ -60,13 +60,13 @@
 
 <script>
 import NoticeList from '@/shared/NoticeList'
-import HotTopics from './HotTopics'
+import HotTopic from './HotTopic'
 
 export default {
   name: 'HomeIndex',
   components: {
     NoticeList,
-    HotTopics
+    HotTopic
   },
   data () {
     return {

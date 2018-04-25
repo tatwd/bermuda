@@ -1,6 +1,6 @@
 <template>
-  <div id="hot-topics">
-    <v-layout class="hot-topics__slider pb-5" row>
+  <div id="hot-topic">
+    <v-layout class="hot-topic__slider pb-5" row>
       <v-flex
         v-for="i in 10"
         :key="i"
@@ -14,7 +14,7 @@
             <v-container fill-height fluid>
               <v-layout fill-height>
                 <v-flex x12 align-end flexbox>
-                  <span>hot topic {{ i }}</span>
+                  <span>{{ i }} topic title</span>
                 </v-flex>
               </v-layout>
             </v-container>
@@ -29,7 +29,7 @@
 import cardSlider from '@/assets/js/card-slider'
 
 export default {
-  name: 'HotTopics',
+  name: 'HotTopic',
   data () {
     return {}
   },
@@ -37,15 +37,10 @@ export default {
 
     // add DOMContentLoaded for document
     document.addEventListener('DOMContentLoaded', () => {
-      const hotTopicSlider = document.querySelector('.hot-topics__slider')
-      const x = 176
-      console.log(
-
-      )
       cardSlider({
-        element: hotTopicSlider,
+        element: document.querySelector('#hot-topic .hot-topic__slider'),
         duration: .5,
-        trans: { x:  x},
+        trans: { x:  176},
         interval: 3000,
         timing: 'ease-in-out'
       })
@@ -56,7 +51,7 @@ export default {
 </script>
 
 <style scoped>
-#hot-topics {
+#hot-topic {
   overflow: hidden;
 }
 </style>
