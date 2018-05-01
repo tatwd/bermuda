@@ -1,0 +1,57 @@
+<template>
+  <div id="hot-topic">
+    <v-layout class="hot-topic__slider pb-5" row>
+      <v-flex
+        v-for="i in 10"
+        :key="i"
+        class="mr-3"
+      >
+        <v-card width="160px">
+          <v-card-media
+            height="220px"
+            src="https://images.pexels.com/photos/556903/pexels-photo-556903.jpeg?auto=compress&cs=tinysrgb&h=350"
+          >
+            <v-container fill-height fluid>
+              <v-layout fill-height>
+                <v-flex x12 align-end flexbox>
+                  <span>{{ i }} topic title</span>
+                </v-flex>
+              </v-layout>
+            </v-container>
+          </v-card-media>
+        </v-card>
+      </v-flex>
+    </v-layout>
+  </div>
+</template>
+
+<script>
+import cardSlider from '@/assets/js/card-slider'
+
+export default {
+  name: 'HotTopic',
+  data () {
+    return {}
+  },
+  created () {
+
+    // add DOMContentLoaded for document
+    document.addEventListener('DOMContentLoaded', () => {
+      cardSlider({
+        element: document.querySelector('#hot-topic .hot-topic__slider'),
+        duration: .5,
+        trans: { x:  176},
+        interval: 3000,
+        timing: 'ease-in-out'
+      })
+    })
+
+  }
+}
+</script>
+
+<style scoped>
+#hot-topic {
+  overflow: hidden;
+}
+</style>
