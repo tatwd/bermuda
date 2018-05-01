@@ -1,6 +1,9 @@
 ﻿namespace Bermuda.Dal.Dao
 {
-    interface IBmdUserDao
+    using Model;
+
+    public interface IBmdUserDao : IBaseDao<BmdUser>
     {
+        string Show();
     }
 }

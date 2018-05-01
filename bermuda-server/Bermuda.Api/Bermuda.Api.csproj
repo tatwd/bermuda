@@ -118,6 +118,7 @@
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Controllers\TestController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -135,8 +136,21 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Controllers\" />
     <Folder Include="Models\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Bermuda.Bll\Bermuda.Bll.csproj">
+      <Project>{61ecbf39-cd01-4b96-ba77-f5d2a8f49324}</Project>
+      <Name>Bermuda.Bll</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Bermuda.Dal\Bermuda.Dal.csproj">
+      <Project>{9a6660ab-3d04-4c59-b05c-1fb851cd46e6}</Project>
+      <Name>Bermuda.Dal</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Bermuda.Model\Bermuda.Model.csproj">
+      <Project>{b41edce8-79ce-45e0-b93d-e0e54e1fdd09}</Project>
+      <Name>Bermuda.Model</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

@@ -1,12 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Bermuda.Dal.Dao
+﻿namespace Bermuda.Dal.Dao
 {
-    class DaoFactory
+    public class DaoFactory<T> 
+        where T : class, new()
     {
+        // get IxxxDao i.e. IBmdUserDao
+        //public static object 
     }
 }

@@ -41,6 +41,19 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Service\BaseService.cs" />
+    <Compile Include="Service\BmdUser\BmdUserService.cs" />
+    <Compile Include="Service\BmdUser\IBmdUserService.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Bermuda.Dal\Bermuda.Dal.csproj">
+      <Project>{9a6660ab-3d04-4c59-b05c-1fb851cd46e6}</Project>
+      <Name>Bermuda.Dal</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Bermuda.Model\Bermuda.Model.csproj">
+      <Project>{b41edce8-79ce-45e0-b93d-e0e54e1fdd09}</Project>
+      <Name>Bermuda.Model</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
