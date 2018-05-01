@@ -50,6 +50,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Context\DbContextFactory.cs" />
+    <Compile Include="Dao\BaseDao.cs" />
+    <Compile Include="Dao\BmdUser\BmdUserDao.cs" />
+    <Compile Include="Dao\BmdUser\IBmdUserDao.cs" />
+    <Compile Include="Dao\DaoFactory.cs" />
+    <Compile Include="Dao\IBaseDao.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

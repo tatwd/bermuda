@@ -4,7 +4,7 @@
     using System.Runtime.Remoting.Messaging;
     using Model;
 
-    class DbContextFactory
+    public class DbContextFactory
     {
         const string CONTEXT_KEY = "BmdDbContext";
 
