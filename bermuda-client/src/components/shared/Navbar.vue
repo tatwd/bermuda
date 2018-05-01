@@ -16,7 +16,7 @@
 
     <v-toolbar app>
       <v-avatar size="64">
-        <img src="../assets/bmd-logo.svg" alt="logo">
+        <img src="@/assets/bmd-logo.svg" alt="logo">
       </v-avatar>
       <v-toolbar-title>
         <h3>
@@ -52,7 +52,7 @@
         full-width
       >
         <v-avatar slot="activator" size="40">
-            <img src="../assets/avatar-tmp.svg" alt="avatar">
+            <img src="@/assets/avatar-tmp.svg" alt="avatar">
           </v-avatar>
         <v-list>
           <v-list-tile

@@ -44,7 +44,6 @@
             </v-tab>
           </v-tabs>
           <!-- notice list -->
-          <!-- <NoticeList/> -->
           <notice-list
             :notices="notices"
           ></notice-list>
@@ -59,11 +58,11 @@
 </template>
 
 <script>
-import NoticeList from '@/shared/NoticeList'
-import HotTopic from './HotTopic'
+import NoticeList from '@/components/shared/NoticeList'
+import HotTopic from '@/components/home/HotTopic'
 
 export default {
-  name: 'HomeIndex',
+  // name: 'Home',
   components: {
     NoticeList,
     HotTopic

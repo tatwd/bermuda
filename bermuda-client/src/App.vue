@@ -13,7 +13,7 @@
 </template>
 
 <script>
-import Navbar from './shared/Navbar'
+import Navbar from './components/shared/Navbar'
 
 export default {
   name: 'App',
