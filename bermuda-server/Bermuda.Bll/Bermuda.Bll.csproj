@@ -42,8 +42,11 @@
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Service\BaseService.cs" />
+    <Compile Include="Service\BmdNotice\BmdNoticeService.cs" />
+    <Compile Include="Service\BmdNotice\IBmdNoticeService.cs" />
     <Compile Include="Service\BmdUser\BmdUserService.cs" />
     <Compile Include="Service\BmdUser\IBmdUserService.cs" />
+    <Compile Include="Service\IBaseService.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Bermuda.Dal\Bermuda.Dal.csproj">

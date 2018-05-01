@@ -3,8 +3,8 @@
     using Dal.Dao;
     using Model;
 
-    public class BmdUserService 
-        : BaseService<BmdUser, IBmdUserDao>, IBmdUserService
+    public class BmdNoticeService
+        : BaseService<BmdNotice, IBmdNoticeDao>, IBmdNoticeService
     {
         public static string ShowMsg()
         {

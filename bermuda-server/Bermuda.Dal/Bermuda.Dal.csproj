@@ -51,6 +51,8 @@
   <ItemGroup>
     <Compile Include="Context\DbContextFactory.cs" />
     <Compile Include="Dao\BaseDao.cs" />
+    <Compile Include="Dao\BmdNotice\BmdNoticeDao.cs" />
+    <Compile Include="Dao\BmdNotice\IBmdNoticeDao.cs" />
     <Compile Include="Dao\BmdUser\BmdUserDao.cs" />
     <Compile Include="Dao\BmdUser\IBmdUserDao.cs" />
     <Compile Include="Dao\DaoFactory.cs" />

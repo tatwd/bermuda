@@ -6,10 +6,14 @@ namespace Bermuda.Api.Controllers
 
     public class TestController : ApiController
     {
-        [HttpGet]
-        public string Get()
+        public string BmdUserMsgGet()
         {
             return BmdUserService.ShowMsg();
+        }
+
+        public string BmdNoticeMsgGet()
+        {
+            return BmdNoticeService.ShowMsg();
         }
     }
 }

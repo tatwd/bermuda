@@ -1,9 +1,16 @@
 ﻿namespace Bermuda.Dal.Dao
 {
-    public class DaoFactory<T> 
-        where T : class, new()
+    using System;
+
+    // 可以利用单利模式
+    public class DaoFactory
     {
-        // get IxxxDao i.e. IBmdUserDao
-        //public static object 
+        public static IBaseDao<T> GetDao<T>()
+            where T : class, new()
+        {
+            string className = String.Format("Bermuda.Dal.Dao.{0}Dao", typeof(T).Name);
+            Type type = Type.GetType(className);
+            return (IBaseDao<T>)Activator.CreateInstance(type);
+        }
     }
 }

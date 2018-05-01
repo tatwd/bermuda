@@ -2,7 +2,7 @@
 {
     using Model;
 
-    public interface IBmdUserService : IBaseService<BmdUser>
+    public interface IBmdNoticeService : IBaseService<BmdNotice>
     {
     }
 }
