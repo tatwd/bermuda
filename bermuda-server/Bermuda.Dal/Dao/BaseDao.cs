@@ -2,9 +2,10 @@
 {
     using Context;
     using System;
+    using System.Data.Entity;
+    using System.Data.Entity.Migrations;
     using System.Linq;
     using System.Linq.Expressions;
-    using System.Data.Entity;
 
     public abstract class BaseDao<T>
         where T : class, new()
@@ -27,6 +28,58 @@
             }
 
             return query;
+        }
+
+        public void Delete(T entity)
+        {
+            try
+            {
+                context.Set<T>().Remove(entity);
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+            }
+        }
+
+        public void Update(T entity)
+        {
+            try
+            {
+                context.Set<T>().AddOrUpdate();
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+            }
+        }
+
+        public void Insert(T entity)
+        {
+            try
+            {
+                context.Set<T>().Add(entity);
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+            }
+        }
+
+        public bool SaveChanges()
+        {
+            bool isSuccessed = false;
+
+            try
+            {
+                isSuccessed = context.SaveChanges() > 0;
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+            }
+
+            return isSuccessed;
         }
     }
 }
