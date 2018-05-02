@@ -10,11 +10,11 @@ namespace Bermuda.Api.Controllers.Tests
         {
             TestController testCtrl = new TestController();
 
-            var getUser = testCtrl.BmdUserMsgGet();
-            var getNotice = testCtrl.BmdNoticeMsgGet();
+            var getUserMsg = testCtrl.BmdUserMsgGet();
+            var getNoticeMsg = testCtrl.BmdNoticeMsgGet();
 
-            Assert.AreEqual("Hello BmdUser DAO!", getUser);
-            Assert.AreEqual("Hello BmdNotice DAO!", getNotice);
+            Assert.AreEqual("Hello BmdUser DAO!", getUserMsg);
+            Assert.AreEqual("Hello BmdNotice DAO!", getNoticeMsg);
         }
     }
 }
