@@ -47,6 +47,7 @@
     <Compile Include="Service\BmdUser\BmdUserService.cs" />
     <Compile Include="Service\BmdUser\IBmdUserService.cs" />
     <Compile Include="Service\IBaseService.cs" />
+    <Compile Include="Service\ServiceFactory.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Bermuda.Dal\Bermuda.Dal.csproj">
