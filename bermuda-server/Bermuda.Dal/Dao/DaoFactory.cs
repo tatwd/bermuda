@@ -2,15 +2,32 @@
 {
     using System;
 
-    // 可以利用单利模式
-    public class DaoFactory
+    // 使用单利模式按需获取实例
+    public sealed class DaoFactory<T>
+        where T : class, new()
     {
-        public static IBaseDao<T> GetDao<T>()
-            where T : class, new()
+        DaoFactory() { }
+
+        public static IBaseDao<T> DaoInstance
         {
-            string className = String.Format("Bermuda.Dal.Dao.{0}Dao", typeof(T).Name);
-            Type type = Type.GetType(className);
-            return (IBaseDao<T>)Activator.CreateInstance(type);
+            get
+            {
+                return Nested.instance;
+            }
+        }
+
+        class Nested
+        {
+            static Nested() { }
+
+            internal static readonly IBaseDao<T> instance = GetNestedInstance();
+
+            static IBaseDao<T> GetNestedInstance()
+            {
+                string className = String.Format("Bermuda.Dal.Dao.{0}Dao", typeof(T).Name);
+                Type type = Type.GetType(className);
+                return (IBaseDao<T>)Activator.CreateInstance(type);
+            }
         }
     }
 }
