@@ -32,54 +32,22 @@
 
         public void Delete(T entity)
         {
-            try
-            {
-                context.Set<T>().Remove(entity);
-            }
-            catch (Exception e)
-            {
-                Console.WriteLine(e.Message);
-            }
+            context.Set<T>().Remove(entity);
         }
 
         public void Update(T entity)
         {
-            try
-            {
-                context.Set<T>().AddOrUpdate();
-            }
-            catch (Exception e)
-            {
-                Console.WriteLine(e.Message);
-            }
+            context.Set<T>().AddOrUpdate();
         }
 
         public void Insert(T entity)
         {
-            try
-            {
-                context.Set<T>().Add(entity);
-            }
-            catch (Exception e)
-            {
-                Console.WriteLine(e.Message);
-            }
+            context.Set<T>().Add(entity);
         }
 
         public bool SaveChanges()
         {
-            bool isSuccessed = false;
-
-            try
-            {
-                isSuccessed = context.SaveChanges() > 0;
-            }
-            catch (Exception e)
-            {
-                Console.WriteLine(e.Message);
-            }
-
-            return isSuccessed;
+            return context.SaveChanges() > 0;
         }
     }
 }
