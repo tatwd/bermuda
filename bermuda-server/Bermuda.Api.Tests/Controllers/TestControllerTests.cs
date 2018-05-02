@@ -13,6 +13,7 @@ namespace Bermuda.Api.Controllers.Tests
         public void GetTest()
         {
             var getUserMsg = testCtrl.BmdUserMsgGet();
+            var getUserMsg1 = testCtrl.BmdUserMsgGet();
             var getNoticeMsg = testCtrl.BmdNoticeMsgGet();
 
             Assert.AreEqual("Hello BmdUser DAO!", getUserMsg);

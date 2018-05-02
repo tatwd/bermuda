@@ -7,12 +7,12 @@
     public class BmdUserService 
         : BaseService<BmdUser, IBmdUserDao>, IBmdUserService
     {
-        public static string ShowMsg()
+        public string ShowMsg()
         {
             return idao.Show();
         }
 
-        public static BmdUser GetUserById(long id)
+        public BmdUser GetUserById(long id)
         {
             return idao.Select(x => x.Id == id).FirstOrDefault();
         }

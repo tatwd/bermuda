@@ -8,16 +8,19 @@ namespace Bermuda.Api.Controllers
 
     public class TestController : ApiController
     {
+        IBmdUserService iuser = ServiceFactory<IBmdUserService>.ServiceInstance;
+        IBmdNoticeService inotice = ServiceFactory<IBmdNoticeService>.ServiceInstance;
+
         static Cache testCache = new Cache();
 
         public string BmdUserMsgGet()
         {
-            return BmdUserService.ShowMsg();
+            return iuser.ShowMsg();
         }
 
         public string BmdNoticeMsgGet()
         {
-            return BmdNoticeService.ShowMsg();
+            return inotice.ShowMsg();
         }
 
         [HttpGet]
@@ -26,7 +29,7 @@ namespace Bermuda.Api.Controllers
         {
             if (testCache[id.ToString()] == null)
             {
-                var user = BmdUserService.GetUserById(id);
+                var user = iuser.GetUserById(id);
                 if (user != null)
                     testCache.Insert(id.ToString(), user);
                 return user;

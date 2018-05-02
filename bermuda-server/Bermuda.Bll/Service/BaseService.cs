@@ -1,6 +1,7 @@
 ﻿namespace Bermuda.Bll.Service
 {
     using Dal.Dao;
+    using System;
 
     public abstract class BaseService<S, T>
         where S : class, new()
