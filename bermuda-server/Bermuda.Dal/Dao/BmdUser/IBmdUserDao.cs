@@ -4,6 +4,8 @@
 
     public interface IBmdUserDao : IBaseDao<BmdUser>
     {
+        // add native methods here
+
         string Show();
     }
 }

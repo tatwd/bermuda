@@ -4,6 +4,8 @@
 
     public interface IBmdUserService : IBaseService<BmdUser>
     {
+        // add native methods here
+
         string ShowMsg();
         BmdUser GetUserById(long id);
     }

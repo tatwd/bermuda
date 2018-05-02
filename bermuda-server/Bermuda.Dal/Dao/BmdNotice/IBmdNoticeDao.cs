@@ -4,6 +4,8 @@
 
     public interface IBmdNoticeDao : IBaseDao<BmdNotice>
     {
+        // add native methods here
+
         string Show();
     }
 }

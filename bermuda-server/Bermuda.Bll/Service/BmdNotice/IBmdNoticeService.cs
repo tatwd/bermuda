@@ -4,6 +4,8 @@
 
     public interface IBmdNoticeService : IBaseService<BmdNotice>
     {
+        // add native methods here
+
         string ShowMsg();
     }
 }
