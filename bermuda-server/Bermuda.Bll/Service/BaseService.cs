@@ -13,5 +13,7 @@
                 return (T)DaoFactory<S>.DaoInstance;
             }
         }
+
+        // other services here
     }
 }

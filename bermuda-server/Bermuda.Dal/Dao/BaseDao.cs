@@ -20,9 +20,10 @@
                 // context.Configuration.ProxyCreationEnabled = false;
                 query = context.Set<T>().Where(whereLambda);
             }
-            catch (Exception)
+            catch (Exception e)
             {
-                query = null;
+                Console.WriteLine(e.Message);
+                query = default(IQueryable<T>);
             }
 
             return query;
