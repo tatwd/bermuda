@@ -3,21 +3,14 @@
     using System;
 
     // 使用单利模式按需获取实例
-    public sealed class ServiceFactory<T> 
-        where T : class
+    public sealed class ServiceFactory
     {
-
-        ServiceFactory() { }
-
-        public static T ServiceInstance
+        public static T Get<T>() where T : class
         {
-            get
-            {
-                return Nested.instance;
-            }
+            return Nested<T>.instance;
         }
 
-        class Nested
+        class Nested<T> where T : class
         {
             static Nested() { }
 

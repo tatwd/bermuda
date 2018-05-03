@@ -3,20 +3,16 @@
     using System;
 
     // 使用单利模式按需获取实例
-    public sealed class DaoFactory<T>
-        where T : class, new()
+    public sealed class DaoFactory
     {
-        DaoFactory() { }
-
-        public static IBaseDao<T> DaoInstance
+        public static IBaseDao<T> Get<T>()
+            where T : class, new()
         {
-            get
-            {
-                return Nested.instance;
-            }
+            return Nested<T>.instance;
         }
 
-        class Nested
+        class Nested<T>
+            where T : class, new()
         {
             static Nested() { }
 

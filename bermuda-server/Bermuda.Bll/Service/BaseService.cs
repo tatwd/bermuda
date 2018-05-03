@@ -9,10 +9,7 @@
     {
         protected static T idao
         {
-            get
-            {
-                return (T)DaoFactory<S>.DaoInstance;
-            }
+            get { return (T)DaoFactory.Get<S>(); }
         }
 
         // other services here
