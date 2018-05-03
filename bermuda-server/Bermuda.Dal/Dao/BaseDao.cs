@@ -37,7 +37,7 @@
 
         public void Update(T entity)
         {
-            context.Set<T>().AddOrUpdate();
+            context.Set<T>().AddOrUpdate(entity);
         }
 
         public void Insert(T entity)

@@ -4,5 +4,7 @@
         where T : class, new()
     {
         // 基本业务
+
+        bool Update(T entity);
     }
 }

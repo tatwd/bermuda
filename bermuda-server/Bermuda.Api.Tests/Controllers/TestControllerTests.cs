@@ -1,4 +1,5 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using Bermuda.Api.Controllers;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace Bermuda.Api.Controllers.Tests
 {
@@ -28,6 +29,21 @@ namespace Bermuda.Api.Controllers.Tests
 
             Assert.IsNotNull(user1);
             Assert.IsNotNull(user2);
+        }
+
+        [TestMethod()]
+        public void UpdateUserTest()
+        {
+            var user = testCtrl.GetBmdUserById(10001);
+
+            Assert.IsNotNull(user);
+
+            user.Name = "test";
+            user.Pwd = "test123";
+
+            var isSuccessed = testCtrl.UpdateUser(user);
+
+            Assert.IsTrue(isSuccessed);
         }
     }
 }

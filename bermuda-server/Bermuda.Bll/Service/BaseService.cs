@@ -16,5 +16,11 @@
         }
 
         // other services here
+
+        public bool Update(S entity)
+        {
+            idao.Update(entity);
+            return idao.SaveChanges();
+        }
     }
 }

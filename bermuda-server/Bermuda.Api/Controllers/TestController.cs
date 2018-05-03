@@ -36,6 +36,18 @@ namespace Bermuda.Api.Controllers
             }
 
             return (BmdUser)testCache.Get(id.ToString());
-        } 
+        }
+
+        public bool UpdateUser(BmdUser newUser)
+        {
+            bool isSuccessed = iuser.Update(newUser);
+
+            if (isSuccessed)
+            {
+                testCache[newUser.Id.ToString()] = newUser;
+            }
+
+            return isSuccessed;
+        }
     }
 }
