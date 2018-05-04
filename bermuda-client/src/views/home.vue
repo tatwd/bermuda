@@ -50,7 +50,8 @@
         </v-flex>
 
         <v-flex md5 xs12 order-xs1 order-md2>
-
+          <HotSpecies/>
+          <TopUsers/>
         </v-flex>
       </v-layout>
     </v-container>
@@ -60,12 +61,16 @@
 <script>
 import NoticeList from '@/components/shared/NoticeList'
 import HotTopics from '@/components/home/HotTopics'
+import HotSpecies from '@/components/home/HotSpecies'
+import TopUsers from '@/components/home/TopUsers'
 
 export default {
   // name: 'Home',
   components: {
     NoticeList,
-    HotTopics
+    HotTopics,
+    HotSpecies,
+    TopUsers
   },
   data () {
     return {
