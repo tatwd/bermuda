@@ -5,10 +5,12 @@
     // 使用单利模式按需获取实例
     public sealed class ServiceFactory
     {
+        private ServiceFactory() { }
+
         public static T Get<T>() where T : class 
             => Nested<T>.instance;
 
-        class Nested<T> where T : class
+        private class Nested<T> where T : class
         {
             static Nested() { }
 
