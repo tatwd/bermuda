@@ -11,7 +11,7 @@ namespace Bermuda.Api.Controllers
         IBmdUserService iuser = ServiceFactory.Get<IBmdUserService>();
         IBmdNoticeService inotice = ServiceFactory.Get<IBmdNoticeService>();
 
-        static Cache testCache = new Cache();
+        Cache testCache = new Cache();
 
         public string BmdUserMsgGet()
         {

@@ -44,6 +44,8 @@ namespace Bermuda.Api.Controllers.Tests
             var isSuccessed = testCtrl.UpdateUser(user);
 
             Assert.IsTrue(isSuccessed);
+
+            user = testCtrl.GetBmdUserById(10001);
         }
     }
 }
