@@ -7,10 +7,9 @@
     using System.Linq;
     using System.Linq.Expressions;
 
-    public abstract class BaseDao<T>
-        where T : class, new()
+    public abstract class BaseDao<T> where T : class, new()
     {
-        DbContext context = DbContextFactory.GetDbContext();
+        protected DbContext context = DbContextFactory.GetDbContext();
 
         public IQueryable<T> Select(Expression<Func<T, bool>> whereLambda)
         {

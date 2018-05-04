@@ -1,10 +1,13 @@
-﻿using System.Web.Http;
-
-namespace Bermuda.Api.Controllers
+﻿namespace Bermuda.Api.Controllers
 {
     using Bll.Service;
     using Model;
+    using System;
+    using System.Collections;
+    using System.Collections.Generic;
+    using System.Linq;
     using System.Web.Caching;
+    using System.Web.Http;
 
     public class TestController : ApiController
     {
@@ -51,6 +54,41 @@ namespace Bermuda.Api.Controllers
             }
 
             return isSuccessed;
+        }
+
+
+        [HttpGet]
+        [Route("api/notices/{pageIndex}")]
+        public IList<BmdNotice> GetNoticeList(int pageIndex)
+        {
+            const string KEY = "HomeNotices";
+            const int SIZE = 5;
+
+            if (testCache[KEY] == null)
+            {
+                Hashtable map = new Hashtable();
+
+                var notices = inotice.GetNoticeByPage(SIZE, pageIndex, x => x.Id, x => x.Status == 0).ToList();
+                map.Add(pageIndex, notices);
+
+                if(notices != null)
+                    testCache.Insert(KEY, map);
+
+                return notices;
+            } 
+            else
+            {
+                var map = testCache[KEY] as Hashtable;
+                bool isContainsKey = map.ContainsKey(pageIndex);
+
+                if (!isContainsKey)
+                {
+                    var notices = inotice.GetNoticeByPage(SIZE, pageIndex, x => x.Id, x => x.Status == 0).ToList();
+                    map.Add(pageIndex, notices);
+                    return notices;
+                }
+                return map[pageIndex] as IList<BmdNotice>;
+            }
         }
     }
 }

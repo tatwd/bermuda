@@ -47,5 +47,14 @@ namespace Bermuda.Api.Controllers.Tests
 
             user = testCtrl.GetBmdUserById(10001);
         }
+
+        [TestMethod()]
+        public void GetNoticeListTest()
+        {
+            var notices = testCtrl.GetNoticeList(1);
+
+            Assert.IsNotNull(notices);
+            Assert.AreEqual(2, notices.Count);
+        }
     }
 }
