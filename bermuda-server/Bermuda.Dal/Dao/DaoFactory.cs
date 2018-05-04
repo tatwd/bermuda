@@ -5,11 +5,9 @@
     // 使用单利模式按需获取实例
     public sealed class DaoFactory
     {
-        public static IBaseDao<T> Get<T>()
+        public static IBaseDao<T> Get<T>() 
             where T : class, new()
-        {
-            return Nested<T>.instance;
-        }
+            => Nested<T>.instance;
 
         class Nested<T>
             where T : class, new()
