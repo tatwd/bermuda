@@ -1,6 +1,6 @@
 <template>
-  <div id="hot-topic">
-    <v-layout class="hot-topic__slider pb-5" row>
+  <div id="hot-topics">
+    <v-layout class="hot-topics__slider pb-5" row>
       <v-flex
         v-for="i in 10"
         :key="i"
@@ -29,7 +29,7 @@
 import cardSlider from '@/assets/js/card-slider'
 
 export default {
-  name: 'HotTopic',
+  name: 'HotTopics',
   data () {
     return {}
   },
@@ -38,7 +38,7 @@ export default {
     // add DOMContentLoaded for document
     document.addEventListener('DOMContentLoaded', () => {
       cardSlider({
-        element: document.querySelector('#hot-topic .hot-topic__slider'),
+        element: document.querySelector('#hot-topics .hot-topics__slider'),
         duration: .5,
         trans: { x:  176},
         interval: 3000,
@@ -51,7 +51,7 @@ export default {
 </script>
 
 <style scoped>
-#hot-topic {
+#hot-topics {
   overflow: hidden;
 }
 </style>

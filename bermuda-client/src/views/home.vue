@@ -24,7 +24,7 @@
     <v-container>
       <v-layout row wrap>
         <v-flex md12 xs12>
-          <HotTopic/>
+          <HotTopics/>
         </v-flex>
         <v-flex md7 xs12 order-xs2 order-md1>
           <v-tabs
@@ -59,13 +59,13 @@
 
 <script>
 import NoticeList from '@/components/shared/NoticeList'
-import HotTopic from '@/components/home/HotTopic'
+import HotTopics from '@/components/home/HotTopics'
 
 export default {
   // name: 'Home',
   components: {
     NoticeList,
-    HotTopic
+    HotTopics
   },
   data () {
     return {
