@@ -1,8 +1,6 @@
 <template>
   <div class="notice-list">
     <v-card
-      color="cyan"
-      dark
       v-for="notice in notices"
       :key="notice.id"
       class="mb-3"

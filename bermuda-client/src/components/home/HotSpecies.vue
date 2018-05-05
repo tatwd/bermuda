@@ -5,7 +5,7 @@
   >
     <v-card>
       <v-card-title>
-        <v-icon color="primary">label</v-icon>
+        <v-icon color="primary">bookmark</v-icon>
         <span class="ml-2">{{ example }}</span>
       </v-card-title>
       <v-card-text>

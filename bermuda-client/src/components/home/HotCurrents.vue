@@ -1,8 +1,8 @@
 <template>
-  <div id="top-users" class="ml-4 mt-4">
+  <div id="hot-currents" class="ml-4 mt-4">
     <v-card>
       <v-card-title>
-        <v-icon color="primary">assessment</v-icon>
+        <v-icon color="primary">whatshot</v-icon>
         <span class="ml-2">{{ example }}</span>
       </v-card-title>
     </v-card>
@@ -11,10 +11,10 @@
 
 <script>
 export default {
-  name: 'TopUsers',
+  name: 'HotCurrents',
   data () {
     return {
-      example: '百慕达人'
+      example: '热门动态'
     }
   }
 }

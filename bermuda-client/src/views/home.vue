@@ -32,13 +32,12 @@
             slot="extension"
             grow
             flat
-            color="info"
-            dark
           >
             <v-tab
               v-for="item in filterArr"
               :key="item.alias"
               @click="toggleFilter(item.alias)"
+              class="black--text"
             >
               {{ item.text }}
             </v-tab>
@@ -50,6 +49,7 @@
         </v-flex>
         <v-flex md5 xs12 order-xs1 order-md2>
           <HotSpecies/>
+          <HotCurrents/>
           <TopUsers/>
         </v-flex>
       </v-layout>
@@ -61,6 +61,7 @@
 import NoticeList from '@/components/shared/NoticeList'
 import HotTopics from '@/components/home/HotTopics'
 import HotSpecies from '@/components/home/HotSpecies'
+import HotCurrents from '@/components/home/HotCurrents'
 import TopUsers from '@/components/home/TopUsers'
 
 export default {
@@ -69,6 +70,7 @@ export default {
     NoticeList,
     HotTopics,
     HotSpecies,
+    HotCurrents,
     TopUsers
   },
   data () {
