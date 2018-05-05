@@ -16,8 +16,11 @@ namespace Bermuda.Api.Controllers.Tests
         public void GetTest()
         {
             IHttpActionResult res = home.Get();
-            Assert.IsNotNull(res);
-            //Assert.IsNotNull(res as JsonResult<Hashtable>);
+            JsonResult<object> json = res as JsonResult<object>;
+            Hashtable mapHome = json.Content as Hashtable;
+
+            Assert.IsNotNull(mapHome);
+            Assert.IsNotNull(mapHome["home_hot_topics"]);
         }
     }
 }
