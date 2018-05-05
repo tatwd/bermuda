@@ -14,6 +14,8 @@ namespace Bermuda.Api.Controllers
         IBmdTopicService iservice = ServiceFactory.Get<IBmdTopicService>();
         Cache cache = new Cache();
 
+        const string HOST_URL = "http://localhost:53595";
+
         // GET api/<controller>
         public IHttpActionResult Get()
         {
@@ -35,7 +37,7 @@ namespace Bermuda.Api.Controllers
                     {
                         Id = item.Id,
                         Name = item.Name,
-                        Img = item.Img
+                        Img = HOST_URL + item.Img
                     };
                     vm.HotTopics.Add(hotTopicVm);
                 }
