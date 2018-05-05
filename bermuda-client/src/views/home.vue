@@ -48,7 +48,6 @@
             :notices="notices"
           ></notice-list>
         </v-flex>
-
         <v-flex md5 xs12 order-xs1 order-md2>
           <HotSpecies/>
           <TopUsers/>
