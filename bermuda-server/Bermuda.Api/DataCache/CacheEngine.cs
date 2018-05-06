@@ -20,12 +20,15 @@ namespace Bermuda.Api.DataCache
             {
                 T t = func();
 
-                // 滑动过期时间缓存，10s 没有缓存就过期
+                // 滑动过期时间缓存，10s 没用缓存就过期
                 dataCache.Insert(key, t, null, Cache.NoAbsoluteExpiration, TimeSpan.FromSeconds(10));
             }
             return (T)dataCache[key];
         }
 
+        /// <summary>
+        /// 清除缓存
+        /// </summary>
         public static void ClearCache()
         {
             var dict = dataCache.GetEnumerator();
