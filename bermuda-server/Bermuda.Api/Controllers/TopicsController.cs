@@ -5,7 +5,6 @@ using Bermuda.Common;
 using Bermuda.Model;
 using System.Collections.Generic;
 using System.Linq;
-using System.Web.Caching;
 using System.Web.Http;
 
 namespace Bermuda.Api.Controllers

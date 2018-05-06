@@ -7,14 +7,34 @@ namespace Bermuda.Api.DataCache
     {
         private static Cache dataCache = new Cache();
 
+        /// <summary>
+        /// 获取缓存数据
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="key"></param>
+        /// <param name="func"></param>
+        /// <returns></returns>
         public static T GetData<T>(string key, Func<T> func)
         {
             if(dataCache[key] == null)
             {
                 T t = func();
-                dataCache.Insert(key, t);
+
+                // 滑动过期时间缓存，10s 没有缓存就过期
+                dataCache.Insert(key, t, null, Cache.NoAbsoluteExpiration, TimeSpan.FromSeconds(10));
             }
             return (T)dataCache[key];
         }
+
+        public static void ClearCache()
+        {
+            var dict = dataCache.GetEnumerator();
+            for (int i = 0, len = dataCache.Count; i < len; i++)
+            {
+                dict.MoveNext();
+                dataCache.Remove(dict.Entry.Key.ToString());
+            }
+        }
+
     }
 }
