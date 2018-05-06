@@ -1,6 +1,9 @@
 ﻿using Bermuda.Api.DataCache;
+using Bermuda.Api.Models;
 using Bermuda.Bll.Service;
+using Bermuda.Common;
 using Bermuda.Model;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web.Caching;
@@ -18,7 +21,15 @@ namespace Bermuda.Api.Controllers
         {
             var topics = CacheEngine.GetData<IList<BmdTopic>>("topics_all", () =>
                 iservice.Select(x => x.IsPassed == 1).ToList());
-            return Json(topics);
+
+            var topicList = new List<TopicViewModel>();
+            foreach (var topic in topics)
+            {
+                var vm = BaseUtil.ParseTo<TopicViewModel>(topic);
+                topicList.Add(vm);
+            }
+
+            return Json(topicList);
         }
 
         // GET api/<controller>/5

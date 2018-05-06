@@ -13,6 +13,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bermuda.Api", "Bermuda.Api\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bermuda.Api.Tests", "Bermuda.Api.Tests\Bermuda.Api.Tests.csproj", "{B5E2CC72-65AE-4E9F-BB62-00F0CF68AE6D}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bermuda.Common", "Bermuda.Common\Bermuda.Common.csproj", "{ADDAFE68-2AAE-4D1D-9A1B-9A6889ED7F4A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,10 @@ Global
 		{B5E2CC72-65AE-4E9F-BB62-00F0CF68AE6D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B5E2CC72-65AE-4E9F-BB62-00F0CF68AE6D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B5E2CC72-65AE-4E9F-BB62-00F0CF68AE6D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{ADDAFE68-2AAE-4D1D-9A1B-9A6889ED7F4A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{ADDAFE68-2AAE-4D1D-9A1B-9A6889ED7F4A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{ADDAFE68-2AAE-4D1D-9A1B-9A6889ED7F4A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{ADDAFE68-2AAE-4D1D-9A1B-9A6889ED7F4A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

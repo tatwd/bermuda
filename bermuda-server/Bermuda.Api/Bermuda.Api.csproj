@@ -157,6 +157,10 @@
       <Project>{61ecbf39-cd01-4b96-ba77-f5d2a8f49324}</Project>
       <Name>Bermuda.Bll</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Bermuda.Common\Bermuda.Common.csproj">
+      <Project>{addafe68-2aae-4d1d-9a1b-9a6889ed7f4a}</Project>
+      <Name>Bermuda.Common</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Bermuda.Dal\Bermuda.Dal.csproj">
       <Project>{9a6660ab-3d04-4c59-b05c-1fb851cd46e6}</Project>
       <Name>Bermuda.Dal</Name>
