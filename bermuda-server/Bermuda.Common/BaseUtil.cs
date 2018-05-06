@@ -1,12 +1,30 @@
 ﻿using System;
 using System.Collections;
+using System.Collections.Generic;
 using System.Reflection;
-using System.Text;
 
 namespace Bermuda.Common
 {
     public class BaseUtil
     {
+        /// <summary>
+        /// 实体列表转化成 ViewModel 列表
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="entities"></param>
+        /// <returns></returns>
+        public static IList<T> ParseToList<T>(IEnumerable entities) where T : class, new()
+        {
+            IList<T> vmlist = new List<T>();
+
+            foreach (var entity in entities)
+            {
+                vmlist.Add(ParseTo<T>(entity));
+            }
+
+            return vmlist;
+        }
+
         /// <summary>
         /// 将实体对象转化成 ViewModel 对象
         /// ViewModel 对象的属性部分对应实体属性

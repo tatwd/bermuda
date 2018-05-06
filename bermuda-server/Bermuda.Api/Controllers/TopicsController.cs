@@ -3,7 +3,6 @@ using Bermuda.Api.Models;
 using Bermuda.Bll.Service;
 using Bermuda.Common;
 using Bermuda.Model;
-using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web.Caching;
@@ -14,84 +13,77 @@ namespace Bermuda.Api.Controllers
     public class TopicsController : ApiController
     {
         IBmdTopicService iservice = ServiceFactory.Get<IBmdTopicService>();
-        Cache cache = new Cache();
 
         // GET api/<controller>
         public IHttpActionResult Get()
         {
-            var topics = CacheEngine.GetData<IList<BmdTopic>>("topics_all", () =>
-                iservice.Select(x => x.IsPassed == 1).ToList());
+            IList<BmdTopic> topics = new List<BmdTopic>();
+            IList<TopicViewModel> vm = new List<TopicViewModel>();
 
-            var topicList = new List<TopicViewModel>();
-            foreach (var topic in topics)
-            {
-                var vm = BaseUtil.ParseTo<TopicViewModel>(topic);
-                topicList.Add(vm);
-            }
+            topics = CacheEngine.GetData<IList<BmdTopic>>("topics_all", () =>
+                iservice.Select(x => x.IsPassed == 1)
+                    .ToList());
 
-            return Json(topicList);
+            vm = BaseUtil.ParseToList<TopicViewModel>(topics);
+
+            return Json(vm);
         }
 
         // GET api/<controller>/5
         public IHttpActionResult Get(int id)
         {
             string KEY = $"topic_{id}";
+            BmdTopic topic = new BmdTopic();
+            TopicViewModel vm = new TopicViewModel();
 
-            if (cache[KEY] == null)
-            {
-                var topics = iservice.Select(x => x.IsPassed == 1 && x.Id == id).SingleOrDefault();
+            topic = CacheEngine.GetData<BmdTopic>(KEY, () =>
+                iservice.Select(x => x.Id == id)
+                    .SingleOrDefault());
 
-                if (topics == null)
-                    return Json(topics);
+            vm = BaseUtil.ParseTo<TopicViewModel>(topic);
 
-                cache.Insert(KEY, topics);
-            }
-            return Json(cache.Get(KEY));
+            return Json(vm);
         }
 
         // GET api/<controller>/hot
-        public IList<BmdTopic> Get(string type)
+        public IHttpActionResult Get(string type)
         {
-            if (type.Equals("hot"))
+            IList<BmdTopic> topics = new List<BmdTopic>();
+            IList<TopicViewModel> vm = new List<TopicViewModel>();
+
+            if (type.Equals("top"))
             {
-                if (cache["topics_hot"] == null)
-                {
-                    var topics = iservice
-                        .Select(x => x.IsPassed == 1)
+                topics = CacheEngine.GetData<IList<BmdTopic>>("topics_top_all", () =>
+                    iservice.Select(x => x.IsPassed == 1)
                         .OrderByDescending(x => x.JoinCount)
-                        .ToList();
-                    cache.Insert("topics_hot", topics);
-                    return topics;
-                }
-                return cache.Get("topics_hot") as IList<BmdTopic>;
+                        .ToList());
+
+                vm = BaseUtil.ParseToList<TopicViewModel>(topics);
             }
-            return null;
+
+            return Json(vm);
         }
 
         // GET api/<controller>/{type}/{count}
         [HttpGet]
-        [Route("api/topics/{type}/{top}")]
-        public IList<BmdTopic> Get(string type, int top = 10)
+        [Route("api/topics/{type}/{count}")]
+        public IHttpActionResult Get(string type, int count = 10)
         {
             const string KEY = "topics_hot_top";
+            IList<TopicViewModel> vm = new List<TopicViewModel>();
 
-            if (type.Equals("hot"))
+            if (type.Equals("top"))
             {
-                if (cache[KEY] == null)
-                {
-                    var topics = iservice
-                        .Select(x => x.IsPassed == 1)
+                var topics = CacheEngine.GetData<IList<BmdTopic>>(KEY, () =>
+                    iservice.Select(x => x.IsPassed == 1)
                         .OrderByDescending(x => x.JoinCount)
-                        .Take(top)
-                        .ToList();
+                        .Take(count)
+                        .ToList());
 
-                    cache.Insert(KEY, topics);
-                    return topics;
-                }
-                return cache.Get(KEY) as IList<BmdTopic>;
+                vm = BaseUtil.ParseToList<TopicViewModel>(topics);
             }
 
-            return null;
+            return Json(vm);
         }
 
         // POST api/<controller>

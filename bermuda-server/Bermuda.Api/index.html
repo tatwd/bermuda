@@ -4,17 +4,47 @@
 	<meta charset="utf-8" />
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
   <title>Bermuda APIs</title>
+  <style>
+    .container {
+      max-width: 666px;
+      margin: 0 auto;
+    }
+  </style>
 </head>
 <body>
-  <h1>Open console to see result...</h1>
+  <div class="container">
+    <h1>Bermuda API List</h1>
+    <section>
+      <h2>Topic</h2>
+      <ul>
+        <li>
+          <strong>GET</strong>
+          <a href="/api/topics">/api/topics</a>
+        </li>
+        <li>
+          <strong>GET</strong>
+          <a href="/api/topics/1">/api/topics{/id}</a>
+        </li>
+        <li>
+          <strong>GET</strong>
+          <a href="/api/topics?type=top">/api/topics{/type}</a>
+        </li>
+        <li>
+          <strong>GET</strong>
+          <a href="/api/topics/top/1">/api/topics{/type/count}</a>
+        </li>
+      </ul>
+    </section>
+  </div>
+  <!--<h1>Open console to see result...</h1>-->
   <script>
     // testing get notice by page index in fetch func
-    fetch('http://localhost:53595/api/home')
-      .then(res => res.json())
-      .then(data => {
-        console.log(data)
-      })
-      .catch(err => console.log(err));
+    //fetch('http://localhost:53595/api/home')
+    //  .then(res => res.json())
+    //  .then(data => {
+    //    console.log(data)
+    //  })
+    //  .catch(err => console.log(err));
   </script>
 </body>
 </html>
