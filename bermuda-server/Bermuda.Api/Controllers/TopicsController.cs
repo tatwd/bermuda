@@ -29,7 +29,8 @@ namespace Bermuda.Api.Controllers
             return Json(vm);
         }
 
-        // GET api/<controller>/5
+        [HttpGet]
+        [Route("api/topic/{id}")]
         public IHttpActionResult Get(int id)
         {
             string KEY = $"topic_#{id}";
@@ -46,7 +47,8 @@ namespace Bermuda.Api.Controllers
             return Json(vm);
         }
 
-        // GET api/<controller>/hot
+        [HttpGet]
+        [Route("api/topics/{type}")]
         public IHttpActionResult Get(string type)
         {
             IList<BmdTopic> topics = new List<BmdTopic>();
@@ -54,16 +56,26 @@ namespace Bermuda.Api.Controllers
 
             if (type.Equals("top"))
             {
-                topics = CacheEngine.GetData<IList<BmdTopic>>("topics_top_all",
+                topics = CacheEngine.GetData<IList<BmdTopic>>("topics_top",
                     () => iservice.GetHotTopics());
 
-                vm = BaseUtil.ParseToList<TopicViewModel>(topics);
+                //vm = BaseUtil.ParseToList<TopicViewModel>(topics);
             }
+            else if (type.Equals("all"))
+            {
+                topics = CacheEngine.GetData<IList<BmdTopic>>("topics_all",
+                    () => iservice
+                    .Select(x => x.IsPassed == 1)
+                    .ToList());
+            }
+
+            vm = topics.Count > 0
+                ? BaseUtil.ParseToList<TopicViewModel>(topics)
+                : vm;
 
             return Json(vm);
         }
 
-        // GET api/<controller>/{type}/{count}
         [HttpGet]
         [Route("api/topics/{type}/{count}")]
         public IHttpActionResult Get(string type, int count = 10)

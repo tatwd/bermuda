@@ -4,36 +4,58 @@
 	<meta charset="utf-8" />
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
   <title>Bermuda APIs</title>
+  <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
   <style>
+    html, body {
+      font-family: 'Montserrat', sans-serif;
+    }
+
     .container {
       max-width: 666px;
       margin: 0 auto;
+    }
+
+    .api-url {
+      font-family: 'Consolas';
+      background-color: #f2f2f2;
+    }
+
+    .upper {
+      text-transform: uppercase;
     }
   </style>
 </head>
 <body>
   <div class="container">
-    <h1>Bermuda API List</h1>
+    <h1 class="upper">Bermuda API List</h1>
+    <p>Which includes the APIs of db tables.</p>
     <section>
-      <h2>Topic</h2>
+      <h2 class="upper">Topic</h2>
       <ul>
         <li>
           <strong>GET</strong>
-          <a href="/api/topics">/api/topics</a>
+          <span class="api-url">/api/topics</span>
+          <p>Get all topics. i.e. <a href="/api/topics">all</a></p>
         </li>
         <li>
           <strong>GET</strong>
-          <a href="/api/topics/1">/api/topics{/id}</a>
+          <span class="api-url">/api/topic{/id}</span>
+          <p>Get topic by id. i.e. <a href="/api/topic/1">id=1</a></p>
         </li>
         <li>
           <strong>GET</strong>
-          <a href="/api/topics?type=top">/api/topics{/type}</a>
+          <span class="api-url">/api/topics{/type}</span>
+          <p>Get topics by the type which inludes <a href="/api/topics/all">all</a> or <a href="/api/topics/top">top</a>.</p>
         </li>
         <li>
           <strong>GET</strong>
-          <a href="/api/topics/top/1">/api/topics{/type/count}</a>
+          <span class="api-url">/api/topics{/type/count}</span>
+          <p>Get top topics with count var. i.e. <a href="/api/topics/top/5">top/5</a></p>
         </li>
       </ul>
+
+      <h2 class="upper">User</h2>
+      <ul></ul>
     </section>
   </div>
   <!--<h1>Open console to see result...</h1>-->
