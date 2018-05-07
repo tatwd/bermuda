@@ -37,7 +37,7 @@ namespace Bermuda.Api.Controllers
                     {
                         Id = item.Id,
                         Name = item.Name,
-                        Img = HOST_URL + item.Img
+                        Img = HOST_URL + item.ImgUrl
                     };
                     vm.HotTopics.Add(hotTopicVm);
                 }

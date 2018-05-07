@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="BmdDbModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="BmdDbModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="BmdConsignee">
           <Key>
             <PropertyRef Name="Id" />
@@ -213,9 +213,9 @@
           <Property Name="Name" Type="varchar" MaxLength="50" />
           <Property Name="Detail" Type="varchar" MaxLength="100" />
           <Property Name="JoinCount" Type="bigint" />
-          <Property Name="CreateDate" Type="datetime" />
-          <Property Name="Img" Type="varchar" MaxLength="200" />
+          <Property Name="ImgUrl" Type="varchar" MaxLength="200" />
           <Property Name="IsPassed" Type="tinyint" />
+          <Property Name="CreatedAt" Type="datetime" />
         </EntityType>
         <EntityType Name="BmdTopicJoin">
           <Key>
@@ -275,8 +275,7 @@
           <EntitySet Name="BmdUser" EntityType="Self.BmdUser" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="BmdUserFollow" EntityType="Self.BmdUserFollow" Schema="dbo" store:Type="Tables" />
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="BmdDbModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -488,9 +487,9 @@
           <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="Detail" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
           <Property Name="JoinCount" Type="Int64" />
-          <Property Name="CreateDate" Type="DateTime" Precision="3" />
-          <Property Name="Img" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="ImgUrl" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
           <Property Name="IsPassed" Type="Byte" />
+          <Property Name="CreatedAt" Type="DateTime" Precision="3" />
         </EntityType>
         <EntityType Name="BmdTopicJoin">
           <Key>
@@ -776,13 +775,13 @@
           <EntitySetMapping Name="BmdTopics">
             <EntityTypeMapping TypeName="BmdDbModel.BmdTopic">
               <MappingFragment StoreEntitySet="BmdTopic">
+                <ScalarProperty Name="ImgUrl" ColumnName="ImgUrl" />
+                <ScalarProperty Name="CreatedAt" ColumnName="CreatedAt" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="UserId" ColumnName="UserId" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="Detail" ColumnName="Detail" />
                 <ScalarProperty Name="JoinCount" ColumnName="JoinCount" />
-                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
-                <ScalarProperty Name="Img" ColumnName="Img" />
                 <ScalarProperty Name="IsPassed" ColumnName="IsPassed" />
               </MappingFragment>
             </EntityTypeMapping>

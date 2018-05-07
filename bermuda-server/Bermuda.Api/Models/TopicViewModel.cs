@@ -9,7 +9,7 @@
         public string name { get; set; }
         public string detail { get; set; }
         public Int64 join_count { get; set; }
-        public DateTime create_date { get; set; }
-        public string img { get; set; }
+        public string img_url { get; set; }
+        public DateTime created_at { get; set; }
     }
 }

@@ -19,8 +19,8 @@ namespace Bermuda.Model
         public string Name { get; set; }
         public string Detail { get; set; }
         public Nullable<long> JoinCount { get; set; }
-        public Nullable<System.DateTime> CreateDate { get; set; }
-        public string Img { get; set; }
+        public string ImgUrl { get; set; }
         public Nullable<byte> IsPassed { get; set; }
+        public Nullable<System.DateTime> CreatedAt { get; set; }
     }
 }
