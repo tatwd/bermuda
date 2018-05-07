@@ -19,8 +19,9 @@ namespace Bermuda.Api.Controllers
             IList<BmdTopic> topics = new List<BmdTopic>();
             IList<TopicViewModel> vm = new List<TopicViewModel>();
 
-            topics = CacheEngine.GetData<IList<BmdTopic>>("topics_all", () =>
-                iservice.Select(x => x.IsPassed == 1)
+            topics = CacheEngine.GetData<IList<BmdTopic>>("topics_all",
+                () => iservice
+                    .Select(x => x.IsPassed == 1)
                     .ToList());
 
             vm = BaseUtil.ParseToList<TopicViewModel>(topics);
@@ -31,12 +32,13 @@ namespace Bermuda.Api.Controllers
         // GET api/<controller>/5
         public IHttpActionResult Get(int id)
         {
-            string KEY = $"topic_{id}";
+            string KEY = $"topic_#{id}";
             BmdTopic topic = new BmdTopic();
             TopicViewModel vm = new TopicViewModel();
 
-            topic = CacheEngine.GetData<BmdTopic>(KEY, () =>
-                iservice.Select(x => x.Id == id)
+            topic = CacheEngine.GetData<BmdTopic>(KEY,
+                () => iservice
+                    .Select(x => x.Id == id)
                     .SingleOrDefault());
 
             vm = BaseUtil.ParseTo<TopicViewModel>(topic);
@@ -52,10 +54,8 @@ namespace Bermuda.Api.Controllers
 
             if (type.Equals("top"))
             {
-                topics = CacheEngine.GetData<IList<BmdTopic>>("topics_top_all", () =>
-                    iservice.Select(x => x.IsPassed == 1)
-                        .OrderByDescending(x => x.JoinCount)
-                        .ToList());
+                topics = CacheEngine.GetData<IList<BmdTopic>>("topics_top_all",
+                    () => iservice.GetHotTopics());
 
                 vm = BaseUtil.ParseToList<TopicViewModel>(topics);
             }
@@ -68,16 +68,14 @@ namespace Bermuda.Api.Controllers
         [Route("api/topics/{type}/{count}")]
         public IHttpActionResult Get(string type, int count = 10)
         {
-            const string KEY = "topics_hot_top";
+            string KEY = $"topics_top_{count}";
+            IList<BmdTopic> topics = new List<BmdTopic>();
             IList<TopicViewModel> vm = new List<TopicViewModel>();
 
             if (type.Equals("top"))
             {
-                var topics = CacheEngine.GetData<IList<BmdTopic>>(KEY, () =>
-                    iservice.Select(x => x.IsPassed == 1)
-                        .OrderByDescending(x => x.JoinCount)
-                        .Take(count)
-                        .ToList());
+                topics = CacheEngine.GetData<IList<BmdTopic>>(KEY,
+                    () => iservice.GetHotTopics(count));
 
                 vm = BaseUtil.ParseToList<TopicViewModel>(topics);
             }
