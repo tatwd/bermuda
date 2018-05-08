@@ -5,6 +5,9 @@ import router from './router'
 import Vuetify from 'vuetify'
 import 'vuetify/dist/vuetify.min.css'
 
+// Vuex: for services, shared components, etc
+import store from './store/index'
+
 // config theme
 const theme = {
   primary: '#c66', //'#3f51b5',
@@ -21,6 +24,7 @@ Vue.config.productionTip = false
 new Vue({
   el: '#app',
   router,
+  store,
   components: { App },
   template: '<App/>'
 })

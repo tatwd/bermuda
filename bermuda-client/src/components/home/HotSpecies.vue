@@ -38,7 +38,6 @@ export default {
     mlSize: 'ml-4'
   }),
   mounted () {
-    console.log(this)
     window.addEventListener('resize', this.onResize)
   },
   methods: {

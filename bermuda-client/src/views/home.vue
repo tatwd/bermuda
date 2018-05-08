@@ -94,6 +94,9 @@ export default {
   },
   created () {
     this.fetchData()
+
+    // test service
+    this.test()
   },
   methods: {
     fetchData () {
@@ -133,6 +136,17 @@ export default {
       }
       this.notices = this.cacheData
         .filter(x => x.type === value)
+    },
+
+    test () {
+      let self = this
+      self.$store.state.services
+        .topicService
+        .getAll()
+        .then(res => {
+          console.log(res)
+        })
+        .catch(err => console.log(err))
     }
   }
 }
