@@ -1,8 +1,11 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 
+// layouts
 import DefaultLayout from '@/layouts/default'
+import ErrorLayout from '@/layouts/error'
 
+// view components
 // import Example from '@/components/Example'
 import Home from '@/views/home'
 
@@ -27,8 +30,9 @@ export default new Router({
       path: '/account/',
     },
     {
-      // TODO: add 404 route
-      path: '*'
+      // add 404 route
+      path: '*',
+      component: ErrorLayout
     }
   ],
   mode: 'hash'

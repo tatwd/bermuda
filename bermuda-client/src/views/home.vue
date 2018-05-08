@@ -73,23 +73,21 @@ export default {
     HotCurrents,
     TopUsers
   },
-  data () {
-    return {
-      gradient: 'to top right, rgba(63, 81, 181, .7), ragba(25, 32, 72, .7)',
-      sloganMsg: {
-        title: '寻找你的寻找',
-        small: '一切执于对美好校园生活的凝练'
-      },
-      notices: null,
-      cacheData: null,
-      filterArr: [
-        { text: '所有启示', alias: 'all' },
-        { text: '寻物启示', alias: 'lost' },
-        { text: '招领启示', alias: 'found' },
-      ],
-      filter: 'a'
-    }
-  },
+  data: () => ({
+    gradient: 'to top right, rgba(63, 81, 181, .7), ragba(25, 32, 72, .7)',
+    sloganMsg: {
+      title: '寻找你的寻找',
+      small: '一切执于对美好校园生活的凝练'
+    },
+    notices: null,
+    cacheData: null,
+    filterArr: [
+      { text: '所有启示', alias: 'all' },
+      { text: '寻物启示', alias: 'lost' },
+      { text: '招领启示', alias: 'found' },
+    ],
+    filter: 'a'
+  }),
   filters: {
   },
   watch: {

@@ -1,12 +1,5 @@
 <template>
   <div id="app">
-    <!-- <v-app>
-      <Navbar/>
-      <v-content class="grey lighten-4">
-        <router-view/>
-      </v-content>
-      <v-footer>footer</v-footer>
-    </v-app> -->
     <router-view/>
   </div>
 </template>
@@ -16,9 +9,6 @@
 
 export default {
   name: 'App',
-  components: {
-    // Navbar
-  }
 }
 </script>
 
