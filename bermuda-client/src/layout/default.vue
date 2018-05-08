@@ -1,5 +1,5 @@
 <template>
-  <div id="app">
+  <div class="layout--default">
     <v-app>
       <Navbar/>
       <v-content class="grey lighten-4">
@@ -11,16 +11,16 @@
 </template>
 
 <script>
-import Navbar from './components/shared/Navbar'
+import Navbar from '@/components/shared/Navbar'
 
 export default {
-  name: 'App',
   components: {
     Navbar
   }
 }
 </script>
 
-<style>
+<!-- Add "scoped" attribute to limit CSS to this component only -->
+<style scoped>
 
 </style>
