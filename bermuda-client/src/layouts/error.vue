@@ -5,7 +5,7 @@
         <img src="@/assets/bmd-logo.svg" alt="Bermuda Logo">
       </div>
       <h2 class="display-4 red--text">{{ errorMsg }}</h2>
-      <p class="display-1 mt-4">
+      <p class="headline mt-4">
         <router-link to="/">{{ linkMsg }}</router-link>
       </p>
     </div>
@@ -36,5 +36,13 @@ export default {
 a {
   text-decoration: none;
   color: #222;
+  border-bottom: 2px solid transparent;
+  transition: color .2s ease,
+    border-color .2s ease;
+}
+
+a:hover {
+  color: #c66;
+  border-bottom: 2px solid #c66;
 }
 </style>
