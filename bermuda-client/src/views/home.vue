@@ -137,14 +137,14 @@ export default {
       this.notices = this.cacheData
         .filter(x => x.type === value)
     },
-
+    // this is a test method
     test () {
       let self = this
       self.$store.state.services
         .topicService
         .getAll()
         .then(res => {
-          console.log(res)
+          console.log(res.data)
         })
         .catch(err => console.log(err))
     }
