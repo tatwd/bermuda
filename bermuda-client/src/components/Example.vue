@@ -7,11 +7,9 @@
 <script>
 export default {
   name: 'Example',
-  data () {
-    return {
-      example: 'Example Component'
-    }
-  }
+  data: () => ({
+    example: 'Example Component'
+  })
 }
 </script>
 

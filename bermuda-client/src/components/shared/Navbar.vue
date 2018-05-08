@@ -77,12 +77,10 @@
 <script>
 export default {
   name: 'Navbar',
-  data () {
-    return {
-      isSignIn: false,
-      sidedNav: false
-    }
-  },
+  data: () => ({
+    isSignIn: false,
+    sidedNav: false
+  }),
   methods: {
     showSearchInput () {}
   }

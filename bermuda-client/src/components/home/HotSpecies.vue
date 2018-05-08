@@ -33,13 +33,12 @@
 <script>
 export default {
   name: 'HotSpecies',
-  data () {
-    return {
-      example: '物以类聚',
-      mlSize: 'ml-4'
-    }
-  },
+  data: () => ({
+    example: '物以类聚',
+    mlSize: 'ml-4'
+  }),
   mounted () {
+    console.log(this)
     window.addEventListener('resize', this.onResize)
   },
   methods: {

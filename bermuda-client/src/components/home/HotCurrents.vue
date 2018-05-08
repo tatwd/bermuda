@@ -12,11 +12,9 @@
 <script>
 export default {
   name: 'HotCurrents',
-  data () {
-    return {
-      example: '热门动态'
-    }
-  }
+  data: () => ({
+    example: '热门动态'
+  })
 }
 </script>
 

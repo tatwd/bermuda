@@ -7,11 +7,9 @@
 <script>
 export default {
   name: 'BackTop',
-  data () {
-    return {
-      example: 'BackTop Component'
-    }
-  }
+  data: () => ({
+    example: 'BackTop Component'
+  })
 }
 </script>
 

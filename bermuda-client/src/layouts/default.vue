@@ -14,6 +14,7 @@
 import Navbar from '@/components/shared/Navbar'
 
 export default {
+  name: 'default',
   components: {
     Navbar
   }

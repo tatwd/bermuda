@@ -12,11 +12,9 @@
 <script>
 export default {
   name: 'TopUsers',
-  data () {
-    return {
-      example: '百慕达人'
-    }
-  }
+  data: () => ({
+    example: '百慕达人'
+  })
 }
 </script>
 

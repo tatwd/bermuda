@@ -34,9 +34,7 @@ export default {
       default: null
     }
   },
-  data () {
-    return {}
-  }
+  data: () => ({ })
 }
 </script>
 

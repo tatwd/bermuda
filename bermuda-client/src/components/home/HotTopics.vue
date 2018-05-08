@@ -30,9 +30,9 @@ import cardSlider from '@/assets/js/card-slider'
 
 export default {
   name: 'HotTopics',
-  data () {
-    return {}
-  },
+  data: () => ({
+    // data here
+  }),
   created () {
 
     // add DOMContentLoaded for document
