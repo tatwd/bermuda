@@ -74,7 +74,7 @@ export default {
     TopUsers
   },
   data: () => ({
-    gradient: 'to top right, rgba(63, 81, 181, .7), ragba(25, 32, 72, .7)',
+    gradient: 'to top right, rgba(63, 81, 181, .5), ragba(25, 32, 72, .5)',
     sloganMsg: {
       title: '寻找你的寻找',
       small: '一切执于对美好校园生活的凝练'
@@ -94,9 +94,6 @@ export default {
   },
   created () {
     this.fetchData()
-
-    // test service
-    this.test()
   },
   methods: {
     fetchData () {
@@ -137,17 +134,6 @@ export default {
       this.notices = this.cacheData
         .filter(x => x.type === value)
     },
-    // this is a test method
-    test () {
-      let self = this
-      self.$store.state.services
-        .topicService
-        .getAll()
-        .then(res => {
-          console.log(res.data)
-        })
-        .catch(err => console.log(err))
-    }
   }
 }
 </script>

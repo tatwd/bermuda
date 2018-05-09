@@ -9,11 +9,12 @@ using System.Web.Http;
 
 namespace Bermuda.Api.Controllers
 {
-    public class TopicsController : ApiController
+    public class TopicController : ApiController
     {
         IBmdTopicService iservice = ServiceFactory.Get<IBmdTopicService>();
 
         // GET api/<controller>
+        [Route("api/topics")]
         public IHttpActionResult Get()
         {
             IList<BmdTopic> topics = new List<BmdTopic>();

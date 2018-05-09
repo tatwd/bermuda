@@ -9,7 +9,7 @@ namespace Bermuda.Api.Controllers.Tests
     [TestClass()]
     public class TopicsControllerTests
     {
-        TopicsController topicsCtrl = new TopicsController();
+        TopicController topicsCtrl = new TopicController();
 
         [TestMethod()]
         public void GetAllTopicsTest()

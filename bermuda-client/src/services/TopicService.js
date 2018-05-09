@@ -15,4 +15,10 @@ export default class TopicService {
     let self = this;
     return self.axios.get(`${self.baseUrl}/topics`)
   }
+
+  // get hot topics
+  getTop () {
+    let self = this;
+    return self.axios.get(`${self.baseUrl}/topics/top`)
+  }
 }
