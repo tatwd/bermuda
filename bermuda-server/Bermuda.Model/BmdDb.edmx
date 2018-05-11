@@ -136,7 +136,7 @@
           </Key>
           <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Name" Type="varchar" MaxLength="20" />
-          <Property Name="Img" Type="varchar" MaxLength="200" />
+          <Property Name="ImgUrl" Type="varchar" MaxLength="200" />
           <Property Name="NoticeCount" Type="bigint" />
         </EntityType>
         <EntityType Name="BmdNoticeTrace">
@@ -410,7 +410,7 @@
           </Key>
           <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Name" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
-          <Property Name="Img" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="ImgUrl" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
           <Property Name="NoticeCount" Type="Int64" />
         </EntityType>
         <EntityType Name="BmdNoticeTrace">
@@ -694,9 +694,9 @@
           <EntitySetMapping Name="BmdNoticeSpecies">
             <EntityTypeMapping TypeName="BmdDbModel.BmdNoticeSpecie">
               <MappingFragment StoreEntitySet="BmdNoticeSpecie">
+                <ScalarProperty Name="ImgUrl" ColumnName="ImgUrl" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
-                <ScalarProperty Name="Img" ColumnName="Img" />
                 <ScalarProperty Name="NoticeCount" ColumnName="NoticeCount" />
               </MappingFragment>
             </EntityTypeMapping>
