@@ -1,6 +1,6 @@
 <template>
   <div id="hot-topics">
-    <v-layout class="hot-topics__slider pb-5" row>
+    <v-layout class="hot-topics__slider pt-4 pb-5 px-1" row>
       <v-flex
         v-for="topic in topics"
         :key="topic.id"
@@ -26,12 +26,13 @@
 </template>
 
 <script>
+import { mapGetters } from 'vuex'
 import cardSlider from '@/assets/js/card-slider'
 
 export default {
   name: 'HotTopics',
-  data: () => ({
-    topics: []
+  computed:  mapGetters({
+    topics: 'allTopics'
   }),
   created () {
     // start sliding
@@ -55,27 +56,7 @@ export default {
     },
 
     getHotTopics () {
-      const self = this;
-
-      for (let i = 0; i < 10; i++) {
-        self.topics.push({
-          id: null,
-          name: '',
-          img_url: 'https://images.pexels.com/photos/46274/pexels-photo-46274.jpeg?auto=compress&cs=tinysrgb&h=350' // '@/assets/template.svg'
-        })
-      }
-
-      this.$store.state.services
-        .topicService
-        .getTop()
-        .then(res => {
-          res.data.forEach((topic, index) => {
-            self.topics[index].id = topic.id
-            self.topics[index].name = topic.name
-            self.topics[index].img_url = 'http://localhost:53595' + topic.img_url
-          });
-        })
-        .catch(err => console.log(err));
+      this.$store.dispatch('getAllTopics')
     }
   }
 }
@@ -83,6 +64,6 @@ export default {
 
 <style scoped>
 #hot-topics {
-  overflow: hidden;
+  overflow-x: hidden;
 }
 </style>
