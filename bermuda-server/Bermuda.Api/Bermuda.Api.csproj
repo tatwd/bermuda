@@ -120,14 +120,16 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="assets\images\topics\2018010714152234-3.jpg" />
-    <Content Include="assets\images\topics\2018010714174787-4.jpg" />
-    <Content Include="assets\images\topics\2018010714285322-5.jpg" />
-    <Content Include="assets\images\topics\2018010714315352-6.jpg" />
-    <Content Include="assets\images\topics\2018010714330658-7.jpg" />
-    <Content Include="assets\images\topics\2018010714380003-8.jpg" />
-    <Content Include="assets\images\topics\2018010714573103-9.jpg" />
-    <Content Include="assets\images\topics\renwen.jpg" />
+    <Content Include="assets\img\topics\bike.jpg" />
+    <Content Include="assets\img\topics\boy.jpg" />
+    <Content Include="assets\img\topics\food.jpg" />
+    <Content Include="assets\img\topics\girl.jpg" />
+    <Content Include="assets\img\topics\help.jpg" />
+    <Content Include="assets\img\topics\idea.jpg" />
+    <Content Include="assets\img\topics\jxnu.jpg" />
+    <Content Include="assets\img\topics\keji.jpg" />
+    <Content Include="assets\img\topics\renwen.jpg" />
+    <Content Include="assets\img\topics\sport.jpg" />
     <Content Include="assets\template.svg" />
     <Content Include="Global.asax" />
     <Content Include="index.html" />
