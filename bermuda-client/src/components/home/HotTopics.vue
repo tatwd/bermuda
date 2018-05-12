@@ -32,7 +32,7 @@ import cardSlider from '@/assets/js/card-slider'
 export default {
   name: 'HotTopics',
   computed:  mapGetters({
-    topics: 'allTopics'
+    topics: 'hotTopics'
   }),
   created () {
     // start sliding
@@ -56,7 +56,7 @@ export default {
     },
 
     getHotTopics () {
-      this.$store.dispatch('getAllTopics')
+      this.$store.dispatch('getHotTopics', { count: 10 })
     }
   }
 }

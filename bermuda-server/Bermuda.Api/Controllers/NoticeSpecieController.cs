@@ -65,23 +65,5 @@ namespace Bermuda.Api.Controllers
 
             return Json(vm);
         }
-
-        //[HttpGet]
-        //[Route("api/notice/species/top")]
-        //public IHttpActionResult Get(string type, int count)
-        //{
-        //    IList<BmdNoticeSpecie> species = new List<BmdNoticeSpecie>();
-        //    IList<NoticeSpecieViewModel> vm = new List<NoticeSpecieViewModel>();
-
-        //    species = CacheEngine.GetData<IList<BmdNoticeSpecie>>("species_top",
-        //        () => iservice
-        //            .Select(x => x.Id > 0)
-        //            .OrderByDescending(x => x.NoticeCount) // desc
-        //            .ToList());
-
-        //    vm = BaseUtil.ParseToList<NoticeSpecieViewModel>(species);
-
-        //    return Json(vm);
-        //}
     }
 }

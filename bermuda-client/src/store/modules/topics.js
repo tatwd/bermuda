@@ -1,49 +1,65 @@
 import services from '../services'
+import { stat } from 'fs';
 
 // server assets url
 const ASSETSS_URL = 'http://localhost:53595'
 
 // init state
 const state = {
-  all: []
+  all: [],
+  hot: [],
+  isLoaded: false
 }
 
 // getters
 const getters = {
-  allTopics: state => {
-    let _all = state.all
-    if (_all.length <= 0) {
-      // init 10 topics
-      for (let i = 0; i < 10; i++) {
-        _all.push({
-          id: null,
-          name: '',
-          img_url: '@/assets/template.svg'
-        })
-      }
-    }
-    return _all
-  }
+  allTopics: state => state.all,
+  hotTopics: state => (
+    state.hot.length
+      ? state.hot
+      : Array(10).fill({
+        id: null,
+        name: '',
+        img_url: '@/assets/template.svg'
+      })
+  )
 }
 
 // mutations
 const mutations = {
-  setTopics (state, topics) {
-    topics.forEach((topic, index) => {
-      state.all[index].id = topic.id
-      state.all[index].name = topic.name
-      state.all[index].img_url = ASSETSS_URL + topic.img_url
-    });
+  setAllTopics (state, topics) {
+    state.all = topics.map(topic => {
+      topic.img_url = ASSETSS_URL + topic.img_url
+      return topic
+    })
+
+    // loaded all topics
+    state.isLoaded = true
+  },
+  setHotTopics(state, payload) {
+    state.hot = state.all
+      .map(topic => topic)
+      .sort((a, b) => b.join_count - a.join_count) // desc
+      .slice(0, payload.count)
   }
 }
 
 // actions
 const actions = {
-  getAllTopics ({ commit }) {
-    services.topicService.getTop().then(res => {
-      commit('setTopics', res.data)
-    })
-    .catch(err => console.error(err))
+  async getAllTopics ({ state, commit }) {
+    if (!state.isLoaded) {
+      await services.topicService
+      .getAll()
+      .then(res => {
+        commit('setAllTopics', res.data)
+        return res.data
+      })
+      .catch(err => console.error(err))
+    }
+  },
+  async getHotTopics ({ dispatch, commit }, payload) {
+    await dispatch('getAllTopics')
+    await commit('setHotTopics', payload)
   }
 }
 

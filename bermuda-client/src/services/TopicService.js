@@ -17,8 +17,8 @@ export default class TopicService {
   }
 
   // get hot topics
-  getTop () {
+  getTop (count) {
     let self = this;
-    return self.axios.get(`${self.baseUrl}/topics/top`)
+    return self.axios.get(`${self.baseUrl}/topics/top${ count ? '/' + count : '' }`)
   }
 }
