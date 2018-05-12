@@ -1,7 +1,7 @@
 <template>
   <div
     id="top-users"
-    class="mt-4"
+    class="my-4"
   >
     <v-card>
       <v-card-title>

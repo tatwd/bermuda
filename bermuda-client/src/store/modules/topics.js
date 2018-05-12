@@ -6,8 +6,7 @@ const ASSETSS_URL = 'http://localhost:53595'
 // init state
 const state = {
   all: [],
-  hot: [],
-  isLoaded: false
+  hot: []
 }
 
 // getters
@@ -31,9 +30,6 @@ const mutations = {
       topic.img_url = ASSETSS_URL + topic.img_url
       return topic
     })
-
-    // loaded all topics
-    state.isLoaded = true
   },
   setHotTopics(state, payload) {
     state.hot = state.all
@@ -46,14 +42,12 @@ const mutations = {
 // actions
 const actions = {
   async getAllTopics ({ state, commit }) {
-    if (!state.isLoaded) {
-      await services.topicService
+    await services.topicService
       .getAll()
       .then(res => {
         commit('setAllTopics', res.data)
       })
       .catch(err => console.error(err))
-    }
   },
   async getHotTopics ({ dispatch, commit }, payload) {
     await dispatch('getAllTopics')

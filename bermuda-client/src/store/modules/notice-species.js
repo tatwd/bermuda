@@ -5,15 +5,13 @@ const ASSETSS_URL = 'http://localhost:53595'
 
 // init state
 const state = {
-  all: [],
-  isLoaded: false
+  all: []
 }
 
 // getters
 const getters = {
   allNoticeSpecies: state => state.all,
-  hotNoticeSpecies: state => state.all.sort((a, b) => b.notice_count - a.notice_count),
-  testGetDate: () => Date.now()
+  hotNoticeSpecies: state => state.all.sort((a, b) => b.notice_count - a.notice_count)
 }
 
 // mutations
@@ -23,22 +21,18 @@ const mutations = {
       specie.img_url = ASSETSS_URL + specie.img_url
       return specie
     })
-
-    state.isLoaded = true
   }
 }
 
 // actions
 const actions = {
   getAllNoticeSpecies ({ state, commit }) {
-    if (!state.isLoaded) {
-      services.noticeSpecieService
+    services.noticeSpecieService
       .getAll()
       .then(res => {
         commit('setAllNoticeSpecies', res.data)
       })
       .catch(err => console.error(err))
-    }
   }
 }
 
