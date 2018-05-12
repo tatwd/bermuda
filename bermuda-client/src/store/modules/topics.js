@@ -1,5 +1,4 @@
 import services from '../services'
-import { stat } from 'fs';
 
 // server assets url
 const ASSETSS_URL = 'http://localhost:53595'
@@ -52,7 +51,6 @@ const actions = {
       .getAll()
       .then(res => {
         commit('setAllTopics', res.data)
-        return res.data
       })
       .catch(err => console.error(err))
     }

@@ -47,7 +47,7 @@
             :notices="notices"
           ></notice-list>
         </v-flex>
-        <v-flex md5 xs12 order-xs1 order-md2>
+        <v-flex md5 xs12 order-xs1 order-md2 class="bmd--pl">
           <HotSpecies/>
           <HotCurrents/>
           <TopUsers/>
@@ -139,5 +139,15 @@ export default {
 </script>
 
 <style scoped>
+.bmd--pl {
+  --pl-size: 32px;
 
+  padding-left: var(--pl-size);
+}
+
+@media (max-width: 960px) {
+  .bmd--pl {
+    --pl-size: 0;
+  }
+}
 </style>

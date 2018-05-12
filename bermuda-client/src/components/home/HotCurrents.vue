@@ -1,5 +1,8 @@
 <template>
-  <div id="hot-currents" class="ml-4 mt-4">
+  <div
+    id="hot-currents"
+    class="mt-4"
+  >
     <v-card>
       <v-card-title>
         <v-icon color="primary">whatshot</v-icon>

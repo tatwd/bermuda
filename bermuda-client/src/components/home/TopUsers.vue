@@ -1,5 +1,8 @@
 <template>
-  <div id="top-users" class="ml-4 mt-4">
+  <div
+    id="top-users"
+    class="mt-4"
+  >
     <v-card>
       <v-card-title>
         <v-icon color="primary">assessment</v-icon>
