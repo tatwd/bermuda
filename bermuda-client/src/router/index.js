@@ -7,8 +7,8 @@ import AccountLayout from '@/layouts/account'
 import ErrorLayout from '@/layouts/error'
 
 // view components
-// import Example from '@/components/Example'
 import Home from '@/views/home'
+import SignIn from '@/views/signin'
 
 Vue.use(Router)
 
@@ -34,7 +34,7 @@ export default new Router({
         {
           path: 'signin',
           name: 'SignIn',
-          component: null
+          component: SignIn
         }
       ]
     },
