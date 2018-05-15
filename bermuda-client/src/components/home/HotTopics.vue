@@ -35,23 +35,21 @@ export default {
     topics: 'hotTopics'
   }),
   created () {
-    // start sliding
-    this.slideTopicCards()
-
     // get hot topics
     this.getHotTopics()
   },
+  mounted () {
+    // start sliding
+    this.slideTopicCards()
+  },
   methods: {
     slideTopicCards () {
-      // add DOMContentLoaded for document
-      document.addEventListener('DOMContentLoaded', () => {
-        cardSlider({
-          element: document.querySelector('#hot-topics .hot-topics__slider'),
-          duration: .5,
-          trans: { x:  176},
-          interval: 3000,
-          timing: 'ease-in-out'
-        })
+      cardSlider({
+        element: document.querySelector('#hot-topics .hot-topics__slider'),
+        duration: .5,
+        trans: { x:  176},
+        interval: 3000,
+        timing: 'ease-in-out'
       })
     },
 

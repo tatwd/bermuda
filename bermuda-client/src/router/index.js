@@ -3,6 +3,7 @@ import Router from 'vue-router'
 
 // layouts
 import DefaultLayout from '@/layouts/default'
+import AccountLayout from '@/layouts/account'
 import ErrorLayout from '@/layouts/error'
 
 // view components
@@ -27,7 +28,15 @@ export default new Router({
     },
     {
       // TODO: add account routes
-      path: '/account/',
+      path: '/account',
+      component: AccountLayout,
+      children: [
+        {
+          path: 'signin',
+          name: 'SignIn',
+          component: null
+        }
+      ]
     },
     {
       // add 404 route
