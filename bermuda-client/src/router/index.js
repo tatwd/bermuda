@@ -9,6 +9,7 @@ import ErrorLayout from '@/layouts/error'
 // view components
 import Home from '@/views/home'
 import SignIn from '@/views/signin'
+import SignUp from '@/views/signup'
 
 Vue.use(Router)
 
@@ -35,6 +36,11 @@ export default new Router({
           path: 'signin',
           name: 'SignIn',
           component: SignIn
+        },
+        {
+          path: 'signup',
+          name: 'SignUp',
+          component: SignUp
         }
       ]
     },

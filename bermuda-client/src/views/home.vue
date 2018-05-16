@@ -15,7 +15,7 @@
             <small class="display-1">{{ sloganMsg.small }}</small>
             <div v-if="!false">
               <v-btn color="primary" large>加入我们</v-btn>
-              <v-btn color="secondary" large>马上登录</v-btn>
+              <v-btn color="secondary" to="/account/signin" large>马上登录</v-btn>
             </div>
           </v-flex>
         </v-layout>

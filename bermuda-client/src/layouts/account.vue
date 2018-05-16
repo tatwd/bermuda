@@ -2,18 +2,18 @@
   <div class="layout--account">
     <v-app class="account-page">
       <v-content>
-        <v-container>
-          <v-layout row wrap>
-            <v-flex xs12 sm4 offset-sm4>
+        <v-container fill-height>
+          <v-layout row wrap justify-center>
+            <v-flex xs12 class="mt-5">
               <div class="text-xs-center">
                 <v-avatar size="96px">
                   <img src="@/assets/bmd-logo.svg" alt="Bermuda Logo">
                 </v-avatar>
-                <h1 class="primary--text">百慕大</h1>
+                <h1 class="primary--text">
+                  <router-link to="/">百慕大</router-link>
+                </h1>
+                <h2>寻找你的寻找</h2>
               </div>
-              <!-- <h2>寻找你的寻找</h2> -->
-            </v-flex>
-            <v-flex xs12 sm4 offset-sm4>
               <router-view/>
             </v-flex>
           </v-layout>
@@ -47,5 +47,9 @@ export default {
 
 .account-page {
   background-color: transparent;
+}
+
+a {
+  text-decoration: none;
 }
 </style>
