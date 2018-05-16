@@ -26,6 +26,7 @@ namespace Bermuda.Api.Controllers
                 {
                     var notices = iservice
                         .Select(x => x.IsSolved == 0) // 未解决
+                        .OrderByDescending(x => x.CreatedAt)
                         .ToList();
 
                     var _vms = BaseUtil.ParseToList<NoticeViewModel>(notices);
