@@ -138,6 +138,7 @@
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Controllers\NoticeController.cs" />
     <Compile Include="Controllers\NoticeSpecieController.cs" />
     <Compile Include="Controllers\TopicController.cs" />
     <Compile Include="DataCache\CacheEngine.cs" />
@@ -145,6 +146,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\NoticeSpecieViewModel.cs" />
+    <Compile Include="Models\NoticeViewModel.cs" />
     <Compile Include="Models\TopicViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -179,9 +181,6 @@
       <Project>{b41edce8-79ce-45e0-b93d-e0e54e1fdd09}</Project>
       <Name>Bermuda.Model</Name>
     </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <WCFMetadata Include="Service References\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

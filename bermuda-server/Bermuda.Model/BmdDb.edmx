@@ -99,14 +99,14 @@
           <Property Name="Title" Type="varchar" MaxLength="100" />
           <Property Name="Place" Type="varchar" MaxLength="100" />
           <Property Name="FullPlace" Type="varchar" MaxLength="200" />
-          <Property Name="LfDate" Type="varchar" MaxLength="100" />
-          <Property Name="Img" Type="varchar" MaxLength="200" />
+          <Property Name="EventTimeDesc" Type="varchar" MaxLength="100" />
+          <Property Name="ImgUrl" Type="varchar" MaxLength="200" />
           <Property Name="ContactWay" Type="varchar" MaxLength="100" />
           <Property Name="Detail" Type="varchar" MaxLength="280" />
-          <Property Name="PubDate" Type="datetime" />
+          <Property Name="CreatedAt" Type="datetime" />
           <Property Name="CmntCount" Type="bigint" />
           <Property Name="TraceCount" Type="bigint" />
-          <Property Name="Status" Type="tinyint" />
+          <Property Name="IsSolved" Type="tinyint" />
         </EntityType>
         <EntityType Name="BmdNoticeCmnt">
           <Key>
@@ -373,14 +373,14 @@
           <Property Name="Title" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
           <Property Name="Place" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
           <Property Name="FullPlace" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
-          <Property Name="LfDate" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-          <Property Name="Img" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="EventTimeDesc" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="ImgUrl" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
           <Property Name="ContactWay" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
           <Property Name="Detail" Type="String" MaxLength="280" FixedLength="false" Unicode="false" />
-          <Property Name="PubDate" Type="DateTime" Precision="3" />
+          <Property Name="CreatedAt" Type="DateTime" Precision="3" />
           <Property Name="CmntCount" Type="Int64" />
           <Property Name="TraceCount" Type="Int64" />
-          <Property Name="Status" Type="Byte" />
+          <Property Name="IsSolved" Type="Byte" />
         </EntityType>
         <EntityType Name="BmdNoticeCmnt">
           <Key>
@@ -649,6 +649,10 @@
           <EntitySetMapping Name="BmdNotices">
             <EntityTypeMapping TypeName="BmdDbModel.BmdNotice">
               <MappingFragment StoreEntitySet="BmdNotice">
+                <ScalarProperty Name="EventTimeDesc" ColumnName="EventTimeDesc" />
+                <ScalarProperty Name="IsSolved" ColumnName="IsSolved" />
+                <ScalarProperty Name="CreatedAt" ColumnName="CreatedAt" />
+                <ScalarProperty Name="ImgUrl" ColumnName="ImgUrl" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="UserId" ColumnName="UserId" />
                 <ScalarProperty Name="SpecieId" ColumnName="SpecieId" />
@@ -656,14 +660,10 @@
                 <ScalarProperty Name="Title" ColumnName="Title" />
                 <ScalarProperty Name="Place" ColumnName="Place" />
                 <ScalarProperty Name="FullPlace" ColumnName="FullPlace" />
-                <ScalarProperty Name="LfDate" ColumnName="LfDate" />
-                <ScalarProperty Name="Img" ColumnName="Img" />
                 <ScalarProperty Name="ContactWay" ColumnName="ContactWay" />
                 <ScalarProperty Name="Detail" ColumnName="Detail" />
-                <ScalarProperty Name="PubDate" ColumnName="PubDate" />
                 <ScalarProperty Name="CmntCount" ColumnName="CmntCount" />
                 <ScalarProperty Name="TraceCount" ColumnName="TraceCount" />
-                <ScalarProperty Name="Status" ColumnName="Status" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
