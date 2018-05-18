@@ -233,11 +233,11 @@
           <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Name" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="Sex" Type="char" MaxLength="2" />
-          <Property Name="PhoneNum" Type="varchar" MaxLength="11" />
+          <Property Name="PhoneNumber" Type="varchar" MaxLength="11" />
           <Property Name="Email" Type="varchar" MaxLength="200" />
           <Property Name="Type" Type="varchar" MaxLength="20" />
           <Property Name="Pwd" Type="varchar" MaxLength="16" Nullable="false" />
-          <Property Name="Avatar" Type="varchar" MaxLength="200" />
+          <Property Name="AvatarUrl" Type="varchar" MaxLength="200" />
           <Property Name="FollowingCount" Type="bigint" />
           <Property Name="FollowerCount" Type="bigint" />
           <Property Name="Rate" Type="decimal" Precision="2" Scale="1" />
@@ -507,11 +507,11 @@
           <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="Sex" Type="String" MaxLength="2" FixedLength="true" Unicode="false" />
-          <Property Name="PhoneNum" Type="String" MaxLength="11" FixedLength="false" Unicode="false" />
+          <Property Name="PhoneNumber" Type="String" MaxLength="11" FixedLength="false" Unicode="false" />
           <Property Name="Email" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
           <Property Name="Type" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
           <Property Name="Pwd" Type="String" MaxLength="16" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="Avatar" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="AvatarUrl" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
           <Property Name="FollowingCount" Type="Int64" />
           <Property Name="FollowerCount" Type="Int64" />
           <Property Name="Rate" Type="Decimal" Precision="2" Scale="1" />
@@ -799,14 +799,14 @@
           <EntitySetMapping Name="BmdUsers">
             <EntityTypeMapping TypeName="BmdDbModel.BmdUser">
               <MappingFragment StoreEntitySet="BmdUser">
+                <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+                <ScalarProperty Name="AvatarUrl" ColumnName="AvatarUrl" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="Sex" ColumnName="Sex" />
-                <ScalarProperty Name="PhoneNum" ColumnName="PhoneNum" />
                 <ScalarProperty Name="Email" ColumnName="Email" />
                 <ScalarProperty Name="Type" ColumnName="Type" />
                 <ScalarProperty Name="Pwd" ColumnName="Pwd" />
-                <ScalarProperty Name="Avatar" ColumnName="Avatar" />
                 <ScalarProperty Name="FollowingCount" ColumnName="FollowingCount" />
                 <ScalarProperty Name="FollowerCount" ColumnName="FollowerCount" />
                 <ScalarProperty Name="Rate" ColumnName="Rate" />

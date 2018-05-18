@@ -4,7 +4,7 @@
       <v-content>
         <v-container fill-height>
           <v-layout row wrap justify-center>
-            <v-flex xs12 class="mt-5">
+            <v-flex xs12 class="mt-3">
               <div class="text-xs-center">
                 <v-avatar size="96px">
                   <img src="@/assets/bmd-logo.svg" alt="Bermuda Logo">
@@ -14,7 +14,9 @@
                 </h1>
                 <h2>寻找你的寻找</h2>
               </div>
-              <router-view/>
+              <v-card class="sign-form px-4 py-3 mt-3 mx-auto">
+                <router-view/>
+              </v-card>
             </v-flex>
           </v-layout>
         </v-container>
@@ -47,6 +49,10 @@ export default {
 
 .account-page {
   background-color: transparent;
+}
+
+.sign-form {
+  max-width: 320px;
 }
 
 a {
