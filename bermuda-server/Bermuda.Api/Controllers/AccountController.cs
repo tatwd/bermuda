@@ -24,16 +24,27 @@ namespace Bermuda.Api.Controllers
 
             if (ModelState.IsValid)
             {
-                //var _user = new BmdUser
-                //{
-                //    Name = user.username,
-                //    Pwd = user.password,
-                //    Email = user.email
-                //};
-                //success = iservice.SignUp(_user);
-                success = true;
-                msg = "注册成功！";
+                var newUser = new BmdUser
+                {
+                    Name = user.username,
+                    Pwd = user.password,
+                    Email = user.email
+                };
+
+                if (iservice.Select(x => x.Name == newUser.Name || x.Email == newUser.Email)
+                    .FirstOrDefault() != null)
+                {
+                    msg = "用户名或邮箱已被注册";
+                }
+                else
+                {
+                    success = iservice.SignUp(newUser);
+                }
+
+                if (success)
+                    msg = "注册成功！";
             }
+
 
             return Json(new { success, msg });
         }

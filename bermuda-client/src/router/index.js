@@ -28,7 +28,6 @@ export default new Router({
       ]
     },
     {
-      // TODO: add account routes
       path: '/account',
       component: AccountLayout,
       children: [

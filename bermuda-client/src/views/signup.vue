@@ -9,7 +9,7 @@
     ></v-text-field>
     <v-text-field
       v-model="email"
-      :counter="25"
+      :counter="50"
       :rules="emailRules"
       type="email"
       label="邮箱"
@@ -19,7 +19,7 @@
       v-model="password"
       :counter="16"
       :rules="passwordRules"
-      label="密码"
+      label="密码（6~16 个字符）"
       type="password"
       required
     ></v-text-field>
@@ -40,6 +40,13 @@
     <div class="text-xs-center mt-3">
       <router-link to="/account/signin" class="body-2 grey--text">还没有登录？马上去登录！</router-link>
     </div>
+    <!-- <v-snackbar
+      :timeout="600"
+      bottom
+      v-model="this.$strore"
+    >
+      {{  }}
+    </v-snackbar> -->
   </v-form>
 </template>
 
@@ -52,21 +59,40 @@ export default {
     confirm_password: null,
 
     valid: true,
-    usernameRules: [
-      v => !!v || '请输入用户名'
-    ],
-    emailRules: [],
-    passwordRules: [],
-    confirmPasswordRules: []
   }),
+  computed: {
+    usernameRules () {
+      return [
+        v => !!v || '请输入用户名',
+      ]
+    },
+    emailRules () {
+      return [
+        v => !!v || '请输入邮箱',
+        v => /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/.test(v) || '请输入有效的邮箱'
+      ]
+    },
+    passwordRules () {
+      return [
+        v => !!v || '请输入密码',
+        v => (v && v.length >= 6 && v.length <= 16) || '注意密码的长度'
+      ]
+    },
+    confirmPasswordRules () {
+      return [
+        v => !!v || '请确认密码',
+        v => v === this.password || '密码不一致',
+        v => (v && v.length >= 6 && v.length <= 16) || '注意密码的长度'
+      ]
+    }
+  },
   methods: {
     submit () {
       if (this.$refs.form.validate()) {
         this.$store.dispatch('createUser', {
           username: this.username,
           email: this.email,
-          password: this.password,
-          confirm_password: this.confirm_password
+          password: this.password
         })
       }
     }

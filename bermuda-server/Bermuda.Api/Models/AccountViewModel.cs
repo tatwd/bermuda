@@ -21,8 +21,14 @@ namespace Bermuda.Api.Models
         [Required]
         public string password { get; set; }
 
-        [Required]
-        [Compare("password", ErrorMessage = "密码不一致")]
-        public string confirm_password { get; set; }
+        //[Required]
+        //[Compare("password", ErrorMessage = "密码不一致")]
+        //public string confirm_password { get; set; }
+    }
+
+    public class LoginViewModel
+    {
+        public string username { get; set; }
+        public string password { get; set; }
     }
 }

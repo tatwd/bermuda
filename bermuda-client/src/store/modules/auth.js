@@ -6,18 +6,19 @@ const ASSETSS_URL = 'http://localhost:53595'
 // init state
 const state = {
   user: null,
-  msg: ''
+  info: null
 }
 
 // getters
 const getters = {
-  currentUser: state => state.user
+  currentUser: state => state.user,
+  currentInfo: state => state.info
 }
 
 // mutations
 const mutations = {
-  setMsg (state, msg) {
-    state.msg = msg
+  setInfo (state, msg) {
+    state.info = msg
   }
 }
 
@@ -27,9 +28,11 @@ const actions = {
     services.userService
       .createUser(user)
       .then(res => {
-        commit('setMsg', res.data)
+        commit('setInfo', res.data)
       })
-      .catch(err => console.error(err))
+      .catch(err => {
+        commit('setInfo', { success: false, msg: err })
+      })
   }
 }
 

@@ -14,8 +14,11 @@
                 </h1>
                 <h2>寻找你的寻找</h2>
               </div>
-              <v-card class="sign-form px-4 py-3 mt-3 mx-auto">
-                <router-view/>
+              <!-- sign form card -->
+              <v-card class="sign-form mt-3 mx-auto">
+                <v-card-text>
+                  <router-view/>
+                </v-card-text>
               </v-card>
             </v-flex>
           </v-layout>
