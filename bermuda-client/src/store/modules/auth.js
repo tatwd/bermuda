@@ -1,7 +1,4 @@
-import services from '../services'
-
-// server assets url
-const ASSETSS_URL = 'http://localhost:53595'
+import { userService } from '../services'
 
 // init state
 const state = {
@@ -25,7 +22,7 @@ const mutations = {
 // actions
 const actions = {
   createUser ({ commit }, user) {
-    services.userService
+    userService
       .createUser(user)
       .then(res => {
         commit('setInfo', res.data)

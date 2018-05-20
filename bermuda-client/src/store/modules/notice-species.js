@@ -1,7 +1,4 @@
-import services from '../services'
-
-// server assets url
-const ASSETSS_URL = 'http://localhost:53595'
+import { URL, noticeSpecieService } from '../services'
 
 // init state
 const state = {
@@ -18,7 +15,7 @@ const getters = {
 const mutations = {
   setAllNoticeSpecies (state, species) {
     state.all = species.map(specie => {
-      specie.img_url = ASSETSS_URL + specie.img_url
+      specie.img_url = URL.ROOT + specie.img_url
       return specie
     })
   }
@@ -27,7 +24,7 @@ const mutations = {
 // actions
 const actions = {
   getAllNoticeSpecies ({ state, commit }) {
-    services.noticeSpecieService
+    noticeSpecieService
       .getAll()
       .then(res => {
         commit('setAllNoticeSpecies', res.data)

@@ -1,7 +1,4 @@
-import services from '../services'
-
-// server assets url
-const ASSETSS_URL = 'http://localhost:53595'
+import { URL, topicService } from '../services'
 
 // init state
 const state = {

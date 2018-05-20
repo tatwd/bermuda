@@ -1,7 +1,4 @@
-import services from '../services'
-
-// server assets url
-const ASSETSS_URL = 'http://localhost:53595'
+import { URL, topicService } from '../services'
 
 // init state
 const state = {
@@ -27,7 +24,7 @@ const getters = {
 const mutations = {
   setAllTopics (state, topics) {
     state.all = topics.map(topic => {
-      topic.img_url = ASSETSS_URL + topic.img_url
+      topic.img_url = URL.ROOT + topic.img_url
       return topic
     })
   },
@@ -42,7 +39,7 @@ const mutations = {
 // actions
 const actions = {
   async getAllTopics ({ state, commit }) {
-    await services.topicService
+    await topicService
       .getAll()
       .then(res => {
         commit('setAllTopics', res.data)

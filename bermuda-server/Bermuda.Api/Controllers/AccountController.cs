@@ -45,7 +45,6 @@ namespace Bermuda.Api.Controllers
                     msg = "注册成功！";
             }
 
-
             return Json(new { success, msg });
         }
     }
