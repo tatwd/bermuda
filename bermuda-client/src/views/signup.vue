@@ -102,9 +102,12 @@ export default {
     submit () {
       if (this.$refs.form.validate()) {
         this.$store.dispatch('signup', {
-          username: this.username,
-          email: this.email,
-          password: this.password
+          user: {
+            username: this.username,
+            email: this.email,
+            password: this.password
+          },
+          redirct: () => this.$router.push('/account/signin')
         })
         this.show = true
       }

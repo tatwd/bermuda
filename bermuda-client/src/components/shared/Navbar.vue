@@ -59,7 +59,7 @@
             v-for="item in ['个人中心', '注销']"
             :key="item"
           >
-            <v-list-tile-title>
+            <v-list-tile-title to="#">
               {{ item }}
             </v-list-tile-title>
           </v-list-tile>
@@ -75,12 +75,20 @@
 </template>
 
 <script>
+import { mapGetters } from 'vuex'
+import authHelper from '@/assets/js/auth-helper'
+
 export default {
   name: 'Navbar',
   data: () => ({
     isSignIn: false,
     sidedNav: false
   }),
+  created () {
+    if (!authHelper.expired()) {
+      this.isSignIn = true
+    }
+  },
   methods: {
     showSearchInput () {}
   }

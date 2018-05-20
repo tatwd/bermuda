@@ -50,16 +50,13 @@ export default {
   },
   methods: {
     submit () {
-      console.log(this.$router.path)
       if (this.$refs.form.validate()) {
         this.$store.dispatch('signin', {
           user: {
             username: this.username,
             password: this.password
           },
-          redirect: () => this.$router.go({
-            path: this.$router.path
-          })
+          redirect: () => this.$router.push('/home')
         })
       }
     }

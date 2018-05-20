@@ -28,11 +28,14 @@ const mutations = {
 
 // actions
 const actions = {
-  signup ({ commit }, user) {
+  signup ({ commit }, payload) {
     userService
-      .signup(user)
+      .signup(payload.user)
       .then(res => {
         commit('setInfo', res.data)
+
+        // redirect to sign in page
+        payload.redirect();
       })
       .catch(err => {
         commit('setInfo', { success: false, msg: err })
