@@ -106,5 +106,17 @@ namespace Bermuda.Common
 
             return String.Join("", charArr);
         }
+
+        /// <summary>
+        /// 当前时间的时间戳（13位）
+        /// </summary>
+        /// <param name="context"></param>
+        /// <returns></returns>
+        public static Int64 GetCurrentTimeStamp()
+        {
+            Int64 stamp = (DateTime.Now.Ticks - 
+                TimeZone.CurrentTimeZone.ToLocalTime(new DateTime(1970, 1, 1, 0, 0, 0, 0)).Ticks) / 10000;
+            return stamp;
+        }
     }
 }

@@ -8,8 +8,6 @@ import UserService from '@/services/UserService'
 // Axois config
 Axios.defaults.headers.common.Accept = 'application/json'
 
-// const API_URL = 'http://localhost:53595/api'
-
 export const URL = {
   ROOT: 'http://localhost:53595',
   API: 'http://localhost:53595/api'

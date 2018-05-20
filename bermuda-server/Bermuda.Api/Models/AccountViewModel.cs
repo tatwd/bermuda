@@ -31,4 +31,19 @@ namespace Bermuda.Api.Models
         public string username { get; set; }
         public string password { get; set; }
     }
+
+    public class UserViewModel
+    {
+        public long id { get; set; }
+        public string name { get; set; }
+        public string sex { get; set; }
+        public string phone_number { get; set; }
+        public string email { get; set; }
+        public string type { get; set; }
+        public string avatar_url { get; set; }
+        public Int64 following_count { get; set; }
+        public Int64 follower_count { get; set; }
+        public decimal rate { get; set; }
+        public int credit { get; set; }
+    }
 }

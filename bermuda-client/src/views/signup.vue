@@ -40,17 +40,22 @@
     <div class="text-xs-center mt-3">
       <router-link to="/account/signin" class="body-2 grey--text">还没有登录？马上去登录！</router-link>
     </div>
-    <!-- <v-snackbar
-      :timeout="600"
+    <v-snackbar
+      v-if="info != null"
+      :timeout="5000"
+      :color="snackbarColor"
       bottom
-      v-model="this.$strore"
+      v-model="show"
     >
-      {{  }}
-    </v-snackbar> -->
+      {{ info.msg }}
+      <v-btn dark flat @click.native="show = false">Close</v-btn>
+    </v-snackbar>
   </v-form>
 </template>
 
 <script>
+import { mapGetters } from 'vuex'
+
 export default {
   data: () => ({
     username: null,
@@ -59,6 +64,7 @@ export default {
     confirm_password: null,
 
     valid: true,
+    show: false
   }),
   computed: {
     usernameRules () {
@@ -84,16 +90,23 @@ export default {
         v => v === this.password || '密码不一致',
         v => (v && v.length >= 6 && v.length <= 16) || '注意密码的长度'
       ]
+    },
+    ...mapGetters({
+      info: 'currentInfo'
+    }),
+    snackbarColor () {
+      return this.info.success ? 'success' : 'error'
     }
   },
   methods: {
     submit () {
       if (this.$refs.form.validate()) {
-        this.$store.dispatch('createUser', {
+        this.$store.dispatch('signup', {
           username: this.username,
           email: this.email,
           password: this.password
         })
+        this.show = true
       }
     }
   }

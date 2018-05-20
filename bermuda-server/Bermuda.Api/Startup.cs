@@ -46,7 +46,7 @@ namespace Bermuda.Api
                 AllowInsecureHttp = true, // for dev mode
 #endif
 
-                TokenEndpointPath = new PathString("/token"),
+                TokenEndpointPath = new PathString("/api/token"),
                 AccessTokenExpireTimeSpan = TimeSpan.FromMinutes(60), // 1 hours
                 Provider = oAuthProvider,
                 // RefreshTokenProvider = refreshTokenProvider
