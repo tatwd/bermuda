@@ -1,5 +1,6 @@
 import Vue from 'vue'
 import Router from 'vue-router'
+import authHelper from '@/assets/js/auth-helper'
 
 // layouts
 import DefaultLayout from '@/layouts/default'
@@ -13,7 +14,7 @@ import SignUp from '@/views/signup'
 
 Vue.use(Router)
 
-export default new Router({
+const router = new Router({
   routes: [
     {
       path: '/',
@@ -23,7 +24,10 @@ export default new Router({
         {
           path: 'home',
           name: 'Home',
-          component: Home
+          component: Home,
+          meta: {
+            requiresAuth: true
+          }
         }
       ]
     },
@@ -34,14 +38,18 @@ export default new Router({
         {
           path: 'signin',
           name: 'SignIn',
-          component: SignIn
+          component: SignIn,
+
         },
         {
           path: 'signup',
           name: 'SignUp',
           component: SignUp
         }
-      ]
+      ],
+      meta: {
+        requiresGuest: true
+      }
     },
     {
       // add 404 route
@@ -51,3 +59,34 @@ export default new Router({
   ],
   mode: 'hash'
 })
+
+// Router Guards
+router.beforeEach((to, from, next) => {
+  if (to.matched.some(record => record.meta.requiresAuth)) {
+    if (authHelper.expired()) {
+      next({
+        path: '/account/signin',
+        query: {
+          redirect: to.fullPath
+        }
+      })
+    } else {
+      next()
+    }
+  } else if(to.matched.some(record => record.meta.requiresGuest)) {
+    if (!authHelper.expired()) {
+      next({
+        path: '/home',
+        query: {
+          redirect: to.fullPath
+        }
+      })
+    } else {
+      next()
+    }
+  } else {
+    next()
+  }
+})
+
+export default router

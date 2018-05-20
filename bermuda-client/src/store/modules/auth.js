@@ -1,4 +1,5 @@
-import { userService } from '../services'
+import authHelper from '@/assets/js/auth-helper'
+import { URL, userService } from '../services'
 
 // init state
 const state = {
@@ -8,7 +9,10 @@ const state = {
 
 // getters
 const getters = {
-  currentUser: state => state.user,
+  currentUser: state => {
+    // 判断 access_token 是否过期
+    return !authHelper.expired() ? state.user : null
+  },
   currentInfo: state => state.info
 }
 
@@ -34,11 +38,28 @@ const actions = {
         commit('setInfo', { success: false, msg: err })
       })
   },
-  signin ({ commit }, user) {
+  signin ({ commit }, payload) {
     userService
-      .signin(user)
+      .signin(payload.user)
       .then(res => {
-        commit('setUser', JSON.parse(res.data.user))
+        let signinUser = JSON.parse(res.data.user)
+
+        if(signinUser.avatar_url)
+          signinUser.avatar_url += URL.ROOT
+
+        // save token to localStorage
+        authHelper.saveToken({
+          access_token: res.data.access_token,
+          token_type: res.data.token_type,
+          expires_in: res.data.expires_in,
+          login_at: res.data.login_at,
+          current_user: signinUser
+        })
+
+        commit('setUser', signinUser)
+
+        // redirect to home
+        payload.redirect();
       })
       .catch(err => {
         console.log(err)

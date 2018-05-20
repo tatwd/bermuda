@@ -26,9 +26,17 @@ AuthHelper.prototype.updateToken = function (newToken) {
 
 // check for token expired or not
 AuthHelper.prototype.expired = function () {
+  let token = this.getToken();
+  if (!token)
+    return true;
+
   let now = new Date().getTime();
-  let loginAt = this.getToken().login_at;
-  return now - loginAt
+  let loginAt = token.login_at;
+  return (now - loginAt) / 1000 > token.expires_in;
 }
 
-export default AuthHelper;
+AuthHelper.prototype.auth = function () {
+  // todo
+}
+
+export default new AuthHelper("BMD_USER_AUTH");
