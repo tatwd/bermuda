@@ -45,31 +45,48 @@
 
       <v-menu
         v-if="isSignIn"
-        bottom
-        left
         offset-y
         transition="slide-y-transition"
+        bottom
+        left
         full-width
+        open-on-hover
       >
         <v-avatar slot="activator" size="40">
-            <img src="@/assets/avatar-tmp.svg" alt="avatar">
-          </v-avatar>
+          <img src="@/assets/avatar-tmp.svg" alt="avatar">
+        </v-avatar>
         <v-list>
           <v-list-tile
             v-for="item in ['个人中心', '注销']"
             :key="item"
+            to="#"
           >
-            <v-list-tile-title to="#">
+            <v-list-tile-title>
               {{ item }}
             </v-list-tile-title>
           </v-list-tile>
         </v-list>
       </v-menu>
 
-      <v-btn class="mr-3 mx-5 hidden-sm-and-down" color="info">
-        <v-icon left>create</v-icon>
-        发布
-      </v-btn>
+      <v-menu
+        offset-y
+        full-width
+        dark
+      >
+        <v-btn slot="activator" class="mr-3 mx-5 hidden-sm-and-down" color="info">
+          <v-icon left>create</v-icon>
+          发布
+        </v-btn>
+        <v-list-tile
+          v-for="(item, index) in ['失物招领', '动态', '话题']"
+          :key="index"
+          to="#"
+        >
+          <v-list-tile-title>
+            {{ item }}
+          </v-list-tile-title>
+        </v-list-tile>
+      </v-menu>
     </v-toolbar>
   </div>
 </template>
@@ -99,6 +116,6 @@ export default {
 <style scoped>
 a {
   text-decoration: none;
-  color: #c66;
+  /* color: #c66; */
 }
 </style>
