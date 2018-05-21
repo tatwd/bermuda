@@ -182,6 +182,7 @@
     <Compile Include="Models\NoticeSpecieViewModel.cs" />
     <Compile Include="Models\NoticeViewModel.cs" />
     <Compile Include="Models\TopicViewModel.cs" />
+    <Compile Include="OAuth\BaseRefreshTokenProvider.cs" />
     <Compile Include="OAuth\BmdOAuthAuthorizationServerProvider.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />

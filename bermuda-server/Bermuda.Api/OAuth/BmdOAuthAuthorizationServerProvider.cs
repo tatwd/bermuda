@@ -57,7 +57,8 @@ namespace Bermuda.Api.OAuth
                 var authUserStr = JsonConvert.SerializeObject(authUserVm);
 
                 context.AdditionalResponseParameters.Add("login_at", BaseUtil.GetCurrentTimeStamp());
-                context.AdditionalResponseParameters.Add("user", authUserStr);
+                context.AdditionalResponseParameters.Add("auth_token_url", context.Request.Uri.ToString());
+                context.AdditionalResponseParameters.Add("current_user", authUserStr);
             });
         }
     }

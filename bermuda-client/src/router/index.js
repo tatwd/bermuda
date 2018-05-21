@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import authHelper from '@/assets/js/auth-helper'
+import userAuth from '@/assets/js/user-auth'
 
 // layouts
 import DefaultLayout from '@/layouts/default'
@@ -62,6 +63,12 @@ const router = new Router({
 
 // Router Guards
 router.beforeEach((to, from, next) => {
+
+  // test
+  console.log(
+    userAuth.auth().currentUser
+  )
+
   if (to.matched.some(record => record.meta.requiresAuth)) {
     if (authHelper.expired()) {
       next({

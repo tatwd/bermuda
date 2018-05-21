@@ -1,4 +1,5 @@
-import authHelper from '@/assets/js/auth-helper'
+// import authHelper from '@/assets/js/auth-helper'
+import userAuth from '@/assets/js/user-auth'
 import { URL, userService } from '../services'
 
 // init state
@@ -45,27 +46,20 @@ const actions = {
     userService
       .signin(payload.user)
       .then(res => {
-        let signinUser = JSON.parse(res.data.user)
+        let _currentUser = JSON.parse(res.data.current_user)
 
-        if(signinUser.avatar_url)
-          signinUser.avatar_url += URL.ROOT
+        if(_currentUser.avatar_url)
+          _currentUser.avatar_url += URL.ROOT
 
-        // save token to localStorage
-        authHelper.saveToken({
-          access_token: res.data.access_token,
-          token_type: res.data.token_type,
-          expires_in: res.data.expires_in,
-          login_at: res.data.login_at,
-          current_user: signinUser
-        })
+        res.data.current_user = _currentUser
+        userAuth.updateToken(res.data);
 
-        commit('setUser', signinUser)
+        commit('setUser', _currentUser)
 
         // redirect to home
         payload.redirect();
       })
       .catch(err => {
-        console.log(err)
         commit('setInfo', { success: false, msg: '用户名或密码错误' })
       })
   }

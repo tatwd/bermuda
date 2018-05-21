@@ -38,7 +38,7 @@ namespace Bermuda.Api
             var oAuthProvider = new BmdOAuthAuthorizationServerProvider();
 
             // init custom refresh token provider
-            // var refreshTokenProvider = new BaseRefreshTokenProvider();
+            //var refreshTokenProvider = new BaseRefreshTokenProvider();
 
             OAuthAuthorizationServerOptions options = new OAuthAuthorizationServerOptions
             {
@@ -47,9 +47,9 @@ namespace Bermuda.Api
 #endif
 
                 TokenEndpointPath = new PathString("/api/token"),
-                AccessTokenExpireTimeSpan = TimeSpan.FromMinutes(60), // 1 hours
+                AccessTokenExpireTimeSpan = TimeSpan.FromMinutes(1), // 1 hours
                 Provider = oAuthProvider,
-                // RefreshTokenProvider = refreshTokenProvider
+                //RefreshTokenProvider = refreshTokenProvider
             };
 
             app.UseOAuthAuthorizationServer(options);
