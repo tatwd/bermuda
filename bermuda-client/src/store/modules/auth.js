@@ -1,4 +1,3 @@
-// import authHelper from '@/assets/js/auth-helper'
 import userAuth from '@/assets/js/user-auth'
 import { URL, userService } from '../services'
 
@@ -12,7 +11,7 @@ const state = {
 const getters = {
   currentUser: state => {
     // 判断 access_token 是否过期
-    return !authHelper.expired() ? state.user : null
+    return userAuth.auth().currentUser
   },
   currentInfo: state => state.info
 }

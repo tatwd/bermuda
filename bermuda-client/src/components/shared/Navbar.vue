@@ -92,8 +92,8 @@
 </template>
 
 <script>
-import { mapGetters } from 'vuex'
-import authHelper from '@/assets/js/auth-helper'
+import userAuth from '@/assets/js/user-auth'
+// import { mapGetters } from 'vuex'
 
 export default {
   name: 'Navbar',
@@ -102,10 +102,13 @@ export default {
     sidedNav: false
   }),
   created () {
-    if (!authHelper.expired()) {
+    if (userAuth.auth().currentUser) {
       this.isSignIn = true
     }
   },
+  // computed: mapGetters({
+  //   user: 'currentUser'
+  // }),
   methods: {
     showSearchInput () {}
   }

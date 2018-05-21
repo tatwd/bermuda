@@ -1,6 +1,5 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import authHelper from '@/assets/js/auth-helper'
 import userAuth from '@/assets/js/user-auth'
 
 // layouts
@@ -61,16 +60,16 @@ const router = new Router({
   mode: 'hash'
 })
 
+// get current from localStorage
+let currentUser = userAuth.auth().currentUser
+
 // Router Guards
 router.beforeEach((to, from, next) => {
-
-  // test
-  console.log(
-    userAuth.auth().currentUser
-  )
+  // test log
+  // console.log(currentUser)
 
   if (to.matched.some(record => record.meta.requiresAuth)) {
-    if (authHelper.expired()) {
+    if (!currentUser) {
       next({
         path: '/account/signin',
         query: {
@@ -81,7 +80,7 @@ router.beforeEach((to, from, next) => {
       next()
     }
   } else if(to.matched.some(record => record.meta.requiresGuest)) {
-    if (!authHelper.expired()) {
+    if (currentUser) {
       next({
         path: '/home',
         query: {
