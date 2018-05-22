@@ -8,11 +8,6 @@
     public class BmdNoticeDao
         : BaseDao<BmdNotice>, IBmdNoticeDao
     {
-        public string Show()
-        {
-            return ("Hello BmdNotice DAO!");
-        }
-
         // 默认降序排列
         public IQueryable<BmdNotice> GetNoticeByPage<type>(int pageSize, int pageIndex,
             Expression<Func<BmdNotice, type>> orderByLambda,
@@ -21,8 +16,7 @@
 
         {
             int skipCount = (pageIndex - 1) * pageSize;
-            var notices = context
-                .Set<BmdNotice>()
+            var notices = context.Set<BmdNotice>()
                 .Where(whereLambda);
 
             return isAsc

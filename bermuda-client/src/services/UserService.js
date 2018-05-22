@@ -13,7 +13,6 @@ export default class UserService {
   // signup
   signup (user) {
     let self = this
-
     return self.axios.post(`${self.baseUrl}/account/register`, user)
   }
 
@@ -30,4 +29,9 @@ export default class UserService {
 
   // signout
   signout () {}
+
+  getById (id) {
+    let self = this
+    return self.axios.get(`${self.baseUrl}/user/${id}`)
+  }
 }

@@ -103,10 +103,10 @@
           <Property Name="ImgUrl" Type="varchar" MaxLength="200" />
           <Property Name="ContactWay" Type="varchar" MaxLength="100" />
           <Property Name="Detail" Type="varchar" MaxLength="280" />
-          <Property Name="CreatedAt" Type="datetime" />
-          <Property Name="CmntCount" Type="bigint" />
-          <Property Name="TraceCount" Type="bigint" />
-          <Property Name="IsSolved" Type="tinyint" />
+          <Property Name="CreatedAt" Type="datetime" StoreGeneratedPattern="Computed" />
+          <Property Name="CmntCount" Type="bigint" StoreGeneratedPattern="Computed" />
+          <Property Name="TraceCount" Type="bigint" StoreGeneratedPattern="Computed" />
+          <Property Name="IsSolved" Type="tinyint" StoreGeneratedPattern="Computed" />
         </EntityType>
         <EntityType Name="BmdNoticeCmnt">
           <Key>
@@ -137,7 +137,7 @@
           <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Name" Type="varchar" MaxLength="20" />
           <Property Name="ImgUrl" Type="varchar" MaxLength="200" />
-          <Property Name="NoticeCount" Type="bigint" />
+          <Property Name="NoticeCount" Type="bigint" StoreGeneratedPattern="Computed" />
         </EntityType>
         <EntityType Name="BmdNoticeTrace">
           <Key>
@@ -212,10 +212,10 @@
           <Property Name="UserId" Type="bigint" />
           <Property Name="Name" Type="varchar" MaxLength="50" />
           <Property Name="Detail" Type="varchar" MaxLength="100" />
-          <Property Name="JoinCount" Type="bigint" />
+          <Property Name="JoinCount" Type="bigint" StoreGeneratedPattern="Computed" />
           <Property Name="ImgUrl" Type="varchar" MaxLength="200" />
-          <Property Name="IsPassed" Type="tinyint" />
-          <Property Name="CreatedAt" Type="datetime" />
+          <Property Name="IsPassed" Type="tinyint" StoreGeneratedPattern="Computed" />
+          <Property Name="CreatedAt" Type="datetime" StoreGeneratedPattern="Computed" />
         </EntityType>
         <EntityType Name="BmdTopicJoin">
           <Key>
@@ -238,10 +238,13 @@
           <Property Name="Type" Type="varchar" MaxLength="20" />
           <Property Name="Pwd" Type="varchar" MaxLength="16" Nullable="false" />
           <Property Name="AvatarUrl" Type="varchar" MaxLength="200" />
-          <Property Name="FollowingCount" Type="bigint" />
-          <Property Name="FollowerCount" Type="bigint" />
-          <Property Name="Rate" Type="decimal" Precision="2" Scale="1" />
-          <Property Name="Credit" Type="int" />
+          <Property Name="FollowingCount" Type="bigint" StoreGeneratedPattern="Computed" />
+          <Property Name="FollowerCount" Type="bigint" StoreGeneratedPattern="Computed" />
+          <Property Name="LostCount" Type="bigint" StoreGeneratedPattern="Computed" />
+          <Property Name="FoundCount" Type="bigint" StoreGeneratedPattern="Computed" />
+          <Property Name="Rate" Type="decimal" Precision="2" Scale="1" StoreGeneratedPattern="Computed" />
+          <Property Name="Credit" Type="int" StoreGeneratedPattern="Computed" />
+          <Property Name="CreatedAt" Type="datetime" StoreGeneratedPattern="Computed" />
         </EntityType>
         <EntityType Name="BmdUserFollow">
           <Key>
@@ -377,10 +380,10 @@
           <Property Name="ImgUrl" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
           <Property Name="ContactWay" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
           <Property Name="Detail" Type="String" MaxLength="280" FixedLength="false" Unicode="false" />
-          <Property Name="CreatedAt" Type="DateTime" Precision="3" />
-          <Property Name="CmntCount" Type="Int64" />
-          <Property Name="TraceCount" Type="Int64" />
-          <Property Name="IsSolved" Type="Byte" />
+          <Property Name="CreatedAt" Type="DateTime" Precision="3" annotation:StoreGeneratedPattern="Computed" />
+          <Property Name="CmntCount" Type="Int64" annotation:StoreGeneratedPattern="Computed" />
+          <Property Name="TraceCount" Type="Int64" annotation:StoreGeneratedPattern="Computed" />
+          <Property Name="IsSolved" Type="Byte" annotation:StoreGeneratedPattern="Computed" />
         </EntityType>
         <EntityType Name="BmdNoticeCmnt">
           <Key>
@@ -411,7 +414,7 @@
           <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Name" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
           <Property Name="ImgUrl" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
-          <Property Name="NoticeCount" Type="Int64" />
+          <Property Name="NoticeCount" Type="Int64" annotation:StoreGeneratedPattern="Computed" />
         </EntityType>
         <EntityType Name="BmdNoticeTrace">
           <Key>
@@ -486,10 +489,10 @@
           <Property Name="UserId" Type="Int64" />
           <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="Detail" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-          <Property Name="JoinCount" Type="Int64" />
+          <Property Name="JoinCount" Type="Int64" annotation:StoreGeneratedPattern="Computed" />
           <Property Name="ImgUrl" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
-          <Property Name="IsPassed" Type="Byte" />
-          <Property Name="CreatedAt" Type="DateTime" Precision="3" />
+          <Property Name="IsPassed" Type="Byte" annotation:StoreGeneratedPattern="Computed" />
+          <Property Name="CreatedAt" Type="DateTime" Precision="3" annotation:StoreGeneratedPattern="Computed" />
         </EntityType>
         <EntityType Name="BmdTopicJoin">
           <Key>
@@ -512,10 +515,13 @@
           <Property Name="Type" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
           <Property Name="Pwd" Type="String" MaxLength="16" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="AvatarUrl" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
-          <Property Name="FollowingCount" Type="Int64" />
-          <Property Name="FollowerCount" Type="Int64" />
-          <Property Name="Rate" Type="Decimal" Precision="2" Scale="1" />
-          <Property Name="Credit" Type="Int32" />
+          <Property Name="FollowerCount" Type="Int64" annotation:StoreGeneratedPattern="Computed" />
+          <Property Name="FollowingCount" Type="Int64" annotation:StoreGeneratedPattern="Computed" xmlns="http://schemas.microsoft.com/ado/2009/11/edm" />
+          <Property Name="LostCount" Type="Int64" annotation:StoreGeneratedPattern="Computed" />
+          <Property Name="FoundCount" Type="Int64" annotation:StoreGeneratedPattern="Computed" />
+          <Property Name="Rate" Type="Decimal" Precision="2" Scale="1" annotation:StoreGeneratedPattern="Computed" />
+          <Property Name="Credit" Type="Int32" annotation:StoreGeneratedPattern="Computed" />
+          <Property Name="CreatedAt" Type="DateTime" Precision="3" annotation:StoreGeneratedPattern="Computed" />
         </EntityType>
         <EntityType Name="BmdUserFollow">
           <Key>
@@ -799,6 +805,9 @@
           <EntitySetMapping Name="BmdUsers">
             <EntityTypeMapping TypeName="BmdDbModel.BmdUser">
               <MappingFragment StoreEntitySet="BmdUser">
+                <ScalarProperty Name="CreatedAt" ColumnName="CreatedAt" />
+                <ScalarProperty Name="FoundCount" ColumnName="FoundCount" />
+                <ScalarProperty Name="LostCount" ColumnName="LostCount" />
                 <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
                 <ScalarProperty Name="AvatarUrl" ColumnName="AvatarUrl" />
                 <ScalarProperty Name="Id" ColumnName="Id" />

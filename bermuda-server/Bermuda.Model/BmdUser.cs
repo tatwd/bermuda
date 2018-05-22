@@ -22,9 +22,12 @@ namespace Bermuda.Model
         public string Type { get; set; }
         public string Pwd { get; set; }
         public string AvatarUrl { get; set; }
-        public Nullable<long> FollowingCount { get; set; }
         public Nullable<long> FollowerCount { get; set; }
+        public Nullable<long> FollowingCount { get; set; }
+        public Nullable<long> LostCount { get; set; }
+        public Nullable<long> FoundCount { get; set; }
         public Nullable<decimal> Rate { get; set; }
         public Nullable<int> Credit { get; set; }
+        public Nullable<System.DateTime> CreatedAt { get; set; }
     }
 }

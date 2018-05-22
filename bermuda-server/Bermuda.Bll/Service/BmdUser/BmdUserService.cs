@@ -5,6 +5,7 @@
     using System.Linq;
     using System;
     using System.Threading.Tasks;
+    using System.Collections.Generic;
 
     public class BmdUserService 
         : BaseService<BmdUser, IBmdUserDao>, IBmdUserService
@@ -35,6 +36,15 @@
         {
             idao.Insert(user);
             return idao.SaveChanges();
+        }
+
+        public IList<BmdUser> GetTop(int count)
+        {
+            return idao
+                .Select(x => x.Id > 0)
+                .OrderByDescending(x => x.FoundCount)
+                .Take(count)
+                .ToList();
         }
     }
 }

@@ -1,18 +1,16 @@
-import userAuth from '@/assets/js/user-auth'
 import { URL, userService } from '../services'
+import userAuth from '@/assets/js/user-auth'
+import imgUrlFilter from '@/filter/img-url'
 
 // init state
 const state = {
-  user: null,
+  user: userAuth.auth().currentUser,
   info: null
 }
 
 // getters
 const getters = {
-  currentUser: state => {
-    // 判断 access_token 是否过期
-    return userAuth.auth().currentUser
-  },
+  currentUser: state => state.user,
   currentInfo: state => state.info
 }
 
@@ -37,20 +35,19 @@ const actions = {
         // redirect to sign in page
         payload.redirect();
       })
-      .catch(err => {
-        commit('setInfo', { success: false, msg: err })
-      })
   },
   signin ({ commit }, payload) {
     userService
       .signin(payload.user)
       .then(res => {
-        let _currentUser = JSON.parse(res.data.current_user)
-
-        if(_currentUser.avatar_url)
-          _currentUser.avatar_url += URL.ROOT
-
+        // filter img url
+        let _currentUser = imgUrlFilter(
+          JSON.parse(res.data.current_user),
+          URL.ROOT
+        )
         res.data.current_user = _currentUser
+
+        // save token to localStorage
         userAuth.updateToken(res.data);
 
         commit('setUser', _currentUser)
