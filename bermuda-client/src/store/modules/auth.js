@@ -54,6 +54,7 @@ const actions = {
         userAuth.updateToken(res.data);
 
         commit('setUser', _currentUser)
+        commit('setInfo', { success: true, msg: '登录成功' })
 
         // redirect to home
         payload.redirect();

@@ -60,11 +60,13 @@ const router = new Router({
   mode: 'hash'
 })
 
-// get current from localStorage
-let currentUser = userAuth.auth().currentUser
+
 
 // Router Guards
 router.beforeEach((to, from, next) => {
+  // get current from localStorage
+  let currentUser = userAuth.auth().currentUser
+
   // test log
   // console.log(currentUser)
 
