@@ -9,6 +9,8 @@ import ErrorLayout from '@/layouts/error'
 
 // view components
 import Home from '@/views/home'
+import Shop from '@/views/shop'
+import Topic from '@/views/topic'
 import SignIn from '@/views/signin'
 import SignUp from '@/views/signup'
 
@@ -25,6 +27,22 @@ const router = new Router({
           path: 'home',
           name: 'Home',
           component: Home,
+          meta: {
+            requiresAuth: false
+          }
+        },
+        {
+          path: 'topic',
+          name: 'Topic',
+          component: Topic,
+          meta: {
+            requiresAuth: false
+          }
+        },
+        {
+          path: 'shop',
+          name: 'Shop',
+          component: Shop,
           meta: {
             requiresAuth: false
           }

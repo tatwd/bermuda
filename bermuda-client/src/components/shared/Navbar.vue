@@ -24,8 +24,8 @@
         </h3>
       </v-toolbar-title>
       <v-toolbar-items class="mx-5 hidden-sm-and-down">
-        <v-btn class="subheading" flat v-for="item in ['首页', '话题', '商城']" :key="item" :to="item">
-          {{ item }}
+        <v-btn class="subheading" flat v-for="nav in navs" :key="nav.title" :to="nav.to">
+          {{ nav.title }}
         </v-btn>
       </v-toolbar-items>
       <!-- <v-spacer></v-spacer> -->
@@ -78,9 +78,10 @@
           发布
         </v-btn>
         <v-list-tile
-          v-for="(item, index) in ['失物招领', '动态', '话题']"
-          :key="index"
+          v-for="item in ['失物招领', '动态', '话题']"
+          :key="item"
           to="#"
+          class="white"
         >
           <v-list-tile-title>
             {{ item }}
@@ -99,7 +100,13 @@ export default {
   name: 'Navbar',
   data: () => ({
     isSignIn: false,
-    sidedNav: false
+    sidedNav: false,
+
+    navs: [
+      { title: '首页', to: '/home' },
+      { title: '话题', to: '/topic' },
+      { title: '商城', to: '/shop' }
+    ]
   }),
   created () {
     if (userAuth.auth().currentUser) {
@@ -109,13 +116,9 @@ export default {
   // computed: mapGetters({
   //   user: 'currentUser'
   // }),
-  methods: {
-    showSearchInput () {}
-  }
 }
 </script>
 
-<!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
 a {
   text-decoration: none;
