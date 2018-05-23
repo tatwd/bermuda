@@ -1,13 +1,16 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
-import services from './services'
+
+import topics from './modules/topics'
+import noticeSpecies from './modules/notice-species'
+import auth from './modules/auth'
 
 Vue.use(Vuex)
 
-const state = {
-  services
-}
-
 export default new Vuex.Store({
-  state
+  modules: {
+    topics,
+    noticeSpecies,
+    auth
+  }
 })

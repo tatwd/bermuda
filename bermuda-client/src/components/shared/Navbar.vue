@@ -24,8 +24,8 @@
         </h3>
       </v-toolbar-title>
       <v-toolbar-items class="mx-5 hidden-sm-and-down">
-        <v-btn class="subheading" flat v-for="item in ['首页', '话题', '商城']" :key="item" :to="item">
-          {{ item }}
+        <v-btn class="subheading" flat v-for="nav in navs" :key="nav.title" :to="nav.to">
+          {{ nav.title }}
         </v-btn>
       </v-toolbar-items>
       <!-- <v-spacer></v-spacer> -->
@@ -45,19 +45,21 @@
 
       <v-menu
         v-if="isSignIn"
-        bottom
-        left
         offset-y
         transition="slide-y-transition"
+        bottom
+        left
         full-width
+        open-on-hover
       >
         <v-avatar slot="activator" size="40">
-            <img src="@/assets/avatar-tmp.svg" alt="avatar">
-          </v-avatar>
+          <img src="@/assets/avatar-tmp.svg" alt="avatar">
+        </v-avatar>
         <v-list>
           <v-list-tile
             v-for="item in ['个人中心', '注销']"
             :key="item"
+            to="#"
           >
             <v-list-tile-title>
               {{ item }}
@@ -66,31 +68,60 @@
         </v-list>
       </v-menu>
 
-      <v-btn class="mr-3 mx-5 hidden-sm-and-down" color="info">
-        <v-icon left>create</v-icon>
-        发布
-      </v-btn>
+      <v-menu
+        offset-y
+        full-width
+        dark
+      >
+        <v-btn slot="activator" class="mr-3 mx-5 hidden-sm-and-down" color="info">
+          <v-icon left>create</v-icon>
+          发布
+        </v-btn>
+        <v-list-tile
+          v-for="item in ['失物招领', '动态', '话题']"
+          :key="item"
+          to="#"
+          class="white"
+        >
+          <v-list-tile-title>
+            {{ item }}
+          </v-list-tile-title>
+        </v-list-tile>
+      </v-menu>
     </v-toolbar>
   </div>
 </template>
 
 <script>
+import userAuth from '@/assets/js/user-auth'
+// import { mapGetters } from 'vuex'
+
 export default {
   name: 'Navbar',
   data: () => ({
     isSignIn: false,
-    sidedNav: false
+    sidedNav: false,
+
+    navs: [
+      { title: '首页', to: '/home' },
+      { title: '话题', to: '/topic' },
+      { title: '商城', to: '/shop' }
+    ]
   }),
-  methods: {
-    showSearchInput () {}
-  }
+  created () {
+    if (userAuth.auth().currentUser) {
+      this.isSignIn = true
+    }
+  },
+  // computed: mapGetters({
+  //   user: 'currentUser'
+  // }),
 }
 </script>
 
-<!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
 a {
   text-decoration: none;
-  color: #c66;
+  /* color: #c66; */
 }
 </style>

@@ -1,17 +1,16 @@
 <template>
   <div
     id="hot-species"
-    :class="mlSize"
   >
     <v-card>
       <v-card-title>
         <v-icon color="primary">bookmark</v-icon>
-        <span class="ml-2">{{ example }}</span>
+        <span class="ml-2">{{ title }}</span>
       </v-card-title>
       <v-card-text>
         <a href="/"
-          v-for="i in 10"
-          :key="i"
+          v-for="specie in species"
+          :key="specie.id"
           class="d-inline-block"
         >
           <v-chip
@@ -20,9 +19,9 @@
             color="primary"
           >
             <v-avatar tile>
-              <img src="https://randomuser.me/portraits/men/35.jpg" alt="trevor">
+              <img :src="specie.img_url" :alt="specie.name">
             </v-avatar>
-            种类 {{ i }}
+            {{ specie.name }}
           </v-chip>
         </a>
       </v-card-text>
@@ -31,19 +30,18 @@
 </template>
 
 <script>
+import { mapGetters } from 'vuex'
+
 export default {
   name: 'HotSpecies',
   data: () => ({
-    example: '物以类聚',
-    mlSize: 'ml-4'
+    title: '物以类聚'
   }),
-  mounted () {
-    window.addEventListener('resize', this.onResize)
-  },
-  methods: {
-    onResize () {
-      this.mlSize = window.innerWidth <= '960' ? 'ml-0' : 'ml-4'
-    }
+  computed: mapGetters({
+    species: 'hotNoticeSpecies'
+  }),
+  created () {
+    this.$store.dispatch('getAllNoticeSpecies')
   }
 }
 </script>

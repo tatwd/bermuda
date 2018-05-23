@@ -9,11 +9,6 @@
     public class BmdNoticeService
         : BaseService<BmdNotice, IBmdNoticeDao>, IBmdNoticeService
     {
-        public string ShowMsg()
-        {
-            return idao.Show();
-        }
-
         public IQueryable<BmdNotice> GetNoticeByPage<type>(int pageSize, int pageIndex,
             Expression<Func<BmdNotice, type>> orderByLambda,
             Expression<Func<BmdNotice, bool>> whereLambda,

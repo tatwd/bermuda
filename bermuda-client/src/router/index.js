@@ -1,17 +1,22 @@
 import Vue from 'vue'
 import Router from 'vue-router'
+import userAuth from '@/assets/js/user-auth'
 
 // layouts
 import DefaultLayout from '@/layouts/default'
+import AccountLayout from '@/layouts/account'
 import ErrorLayout from '@/layouts/error'
 
 // view components
-// import Example from '@/components/Example'
 import Home from '@/views/home'
+import Shop from '@/views/shop'
+import Topic from '@/views/topic'
+import SignIn from '@/views/signin'
+import SignUp from '@/views/signup'
 
 Vue.use(Router)
 
-export default new Router({
+const router = new Router({
   routes: [
     {
       path: '/',
@@ -21,13 +26,48 @@ export default new Router({
         {
           path: 'home',
           name: 'Home',
-          component: Home
+          component: Home,
+          meta: {
+            requiresAuth: false
+          }
+        },
+        {
+          path: 'topic',
+          name: 'Topic',
+          component: Topic,
+          meta: {
+            requiresAuth: false
+          }
+        },
+        {
+          path: 'shop',
+          name: 'Shop',
+          component: Shop,
+          meta: {
+            requiresAuth: false
+          }
         }
       ]
     },
     {
-      // TODO: add account routes
-      path: '/account/',
+      path: '/account',
+      component: AccountLayout,
+      children: [
+        {
+          path: 'signin',
+          name: 'SignIn',
+          component: SignIn,
+
+        },
+        {
+          path: 'signup',
+          name: 'SignUp',
+          component: SignUp
+        }
+      ],
+      meta: {
+        requiresGuest: true
+      }
     },
     {
       // add 404 route
@@ -37,3 +77,42 @@ export default new Router({
   ],
   mode: 'hash'
 })
+
+
+
+// Router Guards
+router.beforeEach((to, from, next) => {
+  // get current from localStorage
+  let currentUser = userAuth.auth().currentUser
+
+  // test log
+  // console.log(currentUser)
+
+  if (to.matched.some(record => record.meta.requiresAuth)) {
+    if (!currentUser) {
+      next({
+        path: '/account/signin',
+        query: {
+          redirect: to.fullPath
+        }
+      })
+    } else {
+      next()
+    }
+  } else if(to.matched.some(record => record.meta.requiresGuest)) {
+    if (currentUser) {
+      next({
+        path: '/home',
+        query: {
+          redirect: to.fullPath
+        }
+      })
+    } else {
+      next()
+    }
+  } else {
+    next()
+  }
+})
+
+export default router

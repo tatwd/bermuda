@@ -9,8 +9,6 @@
     {
         // add native methods here
 
-        string ShowMsg();
-
         IQueryable<BmdNotice> GetNoticeByPage<type>(int pageSize, int pageIndex,
             Expression<Func<BmdNotice, type>> orderByLambda,
             Expression<Func<BmdNotice, bool>> whereLambda,

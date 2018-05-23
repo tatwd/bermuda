@@ -16,7 +16,7 @@ namespace Bermuda.Model
     {
         public long Id { get; set; }
         public string Name { get; set; }
-        public string Img { get; set; }
+        public string ImgUrl { get; set; }
         public Nullable<long> NoticeCount { get; set; }
     }
 }

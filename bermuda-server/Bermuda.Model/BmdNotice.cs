@@ -21,13 +21,13 @@ namespace Bermuda.Model
         public string Title { get; set; }
         public string Place { get; set; }
         public string FullPlace { get; set; }
-        public string LfDate { get; set; }
-        public string Img { get; set; }
+        public string EventTimeDesc { get; set; }
+        public string ImgUrl { get; set; }
         public string ContactWay { get; set; }
         public string Detail { get; set; }
-        public Nullable<System.DateTime> PubDate { get; set; }
+        public Nullable<System.DateTime> CreatedAt { get; set; }
         public Nullable<long> CmntCount { get; set; }
         public Nullable<long> TraceCount { get; set; }
-        public Nullable<byte> Status { get; set; }
+        public Nullable<byte> IsSolved { get; set; }
     }
 }

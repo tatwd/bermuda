@@ -9,12 +9,10 @@
     {
         // add native methods here
 
-        string Show();
-
         // 分页查询
         IQueryable<BmdNotice> GetNoticeByPage<type>(int pageSize, int pageIndex,
             Expression<Func<BmdNotice, type>> orderByLambda,
             Expression<Func<BmdNotice, bool>> whereLambda,
-            bool isAsc);
+            bool isAsc = false);
     }
 }

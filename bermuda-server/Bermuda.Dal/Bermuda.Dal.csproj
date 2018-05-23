@@ -51,6 +51,10 @@
   <ItemGroup>
     <Compile Include="Context\DbContextFactory.cs" />
     <Compile Include="Dao\BaseDao.cs" />
+    <Compile Include="Dao\BmdCurrent\BmdCurrentDao.cs" />
+    <Compile Include="Dao\BmdCurrent\IBmdCurrentDao.cs" />
+    <Compile Include="Dao\BmdNoticeSpecie\BmdNoticeSpecieDao.cs" />
+    <Compile Include="Dao\BmdNoticeSpecie\IBmdNoticeSpecieDao.cs" />
     <Compile Include="Dao\BmdNotice\BmdNoticeDao.cs" />
     <Compile Include="Dao\BmdNotice\IBmdNoticeDao.cs" />
     <Compile Include="Dao\BmdTopic\BmdTopicDao.cs" />
@@ -71,6 +75,7 @@
     <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
