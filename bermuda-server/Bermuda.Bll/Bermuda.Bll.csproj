@@ -42,6 +42,8 @@
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Service\BaseService.cs" />
+    <Compile Include="Service\BmdCurrent\BmdCurrentService.cs" />
+    <Compile Include="Service\BmdCurrent\IBmdCurrentService.cs" />
     <Compile Include="Service\BmdNoticeSpecie\BmdNoticeSpecieService.cs" />
     <Compile Include="Service\BmdNoticeSpecie\IBmdNoticeSpecieService.cs" />
     <Compile Include="Service\BmdNotice\BmdNoticeService.cs" />
