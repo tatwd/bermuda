@@ -11,8 +11,8 @@ import ErrorLayout from '@/layouts/error'
 import Home from '@/views/home'
 import Shop from '@/views/shop'
 import Topic from '@/views/topic'
-import SignIn from '@/views/signin'
-import SignUp from '@/views/signup'
+import SignIn from '@/views/user/signin'
+import SignUp from '@/views/user/signup'
 
 Vue.use(Router)
 

@@ -56,7 +56,7 @@ export default {
             username: this.username,
             password: this.password
           },
-          redirect: () => this.$router.push('/home')
+          redirect: () => this.$router.go({ path: this.$router.path })
         })
       }
     }
