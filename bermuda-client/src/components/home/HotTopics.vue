@@ -8,13 +8,14 @@
       >
         <v-card width="160px">
           <v-card-media
+            class="white--text"
             height="220px"
             :src="topic.img_url"
           >
             <v-container fill-height fluid>
               <v-layout fill-height>
                 <v-flex x12 align-end flexbox>
-                  <span>{{ topic.name }}</span>
+                  <span class="headline">{{ topic.name }}</span>
                 </v-flex>
               </v-layout>
             </v-container>

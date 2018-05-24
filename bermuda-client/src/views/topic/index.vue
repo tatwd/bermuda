@@ -1,29 +1,39 @@
 <template>
-  <v-container>
-    <v-layout>
-      <v-flex xs12>
-        <v-card>
+  <v-container grid-list-xs>
+    <v-subheader>
+      <h2>热门话题</h2>
+    </v-subheader>
+    <v-layout row wrap>
+      <v-flex
+        v-for="topic in topics"
+        :key="topic.id"
+        xs12
+        md3
+        class="mb-5"
+
+      >
+        <v-card class="mx-3">
+          <v-card-media
+            :src="topic.img_url"
+            height="200px"
+          >
+            <v-container fill-height>
+              <v-layout fill-height>
+                <v-flex>
+                  <router-link to="/" class="headline white--text">{{ topic.name }}</router-link>
+                </v-flex>
+              </v-layout>
+            </v-container>
+          </v-card-media>
+          <v-card-title primary-titles>
+            <div class="topic--detail">
+              <p>{{ topic.detail }}</p>
+            </div>
+          </v-card-title>
           <v-card-actions>
-            <v-select :items="items" v-model="size" label="Size"></v-select>
-            <v-spacer></v-spacer>
+            <v-btn color="primary">参与</v-btn>
+            <span class="grey--text">{{ topic.join_count }} 人参与</span>
           </v-card-actions>
-          <v-container v-bind="{ [`grid-list-${size}`]: true }">
-            <v-layout row wrap>
-              <v-flex
-                v-for="n in 9"
-                :key="n"
-                xs4
-              >
-                <v-card flat tile>
-                  <v-card-media
-                    :src="`https://unsplash.it/200/300?image=${Math.floor(Math.random() * 100) + 1}`"
-                    height="150px"
-                  >
-                  </v-card-media>
-                </v-card>
-              </v-flex>
-            </v-layout>
-          </v-container>
         </v-card>
       </v-flex>
     </v-layout>
@@ -31,16 +41,32 @@
 </template>
 
 <script>
+import { mapGetters } from 'vuex'
+
 export default {
-  data: () => ({
-    size: 'sm',
-    items: [
-      { text: 'Extra small (2px)', value: 'xs' },
-      { text: 'Small (4px)', value: 'sm' },
-      { text: 'Medium (8px)', value: 'md' },
-      { text: 'Large (16px)', value: 'lg' },
-      { text: 'Extra large (24px)', value: 'xl' }
-    ]
-  })
+  computed: mapGetters({
+    topics: 'allTopics'
+  }),
+  created () {
+    this.$store.dispatch('getAllTopics')
+  }
 }
 </script>
+
+<style scoped>
+.topic--detail {
+  /* height: 40px; */
+  overflow: hidden;
+}
+
+.topic--detail > p {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+a {
+  text-decoration: none;
+}
+</style>
+
