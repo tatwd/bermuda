@@ -70,7 +70,7 @@ export default {
         this.tmps = Array(10).fill({
           id: null,
           name: '',
-          img_url: '@/assets/template.svg'
+          img_url: '@/assets/tmp.svg'
         })
         this.$store.dispatch('getHotTopics', { count: 10 })
       }

@@ -40,6 +40,8 @@
 </template>
 
 <script>
+import { mapGetters } from 'vuex'
+
 import BmdNoticeList from '@/components/shared/BmdNoticeList'
 import BmdSlogan from '@/components/home/BmdSlogan'
 import BmdHotTopics from '@/components/home/BmdHotTopics'
@@ -48,7 +50,6 @@ import BmdHotCurrents from '@/components/home/BmdHotCurrents'
 import BmdTopUsers from '@/components/home/BmdTopUsers'
 
 export default {
-  // name: 'Home',
   components: {
     BmdNoticeList,
     BmdSlogan,
@@ -67,48 +68,37 @@ export default {
     ],
     filter: 'a'
   }),
+  computed: mapGetters({
+    allNotices: 'allNotices',
+    lostNotices: 'allLostNotices',
+    foundNotices: 'allFoundNotices'
+  }),
   created () {
     this.fetchData()
   },
   methods: {
     fetchData () {
-      // init test data
-      this.notices = [
-        {
-          id: 1,
-          title: '测试 1',
-          type: 'lost',
-          img: 'https://images.pexels.com/photos/877695/pexels-photo-877695.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260'
-        },
-        {
-          id: 2,
-          title: 'test title 2',
-          type: 'found',
-          img: 'https://images.pexels.com/photos/837500/pexels-photo-837500.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260'
-        },
-        {
-          id: 3,
-          title: 'test title 3',
-          type: 'lost',
-          img: 'https://images.pexels.com/photos/1025585/pexels-photo-1025585.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260'
-        },
-        {
-          id: 4,
-          title: 'test title 4',
-          type: 'found',
-          img: 'https://images.pexels.com/photos/1023949/pexels-photo-1023949.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260'
-        },
-      ]
-      this.cacheData = this.notices
-      this.$store.dispatch('getAllNotices')
+      // init tmp holder
+      this.notices = Array(1).fill({
+        id: null,
+        title: 'test',
+        type: 'lost',
+        img_url: '@/assets/tmp.svg'
+      })
+
+      this.$store.dispatch('getAllNotices', {
+        bind: () => this.notices = this.allNotices
+      })
     },
     toggleFilter (value) {
       if(value === 'all') {
-        this.notices = this.cacheData
+        this.notices = this.allNotices
         return
+      } else if (value === 'lost') {
+        this.notices = this.lostNotices
+      } else {
+        this.notices = this.foundNotices
       }
-      this.notices = this.cacheData
-        .filter(x => x.type === value)
     },
   }
 }

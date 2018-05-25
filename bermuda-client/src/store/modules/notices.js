@@ -8,7 +8,13 @@ const state = {
 
 // getters
 const getters = {
-  allNotices: state => state.all
+  allNotices: state => state.all,
+  allLostNotices: state => (
+    state.all && state.all.filter(notice => notice.type.includes('寻物'))
+  ),
+  allFoundNotices: state => (
+    state.all && state.all.filter(notice => notice.type.includes('招领'))
+  )
 }
 
 // mutations
@@ -20,12 +26,13 @@ const mutations = {
 
 // actions
 const actions = {
-  getAllNotices ({ commit }) {
+  getAllNotices ({ commit }, payload) {
     noticeService
       .getAll()
       .then(res => {
         res.data = imgUrlFilter(res.data, URL.ROOT)
         commit('setAllNotices', res.data)
+        payload.bind()
       })
       .catch(err => console.log('getAllNotices => ', err))
   }

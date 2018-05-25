@@ -12,7 +12,7 @@
               <h2>{{ notice.title }}</h2>
               <v-chip
                 small
-                :color="notice.type == 'lost' ? 'red' : 'green'"
+                :color="notice.type.includes('寻物') ? 'red' : 'green'"
                 text-color="white"
               >
                 {{ notice.type }}
@@ -20,19 +20,22 @@
             </v-card-title>
             <v-card-text>
               <p>
-                <v-icon color="primary">access_time</v-icon> 时间
+                <v-icon color="primary">access_time</v-icon>
+                <span>{{ notice.event_time_desc }}</span>
               </p>
               <p>
-                <v-icon color="primary">place</v-icon> 地点
+                <v-icon color="primary">place</v-icon>
+                <span>{{ notice.place }}</span>
               </p>
               <p>
-                <v-icon color="primary">wrap_text</v-icon> 描述
+                <v-icon color="primary">wrap_text</v-icon>
+                <span>{{ notice.detail }}</span>
               </p>
             </v-card-text>
           </v-flex>
           <v-flex xs12 md4 order-xs1 order-md2>
             <v-card-media
-              :src="notice.img"
+              :src="notice.img_url"
               height="138px"
             ></v-card-media>
           </v-flex>
@@ -42,13 +45,13 @@
             <v-avatar size="36px">
               <img src="@/assets/avatar-tmp.svg" alt="author avatar">
             </v-avatar>
-            <span class="hidden-sm-and-down">author name</span>
+            <span class="hidden-sm-and-down">{{ notice.user_name }}</span>
           </router-link>
           <span class="hidden-sm-and-down grey--text">发布于 2018-12-12</span>
           <v-spacer></v-spacer>
           <router-link to="#" class="mx-2">
             <v-icon color="primary" small left>comment</v-icon>
-            6
+            {{ notice.cmnt_count }}
           </router-link>
           <v-btn color="primary" small>追踪</v-btn>
         </v-card-actions>
