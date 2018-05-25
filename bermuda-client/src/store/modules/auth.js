@@ -59,6 +59,13 @@ const actions = {
       .catch(err => {
         commit('setInfo', { success: false, msg: '用户名或密码错误' })
       })
+  },
+  checkUserState ({ commit }) {
+    if (userAuth.auth().currentUser) {
+      commit('setUser', userAuth.auth().currentUser)
+    } else {
+      commit('setUser', null)
+    }
   }
 }
 

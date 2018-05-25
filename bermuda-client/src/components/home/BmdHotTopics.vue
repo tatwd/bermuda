@@ -2,7 +2,7 @@
   <div id="hot-topics" class="white px-3 py-4 mb-3">
     <v-layout class="hot-topics__slider" row>
       <v-flex
-        v-for="topic in topics"
+        v-for="topic in (topics || tmps)"
         :key="topic.id"
         class="mr-3"
       >
@@ -39,6 +39,9 @@ import cardSlider from '@/assets/js/card-slider'
 
 export default {
   name: 'BmdHotTopics',
+  data: () => ({
+    tmps: []
+  }),
   computed:  mapGetters({
     topics: 'hotTopics'
   }),
@@ -62,7 +65,15 @@ export default {
     },
 
     getHotTopics () {
-      this.$store.dispatch('getHotTopics', { count: 10 })
+      // init space topics
+      if (!this.topics) {
+        this.tmps = Array(10).fill({
+          id: null,
+          name: '',
+          img_url: '@/assets/template.svg'
+        })
+        this.$store.dispatch('getHotTopics', { count: 10 })
+      }
     }
   }
 }

@@ -93,35 +93,26 @@
 </template>
 
 <script>
-import userAuth from '@/assets/js/user-auth'
-// import { mapGetters } from 'vuex'
-
 export default {
   name: 'BmdNavbar',
   data: () => ({
-    isSignIn: false,
     sidedNav: false,
-
     navs: [
       { title: '首页', to: '/home' },
       { title: '话题', to: '/topic' },
       { title: '商城', to: '/shop' }
     ]
   }),
-  created () {
-    if (userAuth.auth().currentUser) {
-      this.isSignIn = true
+  computed: {
+    isSignIn () {
+      return this.$store.getters.currentUser ? true : false
     }
-  },
-  // computed: mapGetters({
-  //   user: 'currentUser'
-  // }),
+  }
 }
 </script>
 
 <style scoped>
 a {
   text-decoration: none;
-  /* color: #c66; */
 }
 </style>

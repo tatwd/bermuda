@@ -67,10 +67,6 @@ export default {
     ],
     filter: 'a'
   }),
-  filters: {
-  },
-  watch: {
-  },
   created () {
     this.fetchData()
   },

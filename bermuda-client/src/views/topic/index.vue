@@ -10,7 +10,6 @@
         xs12
         md3
         class="mb-5"
-
       >
         <v-card class="mx-3">
           <v-card-media
@@ -51,7 +50,7 @@ export default {
     topics: 'allTopics'
   }),
   created () {
-    if (this.topics.length <= 0) {
+    if (!this.topics) {
       this.$store.dispatch('getAllTopics')
     }
   }
