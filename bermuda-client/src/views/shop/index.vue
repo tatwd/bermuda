@@ -10,7 +10,7 @@
       ></v-carousel-item>
     </v-carousel>
     <v-btn
-      color="pink"
+      color="red"
       dark
       fixed
       bottom

@@ -35,6 +35,8 @@
         flat
         label="搜索"
         prepend-icon="search"
+        v-model="searchText"
+        @keyup.enter="onSearch"
       ></v-text-field>
       <v-spacer></v-spacer>
 
@@ -72,6 +74,7 @@
         offset-y
         full-width
         dark
+        v-if="true"
       >
         <v-btn slot="activator" class="mr-3 mx-5 hidden-sm-and-down" color="info">
           <v-icon left>create</v-icon>
@@ -101,11 +104,18 @@ export default {
       { title: '首页', to: '/home' },
       { title: '话题', to: '/topic' },
       { title: '商城', to: '/shop' }
-    ]
+    ],
+    searchText: null
   }),
   computed: {
     isSignIn () {
       return this.$store.getters.currentUser ? true : false
+    }
+  },
+  methods: {
+    onSearch () {
+      console.log(this.searchText)
+      // this.$router.push('/search')
     }
   }
 }
