@@ -17,7 +17,10 @@
             :src="topic.img_url"
             height="200px"
           >
-            <v-container fill-height>
+            <v-container
+              fill-height
+              class="bg-gradient"
+            >
               <v-layout fill-height>
                 <v-flex>
                   <router-link to="/" class="headline white--text">{{ topic.name }}</router-link>
@@ -48,25 +51,31 @@ export default {
     topics: 'allTopics'
   }),
   created () {
-    this.$store.dispatch('getAllTopics')
+    if (this.topics.length <= 0) {
+      this.$store.dispatch('getAllTopics')
+    }
   }
 }
 </script>
 
 <style scoped>
+a {
+  text-decoration: none;
+}
+
 .topic--detail {
-  /* height: 40px; */
+  height: 40px;
   overflow: hidden;
 }
 
 .topic--detail > p {
-  white-space: nowrap;
+  /* white-space: nowrap; */
   overflow: hidden;
   text-overflow: ellipsis;
 }
 
-a {
-  text-decoration: none;
+.bg-gradient {
+  background-color: rgba(0, 0, 0, .2);
 }
 </style>
 

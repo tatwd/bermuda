@@ -12,10 +12,16 @@
             height="220px"
             :src="topic.img_url"
           >
-            <v-container fill-height fluid>
-              <v-layout fill-height>
-                <v-flex x12 align-end flexbox>
-                  <span class="headline">{{ topic.name }}</span>
+            <v-container
+              class="bg-gradient"
+              fill-height
+            >
+              <v-layout
+                justify-center
+                align-center
+              >
+                <v-flex class="text-xs-center">
+                  <router-link to="#" class="headline white--text">{{ topic.name }}</router-link>
                 </v-flex>
               </v-layout>
             </v-container>
@@ -64,5 +70,19 @@ export default {
 <style scoped>
 #hot-topics {
   overflow-x: hidden;
+}
+
+.bg-gradient {
+  opacity: 0;
+  transition: all .3s ease;
+}
+
+.bg-gradient:hover {
+  background-color: rgba(0, 0, 0, .2);
+  opacity: 1;
+}
+
+a.headline {
+  text-decoration: none;
 }
 </style>
