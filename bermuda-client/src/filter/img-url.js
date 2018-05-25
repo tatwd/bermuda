@@ -1,7 +1,7 @@
 /**
  * Format img url of a object.
- * @param {*} obj
- * @param {*} url
+ * @param {Array, Object} obj
+ * @param {String} url
  */
 export default function (obj, url) {
   return  !Array.isArray(obj)
@@ -12,7 +12,7 @@ export default function (obj, url) {
 // for object
 function forObject (obj, url) {
   Object.keys(obj)
-  .filter(key => key.match(/url/))
+  .filter(key => key.includes('url'))
   .forEach(key => {
     if (obj[key])
       obj[key] = url + obj[key]
@@ -21,6 +21,6 @@ function forObject (obj, url) {
 }
 
 // for array
-function forArray (obj, url) {
-  return obj.map(arr => forObject(arr, url));
+function forArray (arr, url) {
+  return arr.map(obj => forObject(obj, url));
 }
