@@ -97,7 +97,7 @@ import userAuth from '@/assets/js/user-auth'
 // import { mapGetters } from 'vuex'
 
 export default {
-  name: 'Navbar',
+  name: 'BmdNavbar',
   data: () => ({
     isSignIn: false,
     sidedNav: false,

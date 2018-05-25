@@ -1,6 +1,6 @@
 <template>
-  <div id="hot-topics">
-    <v-layout class="hot-topics__slider pt-4 pb-5 px-1" row>
+  <div id="hot-topics" class="white px-3 py-4 mb-3">
+    <v-layout class="hot-topics__slider" row>
       <v-flex
         v-for="topic in topics"
         :key="topic.id"
@@ -19,9 +19,10 @@
               <v-layout
                 justify-center
                 align-center
+                fill-height
               >
                 <v-flex class="text-xs-center">
-                  <router-link to="#" class="headline white--text">{{ topic.name }}</router-link>
+                  <router-link to="#" class="title white--text">{{ topic.name }}</router-link>
                 </v-flex>
               </v-layout>
             </v-container>
@@ -37,7 +38,7 @@ import { mapGetters } from 'vuex'
 import cardSlider from '@/assets/js/card-slider'
 
 export default {
-  name: 'HotTopics',
+  name: 'BmdHotTopics',
   computed:  mapGetters({
     topics: 'hotTopics'
   }),
@@ -82,7 +83,7 @@ export default {
   opacity: 1;
 }
 
-a.headline {
+a.title {
   text-decoration: none;
 }
 </style>
