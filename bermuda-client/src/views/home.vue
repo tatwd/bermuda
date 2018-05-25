@@ -76,8 +76,8 @@ export default {
       this.notices = [
         {
           id: 1,
-          title: 'test title 1',
-          type: 'all',
+          title: '测试 1',
+          type: 'lost',
           img: 'https://images.pexels.com/photos/877695/pexels-photo-877695.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260'
         },
         {
@@ -100,6 +100,7 @@ export default {
         },
       ]
       this.cacheData = this.notices
+      this.$store.dispatch('getAllNotices')
     },
     toggleFilter (value) {
       if(value === 'all') {

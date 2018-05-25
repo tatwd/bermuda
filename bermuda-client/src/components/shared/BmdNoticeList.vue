@@ -10,11 +10,24 @@
           <v-flex xs12 md8 order-xs2 order-md1>
             <v-card-title>
               <h2>{{ notice.title }}</h2>
+              <v-chip
+                small
+                :color="notice.type == 'lost' ? 'red' : 'green'"
+                text-color="white"
+              >
+                {{ notice.type }}
+              </v-chip>
             </v-card-title>
             <v-card-text>
-              text<br>
-              text<br>
-              text<br>
+              <p>
+                <v-icon color="primary">access_time</v-icon> 时间
+              </p>
+              <p>
+                <v-icon color="primary">place</v-icon> 地点
+              </p>
+              <p>
+                <v-icon color="primary">wrap_text</v-icon> 描述
+              </p>
             </v-card-text>
           </v-flex>
           <v-flex xs12 md4 order-xs1 order-md2>
