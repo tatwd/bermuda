@@ -58,14 +58,11 @@
           <img src="@/assets/avatar-tmp.svg" alt="avatar">
         </v-avatar>
         <v-list>
-          <v-list-tile
-            v-for="item in ['个人中心', '注销']"
-            :key="item"
-            to="#"
-          >
-            <v-list-tile-title>
-              {{ item }}
-            </v-list-tile-title>
+          <v-list-tile to="#">
+            <v-list-tile-title>个人中心</v-list-tile-title>
+          </v-list-tile>
+          <v-list-tile @click="onSignout">
+            <v-list-tile-title>注销</v-list-tile-title>
           </v-list-tile>
         </v-list>
       </v-menu>
@@ -74,7 +71,6 @@
         offset-y
         full-width
         dark
-        v-if="true"
       >
         <v-btn slot="activator" class="mr-3 mx-5 hidden-sm-and-down" color="info">
           <v-icon left>create</v-icon>
@@ -116,6 +112,11 @@ export default {
     onSearch () {
       console.log(this.searchText)
       // this.$router.push('/search')
+    },
+    onSignout () {
+      this.$store.dispatch('signout', {
+        redirect: () => this.$router.push('account/signin')
+      })
     }
   }
 }

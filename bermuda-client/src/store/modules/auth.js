@@ -4,7 +4,7 @@ import imgUrlFilter from '@/filter/img-url'
 
 // init state
 const state = {
-  user: userAuth.auth().currentUser,
+  user: null, // userAuth.auth().currentUser,
   info: null
 }
 
@@ -60,12 +60,16 @@ const actions = {
         commit('setInfo', { success: false, msg: '用户名或密码错误' })
       })
   },
+  signout: ({ commit }, payload) => {
+    userService
+      .signout(() => {
+        commit('setUser', null)
+        payload.redirect()
+      })
+  },
   checkUserState ({ commit }) {
-    if (userAuth.auth().currentUser) {
-      commit('setUser', userAuth.auth().currentUser)
-    } else {
-      commit('setUser', null)
-    }
+    let _currentUser = userAuth.auth().currentUser
+    commit('setUser', _currentUser)
   }
 }
 

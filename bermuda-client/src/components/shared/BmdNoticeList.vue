@@ -12,7 +12,7 @@
               <h2>{{ notice.title }}</h2>
               <v-chip
                 small
-                :color="notice.type.includes('寻物') ? 'red' : 'green'"
+                :color="notice.type.includes('寻物') ? 'red' : 'orange'"
                 text-color="white"
               >
                 {{ notice.type }}

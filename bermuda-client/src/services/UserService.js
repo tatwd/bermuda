@@ -1,3 +1,5 @@
+import userAuth from '@/assets/js/user-auth'
+
 /**
  * User Service
  */
@@ -28,7 +30,10 @@ export default class UserService {
   }
 
   // signout
-  signout () {}
+  signout (cb) {
+    userAuth.removeToken()
+    cb()
+  }
 
   getById (id) {
     let self = this
