@@ -21,8 +21,11 @@ namespace Bermuda.Api.DataCache
             {
                 T t = func();
 
-                // 滑动过期时间缓存，10s 没用缓存就过期
-                dataCache.Insert(key, t, null, Cache.NoAbsoluteExpiration, TimeSpan.FromSeconds(10));
+                if (t != null)
+                {
+                    // 滑动过期时间缓存，10s 没用缓存就过期
+                    dataCache.Insert(key, t, null, Cache.NoAbsoluteExpiration, TimeSpan.FromSeconds(10));
+                }
             }
             return (T)dataCache[key];
         }

@@ -19,11 +19,10 @@ namespace Bermuda.Api.Controllers
         [Route("api/notices")]
         public IHttpActionResult Get()
         {
-            IBmdUserService iuser = ServiceFactory.Get<IBmdUserService>();
             IList<NoticeViewModel> vm = new List<NoticeViewModel>();
-
             vm = CacheEngine.GetData<IList<NoticeViewModel>>("notices_all", () =>
                 {
+                    var userService = ServiceFactory.Get<IBmdUserService>();
                     var notices = iservice
                         .Select(x => x.IsSolved == 0) // 未解决
                         .OrderByDescending(x => x.CreatedAt)
@@ -33,20 +32,38 @@ namespace Bermuda.Api.Controllers
 
                     foreach (var _vm in _vms)
                     {
-                        var _user = iuser.GetUserById(_vm.user_id);
+                        var _user = userService.GetUserById(_vm.user_id);
                         _vm.user_name = _user.Name;
                     }
 
                     return _vms;
                 });
-
             return Json(vm);
         }
 
-        // GET api/<controller>/5
-        public string Get(int id)
+        [Route("api/notice/{id}")]
+        public IHttpActionResult Get(Int64 id)
         {
-            return "value";
+            NoticeViewModel vm = new NoticeViewModel();
+            vm = CacheEngine.GetData<NoticeViewModel>($"notice_#{id}", () =>
+                {
+                    var userService = ServiceFactory.Get<IBmdUserService>();
+                    var _notice = iservice
+                        .Select(x => x.Id == id)
+                        .SingleOrDefault();
+                    if (_notice != null)
+                    {
+                        var _user = userService.GetUserById(Convert.ToInt64(_notice.UserId));
+                        var _vm = BaseUtil.ParseTo<NoticeViewModel>(_notice);
+                        _vm.user = BaseUtil.ParseTo<UserViewModel>(_user);
+                        return _vm;
+                    }
+                    else
+                    {
+                        return null;
+                    }
+                });
+            return Json(vm);
         }
 
         // POST api/<controller>

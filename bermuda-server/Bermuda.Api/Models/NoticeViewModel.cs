@@ -23,5 +23,6 @@ namespace Bermuda.Api.Models
         public Int64 cmnt_count { get; set; }
         public Int64 trace_count { get; set; }
         public byte is_solved { get; set; }
+        public UserViewModel user { get; set; }
     }
 }

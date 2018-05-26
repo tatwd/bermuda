@@ -7,6 +7,8 @@ namespace Bermuda.Common
 {
     public class BaseUtil
     {
+        // TODO: add deep parse method for view model
+
         /// <summary>
         /// 实体列表转化成 ViewModel 列表
         /// </summary>

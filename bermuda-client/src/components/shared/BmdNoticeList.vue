@@ -9,7 +9,11 @@
         <v-layout row wrap align-center>
           <v-flex xs12 md8 order-xs2 order-md1>
             <v-card-title>
-              <h2>{{ notice.title }}</h2>
+              <h2>
+                <router-link class="black--text" to="#">
+                  {{ notice.title }}
+                </router-link>
+              </h2>
               <v-chip
                 small
                 :color="notice.type.includes('寻物') ? 'red' : 'orange'"
