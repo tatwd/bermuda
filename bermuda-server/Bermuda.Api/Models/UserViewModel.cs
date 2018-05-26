@@ -18,7 +18,8 @@ namespace Bermuda.Api.Models
         public Int64 follower_count { get; set; }
         public Int64 found_count { get; set; }
         public Int64 lost_count { get; set; }
-        public decimal rate { get; set; }
+        public Int64 help_count { get; set; }
+        public decimal rating { get; set; }
         public int credit { get; set; }
         public DateTime created_at { get; set; }
     }

@@ -42,7 +42,7 @@
         {
             return idao
                 .Select(x => x.Id > 0)
-                .OrderByDescending(x => x.FoundCount)
+                .OrderByDescending(x => x.HelpCount)
                 .Take(count)
                 .ToList();
         }

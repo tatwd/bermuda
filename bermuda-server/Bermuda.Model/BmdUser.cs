@@ -26,7 +26,8 @@ namespace Bermuda.Model
         public Nullable<long> FollowingCount { get; set; }
         public Nullable<long> LostCount { get; set; }
         public Nullable<long> FoundCount { get; set; }
-        public Nullable<decimal> Rate { get; set; }
+        public Nullable<long> HelpCount { get; set; }
+        public Nullable<decimal> Rating { get; set; }
         public Nullable<int> Credit { get; set; }
         public Nullable<System.DateTime> CreatedAt { get; set; }
     }
