@@ -56,10 +56,10 @@ export default {
     next(vm => {
       vm.fetchData(
         to.query.q,
-        to.query.t,
+        to.query.type,
         (data) => {
           vm.updateData(data)
-          vm.currentType = to.query.t
+          vm.currentType = to.query.type
         }
       )
     })
@@ -82,10 +82,10 @@ export default {
     // searchData(
     this.fetchData(
       to.query.q,
-      to.query.t,
+      to.query.type,
       (data) => {
         this.updateData(data)
-        this.currentType = to.query.t
+        this.currentType = to.query.type
         next()
       }
     )
@@ -94,8 +94,8 @@ export default {
     updateData (data) {
       this.msg = data
     },
-    fetchData (q, t, cb) {
-      let data = `query: ${q}  type: ${t}`
+    fetchData (query, type, cb) {
+      let data = `query: ${query}  type: ${type}`
       cb.call(this, data)
     },
     // changeType (type) {
@@ -112,7 +112,7 @@ export default {
         path: '/search',
         query: {
           q: this.$route.query.q,
-          t: typeName
+          type: typeName
         }
       }
     },

@@ -24,7 +24,14 @@
         </h3>
       </v-toolbar-title>
       <v-toolbar-items class="mx-5 hidden-sm-and-down">
-        <v-btn class="subheading" flat v-for="nav in navs" :key="nav.title" :to="nav.to">
+        <v-btn
+          class="subheading"
+          flat
+          v-for="nav in navs"
+          :key="nav.title"
+          :to="nav.to"
+          exact-active-class="primary--text grey"
+        >
           {{ nav.title }}
         </v-btn>
       </v-toolbar-items>
@@ -114,7 +121,7 @@ export default {
         path: '/search',
         query: {
           q: this.searchText,
-          t: this.$route.query.t || 'notice'
+          type: this.$route.query.type || 'notice'
         }
       })
     },
