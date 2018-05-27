@@ -110,8 +110,13 @@ export default {
   },
   methods: {
     onSearch () {
-      console.log(this.searchText)
-      // this.$router.push('/search')
+      this.$router.push({
+        path: '/search',
+        query: {
+          q: this.searchText,
+          t: this.$route.query.t || 'notice'
+        }
+      })
     },
     onSignout () {
       this.$store.dispatch('signout', {

@@ -16,7 +16,7 @@
       bottom
       right
       fab
-      to="#"
+      to="/shop/cart"
     >
       <v-icon>shopping_cart</v-icon>
     </v-btn>

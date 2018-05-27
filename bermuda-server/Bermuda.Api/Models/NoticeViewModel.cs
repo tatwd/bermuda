@@ -8,8 +8,9 @@ namespace Bermuda.Api.Models
     public class NoticeViewModel
     {
         public Int64 id { get; set; }
-        public Int64 user_id { get; set; }
-        public string user_name { get; set; }
+        public UserViewModel user { get; set; }
+        //public Int64 user_id { get; set; }
+        //public string user_name { get; set; }
         public Int64 specie_id { get; set; }
         public string type { get; set; }
         public string title { get; set; }
@@ -23,6 +24,5 @@ namespace Bermuda.Api.Models
         public Int64 cmnt_count { get; set; }
         public Int64 trace_count { get; set; }
         public byte is_solved { get; set; }
-        public UserViewModel user { get; set; }
     }
 }

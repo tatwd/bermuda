@@ -49,7 +49,7 @@
             <v-avatar size="36px">
               <img src="@/assets/avatar-tmp.svg" alt="author avatar">
             </v-avatar>
-            <span class="hidden-sm-and-down">{{ notice.user_name }}</span>
+            <span class="hidden-sm-and-down">{{ notice.user.name }}</span>
           </router-link>
           <span class="hidden-sm-and-down grey--text">发布于 2018-12-12</span>
           <v-spacer></v-spacer>

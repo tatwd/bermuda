@@ -7,7 +7,7 @@ namespace Bermuda.Api.Models
 {
     public class UserViewModel
     {
-        public long id { get; set; }
+        public Int64 id { get; set; }
         public string name { get; set; }
         public string sex { get; set; }
         public string phone_number { get; set; }

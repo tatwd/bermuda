@@ -9,37 +9,32 @@ using System.Web.Http;
 
 namespace Bermuda.Api.Controllers
 {
+    [RoutePrefix("api/users")]
     public class UserController : ApiController
     {
         IBmdUserService iservice = ServiceFactory.Get<IBmdUserService>();
 
-        [Route("api/users/top/{count}")]
-        public IHttpActionResult Get(Int32 count)
+        [Route("{id}")]
+        public IHttpActionResult Get(Int64 id)
         {
-            IList<UserViewModel> vm = new List<UserViewModel>();
-
-            vm = CacheEngine.GetData<IList<UserViewModel>>("users_top", () =>
+            var vm = CacheEngine.GetData<UserViewModel>($"user_#{id}", () =>
             {
-                var _users = iservice.GetTop(count);
-                var _vms = BaseUtil.ParseToList<UserViewModel>(_users);
-                return _vms;
+                var _user = iservice
+                    .Select(x => x.Id == id)
+                    .SingleOrDefault();
+                return BaseUtil.ParseTo<UserViewModel>(_user);
             });
 
             return Json(vm);
         }
 
-        [Route("api/user/{id}")]
-        public IHttpActionResult Get(Int64 id)
+        [Route("top/{count}")]
+        public IHttpActionResult Get(Int32 count)
         {
-            UserViewModel vm = new UserViewModel();
-
-            vm = CacheEngine.GetData<UserViewModel>($"user_#{id}", () =>
+            var vm = CacheEngine.GetData<IList<UserViewModel>>("users_top", () =>
             {
-                var _user = iservice
-                    .Select(x => x.Id == id)
-                    .SingleOrDefault();
-                var _vm = BaseUtil.ParseTo<UserViewModel>(_user);
-                return _vm;
+                var _users = iservice.GetTop(count);
+                return BaseUtil.ParseToList<UserViewModel>(_users);
             });
 
             return Json(vm);

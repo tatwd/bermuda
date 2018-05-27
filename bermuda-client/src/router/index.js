@@ -11,9 +11,11 @@ import ErrorLayout from '@/layouts/error'
 // view components
 import Home from '@/views/home'
 import Shop from '@/views/shop'
+import Cart from '@/views/shop/cart'
 import Topic from '@/views/topic'
 import SignIn from '@/views/user/signin'
 import SignUp from '@/views/user/signup'
+import Search from '@/views/search'
 
 Vue.use(Router)
 
@@ -44,6 +46,22 @@ const router = new Router({
           path: 'shop',
           name: 'Shop',
           component: Shop,
+          meta: {
+            requiresAuth: false
+          }
+        },
+        {
+          path: 'shop/cart',
+          name: 'Cart',
+          component: Cart,
+          meta: {
+            requiresAuth: false
+          }
+        },
+        {
+          path: 'search',
+          name: 'Search',
+          component: Search,
           meta: {
             requiresAuth: false
           }

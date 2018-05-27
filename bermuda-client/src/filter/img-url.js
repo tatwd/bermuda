@@ -14,7 +14,7 @@ function forObject (obj, url) {
   Object.keys(obj)
   .filter(key => key.includes('url'))
   .forEach(key => {
-    if (obj[key])
+    if (obj[key] && obj[key].startsWith('/'))
       obj[key] = url + obj[key]
   })
   return obj;

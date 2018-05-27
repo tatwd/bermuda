@@ -7,7 +7,41 @@ namespace Bermuda.Common
 {
     public class BaseUtil
     {
-        // TODO: add deep parse method for view model
+        /// <summary>
+        /// 转换含 ViewModel 类型字段的对象
+        /// </summary>
+        /// <typeparam name="R">结果类型</typeparam>
+        /// <typeparam name="T">字段类型</typeparam>
+        /// <param name="entity"></param>
+        /// <param name="map"></param>
+        /// <returns></returns>
+        public static R DeepParseTo<R, T>(object entity, object propObject)
+            where R : class, new()
+            where T : class, new()
+        {
+            if (entity == null)
+                return null;
+
+            PropertyInfo[] vmProps = typeof(R).GetProperties();
+            Hashtable mapEntries = GetEntriesMap(entity);
+            R vm = new R();
+
+            foreach (var prop in vmProps)
+            {
+                if (prop.PropertyType.Name.Equals(
+                    typeof(T).Name, StringComparison.OrdinalIgnoreCase))
+                {
+                    prop.SetValue(vm, ParseTo<T>(propObject));
+                }
+                else
+                {
+                    string field = Pascalify(prop.Name, '_');
+                    prop.SetValue(vm, mapEntries[field]);
+                }
+            }
+
+            return vm;
+        }
 
         /// <summary>
         /// 实体列表转化成 ViewModel 列表
@@ -17,6 +51,10 @@ namespace Bermuda.Common
         /// <returns></returns>
         public static IList<T> ParseToList<T>(IEnumerable entities) where T : class, new()
         {
+            // if entities without items
+            if (!entities.GetEnumerator().MoveNext())
+                return null;
+
             IList<T> vmlist = new List<T>();
 
             foreach (var entity in entities)
@@ -36,15 +74,17 @@ namespace Bermuda.Common
         /// <returns></returns>
         public static T ParseTo<T>(object entity) where T : class, new()
         {
-            Type vmType = typeof(T);
-            PropertyInfo[] vmProps = vmType.GetProperties();
-            Hashtable mapEntity = GetEntriesMap(entity);
+            if (entity == null)
+                return null;
+
+            PropertyInfo[] vmProps = typeof(T).GetProperties();
+            Hashtable mapEntries = GetEntriesMap(entity);
             T vm = new T();
 
             foreach (var prop in vmProps)
             {
                 string field = Pascalify(prop.Name, '_');
-                prop.SetValue(vm, mapEntity[field]);
+                prop.SetValue(vm, mapEntries[field]);
             }
 
             return vm;

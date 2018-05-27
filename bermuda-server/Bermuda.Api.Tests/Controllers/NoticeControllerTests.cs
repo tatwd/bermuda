@@ -19,15 +19,16 @@ namespace Bermuda.Api.Controllers.Tests
         public void GetAllNotSolvedNoticesTest()
         {
             var actual = ctrler.Get() as JsonResult<IList<NoticeViewModel>>;
-            Assert.IsNotNull(actual, "should not be null");
+            Assert.IsNotNull(actual, "Notices should not be null");
+            Assert.IsNotNull(actual.Content[0].user, "User should not be null");
         }
 
         [TestMethod()]
         public void GetNoticeById()
         {
             var actual = ctrler.Get(1) as JsonResult<NoticeViewModel>;
-            Assert.IsNotNull(actual.Content, "Notice Should not be null!");
-            Assert.IsNotNull(actual.Content.user, "User Should not be null!");
+            Assert.IsNotNull(actual.Content, "Notice Should not be null");
+            Assert.IsNotNull(actual.Content.user, "User Should not be null");
         }
     }
 }

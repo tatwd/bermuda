@@ -25,84 +25,83 @@
 <body>
   <nav class="navbar navbar-light bg-info">
     <div class="container">
-      <span class="navbar-brand mb-0 h1 text-light">Bermuda API List</span>
+      <span class="navbar-brand mb-0 h1 text-light">Bermuda API Docs</span>
     </div>
   </nav>
-  <div class="container">
-    <p>Which includes the APIs of db tables.</p>
-    <section>
+  <div class="container mt-3">
+    <!--<p class="mt-3">Which includes the APIs of db tables.</p>-->
+    <section class="mb-5">
       <h2 class="upper">Notice</h2>
-      <ul>
-        <li>
-          <strong>GET</strong>
-          <span class="api-url">/api/notices</span>
-          <p>Get all notices which are not solved. i.e. <a href="/api/notices">all</a></p>
+      <ul class="list-group">
+        <li class="list-group-item">
+          <span class="badge badge-pill badge-primary">GET</span>
+          <code class="api-url">/api/notices</code>
+          <div>Get all notices which are not solved. i.e. <a href="/api/notices">all</a></div>
+        </li>
+        <li class="list-group-item">
+          <span class="badge badge-pill badge-primary">GET</span>
+          <code class="api-url">/api/notices{/id}</code>
+          <div>Get notice by id. i.e. <a href="/api/notices/1">id=1</a></div>
         </li>
       </ul>
     </section>
-    <section>
+    <section class="mb-5">
       <h2 class="upper">Notice Specie</h2>
-      <ul>
-        <li>
-          <strong>GET</strong>
-          <span class="api-url">/api/notice/species</span>
-          <p>Get all notice species. i.e. <a href="/api/notice/species">all</a></p>
+      <ul class="list-group">
+        <li class="list-group-item">
+          <span class="badge badge-pill badge-primary">GET</span>
+          <code class="api-url">/api/notice/species</code>
+          <div>Get all notice species. i.e. <a href="/api/notice/species">all</a></div>
         </li>
-        <li>
-          <strong>GET</strong>
-          <span class="api-url">/api/notice/specie{/id}</span>
-          <p>Get notice specie by id. i.e. <a href="/api/notice/specie/1">id=1</a></p>
+        <li class="list-group-item">
+          <span class="badge badge-pill badge-primary">GET</span>
+          <code class="api-url">/api/notice/species{/id}</code>
+          <div>Get notice specie by id. i.e. <a href="/api/notice/species/1">id=1</a></div>
         </li>
-        <li>
-          <strong>GET</strong>
-          <span class="api-url">/api/notice/species/top</span>
-          <p>Get notice species top list. i.e. <a href="/api/notice/species/top">top</a></p>
+        <li class="list-group-item">
+          <span class="badge badge-pill badge-primary">GET</span>
+          <code class="api-url">/api/notice/species{/top/count}</code>
+          <div>Get notice species top list. i.e. <a href="/api/notice/species/top/5">top/5</a></div>
         </li>
       </ul>
     </section>
-    <section>
+    <section class="mb-5">
       <h2 class="upper">Topic</h2>
-      <ul>
-        <li>
-          <strong>GET</strong>
-          <span class="api-url">/api/topics</span>
-          <p>Get all topics. i.e. <a href="/api/topics">all</a></p>
+      <ul class="list-group">
+        <li class="list-group-item">
+          <span class="badge badge-pill badge-primary">GET</span>
+          <code class="api-url">/api/topics</code>
+          <div>Get all topics. i.e. <a href="/api/topics">all</a></div>
         </li>
-        <li>
-          <strong>GET</strong>
-          <span class="api-url">/api/topic{/id}</span>
-          <p>Get topic by id. i.e. <a href="/api/topic/1">id=1</a></p>
+        <li class="list-group-item">
+          <span class="badge badge-pill badge-primary">GET</span>
+          <code class="api-url">/api/topics{/id}</code>
+          <div>Get topic by id. i.e. <a href="/api/topics/1">id=1</a></div>
         </li>
-        <li>
-          <strong>GET</strong>
-          <span class="api-url">/api/topics{/type}</span>
-          <p>Get topics by the type which inludes <a href="/api/topics/all">all</a> or <a href="/api/topics/top">top</a>.</p>
-        </li>
-        <li>
-          <strong>GET</strong>
-          <span class="api-url">/api/topics{/type/count}</span>
-          <p>Get topics top list with count var. i.e. <a href="/api/topics/top/5">top/5</a></p>
+        <li class="list-group-item">
+          <span class="badge badge-pill badge-primary">GET</span>
+          <code class="api-url">/api/topics{/type/count}</code>
+          <div>Get topics top list with count var. i.e. <a href="/api/topics/top/5">top/5</a></div>
         </li>
       </ul>
     </section>
-    <section>
+    <section class="mb-5">
       <h2 class="upper">User</h2>
-      <ul>
-        <li>
-          <strong>GET</strong>
-          <span class="api-url">/api/users/top/{count}</span>
-          <p>Get top users with count var. i.e. <a href="/api/users/top/5">top/5</a></p>
+      <ul class="list-group">
+        <li class="list-group-item">
+          <span class="badge badge-pill badge-primary">GET</span>
+          <code class="api-url">/api/users{/id}</code>
+          <div>Get user by id. i.e. <a href="/api/users/10001">id=10001</a></div>
         </li>
-        <li>
-          <strong>GET</strong>
-          <span class="api-url">/api/user{/id}</span>
-          <p>Get user by id. i.e. <a href="/api/user/10001">id=10001</a></p>
+        <li class="list-group-item">
+          <span class="badge badge-pill badge-primary">GET</span>
+          <code class="api-url">/api/users/top/{count}</code>
+          <div>Get top users with count var. i.e. <a href="/api/users/top/5">top/5</a></div>
         </li>
       </ul>
     </section>
   </div>
-
-  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
+  <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
   <script>

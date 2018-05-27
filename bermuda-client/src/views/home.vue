@@ -83,7 +83,10 @@ export default {
         id: null,
         title: 'test',
         type: 'lost',
-        img_url: '@/assets/tmp.svg'
+        img_url: '@/assets/tmp.svg',
+        user: {
+          name: 'test'
+        }
       })
 
       this.$store.dispatch('getAllNotices', {

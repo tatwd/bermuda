@@ -17,8 +17,8 @@ namespace Bermuda.Api.Controllers.Tests
             // get all topics
             var actual = ctrler.Get() as JsonResult<IList<TopicViewModel>>;
 
-            Assert.IsNotNull(actual);
-            Assert.IsNotNull(actual.Content[0].id);
+            Assert.IsNotNull(actual, "Topics should not be null");
+            Assert.IsNotNull(actual.Content, "JSON Content should not be null");
         }
     }
 }
