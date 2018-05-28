@@ -29,7 +29,7 @@ class UserAuth {
     localStorage.setItem(this.key, JSON.stringify(token));
   }
 
-  removeToken (token) {
+  removeToken () {
     localStorage.removeItem(this.key);
   }
 

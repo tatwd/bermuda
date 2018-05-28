@@ -3,95 +3,64 @@ using Bermuda.Api.Models;
 using Bermuda.Bll.Service;
 using Bermuda.Common;
 using Bermuda.Model;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web.Http;
 
 namespace Bermuda.Api.Controllers
 {
+    [RoutePrefix("api/topics")]
     public class TopicController : ApiController
     {
         IBmdTopicService iservice = ServiceFactory.Get<IBmdTopicService>();
 
-        // GET api/<controller>
-        [Route("api/topics")]
+        [Route()]
         public IHttpActionResult Get()
         {
-            IList<BmdTopic> topics = new List<BmdTopic>();
-            IList<TopicViewModel> vm = new List<TopicViewModel>();
-
-            topics = CacheEngine.GetData<IList<BmdTopic>>("topics_all",
-                () => iservice
+            var vm = CacheEngine.GetData<IList<TopicViewModel>>("topics_all", () =>
+            {
+                var topics = iservice
                     .Select(x => x.IsPassed == 1)
-                    .ToList());
-
-            vm = BaseUtil.ParseToList<TopicViewModel>(topics);
+                    .ToList();
+                return BaseUtil.ParseToList<TopicViewModel>(topics);
+            });
 
             return Json(vm);
         }
 
-        [HttpGet]
-        [Route("api/topic/{id}")]
+        [Route("{id}")]
         public IHttpActionResult Get(int id)
         {
-            string KEY = $"topic_#{id}";
-            BmdTopic topic = new BmdTopic();
-            TopicViewModel vm = new TopicViewModel();
-
-            topic = CacheEngine.GetData<BmdTopic>(KEY,
-                () => iservice
+            var vm = CacheEngine.GetData<TopicViewModel>($"topic_#{id}", () =>
+            {
+                var topic = iservice
                     .Select(x => x.Id == id)
-                    .SingleOrDefault());
-
-            vm = BaseUtil.ParseTo<TopicViewModel>(topic);
-
-            return Json(vm);
-        }
-
-        [HttpGet]
-        [Route("api/topics/{type}")]
-        public IHttpActionResult Get(string type)
-        {
-            IList<BmdTopic> topics = new List<BmdTopic>();
-            IList<TopicViewModel> vm = new List<TopicViewModel>();
-
-            if (type.Equals("top"))
-            {
-                topics = CacheEngine.GetData<IList<BmdTopic>>("topics_top",
-                    () => iservice.GetHotTopics());
-
-                //vm = BaseUtil.ParseToList<TopicViewModel>(topics);
-            }
-            else if (type.Equals("all"))
-            {
-                topics = CacheEngine.GetData<IList<BmdTopic>>("topics_all",
-                    () => iservice
-                    .Select(x => x.IsPassed == 1)
-                    .ToList());
-            }
-
-            vm = topics.Count > 0
-                ? BaseUtil.ParseToList<TopicViewModel>(topics)
-                : vm;
+                    .SingleOrDefault();
+                return BaseUtil.ParseTo<TopicViewModel>(topic);
+            });
 
             return Json(vm);
         }
 
-        [HttpGet]
-        [Route("api/topics/{type}/{count}")]
+        [Route("{type}/{count}")]
         public IHttpActionResult Get(string type, int count = 10)
         {
-            string KEY = $"topics_top_{count}";
-            IList<BmdTopic> topics = new List<BmdTopic>();
-            IList<TopicViewModel> vm = new List<TopicViewModel>();
-
-            if (type.Equals("top"))
+            var vm = CacheEngine.GetData<IList<TopicViewModel>>($"topics_{type}_{count}", () =>
             {
-                topics = CacheEngine.GetData<IList<BmdTopic>>(KEY,
-                    () => iservice.GetHotTopics(count));
+                IList<BmdTopic> topics = new List<BmdTopic>();
 
-                vm = BaseUtil.ParseToList<TopicViewModel>(topics);
-            }
+                if (type.Equals("top", StringComparison.OrdinalIgnoreCase))
+                {
+                    topics = iservice.GetHotTopics(count);
+                }
+                else if (type.Equals("all", StringComparison.OrdinalIgnoreCase))
+                {
+                    topics = iservice.Select(x => x.IsPassed == 1).ToList();
+                }
+
+                return BaseUtil.ParseToList<TopicViewModel>(topics);
+            });
 
             return Json(vm);
         }

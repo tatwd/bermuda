@@ -1,5 +1,4 @@
-﻿
-namespace Bermuda.Dal.Dao
+﻿namespace Bermuda.Dal.Dao
 {
     using Model;
 

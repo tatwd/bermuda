@@ -242,7 +242,8 @@
           <Property Name="FollowerCount" Type="bigint" StoreGeneratedPattern="Computed" />
           <Property Name="LostCount" Type="bigint" StoreGeneratedPattern="Computed" />
           <Property Name="FoundCount" Type="bigint" StoreGeneratedPattern="Computed" />
-          <Property Name="Rate" Type="decimal" Precision="2" Scale="1" StoreGeneratedPattern="Computed" />
+          <Property Name="HelpCount" Type="bigint" StoreGeneratedPattern="Computed" />
+          <Property Name="Rating" Type="decimal" Precision="2" Scale="1" StoreGeneratedPattern="Computed" />
           <Property Name="Credit" Type="int" StoreGeneratedPattern="Computed" />
           <Property Name="CreatedAt" Type="datetime" StoreGeneratedPattern="Computed" />
         </EntityType>
@@ -519,7 +520,8 @@
           <Property Name="FollowingCount" Type="Int64" annotation:StoreGeneratedPattern="Computed" xmlns="http://schemas.microsoft.com/ado/2009/11/edm" />
           <Property Name="LostCount" Type="Int64" annotation:StoreGeneratedPattern="Computed" />
           <Property Name="FoundCount" Type="Int64" annotation:StoreGeneratedPattern="Computed" />
-          <Property Name="Rate" Type="Decimal" Precision="2" Scale="1" annotation:StoreGeneratedPattern="Computed" />
+          <Property Name="HelpCount" Type="Int64" annotation:StoreGeneratedPattern="Computed" />
+          <Property Name="Rating" Type="Decimal" Precision="2" Scale="1" annotation:StoreGeneratedPattern="Computed" />
           <Property Name="Credit" Type="Int32" annotation:StoreGeneratedPattern="Computed" />
           <Property Name="CreatedAt" Type="DateTime" Precision="3" annotation:StoreGeneratedPattern="Computed" />
         </EntityType>
@@ -805,6 +807,8 @@
           <EntitySetMapping Name="BmdUsers">
             <EntityTypeMapping TypeName="BmdDbModel.BmdUser">
               <MappingFragment StoreEntitySet="BmdUser">
+                <ScalarProperty Name="Rating" ColumnName="Rating" />
+                <ScalarProperty Name="HelpCount" ColumnName="HelpCount" />
                 <ScalarProperty Name="CreatedAt" ColumnName="CreatedAt" />
                 <ScalarProperty Name="FoundCount" ColumnName="FoundCount" />
                 <ScalarProperty Name="LostCount" ColumnName="LostCount" />
@@ -818,7 +822,6 @@
                 <ScalarProperty Name="Pwd" ColumnName="Pwd" />
                 <ScalarProperty Name="FollowingCount" ColumnName="FollowingCount" />
                 <ScalarProperty Name="FollowerCount" ColumnName="FollowerCount" />
-                <ScalarProperty Name="Rate" ColumnName="Rate" />
                 <ScalarProperty Name="Credit" ColumnName="Credit" />
               </MappingFragment>
             </EntityTypeMapping>

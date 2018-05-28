@@ -1,11 +1,11 @@
 <template>
   <div
-    id="top-users"
-    class="my-4"
+    id="hot-currents"
+    class="mt-4"
   >
     <v-card>
       <v-card-title>
-        <v-icon color="primary">assessment</v-icon>
+        <v-icon color="primary">whatshot</v-icon>
         <span class="ml-2">{{ example }}</span>
       </v-card-title>
     </v-card>
@@ -14,9 +14,9 @@
 
 <script>
 export default {
-  name: 'TopUsers',
+  name: 'BmdHotCurrents',
   data: () => ({
-    example: '百慕达人'
+    example: '热门动态'
   })
 }
 </script>

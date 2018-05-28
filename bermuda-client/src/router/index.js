@@ -1,5 +1,6 @@
 import Vue from 'vue'
 import Router from 'vue-router'
+import store from '@/store'
 import userAuth from '@/assets/js/user-auth'
 
 // layouts
@@ -10,9 +11,11 @@ import ErrorLayout from '@/layouts/error'
 // view components
 import Home from '@/views/home'
 import Shop from '@/views/shop'
+import Cart from '@/views/shop/cart'
 import Topic from '@/views/topic'
-import SignIn from '@/views/signin'
-import SignUp from '@/views/signup'
+import SignIn from '@/views/user/signin'
+import SignUp from '@/views/user/signup'
+import Search from '@/views/search'
 
 Vue.use(Router)
 
@@ -43,6 +46,22 @@ const router = new Router({
           path: 'shop',
           name: 'Shop',
           component: Shop,
+          meta: {
+            requiresAuth: false
+          }
+        },
+        {
+          path: 'shop/cart',
+          name: 'Cart',
+          component: Cart,
+          meta: {
+            requiresAuth: false
+          }
+        },
+        {
+          path: 'search',
+          name: 'Search',
+          component: Search,
           meta: {
             requiresAuth: false
           }
@@ -78,15 +97,13 @@ const router = new Router({
   mode: 'hash'
 })
 
-
-
 // Router Guards
 router.beforeEach((to, from, next) => {
   // get current from localStorage
   let currentUser = userAuth.auth().currentUser
 
-  // test log
-  // console.log(currentUser)
+  // check user state
+  store.dispatch('checkUserState')
 
   if (to.matched.some(record => record.meta.requiresAuth)) {
     if (!currentUser) {
