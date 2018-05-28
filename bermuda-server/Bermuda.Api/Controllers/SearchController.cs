@@ -1,6 +1,8 @@
-﻿using Bermuda.Api.Models;
+﻿using Bermuda.Api.DataCache;
+using Bermuda.Api.Models;
 using Bermuda.Bll.Service;
 using Bermuda.Common;
+using System.Collections.Generic;
 using System.Configuration;
 using System.Linq;
 using System.Web;
@@ -17,9 +19,16 @@ namespace Bermuda.Api.Controllers
         //[Route("api/search/notices/{q}")]
         public IHttpActionResult Notices(string q)
         {
-            var noticeService = ServiceFactory.Get<IBmdNoticeService>();
-            var notices = noticeService.Select(x => x.IsSolved == 0).ToList();
-            var vm = BaseUtil.ParseToList<NoticeSearchModel>(notices);
+            var vm = CacheEngine.GetData<IList<NoticeSearchModel>>($"notices_all", () =>
+            {
+                var notices = ServiceFactory.Get<IBmdNoticeService>()
+                    .Select(x => x.IsSolved == 0)
+                    .ToList();
+                return BaseUtil.ParseToList<NoticeSearchModel>(notices);
+            });
+
+            if (vm == null)
+                return Json(vm);
 
             var path = HostingEnvironment.MapPath(
                 $"{ConfigurationManager.AppSettings["IndexDir"].ToString()}/notices");

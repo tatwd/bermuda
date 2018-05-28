@@ -94,9 +94,9 @@ namespace Bermuda.Common
             using (IndexReader reader = IndexReader.Open(directory, true))
             using (IndexSearcher searcher = new IndexSearcher(reader))
             {
-                using (Analyzer analyzer = new StandardAnalyzer(Lucene.Net.Util.Version.LUCENE_30))
+                using (Analyzer analyzer = new StandardAnalyzer(Version.LUCENE_30))
                 {
-                    QueryParser parser = new QueryParser(Lucene.Net.Util.Version.LUCENE_30, fieldName, analyzer);
+                    QueryParser parser = new QueryParser(Version.LUCENE_30, fieldName, analyzer);
 
                     // support `*xxx`
                     parser.AllowLeadingWildcard = true;
