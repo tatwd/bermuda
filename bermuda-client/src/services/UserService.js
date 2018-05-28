@@ -1,3 +1,5 @@
+import userAuth from '@/assets/js/user-auth'
+
 /**
  * User Service
  */
@@ -13,7 +15,6 @@ export default class UserService {
   // signup
   signup (user) {
     let self = this
-
     return self.axios.post(`${self.baseUrl}/account/register`, user)
   }
 
@@ -29,5 +30,13 @@ export default class UserService {
   }
 
   // signout
-  signout () {}
+  signout (cb) {
+    userAuth.removeToken()
+    cb()
+  }
+
+  getById (id) {
+    let self = this
+    return self.axios.get(`${self.baseUrl}/user/${id}`)
+  }
 }

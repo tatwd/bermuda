@@ -1,20 +1,28 @@
 <template>
-  <div id="hot-topics">
-    <v-layout class="hot-topics__slider pt-4 pb-5 px-1" row>
+  <div id="hot-topics" class="white px-3 py-4 mb-3">
+    <v-layout class="hot-topics__slider" row>
       <v-flex
-        v-for="topic in topics"
+        v-for="topic in (topics || tmps)"
         :key="topic.id"
         class="mr-3"
       >
         <v-card width="160px">
           <v-card-media
+            class="white--text"
             height="220px"
             :src="topic.img_url"
           >
-            <v-container fill-height fluid>
-              <v-layout fill-height>
-                <v-flex x12 align-end flexbox>
-                  <span>{{ topic.name }}</span>
+            <v-container
+              class="bg-gradient"
+              fill-height
+            >
+              <v-layout
+                justify-center
+                align-center
+                fill-height
+              >
+                <v-flex class="text-xs-center">
+                  <router-link to="#" class="title white--text">{{ topic.name }}</router-link>
                 </v-flex>
               </v-layout>
             </v-container>
@@ -30,7 +38,10 @@ import { mapGetters } from 'vuex'
 import cardSlider from '@/assets/js/card-slider'
 
 export default {
-  name: 'HotTopics',
+  name: 'BmdHotTopics',
+  data: () => ({
+    tmps: []
+  }),
   computed:  mapGetters({
     topics: 'hotTopics'
   }),
@@ -54,7 +65,15 @@ export default {
     },
 
     getHotTopics () {
-      this.$store.dispatch('getHotTopics', { count: 10 })
+      // init space topics
+      if (!this.topics) {
+        this.tmps = Array(10).fill({
+          id: null,
+          name: '',
+          img_url: '@/assets/tmp.svg'
+        })
+        this.$store.dispatch('getHotTopics', { count: 10 })
+      }
     }
   }
 }
@@ -63,5 +82,19 @@ export default {
 <style scoped>
 #hot-topics {
   overflow-x: hidden;
+}
+
+.bg-gradient {
+  opacity: 0;
+  transition: all .3s ease;
+}
+
+.bg-gradient:hover {
+  background-color: rgba(0, 0, 0, .2);
+  opacity: 1;
+}
+
+a.title {
+  text-decoration: none;
 }
 </style>

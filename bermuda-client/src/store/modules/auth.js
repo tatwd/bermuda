@@ -1,18 +1,16 @@
-import authHelper from '@/assets/js/auth-helper'
 import { URL, userService } from '../services'
+import userAuth from '@/assets/js/user-auth'
+import imgUrlFilter from '@/filter/img-url'
 
 // init state
 const state = {
-  user: null,
+  user: null, // userAuth.auth().currentUser,
   info: null
 }
 
 // getters
 const getters = {
-  currentUser: state => {
-    // 判断 access_token 是否过期
-    return !authHelper.expired() ? state.user : null
-  },
+  currentUser: state => state.user,
   currentInfo: state => state.info
 }
 
@@ -37,37 +35,41 @@ const actions = {
         // redirect to sign in page
         payload.redirect();
       })
-      .catch(err => {
-        commit('setInfo', { success: false, msg: err })
-      })
   },
   signin ({ commit }, payload) {
     userService
       .signin(payload.user)
       .then(res => {
-        let signinUser = JSON.parse(res.data.user)
-
-        if(signinUser.avatar_url)
-          signinUser.avatar_url += URL.ROOT
+        // filter img url
+        let _currentUser = imgUrlFilter(
+          JSON.parse(res.data.current_user),
+          URL.ROOT
+        )
+        res.data.current_user = _currentUser
 
         // save token to localStorage
-        authHelper.saveToken({
-          access_token: res.data.access_token,
-          token_type: res.data.token_type,
-          expires_in: res.data.expires_in,
-          login_at: res.data.login_at,
-          current_user: signinUser
-        })
+        userAuth.updateToken(res.data);
 
-        commit('setUser', signinUser)
+        commit('setUser', _currentUser)
+        commit('setInfo', { success: true, msg: '登录成功' })
 
         // redirect to home
         payload.redirect();
       })
       .catch(err => {
-        console.log(err)
         commit('setInfo', { success: false, msg: '用户名或密码错误' })
       })
+  },
+  signout: ({ commit }, payload) => {
+    userService
+      .signout(() => {
+        commit('setUser', null)
+        payload.redirect()
+      })
+  },
+  checkUserState ({ commit }) {
+    let _currentUser = userAuth.auth().currentUser
+    commit('setUser', _currentUser)
   }
 }
 

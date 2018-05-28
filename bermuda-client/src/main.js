@@ -6,7 +6,7 @@ import Vuetify from 'vuetify'
 import 'vuetify/dist/vuetify.min.css'
 
 // Vuex: for services, shared components, etc
-import store from './store/index'
+import store from './store'
 
 // config theme
 const theme = {

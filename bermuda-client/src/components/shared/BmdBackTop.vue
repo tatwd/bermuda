@@ -6,7 +6,7 @@
 
 <script>
 export default {
-  name: 'BackTop',
+  name: 'BmdBackTop',
   data: () => ({
     example: 'BackTop Component'
   })

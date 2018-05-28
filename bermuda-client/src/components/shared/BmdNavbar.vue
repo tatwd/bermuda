@@ -24,8 +24,15 @@
         </h3>
       </v-toolbar-title>
       <v-toolbar-items class="mx-5 hidden-sm-and-down">
-        <v-btn class="subheading" flat v-for="item in ['首页', '话题', '商城']" :key="item" :to="item">
-          {{ item }}
+        <v-btn
+          class="subheading"
+          flat
+          v-for="nav in navs"
+          :key="nav.title"
+          :to="nav.to"
+          exact-active-class="primary--text grey"
+        >
+          {{ nav.title }}
         </v-btn>
       </v-toolbar-items>
       <!-- <v-spacer></v-spacer> -->
@@ -35,6 +42,8 @@
         flat
         label="搜索"
         prepend-icon="search"
+        v-model="searchText"
+        @keyup.enter="onSearch"
       ></v-text-field>
       <v-spacer></v-spacer>
 
@@ -56,14 +65,11 @@
           <img src="@/assets/avatar-tmp.svg" alt="avatar">
         </v-avatar>
         <v-list>
-          <v-list-tile
-            v-for="item in ['个人中心', '注销']"
-            :key="item"
-            to="#"
-          >
-            <v-list-tile-title>
-              {{ item }}
-            </v-list-tile-title>
+          <v-list-tile to="#">
+            <v-list-tile-title>个人中心</v-list-tile-title>
+          </v-list-tile>
+          <v-list-tile @click="onSignout">
+            <v-list-tile-title>注销</v-list-tile-title>
           </v-list-tile>
         </v-list>
       </v-menu>
@@ -78,9 +84,10 @@
           发布
         </v-btn>
         <v-list-tile
-          v-for="(item, index) in ['失物招领', '动态', '话题']"
-          :key="index"
+          v-for="item in ['失物招领', '动态', '话题']"
+          :key="item"
           to="#"
+          class="white"
         >
           <v-list-tile-title>
             {{ item }}
@@ -92,30 +99,43 @@
 </template>
 
 <script>
-import { mapGetters } from 'vuex'
-import authHelper from '@/assets/js/auth-helper'
-
 export default {
-  name: 'Navbar',
+  name: 'BmdNavbar',
   data: () => ({
-    isSignIn: false,
-    sidedNav: false
+    sidedNav: false,
+    navs: [
+      { title: '首页', to: '/home' },
+      { title: '话题', to: '/topic' },
+      { title: '商城', to: '/shop' }
+    ],
+    searchText: null
   }),
-  created () {
-    if (!authHelper.expired()) {
-      this.isSignIn = true
+  computed: {
+    isSignIn () {
+      return this.$store.getters.currentUser ? true : false
     }
   },
   methods: {
-    showSearchInput () {}
+    onSearch () {
+      this.$router.push({
+        path: '/search',
+        query: {
+          q: this.searchText,
+          type: this.$route.query.type || 'notice'
+        }
+      })
+    },
+    onSignout () {
+      this.$store.dispatch('signout', {
+        redirect: () => this.$router.push('account/signin')
+      })
+    }
   }
 }
 </script>
 
-<!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
 a {
   text-decoration: none;
-  /* color: #c66; */
 }
 </style>

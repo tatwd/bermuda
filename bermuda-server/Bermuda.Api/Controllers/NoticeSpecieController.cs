@@ -18,50 +18,58 @@ namespace Bermuda.Api.Controllers
         [Route("api/notice/species")]
         public IHttpActionResult Get()
         {
-            IList<BmdNoticeSpecie> species = new List<BmdNoticeSpecie>();
-            IList<NoticeSpecieViewModel> vm = new List<NoticeSpecieViewModel>();
-
-            species = CacheEngine.GetData<IList<BmdNoticeSpecie>>("species_all",
-                () => iservice
+            var vm = CacheEngine.GetData<IList<NoticeSpecieViewModel>>("species_all", () =>
+            {
+                var species = iservice
                     .Select(x => x.Id > 0)
-                    .ToList());
-
-            vm = BaseUtil.ParseToList<NoticeSpecieViewModel>(species);
+                    .ToList();
+                return BaseUtil.ParseToList<NoticeSpecieViewModel>(species);
+            });
 
             return Json(vm);
         }
 
         [HttpGet]
-        [Route("api/notice/specie/{id}")]
+        [Route("api/notice/species/{id}")]
         public IHttpActionResult Get(Int64 id)
         {
-            BmdNoticeSpecie species = new BmdNoticeSpecie();
-            NoticeSpecieViewModel vm = new NoticeSpecieViewModel();
-
-            species = CacheEngine.GetData<BmdNoticeSpecie>($"specie_#{id}",
-                () => iservice
+            var vm = CacheEngine.GetData<NoticeSpecieViewModel>($"specie_#{id}", () =>
+            {
+                var specie = iservice
                     .Select(x => x.Id == id)
-                    .SingleOrDefault());
-
-            vm = BaseUtil.ParseTo<NoticeSpecieViewModel>(species);
+                    .SingleOrDefault();
+                return BaseUtil.ParseTo<NoticeSpecieViewModel>(specie);
+            });
 
             return Json(vm);
         }
 
         [HttpGet]
-        [Route("api/notice/species/top")]
-        public IHttpActionResult Get(string type = "top")
+        [Route("api/notice/species/{type}/{count}")]
+        public IHttpActionResult Get(string type, int count = 10)
         {
-            IList<BmdNoticeSpecie> species = new List<BmdNoticeSpecie>();
-            IList<NoticeSpecieViewModel> vm = new List<NoticeSpecieViewModel>();
+            var vm = CacheEngine.GetData<IList<NoticeSpecieViewModel>>($"species_{type}_{count}", () =>
+            {
+                IList<BmdNoticeSpecie> species = new List<BmdNoticeSpecie>();
 
-            species = CacheEngine.GetData<IList<BmdNoticeSpecie>>("species_top",
-                () => iservice
-                    .Select(x => x.Id > 0)
-                    .OrderByDescending(x => x.NoticeCount) // desc
-                    .ToList());
+                if (type.Equals("top", StringComparison.OrdinalIgnoreCase))
+                {
+                    species = iservice
+                        .Select(x => x.Id > 0)
+                        .OrderByDescending(x => x.NoticeCount) // desc
+                        .Take(count)
+                        .ToList();
+                }
+                else if (type.Equals("all", StringComparison.OrdinalIgnoreCase))
+                {
+                    species = iservice
+                        .Select(x => x.Id > 0)
+                        .Take(count)
+                        .ToList();
+                }
 
-            vm = BaseUtil.ParseToList<NoticeSpecieViewModel>(species);
+                return BaseUtil.ParseToList<NoticeSpecieViewModel>(species);
+            });
 
             return Json(vm);
         }

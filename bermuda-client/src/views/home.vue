@@ -1,31 +1,12 @@
 <template>
   <div id="home">
-    <v-jumbotron
-      src="https://images.pexels.com/photos/47424/pexels-photo-47424.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260"
-      :gradient="gradient"
-      dark
-    >
-      <v-container fill-height>
-        <v-layout align-center>
-          <v-flex
-            text-xs-center
-            text-md-left
-          >
-            <h3 class="display-3">{{ sloganMsg.title }}</h3>
-            <small class="display-1">{{ sloganMsg.small }}</small>
-            <div v-if="!false">
-              <v-btn color="primary" to="/account/signup" large>加入我们</v-btn>
-              <v-btn color="secondary" to="/account/signin" large>马上登录</v-btn>
-            </div>
-          </v-flex>
-        </v-layout>
-      </v-container>
-    </v-jumbotron>
+    <BmdSlogan/>
     <v-container>
       <v-layout row wrap>
         <v-flex md12 xs12>
-          <HotTopics/>
+          <BmdHotTopics/>
         </v-flex>
+
         <v-flex md7 xs12 order-xs2 order-md1>
           <v-tabs
             slider-color="primary"
@@ -43,14 +24,15 @@
             </v-tab>
           </v-tabs>
           <!-- notice list -->
-          <notice-list
+          <BmdNoticeList
             :notices="notices"
-          ></notice-list>
+          />
         </v-flex>
+
         <v-flex md5 xs12 order-xs1 order-md2 class="bmd--pl">
-          <HotSpecies/>
-          <HotCurrents/>
-          <TopUsers/>
+          <BmdHotSpecies/>
+          <BmdHotCurrents/>
+          <BmdTopUsers/>
         </v-flex>
       </v-layout>
     </v-container>
@@ -58,27 +40,25 @@
 </template>
 
 <script>
-import NoticeList from '@/components/shared/NoticeList'
-import HotTopics from '@/components/home/HotTopics'
-import HotSpecies from '@/components/home/HotSpecies'
-import HotCurrents from '@/components/home/HotCurrents'
-import TopUsers from '@/components/home/TopUsers'
+import { mapGetters } from 'vuex'
+
+import BmdNoticeList from '@/components/shared/BmdNoticeList'
+import BmdSlogan from '@/components/home/BmdSlogan'
+import BmdHotTopics from '@/components/home/BmdHotTopics'
+import BmdHotSpecies from '@/components/home/BmdHotSpecies'
+import BmdHotCurrents from '@/components/home/BmdHotCurrents'
+import BmdTopUsers from '@/components/home/BmdTopUsers'
 
 export default {
-  // name: 'Home',
   components: {
-    NoticeList,
-    HotTopics,
-    HotSpecies,
-    HotCurrents,
-    TopUsers
+    BmdNoticeList,
+    BmdSlogan,
+    BmdHotTopics,
+    BmdHotSpecies,
+    BmdHotCurrents,
+    BmdTopUsers
   },
   data: () => ({
-    gradient: 'to top right, rgba(63, 81, 181, .5), ragba(25, 32, 72, .5)',
-    sloganMsg: {
-      title: '寻找你的寻找',
-      small: '一切执于对美好校园生活的凝练'
-    },
     notices: null,
     cacheData: null,
     filterArr: [
@@ -88,51 +68,40 @@ export default {
     ],
     filter: 'a'
   }),
-  filters: {
-  },
-  watch: {
-  },
+  computed: mapGetters({
+    allNotices: 'allNotices',
+    lostNotices: 'allLostNotices',
+    foundNotices: 'allFoundNotices'
+  }),
   created () {
     this.fetchData()
   },
   methods: {
     fetchData () {
-      // init test data
-      this.notices = [
-        {
-          id: 1,
-          title: 'test title 1',
-          type: 'all',
-          img: 'https://images.pexels.com/photos/877695/pexels-photo-877695.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260'
-        },
-        {
-          id: 2,
-          title: 'test title 2',
-          type: 'found',
-          img: 'https://images.pexels.com/photos/837500/pexels-photo-837500.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260'
-        },
-        {
-          id: 3,
-          title: 'test title 3',
-          type: 'lost',
-          img: 'https://images.pexels.com/photos/1025585/pexels-photo-1025585.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260'
-        },
-        {
-          id: 4,
-          title: 'test title 4',
-          type: 'found',
-          img: 'https://images.pexels.com/photos/1023949/pexels-photo-1023949.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260'
-        },
-      ]
-      this.cacheData = this.notices
+      // init tmp holder
+      this.notices = Array(1).fill({
+        id: null,
+        title: 'test',
+        type: 'lost',
+        img_url: '@/assets/tmp.svg',
+        user: {
+          name: 'test'
+        }
+      })
+
+      this.$store.dispatch('getAllNotices', {
+        bind: () => this.notices = this.allNotices
+      })
     },
     toggleFilter (value) {
       if(value === 'all') {
-        this.notices = this.cacheData
+        this.notices = this.allNotices
         return
+      } else if (value === 'lost') {
+        this.notices = this.lostNotices
+      } else {
+        this.notices = this.foundNotices
       }
-      this.notices = this.cacheData
-        .filter(x => x.type === value)
     },
   }
 }

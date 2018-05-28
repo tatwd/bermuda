@@ -12,41 +12,50 @@ using System.Web.Http;
 
 namespace Bermuda.Api.Controllers
 {
+    [RoutePrefix("api/notices")]
     public class NoticeController : ApiController
     {
         IBmdNoticeService iservice = ServiceFactory.Get<IBmdNoticeService>();
 
-        [Route("api/notices")]
+        [Route()]
         public IHttpActionResult Get()
         {
-            IBmdUserService iuser = ServiceFactory.Get<IBmdUserService>();
-            IList<NoticeViewModel> vm = new List<NoticeViewModel>();
+            var vm = CacheEngine.GetData<IList<NoticeViewModel>>("notices_all", () =>
+            {
+                var _vm = new List<NoticeViewModel>();
+                var userService = ServiceFactory.Get<IBmdUserService>();
+                var notices = iservice
+                    .Select(x => x.IsSolved == 0)
+                    .OrderByDescending(x => x.CreatedAt)
+                    .ToList();
 
-            vm = CacheEngine.GetData<IList<NoticeViewModel>>("notices_all", () =>
+                foreach (var notice in notices)
                 {
-                    var notices = iservice
-                        .Select(x => x.IsSolved == 0) // 未解决
-                        .OrderByDescending(x => x.CreatedAt)
-                        .ToList();
+                    var user = userService.GetUserById(notice.UserId.Value);
+                    var vmnotice = BaseUtil.DeepParseTo<NoticeViewModel, UserViewModel>(notice, user);
+                    _vm.Add(vmnotice);
+                }
 
-                    var _vms = BaseUtil.ParseToList<NoticeViewModel>(notices);
-
-                    foreach (var _vm in _vms)
-                    {
-                        var _user = iuser.GetUserById(_vm.user_id);
-                        _vm.user_name = _user.Name;
-                    }
-
-                    return _vms;
-                });
+                return _vm.Count <= 0 ? null : _vm;
+            });
 
             return Json(vm);
         }
 
-        // GET api/<controller>/5
-        public string Get(int id)
+        [Route("{id}")]
+        public IHttpActionResult Get(Int64 id)
         {
-            return "value";
+            var vm = CacheEngine.GetData<NoticeViewModel>($"notice_#{id}", () =>
+            {
+                var notice = iservice
+                    .Select(x => x.Id == id)
+                    .SingleOrDefault();
+                var user = ServiceFactory
+                    .Get<IBmdUserService>()
+                    .GetUserById(notice.UserId.Value);
+                return BaseUtil.DeepParseTo<NoticeViewModel, UserViewModel>(notice, user);
+            });
+            return Json(vm);
         }
 
         // POST api/<controller>

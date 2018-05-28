@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import authHelper from '@/assets/js/auth-helper'
+import store from '@/store'
+import userAuth from '@/assets/js/user-auth'
 
 // layouts
 import DefaultLayout from '@/layouts/default'
@@ -9,8 +10,12 @@ import ErrorLayout from '@/layouts/error'
 
 // view components
 import Home from '@/views/home'
-import SignIn from '@/views/signin'
-import SignUp from '@/views/signup'
+import Shop from '@/views/shop'
+import Cart from '@/views/shop/cart'
+import Topic from '@/views/topic'
+import SignIn from '@/views/user/signin'
+import SignUp from '@/views/user/signup'
+import Search from '@/views/search'
 
 Vue.use(Router)
 
@@ -25,6 +30,38 @@ const router = new Router({
           path: 'home',
           name: 'Home',
           component: Home,
+          meta: {
+            requiresAuth: false
+          }
+        },
+        {
+          path: 'topic',
+          name: 'Topic',
+          component: Topic,
+          meta: {
+            requiresAuth: false
+          }
+        },
+        {
+          path: 'shop',
+          name: 'Shop',
+          component: Shop,
+          meta: {
+            requiresAuth: false
+          }
+        },
+        {
+          path: 'shop/cart',
+          name: 'Cart',
+          component: Cart,
+          meta: {
+            requiresAuth: false
+          }
+        },
+        {
+          path: 'search',
+          name: 'Search',
+          component: Search,
           meta: {
             requiresAuth: false
           }
@@ -62,8 +99,14 @@ const router = new Router({
 
 // Router Guards
 router.beforeEach((to, from, next) => {
+  // get current from localStorage
+  let currentUser = userAuth.auth().currentUser
+
+  // check user state
+  store.dispatch('checkUserState')
+
   if (to.matched.some(record => record.meta.requiresAuth)) {
-    if (authHelper.expired()) {
+    if (!currentUser) {
       next({
         path: '/account/signin',
         query: {
@@ -74,7 +117,7 @@ router.beforeEach((to, from, next) => {
       next()
     }
   } else if(to.matched.some(record => record.meta.requiresGuest)) {
-    if (!authHelper.expired()) {
+    if (currentUser) {
       next({
         path: '/home',
         query: {

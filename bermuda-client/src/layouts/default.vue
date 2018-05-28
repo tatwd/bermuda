@@ -1,7 +1,7 @@
 <template>
   <div class="layout--default">
     <v-app>
-      <Navbar/>
+      <BmdNavbar/>
       <v-content class="grey lighten-4">
         <router-view/>
       </v-content>
@@ -11,17 +11,12 @@
 </template>
 
 <script>
-import Navbar from '@/components/shared/Navbar'
+import BmdNavbar from '@/components/shared/BmdNavbar'
 
 export default {
   name: 'default',
   components: {
-    Navbar
+    BmdNavbar
   }
 }
 </script>
-
-<!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped>
-
-</style>

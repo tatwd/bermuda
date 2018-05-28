@@ -1,6 +1,8 @@
 ﻿namespace Bermuda.Bll.Service
 {
     using Model;
+    using System;
+    using System.Collections.Generic;
     using System.Threading.Tasks;
 
     public interface IBmdUserService : IBaseService<BmdUser>
@@ -26,5 +28,7 @@
         /// <param name="user"></param>
         /// <returns></returns>
         bool SignUp(BmdUser user);
+
+        IList<BmdUser> GetTop(Int32 count);
     }
 }
