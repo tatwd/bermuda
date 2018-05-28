@@ -20,16 +20,22 @@
       <v-flex xs12 md8>
         <v-card class="mx-3 mb-3">
           <v-card-title>
-            <p>{{ msg }}</p>
+            <h2>{{ msg }}</h2>
           </v-card-title>
         </v-card>
+        <SearchNoticeResult/>
       </v-flex>
     </v-layout>
   </v-container>
 </template>
 
 <script>
+import  SearchNoticeResult from '@/components/search/SearchNoticeResult'
+
 export default {
+  components: {
+    SearchNoticeResult
+  },
   data: () => ({
     msg: '',
     types: [
