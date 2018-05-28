@@ -29,6 +29,9 @@ const actions = {
         payload.bind.call(this, res.data)
       })
       .catch(err => console.log(err))
+  },
+  updateSearchResult ({ commit }, payload) {
+    commit('setResult', payload.result)
   }
 }
 

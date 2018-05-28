@@ -51,10 +51,14 @@
         >
           <v-progress-circular indeterminate color="primary"></v-progress-circular>
         </v-container>
-        <SearchNoticeResult
+        <SearchNoticesResult
           v-if="currentType === 'notice'"
           :notices="result"
           :search-history="searchHistory"
+        />
+        <SearchTopicsResult
+          v-if="currentType === 'topic'"
+          :topics="result"
         />
       </v-flex>
     </v-layout>
@@ -63,12 +67,14 @@
 
 <script>
 import { mapGetters } from 'vuex'
-import  SearchNoticeResult from '@/components/search/SearchNoticeResult'
 import { getSearchHistory, removeSearchHistory } from '@/assets/js/search-history'
+import  SearchNoticesResult from '@/components/search/SearchNoticesResult'
+import  SearchTopicsResult from '@/components/search/SearchTopicsResult'
 
 export default {
   components: {
-    SearchNoticeResult,
+    SearchNoticesResult,
+    SearchTopicsResult
   },
   data: () => ({
     msg: '请输入你要搜索的内容！',
@@ -106,6 +112,9 @@ export default {
       this.isLoading = true
       this.msg = '正在为您搜索……'
 
+      // clear cache result first
+      this.$store.dispatch('updateSearchResult', { result: null })
+
       let bind = (data) => {
         this.msg = `
           您要搜索的内容是“<b class="red--text">${query}</b>”，
@@ -115,6 +124,7 @@ export default {
         this.isLoading = false
       }
 
+      // get search result
       this.$store.dispatch('getSearchResult', { query, type, bind })
     },
 
