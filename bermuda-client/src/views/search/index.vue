@@ -41,72 +41,40 @@ export default {
     currentType: '',
   }),
   beforeRouteEnter (to, from, next) {
-    // get data
-    // then next
-    // searchData(
-    //   to.query.q,
-    //   to.query.t,
-    //   (data) => {
-    //     next(vm => {
-    //       // vm.msg = data
-    //       vm.updateData(data)
-    //     })
-    //   }
-    // )
     next(vm => {
       vm.fetchData(
         to.query.q,
         to.query.type,
         (data) => {
           vm.updateData(data)
-          vm.currentType = to.query.type
         }
       )
     })
   },
-  // watch: {
-  //   '$route': 'updateData'
-  // },
-  // methods: {
-  //   updateData () {
-  //     searchData(
-  //       this.$route.query.q,
-  //       this.$route.query.t,
-  //       (data) => {
-  //         this.msg = data
-  //       }
-  //     )
-  //   }
-  // }
-  beforeRouteUpdate (to, from, next) {
-    // searchData(
-    this.fetchData(
-      to.query.q,
-      to.query.type,
-      (data) => {
-        this.updateData(data)
-        this.currentType = to.query.type
-        next()
-      }
-    )
+  watch: {
+    '$route': 'onRouteUpdate'
   },
   methods: {
-    updateData (data) {
-      this.msg = data
+    onRouteUpdate () {
+      this.fetchData(
+        this.$route.query.q,
+        this.$route.query.type,
+        (data) => {
+          this.updateData(data)
+        }
+      )
     },
     fetchData (query, type, cb) {
-      let data = `query: ${query}  type: ${type}`
+      let data = {
+        msg: `query: ${query}  type: ${type}`,
+        currentType: type
+      }
       cb.call(this, data)
     },
-    // changeType (type) {
-    //   this.$router.push({
-    //     path: '/search',
-    //     query: {
-    //       q: this.$route.query.q,
-    //       t: type
-    //     }
-    //   })
-    // },
+    updateData (data) {
+      this.msg = data.msg
+      this.currentType = data.currentType
+    },
     setRouterLink (typeName) {
       return {
         path: '/search',
