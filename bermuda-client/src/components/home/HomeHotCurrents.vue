@@ -14,7 +14,6 @@
 
 <script>
 export default {
-  name: 'BmdHotCurrents',
   data: () => ({
     example: '热门动态'
   })

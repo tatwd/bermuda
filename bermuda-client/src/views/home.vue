@@ -1,10 +1,10 @@
 <template>
   <div id="home">
-    <BmdSlogan/>
+    <HomeSlogan/>
     <v-container>
       <v-layout row wrap>
         <v-flex md12 xs12>
-          <BmdHotTopics/>
+          <HomeHotTopics/>
         </v-flex>
 
         <v-flex md7 xs12 order-xs2 order-md1>
@@ -30,9 +30,9 @@
         </v-flex>
 
         <v-flex md5 xs12 order-xs1 order-md2 class="bmd--pl">
-          <BmdHotSpecies/>
-          <BmdHotCurrents/>
-          <BmdTopUsers/>
+          <HomeHotSpecies/>
+          <HomeHotCurrents/>
+          <HomeTopUsers/>
         </v-flex>
       </v-layout>
     </v-container>
@@ -43,20 +43,20 @@
 import { mapGetters } from 'vuex'
 
 import BmdNoticeList from '@/components/shared/BmdNoticeList'
-import BmdSlogan from '@/components/home/BmdSlogan'
-import BmdHotTopics from '@/components/home/BmdHotTopics'
-import BmdHotSpecies from '@/components/home/BmdHotSpecies'
-import BmdHotCurrents from '@/components/home/BmdHotCurrents'
-import BmdTopUsers from '@/components/home/BmdTopUsers'
+import HomeSlogan from '@/components/home/HomeSlogan'
+import HomeHotTopics from '@/components/home/HomeHotTopics'
+import HomeHotSpecies from '@/components/home/HomeHotSpecies'
+import HomeHotCurrents from '@/components/home/HomeHotCurrents'
+import HomeTopUsers from '@/components/home/HomeTopUsers'
 
 export default {
   components: {
     BmdNoticeList,
-    BmdSlogan,
-    BmdHotTopics,
-    BmdHotSpecies,
-    BmdHotCurrents,
-    BmdTopUsers
+    HomeSlogan,
+    HomeHotTopics,
+    HomeHotSpecies,
+    HomeHotCurrents,
+    HomeTopUsers
   },
   data: () => ({
     notices: null,

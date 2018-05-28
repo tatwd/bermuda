@@ -33,7 +33,6 @@
 import { mapGetters } from 'vuex'
 
 export default {
-  name: 'BmdHotSpecies',
   data: () => ({
     title: '物以类聚'
   }),

@@ -15,29 +15,57 @@
               <span class="mx-2">{{ type.text }}</span>
             </v-list-tile>
           </v-list>
+          <v-list v-if="searchHistory">
+            <v-divider></v-divider>
+            <v-subheader class="grey--text">
+              最近搜索
+              <v-spacer></v-spacer>
+              <v-icon
+                small
+                class="pointer"
+                @click="deleteSearchHistory"
+              >delete</v-icon>
+            </v-subheader>
+            <v-layout row wrap class="px-3">
+              <v-flex>
+                <v-chip
+                  v-for="(histroy, index) in searchHistory"
+                  :key="index"
+                >
+                  {{ histroy }}
+                </v-chip>
+              </v-flex>
+            </v-layout>
+          </v-list>
         </v-card>
       </v-flex>
       <v-flex xs12 md8>
-        <v-card class="mx-3 mb-3">
+        <v-card class="mx-3 mb-3 grey--text">
           <v-card-title>
-            <h2>{{ msg }}</h2>
+            <h3 v-html="msg"></h3>
           </v-card-title>
         </v-card>
-        <SearchNoticeResult/>
+        <SearchNoticeResult
+          v-if="currentType === 'notice'"
+          :notices="result"
+          :search-history="searchHistory"
+        />
       </v-flex>
     </v-layout>
   </v-container>
 </template>
 
 <script>
+import { mapGetters } from 'vuex'
 import  SearchNoticeResult from '@/components/search/SearchNoticeResult'
+import { getSearchHistory, removeSearchHistory } from '@/assets/js/search-history'
 
 export default {
   components: {
-    SearchNoticeResult
+    SearchNoticeResult,
   },
   data: () => ({
-    msg: '',
+    msg: '请输入你要搜索的内容！',
     types: [
       { id: 1, text: '启示', name: 'notice', icon: 'assignment' },
       { id: 2, text: '用户', name: 'user', icon: 'assignment_ind' },
@@ -45,42 +73,40 @@ export default {
       { id: 4, text: '动态', name: 'current', icon: 'note' }
     ],
     currentType: '',
+    searchHistory: getSearchHistory()
+  }),
+  computed: mapGetters({
+    result: 'currentResult'
   }),
   beforeRouteEnter (to, from, next) {
-    next(vm => {
-      vm.fetchData(
-        to.query.q,
-        to.query.type,
-        (data) => {
-          vm.updateData(data)
-        }
-      )
-    })
+    if (to.query.q && to.query.type) {
+      next(vm => {
+        vm.startSearch(to.query.q, to.query.type)
+      })
+    } else {
+      next()
+    }
   },
   watch: {
     '$route': 'onRouteUpdate'
   },
   methods: {
     onRouteUpdate () {
-      this.fetchData(
-        this.$route.query.q,
-        this.$route.query.type,
-        (data) => {
-          this.updateData(data)
-        }
-      )
+      this.startSearch(this.$route.query.q, this.$route.query.type)
     },
-    fetchData (query, type, cb) {
-      let data = {
-        msg: `query: ${query}  type: ${type}`,
-        currentType: type
+    startSearch (query, type) {
+      this.currentType = type
+      let bind = (data) => {
+        this.msg = `
+          您要搜索的内容是“<b class="red--text">${query}</b>”，
+          搜索结果数为<b class="red--text">${data ? data.length : 0}</b>！
+        `
+        this.searchHistory = getSearchHistory()
       }
-      cb.call(this, data)
+
+      this.$store.dispatch('getSearchResult', { query, type, bind })
     },
-    updateData (data) {
-      this.msg = data.msg
-      this.currentType = data.currentType
-    },
+
     setRouterLink (typeName) {
       return {
         path: '/search',
@@ -92,7 +118,17 @@ export default {
     },
     setIconColor (typeName) {
       return typeName === this.currentType ? 'primary': ''
+    },
+    deleteSearchHistory () {
+      this.searchHistory = null
+      removeSearchHistory()
     }
   }
 }
 </script>
+
+<style scoped>
+.pointer {
+  cursor: pointer;
+}
+</style>

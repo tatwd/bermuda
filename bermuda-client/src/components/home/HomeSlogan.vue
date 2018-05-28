@@ -24,7 +24,6 @@
 
 <script>
 export default {
-  name: 'BmdSlogan',
   data: () => ({
     gradient: 'to top right, rgba(63, 81, 181, .5), ragba(25, 32, 72, .5)',
     sloganMsg: {

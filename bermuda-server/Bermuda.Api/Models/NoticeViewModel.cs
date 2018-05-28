@@ -37,7 +37,7 @@ namespace Bermuda.Api.Models
         public string place { get; set; }
         //public string full_place { get; set; }
         public string event_time_desc { get; set; }
-        //public string img_url { get; set; }
+        public string img_url { get; set; }
         //public string contact_way { get; set; }
         public string detail { get; set; }
         public DateTime created_at { get; set; }

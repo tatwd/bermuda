@@ -38,7 +38,6 @@ import { mapGetters } from 'vuex'
 import cardSlider from '@/assets/js/card-slider'
 
 export default {
-  name: 'BmdHotTopics',
   data: () => ({
     tmps: []
   }),

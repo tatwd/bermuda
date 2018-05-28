@@ -99,6 +99,9 @@
 </template>
 
 <script>
+import { updateSearchHistory } from '@/assets/js/search-history'
+
+
 export default {
   name: 'BmdNavbar',
   data: () => ({
@@ -115,20 +118,33 @@ export default {
       return this.$store.getters.currentUser ? true : false
     }
   },
+  watch: {
+    '$route': 'clearSearchText'
+  },
   methods: {
     onSearch () {
-      this.$router.push({
-        path: '/search',
-        query: {
-          q: this.searchText,
-          type: this.$route.query.type || 'notice'
-        }
-      })
+      if (this.searchText && this.searchText !== '') {
+        // update search history in localStorage
+        updateSearchHistory(this.searchText)
+
+        this.$router.push({
+          path: '/search',
+          query: {
+            q: this.searchText,
+            type: this.$route.query.type || 'notice'
+          }
+        })
+      }
     },
     onSignout () {
       this.$store.dispatch('signout', {
         redirect: () => this.$router.push('account/signin')
       })
+    },
+    clearSearchText () {
+      if (this.$route.name !== 'Search') {
+        this.searchText = null
+      }
     }
   }
 }

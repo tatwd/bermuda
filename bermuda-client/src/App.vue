@@ -26,4 +26,8 @@ export default {
   transform: translateX(16px);
   opacity: 0;
 }
+
+a {
+  text-decoration: none;
+}
 </style>
