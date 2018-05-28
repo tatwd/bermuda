@@ -10,18 +10,19 @@ using System.Web.Http.Results;
 
 namespace Bermuda.Api.Controllers
 {
-    [RoutePrefix("api/search")]
+    //[RoutePrefix("api/search")]
     public class SearchController : ApiController
     {
         [HttpGet]
-        [Route("notices/{q}")]
+        //[Route("api/search/notices/{q}")]
         public IHttpActionResult Notices(string q)
         {
             var noticeService = ServiceFactory.Get<IBmdNoticeService>();
             var notices = noticeService.Select(x => x.IsSolved == 0).ToList();
             var vm = BaseUtil.ParseToList<NoticeSearchModel>(notices);
 
-            var path = HostingEnvironment.MapPath(ConfigurationManager.AppSettings["IndexDir"].ToString());
+            var path = HostingEnvironment.MapPath(
+                $"{ConfigurationManager.AppSettings["IndexDir"].ToString()}/notices");
             SearchUtil.LoadFSDirectory(path);
             SearchUtil.CreateIndex<NoticeSearchModel>(vm);
 

@@ -61,6 +61,9 @@ namespace Bermuda.Common
                             : Field.Index.NOT_ANALYZED;
                         var value = prop.GetValue(entity)?.ToString() ?? null;
 
+                        if (value == null)
+                            continue;
+
                         doc.Add(new Field(prop.Name,
                             value,
                             Field.Store.YES,
