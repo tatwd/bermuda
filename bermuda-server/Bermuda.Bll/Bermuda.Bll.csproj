@@ -44,8 +44,14 @@
     <Compile Include="Service\BaseService.cs" />
     <Compile Include="Service\BmdCurrent\BmdCurrentService.cs" />
     <Compile Include="Service\BmdCurrent\IBmdCurrentService.cs" />
+    <Compile Include="Service\BmdNoticeCmntReply\BmdNoticeCmntReplyService.cs" />
+    <Compile Include="Service\BmdNoticeCmntReply\IBmdNoticeCmntReplyService.cs" />
+    <Compile Include="Service\BmdNoticeCmnt\BmdNoticeCmntService.cs" />
+    <Compile Include="Service\BmdNoticeCmnt\IBmdNoticeCmntService.cs" />
     <Compile Include="Service\BmdNoticeSpecie\BmdNoticeSpecieService.cs" />
     <Compile Include="Service\BmdNoticeSpecie\IBmdNoticeSpecieService.cs" />
+    <Compile Include="Service\BmdNoticeTrace\BmdNoticeTraceService.cs" />
+    <Compile Include="Service\BmdNoticeTrace\IBmdNoticeTraceService.cs" />
     <Compile Include="Service\BmdNotice\BmdNoticeService.cs" />
     <Compile Include="Service\BmdNotice\IBmdNoticeService.cs" />
     <Compile Include="Service\BmdTopic\BmdTopicService.cs" />
