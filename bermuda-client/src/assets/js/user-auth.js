@@ -22,7 +22,7 @@ class UserAuth {
 
   getToken () {
     let str = localStorage.getItem(this.key);
-    return str ? JSON.parse(str) :  null;
+    return JSON.parse(str);
   }
 
   updateToken (token) {

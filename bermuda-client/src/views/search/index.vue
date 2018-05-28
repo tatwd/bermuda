@@ -45,6 +45,12 @@
             <h3 v-html="msg"></h3>
           </v-card-title>
         </v-card>
+        <v-container
+          v-if="isLoading"
+          class="text-xs-center"
+        >
+          <v-progress-circular indeterminate color="primary"></v-progress-circular>
+        </v-container>
         <SearchNoticeResult
           v-if="currentType === 'notice'"
           :notices="result"
@@ -73,7 +79,8 @@ export default {
       { id: 4, text: '动态', name: 'current', icon: 'note' }
     ],
     currentType: '',
-    searchHistory: getSearchHistory()
+    searchHistory: getSearchHistory(),
+    isLoading: false
   }),
   computed: mapGetters({
     result: 'currentResult'
@@ -96,12 +103,16 @@ export default {
     },
     startSearch (query, type) {
       this.currentType = type
+      this.isLoading = true
+      this.msg = '正在为您搜索……'
+
       let bind = (data) => {
         this.msg = `
           您要搜索的内容是“<b class="red--text">${query}</b>”，
           搜索结果数为<b class="red--text">${data ? data.length : 0}</b>！
         `
         this.searchHistory = getSearchHistory()
+        this.isLoading = false
       }
 
       this.$store.dispatch('getSearchResult', { query, type, bind })

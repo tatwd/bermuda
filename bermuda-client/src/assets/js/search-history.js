@@ -2,7 +2,7 @@ const KEY = 'SEARCH_HISTORY'
 
 export const getSearchHistory = function () {
   let history = localStorage.getItem(KEY);
-  return history ? JSON.parse(history) : null;
+  return JSON.parse(history);
 }
 
 export const updateSearchHistory = function (query) {
