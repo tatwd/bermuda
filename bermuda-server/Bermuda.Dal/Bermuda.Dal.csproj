@@ -53,10 +53,14 @@
     <Compile Include="Dao\BaseDao.cs" />
     <Compile Include="Dao\BmdCurrent\BmdCurrentDao.cs" />
     <Compile Include="Dao\BmdCurrent\IBmdCurrentDao.cs" />
+    <Compile Include="Dao\BmdNoticeCmntReply\BmdNoticeCmntReplyDao.cs" />
+    <Compile Include="Dao\BmdNoticeCmntReply\IBmdNoticeCmntReplyDao.cs" />
     <Compile Include="Dao\BmdNoticeCmnt\BmdNoticeCmntDao.cs" />
     <Compile Include="Dao\BmdNoticeCmnt\IBmdNoticeCmntDao.cs" />
     <Compile Include="Dao\BmdNoticeSpecie\BmdNoticeSpecieDao.cs" />
     <Compile Include="Dao\BmdNoticeSpecie\IBmdNoticeSpecieDao.cs" />
+    <Compile Include="Dao\BmdNoticeTrace\BmdNoticeTraceDao.cs" />
+    <Compile Include="Dao\BmdNoticeTrace\IBmdNoticeTraceDao.cs" />
     <Compile Include="Dao\BmdNotice\BmdNoticeDao.cs" />
     <Compile Include="Dao\BmdNotice\IBmdNoticeDao.cs" />
     <Compile Include="Dao\BmdTopic\BmdTopicDao.cs" />
