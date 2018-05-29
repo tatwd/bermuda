@@ -30,7 +30,7 @@
           v-for="nav in navs"
           :key="nav.title"
           :to="nav.to"
-          exact-active-class="primary--text grey"
+          exact-active-class="primary--text lighten-5"
         >
           {{ nav.title }}
         </v-btn>
@@ -79,7 +79,11 @@
         full-width
         dark
       >
-        <v-btn slot="activator" class="mr-3 mx-5 hidden-sm-and-down" color="info">
+        <v-btn
+          slot="activator"
+          class="mr-3 mx-5 hidden-sm-and-down"
+          color="info"
+        >
           <v-icon left>create</v-icon>
           发布
         </v-btn>
