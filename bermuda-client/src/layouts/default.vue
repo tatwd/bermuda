@@ -5,7 +5,11 @@
       <v-content class="grey lighten-4">
         <router-view/>
       </v-content>
-      <v-footer>footer</v-footer>
+      <v-footer app>
+        <v-container>
+          footer
+        </v-container>
+      </v-footer>
     </v-app>
   </div>
 </template>

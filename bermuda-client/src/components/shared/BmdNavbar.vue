@@ -30,7 +30,7 @@
           v-for="nav in navs"
           :key="nav.title"
           :to="nav.to"
-          exact-active-class="primary--text lighten-5"
+          exact-active-class="primary--text"
         >
           {{ nav.title }}
         </v-btn>
@@ -82,13 +82,13 @@
         <v-btn
           slot="activator"
           class="mr-3 mx-5 hidden-sm-and-down"
-          color="info"
+          color="primary"
         >
           <v-icon left>create</v-icon>
-          发布
+          发布启示
         </v-btn>
         <v-list-tile
-          v-for="item in ['失物招领', '动态', '话题']"
+          v-for="item in ['失物招领', '动态']"
           :key="item"
           to="#"
           class="white"
@@ -104,7 +104,6 @@
 
 <script>
 import { updateSearchHistory } from '@/assets/js/search-history'
-
 
 export default {
   name: 'BmdNavbar',

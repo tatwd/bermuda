@@ -16,6 +16,10 @@
             <v-btn color="primary" to="/account/signup" large>加入我们</v-btn>
             <v-btn color="secondary" to="/account/signin" large>马上登录</v-btn>
           </div>
+          <div v-else>
+            <HomeTopicCreate/>
+            <v-btn color="info" large>推送动态</v-btn>
+          </div>
         </v-flex>
       </v-layout>
     </v-container>
@@ -23,7 +27,12 @@
  </template>
 
 <script>
+import HomeTopicCreate from './HomeTopicCreate'
+
 export default {
+  components: {
+    HomeTopicCreate
+  },
   data: () => ({
     gradient: 'to top, rgba(90, 80, 70, .5), ragba(60, 50, 40, .4)',
     sloganMsg: {
