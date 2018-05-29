@@ -51,6 +51,18 @@
   <ItemGroup>
     <Compile Include="Context\DbContextFactory.cs" />
     <Compile Include="Dao\BaseDao.cs" />
+    <Compile Include="Dao\BmdCurrentCmntPraise\BmdCurrentCmntPraiseDao.cs" />
+    <Compile Include="Dao\BmdCurrentCmntPraise\IBmdCurrentCmntPraiseDao.cs" />
+    <Compile Include="Dao\BmdCurrentCmntReplyPraise\BmdCurrentCmntReplyPraiseDao.cs" />
+    <Compile Include="Dao\BmdCurrentCmntReplyPraise\IBmdCurrentCmntReplyPraiseDao.cs" />
+    <Compile Include="Dao\BmdCurrentCmntReply\BmdCurrentCmntReplyDao.cs" />
+    <Compile Include="Dao\BmdCurrentCmntReply\IBmdCurrentCmntReplyDao.cs" />
+    <Compile Include="Dao\BmdCurrentCmnt\BmdCurrentCmntDao.cs" />
+    <Compile Include="Dao\BmdCurrentCmnt\IBmdCurrentCmntDao.cs" />
+    <Compile Include="Dao\BmdCurrentPraise\BmdCurrentPraiseDao.cs" />
+    <Compile Include="Dao\BmdCurrentPraise\IBmdCurrentPraiseDao.cs" />
+    <Compile Include="Dao\BmdCurrentStar\BmdCurrentStarDao.cs" />
+    <Compile Include="Dao\BmdCurrentStar\IBmdCurrentStarDao.cs" />
     <Compile Include="Dao\BmdCurrent\BmdCurrentDao.cs" />
     <Compile Include="Dao\BmdCurrent\IBmdCurrentDao.cs" />
     <Compile Include="Dao\BmdNoticeCmntReply\BmdNoticeCmntReplyDao.cs" />
