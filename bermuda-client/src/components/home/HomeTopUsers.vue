@@ -14,7 +14,6 @@
 
 <script>
 export default {
-  name: 'BmdTopUsers',
   data: () => ({
     example: '百慕达人'
   })

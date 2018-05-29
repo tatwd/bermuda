@@ -1,32 +1,66 @@
-﻿using Bermuda.Api.Models;
+﻿using Bermuda.Api.DataCache;
+using Bermuda.Api.Models;
 using Bermuda.Bll.Service;
 using Bermuda.Common;
+using System.Collections.Generic;
 using System.Configuration;
 using System.Linq;
-using System.Web;
 using System.Web.Hosting;
 using System.Web.Http;
-using System.Web.Http.Results;
 
 namespace Bermuda.Api.Controllers
 {
-    //[RoutePrefix("api/search")]
+    [RoutePrefix("api/search")]
     public class SearchController : ApiController
     {
+        private readonly static string INDEX_DIR = ConfigurationManager.AppSettings["IndexDir"].ToString();
+
         [HttpGet]
-        //[Route("api/search/notices/{q}")]
+        [Route("notices/{q}")]
         public IHttpActionResult Notices(string q)
         {
-            var noticeService = ServiceFactory.Get<IBmdNoticeService>();
-            var notices = noticeService.Select(x => x.IsSolved == 0).ToList();
-            var vm = BaseUtil.ParseToList<NoticeSearchModel>(notices);
+            var vm = CacheEngine.GetData<IList<NoticeSearchModel>>($"search_notices_all", () =>
+            {
+                var notices = ServiceFactory.Get<IBmdNoticeService>()
+                    .Select(x => x.IsSolved == 0)
+                    .OrderByDescending(x => x.TraceCount) // 根据追踪数排序
+                    .ToList();
+                return BaseUtil.ParseToList<NoticeSearchModel>(notices);
+            });
 
-            var path = HostingEnvironment.MapPath(
-                $"{ConfigurationManager.AppSettings["IndexDir"].ToString()}/notices");
+            if (vm == null)
+                return Json(vm);
+
+            var path = HostingEnvironment.MapPath($"{INDEX_DIR}/notices");
             SearchUtil.LoadFSDirectory(path);
             SearchUtil.CreateIndex<NoticeSearchModel>(vm);
 
             var result = SearchUtil.SearchFullText<NoticeSearchModel>(q, 5);
+            return Json(result);
+        }
+
+        [HttpGet]
+        [Route("topics/{q}")]
+        public IHttpActionResult Topics(string q)
+        {
+            var vm = CacheEngine.GetData<IList<TopicSearchModel>>($"search_topics_all", () =>
+            {
+                var topics = ServiceFactory.Get<IBmdTopicService>()
+                    .Select(x => x.IsPassed == 1)
+                    .OrderByDescending(x => x.JoinCount) // 根据参与输
+                    .ToList();
+                return BaseUtil.ParseToList<TopicSearchModel>(topics);
+            });
+
+            if (vm == null)
+                return Json(vm);
+
+            // 开始搜索
+            var path = HostingEnvironment.MapPath($"{INDEX_DIR}/topics");
+            SearchUtil.LoadFSDirectory(path);
+            SearchUtil.CreateIndex<TopicSearchModel>(vm);
+
+            var result = SearchUtil.SearchFullText<TopicSearchModel>(q, 10);
             return Json(result);
         }
     }

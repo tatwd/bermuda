@@ -15,23 +15,69 @@
               <span class="mx-2">{{ type.text }}</span>
             </v-list-tile>
           </v-list>
+          <v-list v-if="searchHistory">
+            <v-divider></v-divider>
+            <v-subheader class="grey--text">
+              最近搜索
+              <v-spacer></v-spacer>
+              <v-icon
+                small
+                class="pointer"
+                @click="deleteSearchHistory"
+              >delete</v-icon>
+            </v-subheader>
+            <v-layout row wrap class="px-3">
+              <v-flex>
+                <v-chip
+                  v-for="(histroy, index) in searchHistory"
+                  :key="index"
+                >
+                  {{ histroy }}
+                </v-chip>
+              </v-flex>
+            </v-layout>
+          </v-list>
         </v-card>
       </v-flex>
       <v-flex xs12 md8>
-        <v-card class="mx-3 mb-3">
+        <v-card class="mx-3 mb-3 grey--text">
           <v-card-title>
-            <p>{{ msg }}</p>
+            <h3 v-html="msg"></h3>
           </v-card-title>
         </v-card>
+        <v-container
+          v-if="isLoading"
+          class="text-xs-center"
+        >
+          <v-progress-circular indeterminate color="primary"></v-progress-circular>
+        </v-container>
+        <SearchNoticesResult
+          v-if="currentType === 'notice'"
+          :notices="result"
+          :search-history="searchHistory"
+        />
+        <SearchTopicsResult
+          v-if="currentType === 'topic'"
+          :topics="result"
+        />
       </v-flex>
     </v-layout>
   </v-container>
 </template>
 
 <script>
+import { mapGetters } from 'vuex'
+import { getSearchHistory, removeSearchHistory } from '@/assets/js/search-history'
+import  SearchNoticesResult from '@/components/search/SearchNoticesResult'
+import  SearchTopicsResult from '@/components/search/SearchTopicsResult'
+
 export default {
+  components: {
+    SearchNoticesResult,
+    SearchTopicsResult
+  },
   data: () => ({
-    msg: '',
+    msg: '请输入你要搜索的内容！',
     types: [
       { id: 1, text: '启示', name: 'notice', icon: 'assignment' },
       { id: 2, text: '用户', name: 'user', icon: 'assignment_ind' },
@@ -39,74 +85,49 @@ export default {
       { id: 4, text: '动态', name: 'current', icon: 'note' }
     ],
     currentType: '',
+    searchHistory: getSearchHistory(),
+    isLoading: false
+  }),
+  computed: mapGetters({
+    result: 'currentResult'
   }),
   beforeRouteEnter (to, from, next) {
-    // get data
-    // then next
-    // searchData(
-    //   to.query.q,
-    //   to.query.t,
-    //   (data) => {
-    //     next(vm => {
-    //       // vm.msg = data
-    //       vm.updateData(data)
-    //     })
-    //   }
-    // )
-    next(vm => {
-      vm.fetchData(
-        to.query.q,
-        to.query.type,
-        (data) => {
-          vm.updateData(data)
-          vm.currentType = to.query.type
-        }
-      )
-    })
+    if (to.query.q && to.query.type) {
+      next(vm => {
+        vm.startSearch(to.query.q, to.query.type)
+      })
+    } else {
+      next()
+    }
   },
-  // watch: {
-  //   '$route': 'updateData'
-  // },
-  // methods: {
-  //   updateData () {
-  //     searchData(
-  //       this.$route.query.q,
-  //       this.$route.query.t,
-  //       (data) => {
-  //         this.msg = data
-  //       }
-  //     )
-  //   }
-  // }
-  beforeRouteUpdate (to, from, next) {
-    // searchData(
-    this.fetchData(
-      to.query.q,
-      to.query.type,
-      (data) => {
-        this.updateData(data)
-        this.currentType = to.query.type
-        next()
-      }
-    )
+  watch: {
+    '$route': 'onRouteUpdate'
   },
   methods: {
-    updateData (data) {
-      this.msg = data
+    onRouteUpdate () {
+      this.startSearch(this.$route.query.q, this.$route.query.type)
     },
-    fetchData (query, type, cb) {
-      let data = `query: ${query}  type: ${type}`
-      cb.call(this, data)
+    startSearch (query, type) {
+      this.currentType = type
+      this.isLoading = true
+      this.msg = '正在为您搜索……'
+
+      // clear cache result first
+      this.$store.dispatch('updateSearchResult', { result: null })
+
+      let bind = (data) => {
+        this.msg = `
+          您要搜索的内容是“<b class="red--text">${query}</b>”，
+          搜索结果数为<b class="red--text">${data ? data.length : 0}</b>！
+        `
+        this.searchHistory = getSearchHistory()
+        this.isLoading = false
+      }
+
+      // get search result
+      this.$store.dispatch('getSearchResult', { query, type, bind })
     },
-    // changeType (type) {
-    //   this.$router.push({
-    //     path: '/search',
-    //     query: {
-    //       q: this.$route.query.q,
-    //       t: type
-    //     }
-    //   })
-    // },
+
     setRouterLink (typeName) {
       return {
         path: '/search',
@@ -118,7 +139,17 @@ export default {
     },
     setIconColor (typeName) {
       return typeName === this.currentType ? 'primary': ''
+    },
+    deleteSearchHistory () {
+      this.searchHistory = null
+      removeSearchHistory()
     }
   }
 }
 </script>
+
+<style scoped>
+.pointer {
+  cursor: pointer;
+}
+</style>
