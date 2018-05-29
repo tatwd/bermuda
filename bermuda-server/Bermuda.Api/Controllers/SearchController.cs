@@ -40,6 +40,31 @@ namespace Bermuda.Api.Controllers
         }
 
         [HttpGet]
+        [Route("users/{q}")]
+        public IHttpActionResult Users(string q)
+        {
+            var vm = CacheEngine.GetData<IList<UserSearchModel>>($"search_users_all", () =>
+            {
+                var users = ServiceFactory.Get<IBmdUserService>()
+                    .Select(x => x.Id > 0)
+                    .OrderByDescending(x => x.HelpCount) // 根据帮助数排序
+                    .ToList();
+                return BaseUtil.ParseToList<UserSearchModel>(users);
+            });
+
+            if (vm == null)
+                return Json(vm);
+
+            // 开始搜索
+            var path = HostingEnvironment.MapPath($"{INDEX_DIR}/users");
+            SearchUtil.LoadFSDirectory(path);
+            SearchUtil.CreateIndex<UserSearchModel>(vm);
+
+            var result = SearchUtil.SearchFullText<UserSearchModel>(q, 10);
+            return Json(result);
+        }
+
+        [HttpGet]
         [Route("topics/{q}")]
         public IHttpActionResult Topics(string q)
         {
@@ -47,7 +72,7 @@ namespace Bermuda.Api.Controllers
             {
                 var topics = ServiceFactory.Get<IBmdTopicService>()
                     .Select(x => x.IsPassed == 1)
-                    .OrderByDescending(x => x.JoinCount) // 根据参与输
+                    .OrderByDescending(x => x.JoinCount) // 根据参与人数排序
                     .ToList();
                 return BaseUtil.ParseToList<TopicSearchModel>(topics);
             });
@@ -62,6 +87,13 @@ namespace Bermuda.Api.Controllers
 
             var result = SearchUtil.SearchFullText<TopicSearchModel>(q, 10);
             return Json(result);
+        }
+
+        [HttpGet]
+        [Route("currents/{q}")]
+        public IHttpActionResult Currents(string q)
+        {
+            return Json($"q={q}");
         }
     }
 }
