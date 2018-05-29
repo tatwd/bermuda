@@ -5,7 +5,7 @@ using Bermuda.Common;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Linq;
-using System.Web.Hosting;
+using System.Web;
 using System.Web.Http;
 
 namespace Bermuda.Api.Controllers
@@ -31,7 +31,7 @@ namespace Bermuda.Api.Controllers
             if (vm == null)
                 return Json(vm);
 
-            var path = HostingEnvironment.MapPath($"{INDEX_DIR}/notices");
+            var path = HttpContext.Current.Server.MapPath($"{INDEX_DIR}/notices");
             SearchUtil.LoadFSDirectory(path);
             SearchUtil.CreateIndex<NoticeSearchModel>(vm);
 
@@ -56,7 +56,7 @@ namespace Bermuda.Api.Controllers
                 return Json(vm);
 
             // 开始搜索
-            var path = HostingEnvironment.MapPath($"{INDEX_DIR}/users");
+            var path = HttpContext.Current.Server.MapPath($"{INDEX_DIR}/users");
             SearchUtil.LoadFSDirectory(path);
             SearchUtil.CreateIndex<UserSearchModel>(vm);
 
@@ -81,7 +81,7 @@ namespace Bermuda.Api.Controllers
                 return Json(vm);
 
             // 开始搜索
-            var path = HostingEnvironment.MapPath($"{INDEX_DIR}/topics");
+            var path = HttpContext.Current.Server.MapPath($"{INDEX_DIR}/topics");
             SearchUtil.LoadFSDirectory(path);
             SearchUtil.CreateIndex<TopicSearchModel>(vm);
 

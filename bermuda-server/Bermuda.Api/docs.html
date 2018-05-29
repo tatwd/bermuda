@@ -125,6 +125,17 @@
         </li>
       </ul>
     </section>
+
+    <h3>Playgroud</h3>
+    <div class="py-3">
+      <h4>testing upload img</h4>
+      <form>
+        <div class="form-group">
+          <input type="file" name="img"/>
+        </div>
+        <button id="upload-img" class="btn btn-info">upload</button>
+      </form>
+    </div>
   </div>
   <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
@@ -137,6 +148,34 @@
     //    console.log(data)
     //  })
     //  .catch(err => console.log(err));
+
+    const uploadImgBtn = document.querySelector('#upload-img');
+    const fileInput = document.querySelector('input[type=file]');
+    let fd = null
+
+    function onFileSelected(e) {
+      fd = e.target.files[0];
+      e.preventDefault();
+    }
+
+    function onUploadImg(e) {
+      e.preventDefault();
+
+      $.ajax({
+        type: 'post',
+        url: '/api/files/img/upload',
+        data: {
+          img: fd
+        },
+        dataType: '',
+        success: (data) => {
+          console.log(data)
+        }
+      })
+    }
+
+    fileInput.addEventListener('change', onFileSelected);
+    uploadImgBtn.addEventListener('click', onUploadImg);
   </script>
 </body>
 </html>
