@@ -42,6 +42,18 @@
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Service\BaseService.cs" />
+    <Compile Include="Service\BmdCurrentCmntPraise\BmdCurrentCmntPraiseService.cs" />
+    <Compile Include="Service\BmdCurrentCmntPraise\IBmdCurrentCmntPraiseService.cs" />
+    <Compile Include="Service\BmdCurrentCmntReplyPraise\BmdCurrentCmntReplyPraiseService.cs" />
+    <Compile Include="Service\BmdCurrentCmntReplyPraise\IBmdCurrentCmntReplyPraiseService.cs" />
+    <Compile Include="Service\BmdCurrentCmntReply\BmdCurrentCmntReplyService.cs" />
+    <Compile Include="Service\BmdCurrentCmntReply\IBmdCurrentCmntReplyService.cs" />
+    <Compile Include="Service\BmdCurrentCmnt\BmdCurrentCmntService.cs" />
+    <Compile Include="Service\BmdCurrentCmnt\IBmdCurrentCmntService.cs" />
+    <Compile Include="Service\BmdCurrentPraise\BmdCurrentPraiseService.cs" />
+    <Compile Include="Service\BmdCurrentPraise\IBmdCurrentPraiseService.cs" />
+    <Compile Include="Service\BmdCurrentStar\BmdCurrentStarService.cs" />
+    <Compile Include="Service\BmdCurrentStar\IBmdCurrentStarService.cs" />
     <Compile Include="Service\BmdCurrent\BmdCurrentService.cs" />
     <Compile Include="Service\BmdCurrent\IBmdCurrentService.cs" />
     <Compile Include="Service\BmdNoticeCmntReply\BmdNoticeCmntReplyService.cs" />
