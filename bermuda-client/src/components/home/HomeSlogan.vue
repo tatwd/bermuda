@@ -25,7 +25,7 @@
 <script>
 export default {
   data: () => ({
-    gradient: 'to top right, rgba(63, 81, 181, .5), ragba(25, 32, 72, .5)',
+    gradient: 'to top, rgba(90, 80, 70, .5), ragba(60, 50, 40, .4)',
     sloganMsg: {
       title: '寻找你的寻找',
       small: '一切执于对美好校园生活的凝练'
