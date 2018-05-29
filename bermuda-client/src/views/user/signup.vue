@@ -107,7 +107,7 @@ export default {
             email: this.email,
             password: this.password
           },
-          redirct: () => this.$router.push('/account/signin')
+          redirect: () => this.$router.push('/account/signin')
         })
         this.show = true
       }
