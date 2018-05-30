@@ -5,7 +5,7 @@
 lucene-index/
 
 ## ignore public dir
-[Pp]ublic[s]/
+[Pp]ublic/
 
 # User-specific files
 *.suo
