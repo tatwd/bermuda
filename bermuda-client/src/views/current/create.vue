@@ -1,5 +1,5 @@
 <template>
   <v-container>
-    <h3>Current Create Page</h3>
+    <h2>Current Create Page</h2>
   </v-container>
 </template>

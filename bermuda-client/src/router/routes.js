@@ -8,11 +8,12 @@ const Home = () => import('@/views/home')
 const Shop = () => import('@/views/shop')
 const Cart = () => import('@/views/shop/cart')
 const Topic = () => import('@/views/topic')
+const Search = () => import('@/views/search')
+const CurrentCreate = () => import('@/views/current/create')
 const SignIn = () => import('@/views/user/signin')
 const SignUp = () => import('@/views/user/signup')
-const Search = () => import('@/views/search')
 
-// def routes
+// chrildren of RootRoute
 
 const HomeRoute = {
   path: 'home',
@@ -59,6 +60,17 @@ const SearchRoute = {
   }
 }
 
+const CurrentCreateRoute = {
+  path: 'current/create',
+  name: 'CurrentCreate',
+  component: CurrentCreate,
+  meta: {
+    requiresAuth: true
+  }
+}
+
+// chrildren of AccoutRoute
+
 const SigninRoute = {
   path: 'signin',
   name: 'SignIn',
@@ -71,6 +83,8 @@ const SignupRoute = {
   component: SignUp
 }
 
+// root, account and error route
+
 const RootRoute = {
   path: '/',
   component: DefaultLayout,
@@ -80,7 +94,8 @@ const RootRoute = {
     TopicRoute,
     ShopRoute,
     ShopCartRoute,
-    SearchRoute
+    SearchRoute,
+    CurrentCreateRoute
   ]
 }
 

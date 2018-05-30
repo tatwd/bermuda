@@ -61,7 +61,10 @@
         full-width
         open-on-hover
       >
-        <v-avatar slot="activator" size="40">
+        <v-avatar
+          slot="activator"
+          size="40"
+        >
           <img src="@/assets/avatar-tmp.svg" alt="avatar">
         </v-avatar>
         <v-list>
@@ -124,7 +127,12 @@ export default {
     },
     onSignout () {
       this.$store.dispatch('signout', {
-        redirect: () => this.$router.push('account/signin')
+        redirect: () => this.$router.push({
+          path: '/account/signin',
+          query: {
+            redirect: this.$route.path
+          }
+        })
       })
     },
     clearSearchText () {
