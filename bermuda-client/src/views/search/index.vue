@@ -56,9 +56,17 @@
           :notices="result"
           :search-history="searchHistory"
         />
+        <SearchUsersResult
+          v-if="currentType === 'user'"
+          :users="result"
+        />
         <SearchTopicsResult
           v-if="currentType === 'topic'"
           :topics="result"
+        />
+        <SearchCurrentsResult
+          v-if="currentType === 'current'"
+          :currents="result"
         />
       </v-flex>
     </v-layout>
@@ -69,12 +77,16 @@
 import { mapGetters } from 'vuex'
 import { getSearchHistory, removeSearchHistory } from '@/assets/js/search-history'
 import  SearchNoticesResult from '@/components/search/SearchNoticesResult'
+import  SearchUsersResult from '@/components/search/SearchUsersResult'
 import  SearchTopicsResult from '@/components/search/SearchTopicsResult'
+import  SearchCurrentsResult from '@/components/search/SearchCurrentsResult'
 
 export default {
   components: {
     SearchNoticesResult,
-    SearchTopicsResult
+    SearchUsersResult,
+    SearchTopicsResult,
+    SearchCurrentsResult
   },
   data: () => ({
     msg: '请输入你要搜索的内容！',
@@ -94,7 +106,7 @@ export default {
   beforeRouteEnter (to, from, next) {
     if (to.query.q && to.query.type) {
       next(vm => {
-        vm.startSearch(to.query.q, to.query.type)
+        vm.startSearching(to.query.q, to.query.type)
       })
     } else {
       next()
@@ -105,9 +117,9 @@ export default {
   },
   methods: {
     onRouteUpdate () {
-      this.startSearch(this.$route.query.q, this.$route.query.type)
+      this.startSearching(this.$route.query.q, this.$route.query.type)
     },
-    startSearch (query, type) {
+    startSearching (query, type) {
       this.currentType = type
       this.isLoading = true
       this.msg = '正在为您搜索……'
@@ -118,7 +130,7 @@ export default {
       let bind = (data) => {
         this.msg = `
           您要搜索的内容是“<b class="red--text">${query}</b>”，
-          搜索结果数为<b class="red--text">${data ? data.length : 0}</b>！
+          搜索结果数为 <b class="red--text">${data ? data.length : 0}</b>！
         `
         this.searchHistory = getSearchHistory()
         this.isLoading = false

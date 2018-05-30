@@ -5,7 +5,7 @@ using Bermuda.Common;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Linq;
-using System.Web.Hosting;
+using System.Web;
 using System.Web.Http;
 
 namespace Bermuda.Api.Controllers
@@ -31,11 +31,36 @@ namespace Bermuda.Api.Controllers
             if (vm == null)
                 return Json(vm);
 
-            var path = HostingEnvironment.MapPath($"{INDEX_DIR}/notices");
+            var path = HttpContext.Current.Server.MapPath($"{INDEX_DIR}/notices");
             SearchUtil.LoadFSDirectory(path);
             SearchUtil.CreateIndex<NoticeSearchModel>(vm);
 
             var result = SearchUtil.SearchFullText<NoticeSearchModel>(q, 5);
+            return Json(result);
+        }
+
+        [HttpGet]
+        [Route("users/{q}")]
+        public IHttpActionResult Users(string q)
+        {
+            var vm = CacheEngine.GetData<IList<UserSearchModel>>($"search_users_all", () =>
+            {
+                var users = ServiceFactory.Get<IBmdUserService>()
+                    .Select(x => x.Id > 0)
+                    .OrderByDescending(x => x.HelpCount) // 根据帮助数排序
+                    .ToList();
+                return BaseUtil.ParseToList<UserSearchModel>(users);
+            });
+
+            if (vm == null)
+                return Json(vm);
+
+            // 开始搜索
+            var path = HttpContext.Current.Server.MapPath($"{INDEX_DIR}/users");
+            SearchUtil.LoadFSDirectory(path);
+            SearchUtil.CreateIndex<UserSearchModel>(vm);
+
+            var result = SearchUtil.SearchFullText<UserSearchModel>(q, 10);
             return Json(result);
         }
 
@@ -47,7 +72,7 @@ namespace Bermuda.Api.Controllers
             {
                 var topics = ServiceFactory.Get<IBmdTopicService>()
                     .Select(x => x.IsPassed == 1)
-                    .OrderByDescending(x => x.JoinCount) // 根据参与输
+                    .OrderByDescending(x => x.JoinCount) // 根据参与人数排序
                     .ToList();
                 return BaseUtil.ParseToList<TopicSearchModel>(topics);
             });
@@ -56,12 +81,19 @@ namespace Bermuda.Api.Controllers
                 return Json(vm);
 
             // 开始搜索
-            var path = HostingEnvironment.MapPath($"{INDEX_DIR}/topics");
+            var path = HttpContext.Current.Server.MapPath($"{INDEX_DIR}/topics");
             SearchUtil.LoadFSDirectory(path);
             SearchUtil.CreateIndex<TopicSearchModel>(vm);
 
             var result = SearchUtil.SearchFullText<TopicSearchModel>(q, 10);
             return Json(result);
+        }
+
+        [HttpGet]
+        [Route("currents/{q}")]
+        public IHttpActionResult Currents(string q)
+        {
+            return Json($"q={q}");
         }
     }
 }

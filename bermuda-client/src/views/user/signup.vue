@@ -95,7 +95,7 @@ export default {
       info: 'currentInfo'
     }),
     snackbarColor () {
-      return this.info.success ? 'success' : 'error'
+      return this.info.success ? 'success' : 'red'
     }
   },
   methods: {
@@ -107,7 +107,7 @@ export default {
             email: this.email,
             password: this.password
           },
-          redirct: () => this.$router.push('/account/signin')
+          redirect: () => this.$router.push('/account/signin')
         })
         this.show = true
       }
@@ -115,9 +115,3 @@ export default {
   }
 }
 </script>
-
-<style scoped>
-a {
-  text-decoration: none;
-}
-</style>

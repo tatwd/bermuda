@@ -33,7 +33,9 @@ const actions = {
         commit('setInfo', res.data)
 
         // redirect to sign in page
-        payload.redirect();
+        if (res.data.success) {
+          payload.redirect();
+        }
       })
   },
   signin ({ commit }, payload) {
