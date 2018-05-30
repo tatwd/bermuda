@@ -74,30 +74,13 @@
         </v-list>
       </v-menu>
 
-      <v-menu
-        offset-y
-        full-width
-        dark
+      <v-btn
+        class="mr-3 mx-5 hidden-sm-and-down"
+        color="primary"
       >
-        <v-btn
-          slot="activator"
-          class="mr-3 mx-5 hidden-sm-and-down"
-          color="primary"
-        >
-          <v-icon left>create</v-icon>
-          发布启示
-        </v-btn>
-        <v-list-tile
-          v-for="item in ['失物招领', '动态']"
-          :key="item"
-          to="#"
-          class="white"
-        >
-          <v-list-tile-title>
-            {{ item }}
-          </v-list-tile-title>
-        </v-list-tile>
-      </v-menu>
+        <v-icon left>create</v-icon>
+        发布启示
+      </v-btn>
     </v-toolbar>
   </div>
 </template>
