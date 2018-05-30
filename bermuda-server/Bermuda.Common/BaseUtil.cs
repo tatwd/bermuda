@@ -2,6 +2,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Reflection;
+using System.Security.Cryptography;
+using System.Text;
 
 namespace Bermuda.Common
 {
@@ -159,6 +161,24 @@ namespace Bermuda.Common
             Int64 stamp = (DateTime.Now.Ticks - 
                 TimeZone.CurrentTimeZone.ToLocalTime(new DateTime(1970, 1, 1, 0, 0, 0, 0)).Ticks) / 10000;
             return stamp;
+        }
+
+        /// <summary>
+        /// 获取 MD5 加密字符串
+        /// </summary>
+        /// <param name="str"></param>
+        /// <returns></returns>
+        public string GetMD5HashString(string str)
+        {
+            StringBuilder sb = new StringBuilder();
+            MD5 md5 = MD5.Create();
+            byte[] src = md5.ComputeHash(Encoding.UTF8.GetBytes(str));
+            foreach (var item in src)
+            {
+                sb.Append(item.ToString("x2")); // 32bit
+            }
+
+            return sb.ToString();
         }
     }
 }

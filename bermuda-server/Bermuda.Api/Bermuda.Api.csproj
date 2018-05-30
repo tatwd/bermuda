@@ -206,6 +206,7 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="assets\img\notices\" />
+    <Folder Include="public\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Bermuda.Bll\Bermuda.Bll.csproj">

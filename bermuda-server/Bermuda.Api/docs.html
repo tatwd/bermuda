@@ -129,12 +129,11 @@
     <h3>Playgroud</h3>
     <div class="py-3">
       <h4>testing upload img</h4>
-      <form>
-        <div class="form-group">
-          <input type="file" name="img"/>
-        </div>
-        <button id="upload-img" class="btn btn-info">upload</button>
-      </form>
+      <div class="form-group">
+        <input type="file" name="img"/>
+      </div>
+      <button id="upload-img" class="btn btn-info">upload</button>
+      <div class="img-preview my-3"></div>
     </div>
   </div>
   <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
@@ -151,25 +150,46 @@
 
     const uploadImgBtn = document.querySelector('#upload-img');
     const fileInput = document.querySelector('input[type=file]');
+    const imgPreview = document.querySelector('.img-preview');
     let fd = null
 
     function onFileSelected(e) {
-      fd = e.target.files[0];
       e.preventDefault();
+      fd = e.target.files[0];
+      console.log(e.target.files)
+      //let img = new FormData();
+      //img.append('img', fd);
+      //$.ajax({
+      //  type: 'POST',
+      //  url: '/api/files/upload',
+      //  data: img,
+      //  processData: false,
+      //  contentType: false,
+      //  success: (data) => {
+      //    imgPreview.innerHTML = `
+      //      <img src="${data}" alt="img preview" width="256">
+      //    `
+      //  }
+      //})
     }
 
     function onUploadImg(e) {
       e.preventDefault();
 
+      let img = new FormData();
+      img.append('img', fd);
+
       $.ajax({
-        type: 'post',
+        type: 'POST',
         url: '/api/files/img/upload',
-        data: {
-          img: fd
-        },
-        dataType: '',
+        data: img,
+        processData: false,
+        contentType: false,
         success: (data) => {
           console.log(data)
+          imgPreview.innerHTML = `
+            <img src="${data.url}" alt="img preview" width="256">
+          `
         }
       })
     }
