@@ -1,4 +1,4 @@
-import { URL, userService } from '../services'
+import { URL, userService } from '@/services'
 import userAuth from '@/assets/js/user-auth'
 import imgUrlFilter from '@/filter/img-url'
 

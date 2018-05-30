@@ -1,4 +1,4 @@
-import { URL, noticeSpecieService } from '../services'
+import { URL, noticeSpecieService } from '@/services'
 
 // init state
 const state = {

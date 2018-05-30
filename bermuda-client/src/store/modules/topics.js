@@ -1,4 +1,4 @@
-import { URL, topicService } from '../services'
+import { URL, topicService } from '@/services'
 
 // init state
 const state = {

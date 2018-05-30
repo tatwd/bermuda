@@ -1,4 +1,4 @@
-import { URL, noticeService } from '../services'
+import { URL, noticeService } from '@/services'
 import imgUrlFilter from '@/filter/img-url'
 
 // init state

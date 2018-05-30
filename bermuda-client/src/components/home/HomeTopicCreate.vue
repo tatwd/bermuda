@@ -11,9 +11,14 @@
             <v-layout wrap>
               <v-flex xs12>
                 <div class="upload-img">
-                  <v-icon size="64px">camera_enhance</v-icon>
+                  <v-icon v-if="!isUploading && !topic.img_url" size="64px">camera_enhance</v-icon>
+                  <v-progress-circular
+                    v-else-if="isUploading"
+                    indeterminate color="green"
+                    class="pos-y-center"
+                  ></v-progress-circular>
                   <!-- 上传图片 -->
-                  <input type="file">
+                  <input type="file" @change="onImgSelected($event)">
                   <img v-if="topic.img_url" :src="topic.img_url" alt="img upload">
                 </div>
               </v-flex>
@@ -51,6 +56,8 @@
 </template>
 
 <script>
+import { fileService } from '@/services'
+
 export default {
   data: () => ({
     dialog: false,
@@ -59,10 +66,25 @@ export default {
       detail: null,
       img_url: null,
       created_at: null
-    }
+    },
+    selected_img: null,
+    isUploading: false
   }),
   methods: {
+    onImgSelected (event) {
+      this.selected_img = event.target.files[0]
+      this.isUploading = true
 
+      const fd = new FormData()
+      fd.append('img', this.selected_img)
+
+      fileService
+        .uploadImg(fd)
+        .then(res => {
+          this.isUploading = false
+          this.topic.img_url = res.data.url
+        })
+    }
   }
 }
 </script>
@@ -90,5 +112,11 @@ export default {
 
 .hidden {
   display: none;
+}
+
+.pos-y-center {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
 }
 </style>
