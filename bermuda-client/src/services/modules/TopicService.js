@@ -22,4 +22,10 @@ export default class TopicService {
     let countStr = count ? '/' + count : ''
     return self.axios.get(`${self.baseUrl}/topics/top${ countStr }`)
   }
+
+  // create a topic
+  // createTopic (newTopic) {
+  //   let self = this
+  //   self.axios.post()
+  // }
 }

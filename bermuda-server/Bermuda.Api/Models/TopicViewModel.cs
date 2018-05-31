@@ -23,4 +23,12 @@
         public string img_url { get; set; }
         //public DateTime created_at { get; set; }
     }
+
+    public class NewTopicViewModel
+    {
+        public Int64 user_id { get; set; }
+        public string name { get; set; }
+        public string detail { get; set; }
+        public string img_url { get; set; }
+    }
 }

@@ -61,7 +61,7 @@ namespace Bermuda.Api.Controllers
         }
 
         [HttpDelete]
-        [Route("delete")]
+        [Route("img/delete")]
         public void DeleteImg([FromUri]string img)
         {
             var path = HttpContext.Current.Server.MapPath($"{ROOT_URL}/img/") + img;

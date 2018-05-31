@@ -47,7 +47,7 @@
         </v-card-text>
         <v-card-actions>
           <v-spacer></v-spacer>
-          <v-btn color="blue darken-1" flat @click.native="dialog = false">取消</v-btn>
+          <v-btn color="blue darken-1" flat @click="onCancel">取消</v-btn>
           <v-btn color="blue darken-1" flat @click.native="dialog = false">申请</v-btn>
         </v-card-actions>
       </v-card>
@@ -62,28 +62,45 @@ export default {
   data: () => ({
     dialog: false,
     topic: {
+      user_id: this.$store.getters.currentUser.id,
       name: null,
       detail: null,
       img_url: null,
-      created_at: null
     },
     selected_img: null,
     isUploading: false
   }),
   methods: {
     onImgSelected (event) {
-      this.selected_img = event.target.files[0]
       this.isUploading = true
 
       const fd = new FormData()
-      fd.append('img', this.selected_img)
+      fd.append('img', event.target.files[0])
 
       fileService
         .uploadImg(fd)
         .then(res => {
           this.isUploading = false
+          this.selected_img = res.data.file_name
           this.topic.img_url = res.data.url
         })
+    },
+    onCancel () {
+      this.dialog = false
+
+      // delete upload img
+      fileService
+        .deleteImg(this.selected_img)
+        .then(res => {
+          this.selected_img = null
+          this.topic.name = null
+          this.topic.detail = null
+          this.topic.img_url = null
+        })
+        .catch(err => console.log(err))
+    },
+    onCreate () {
+      // TODO: create a new topic
     }
   }
 }
