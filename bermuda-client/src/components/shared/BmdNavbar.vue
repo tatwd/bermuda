@@ -89,7 +89,7 @@
 </template>
 
 <script>
-import { updateSearchHistory } from '@/assets/js/search-history'
+import { updateSearchHistory } from '@/utils/search-history'
 
 export default {
   name: 'BmdNavbar',

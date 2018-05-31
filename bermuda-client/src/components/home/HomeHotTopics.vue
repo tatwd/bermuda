@@ -35,7 +35,7 @@
 
 <script>
 import { mapGetters } from 'vuex'
-import cardSlider from '@/assets/js/card-slider'
+import cardSlider from '@/utils/card-slider'
 
 export default {
   data: () => ({

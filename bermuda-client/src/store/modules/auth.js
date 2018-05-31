@@ -1,5 +1,5 @@
 import { URL, userService } from '@/services'
-import userAuth from '@/assets/js/user-auth'
+import userAuth from '@/utils/user-auth'
 import imgUrlFilter from '@/filter/img-url'
 
 // init state

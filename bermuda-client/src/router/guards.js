@@ -1,5 +1,5 @@
 import store from '@/store'
-import userAuth from '@/assets/js/user-auth'
+import userAuth from '@/utils/user-auth'
 
 export const beforeEachGuard = function (to, from, next) {
   // get current from localStorage

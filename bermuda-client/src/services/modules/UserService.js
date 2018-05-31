@@ -1,4 +1,4 @@
-import userAuth from '@/assets/js/user-auth'
+import userAuth from '@/utils/user-auth'
 
 /**
  * User Service

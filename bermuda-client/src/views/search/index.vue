@@ -75,7 +75,7 @@
 
 <script>
 import { mapGetters } from 'vuex'
-import { getSearchHistory, removeSearchHistory } from '@/assets/js/search-history'
+import { getSearchHistory, removeSearchHistory } from '@/utils/search-history'
 import  SearchNoticesResult from '@/components/search/SearchNoticesResult'
 import  SearchUsersResult from '@/components/search/SearchUsersResult'
 import  SearchTopicsResult from '@/components/search/SearchTopicsResult'
