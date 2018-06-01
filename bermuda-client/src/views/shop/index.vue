@@ -1,7 +1,8 @@
 <template>
   <v-container>
-    <h1>Shop Page</h1>
     <v-carousel
+      :style="carouselHeight"
+      hide-delimiters
     >
       <v-carousel-item
         v-for="(item,i) in items"
@@ -29,18 +30,25 @@ export default {
     return {
       items: [
         {
-          src: 'https://vuetifyjs.com/static/doc-images/carousel/squirrel.jpg'
+          src: 'https://source.unsplash.com/random/750x350'
         },
         {
-          src: 'https://vuetifyjs.com/static/doc-images/carousel/sky.jpg'
+          src: 'https://source.unsplash.com/random/750x350'
         },
         {
-          src: 'https://vuetifyjs.com/static/doc-images/carousel/bird.jpg'
+          src: 'https://source.unsplash.com/random/750x350'
         },
         {
-          src: 'https://vuetifyjs.com/static/doc-images/carousel/planet.jpg'
+          src: 'https://source.unsplash.com/random/750x350'
         }
       ]
+    }
+  },
+  computed: {
+    carouselHeight () {
+      return this.$vuetify.breakpoint.smAndDown
+        ? 'max-height:200px'
+        : 'max-height:350px'
     }
   }
 }
