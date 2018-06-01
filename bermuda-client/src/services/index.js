@@ -1,4 +1,5 @@
 import Axios from 'axios'
+import userAuth from '@/utils/user-auth'
 
 // import services
 import TopicService from './modules/TopicService'
@@ -8,8 +9,23 @@ import UserService from './modules/UserService'
 import SearchService from './modules/SearchService'
 import FileService from './modules/FileService'
 
+// get token from localStorage
+let token = userAuth.getToken()
+
 // Axois config
 Axios.defaults.headers.common.Accept = 'application/json'
+
+// Axios 拦截器
+// 给请求头添加 access_token
+Axios.interceptors.request.use(
+  config => {
+    if (token) {
+      config.headers.Authorization = `${token.token_type} ${token.access_token}`
+    }
+    return config
+  },
+  err => Promise.reject(err)
+)
 
 export const URL = {
   ROOT: 'http://localhost:53595',
