@@ -67,9 +67,17 @@ namespace Bermuda.Api.Controllers
 
         [Route("create")]
         [Authorize]
-        public void Post([FromBody]NewTopicViewModel newTopic)
+        public IHttpActionResult Post([FromBody]NewTopicViewModel newTopic)
         {
-            var obj = newTopic;
+            var isOk = iservice.Insert(new BmdTopic
+            {
+                UserId = newTopic.user_id,
+                Name = newTopic.name,
+                Detail = newTopic.detail,
+                ImgUrl = newTopic.img_url
+            });
+
+            return Json(isOk);
         }
 
         // PUT api/<controller>/5

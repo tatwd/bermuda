@@ -24,8 +24,8 @@ export default class TopicService {
   }
 
   // create a topic
-  // createTopic (newTopic) {
-  //   let self = this
-  //   self.axios.post()
-  // }
+  createTopic (newTopic) {
+    let self = this
+    return self.axios.post(`${self.baseUrl}/topics/create`, newTopic)
+  }
 }

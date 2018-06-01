@@ -1,4 +1,5 @@
 import Axios from 'axios'
+import router from '@/router'
 import userAuth from '@/utils/user-auth'
 
 // import services
@@ -25,6 +26,24 @@ Axios.interceptors.request.use(
     return config
   },
   err => Promise.reject(err)
+)
+
+// 响应状态为 401 时跳转登录页
+Axios.interceptors.response.use(
+  res => res,
+  err => {
+    if (err.response) {
+      switch (err.response.status) {
+        case 401:
+          router.replace({
+            path: '/account/signin',
+            query: {
+              redirect: router.fullPath
+            }
+          })
+      }
+    }
+  }
 )
 
 export const URL = {
