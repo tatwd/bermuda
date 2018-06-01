@@ -65,7 +65,7 @@ namespace Bermuda.Api.Controllers
             return Json(vm);
         }
 
-        [Route("new")]
+        [Route("create")]
         [Authorize]
         public void Post([FromBody]NewTopicViewModel newTopic)
         {

@@ -29,7 +29,21 @@
     </div>
   </nav>
   <div class="container mt-3">
-    <!--<p class="mt-3">Which includes the APIs of db tables.</p>-->
+    <section class="mb-5">
+      <h2 class="upper">Auth</h2>
+      <ul class="list-group">
+        <li class="list-group-item">
+          <span class="badge badge-pill badge-info">POST</span>
+          <code class="api-url">/api/token</code>
+          <div>Get a auth token by username and password, which means you are <u>logging in</u> our system.</div>
+        </li>
+        <li class="list-group-item">
+          <span class="badge badge-pill badge-info">POST</span>
+          <code class="api-url">/api/account/register</code>
+          <div>Register by username and password.</div>
+        </li>
+      </ul>
+    </section>
     <section class="mb-5">
       <h2 class="upper">Notice</h2>
       <ul class="list-group">
@@ -83,6 +97,11 @@
           <code class="api-url">/api/topics{/type/count}</code>
           <div>Get topics top list with count var. i.e. <a href="/api/topics/top/5">top/5</a></div>
         </li>
+        <li class="list-group-item">
+          <span class="badge badge-pill badge-info">POST</span>
+          <code class="api-url">/api/topics/create</code>
+          <div>Create a topic for authorized user.</div>
+        </li>
       </ul>
     </section>
     <section class="mb-5">
@@ -122,6 +141,21 @@
           <span class="badge badge-pill badge-primary">GET</span>
           <code class="api-url">/api/search/currents{/q}}</code>
           <div>Search currents. i.e. <a href="/api/search/currents/test">q=test</a></div>
+        </li>
+      </ul>
+    </section>
+    <section class="mb-5">
+      <h2 class="upper">File</h2>
+      <ul class="list-group">
+        <li class="list-group-item">
+          <span class="badge badge-pill badge-info">POST</span>
+          <code class="api-url">/api/files/img/upload</code>
+          <div>Upload image. Example in playground.</div>
+        </li>
+        <li class="list-group-item">
+          <span class="badge badge-pill badge-danger">Delete</span>
+          <code class="api-url">/api/files/img/delete</code>
+          <div>Delete image that uploaded to server just now.</div>
         </li>
       </ul>
     </section>

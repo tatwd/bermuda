@@ -3,6 +3,7 @@ import App from './App'
 import router from './router'
 
 import Vuetify from 'vuetify'
+import '@/assets/css/google-fonts.css'
 import 'vuetify/dist/vuetify.min.css'
 
 // Vuex: for services, shared components, etc
