@@ -6,6 +6,10 @@
       app
       width="200"
     >
+      <v-toolbar flat class="px-3">
+        <h2 class="primary--text">百慕大</h2>
+      </v-toolbar>
+      <v-divider></v-divider>
       <v-list>
         <v-list-tile
           v-for="(nav, index) in navs"
@@ -15,9 +19,22 @@
           <v-list-tile-action>
             <v-icon>{{ nav.icon }}</v-icon>
           </v-list-tile-action>
-          <v-list-tile-content>{{ nav.title }}</v-list-tile-content>
+          <v-list-tile-content>
+            <v-subheader>{{ nav.title }}</v-subheader>
+          </v-list-tile-content>
         </v-list-tile>
+
       </v-list>
+      <v-divider></v-divider>
+      <v-text-field
+        solo
+        solo-inverted
+        flat
+        label="搜索"
+        append-icon="search"
+        v-model="searchText"
+        @keyup.enter="onSearch"
+      ></v-text-field>
     </v-navigation-drawer>
 
     <v-toolbar app>
