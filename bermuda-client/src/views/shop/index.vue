@@ -30,16 +30,16 @@ export default {
     return {
       items: [
         {
-          src: 'https://source.unsplash.com/random/750x350'
+          src: 'http://localhost:53595/assets/img/caro/caro-1.jpeg'
         },
         {
-          src: 'https://source.unsplash.com/random/750x350'
+          src: 'http://localhost:53595/assets/img/caro/caro-2.jpeg'
         },
         {
-          src: 'https://source.unsplash.com/random/750x350'
+          src: 'http://localhost:53595/assets/img/caro/caro-3.jpeg'
         },
         {
-          src: 'https://source.unsplash.com/random/750x350'
+          src: 'http://localhost:53595/assets/img/caro/caro-4.jpeg'
         }
       ]
     }
@@ -48,7 +48,7 @@ export default {
     carouselHeight () {
       return this.$vuetify.breakpoint.smAndDown
         ? 'max-height:200px'
-        : 'max-height:350px'
+        : 'max-height:400px'
     }
   }
 }

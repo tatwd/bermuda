@@ -128,7 +128,7 @@ export default {
     navs () {
       return [
         { title: '话题', to: '/topic', icon: 'bookmark' },
-        { title: '商城', to: '/shop', icon: 'store' }
+        { title: '市场', to: '/shop', icon: 'store' }
       ]
     },
     isSignIn () {

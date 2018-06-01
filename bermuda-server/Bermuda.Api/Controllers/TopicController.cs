@@ -65,8 +65,8 @@ namespace Bermuda.Api.Controllers
             return Json(vm);
         }
 
-        [Route("create")]
         [Authorize]
+        [Route("create")]
         public IHttpActionResult Post([FromBody]NewTopicViewModel newTopic)
         {
             var isOk = iservice.Insert(new BmdTopic
