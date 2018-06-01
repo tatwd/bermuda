@@ -1,15 +1,21 @@
 <template>
   <div id="bmd-navbar">
     <v-navigation-drawer
+      v-if="show"
       v-model="sidedNav"
       app
+      width="200"
     >
       <v-list>
-        <v-list-tile to="#">
+        <v-list-tile
+          v-for="(nav, index) in navs"
+          :key="index"
+          :to="nav.to"
+        >
           <v-list-tile-action>
-            <v-icon>supervisor_account</v-icon>
+            <v-icon>{{ nav.icon }}</v-icon>
           </v-list-tile-action>
-          <v-list-tile-content>test content</v-list-tile-content>
+          <v-list-tile-content>{{ nav.title }}</v-list-tile-content>
         </v-list-tile>
       </v-list>
     </v-navigation-drawer>
@@ -23,7 +29,10 @@
           <router-link to="/" style="text-decoration:none;">百慕大</router-link>
         </h3>
       </v-toolbar-title>
-      <v-toolbar-items class="mx-5 hidden-sm-and-down">
+      <v-toolbar-items
+        class="mx-5 hidden-sm-and-down"
+         v-if="!show"
+      >
         <v-btn
           class="subheading"
           flat
@@ -45,12 +54,8 @@
         v-model="searchText"
         @keyup.enter="onSearch"
       ></v-text-field>
-      <v-spacer></v-spacer>
 
-      <v-toolbar-side-icon
-        class="hidden-sm-and-up"
-        @click.native.stop="sidedNav = !sidedNav"
-      ></v-toolbar-side-icon>
+      <v-spacer></v-spacer>
 
       <v-menu
         v-if="isSignIn"
@@ -77,6 +82,11 @@
         </v-list>
       </v-menu>
 
+      <v-toolbar-side-icon
+        class="hidden-md-and-up"
+        @click.native.stop="sidedNav = !sidedNav"
+      ></v-toolbar-side-icon>
+
       <v-btn
         class="mr-3 mx-5 hidden-sm-and-down"
         color="primary"
@@ -95,16 +105,20 @@ export default {
   name: 'BmdNavbar',
   data: () => ({
     sidedNav: false,
-    navs: [
-      { title: '首页', to: '/home' },
-      { title: '话题', to: '/topic' },
-      { title: '商城', to: '/shop' }
-    ],
-    searchText: null
+    searchText: null,
   }),
   computed: {
+    navs () {
+      return [
+        { title: '话题', to: '/topic', icon: 'bookmark' },
+        { title: '商城', to: '/shop', icon: 'store' }
+      ]
+    },
     isSignIn () {
-      return this.$store.getters.currentUser ? true : false
+      return this.$store.getters.currentUser != null
+    },
+    show () {
+      return this.$vuetify.breakpoint.smAndDown
     }
   },
   watch: {

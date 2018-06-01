@@ -11,6 +11,7 @@
         v-for="(icon, index) in icons"
         :key="index"
         :href="icon.to"
+        target="_bank"
       >
         <v-icon color="primary">{{ icon.name }}</v-icon>
       </a>
