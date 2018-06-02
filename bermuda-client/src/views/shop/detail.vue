@@ -44,7 +44,7 @@
 </template>
 
 <script>
-import ShopCartBtn from "@/components/shop/ShopCartBtn"
+import ShopCartBtn from '@/components/shop/ShopCartBtn'
 
 export default {
   components: {

@@ -2,7 +2,7 @@
 {
     using Model;
 
-    public interface IBmdCurrentService : IBaseService<BmdCurrent>
+    public interface IBmdProductService : IBaseService<BmdProduct>
     {
         // add native methods here
     }

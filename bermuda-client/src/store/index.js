@@ -5,6 +5,7 @@ import auth from './modules/auth'
 import topics from './modules/topics'
 import notices from './modules/notices'
 import noticeSpecies from './modules/notice-species'
+import products from './modules/products'
 import search from './modules/search'
 
 Vue.use(Vuex)
@@ -15,6 +16,7 @@ export default new Vuex.Store({
     topics,
     notices,
     noticeSpecies,
+    products,
     search
   }
 })

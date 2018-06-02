@@ -63,7 +63,7 @@ export default function (element, config) {
 
   let canvas = element;
 
-  let ctx = canvas.getContext("2d");
+  let ctx = canvas.getContext('2d');
   let w = canvas.width  = canvas.offsetWidth;
   let h = canvas.height = canvas.offsetHeight;
   let circles = [];

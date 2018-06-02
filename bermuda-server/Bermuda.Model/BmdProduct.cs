@@ -16,12 +16,13 @@ namespace Bermuda.Model
     {
         public long Id { get; set; }
         public Nullable<long> UserId { get; set; }
-        public string Name { get; set; }
+        public string Title { get; set; }
         public string Category { get; set; }
         public string Tag { get; set; }
         public Nullable<decimal> Price { get; set; }
         public Nullable<int> Qty { get; set; }
-        public string Img { get; set; }
+        public string ImgUrl { get; set; }
         public string Tale { get; set; }
+        public Nullable<System.DateTime> CreatedAt { get; set; }
     }
 }

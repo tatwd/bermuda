@@ -1,7 +1,7 @@
 /**
- * User Service
+ * Product Service
  */
-export default class UserService {
+export default class ProductService {
   axios
   baseUrl
 
@@ -13,5 +13,10 @@ export default class UserService {
   getAll () {
     let self = this
     return self.axios.get(`${self.baseUrl}/products`)
+  }
+
+  getById (id) {
+    let self = this
+    return self.axios.get(`${self.baseUrl}/products/${id}`)
   }
 }

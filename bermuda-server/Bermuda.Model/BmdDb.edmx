@@ -174,13 +174,14 @@
           </Key>
           <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="UserId" Type="bigint" />
-          <Property Name="Name" Type="varchar" MaxLength="50" />
+          <Property Name="Title" Type="varchar" MaxLength="50" />
           <Property Name="Category" Type="varchar" MaxLength="10" />
           <Property Name="Tag" Type="varchar" MaxLength="10" />
           <Property Name="Price" Type="decimal" Precision="8" Scale="2" />
-          <Property Name="Qty" Type="int" />
-          <Property Name="Img" Type="varchar" MaxLength="200" />
+          <Property Name="Qty" Type="int" StoreGeneratedPattern="Computed" />
+          <Property Name="ImgUrl" Type="varchar" MaxLength="200" />
           <Property Name="Tale" Type="text" />
+          <Property Name="CreatedAt" Type="datetime" StoreGeneratedPattern="Computed" />
         </EntityType>
         <EntityType Name="BmdRoot">
           <Key>
@@ -452,13 +453,14 @@
           </Key>
           <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="UserId" Type="Int64" />
-          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Title" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="Category" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
           <Property Name="Tag" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
           <Property Name="Price" Type="Decimal" Precision="8" Scale="2" />
-          <Property Name="Qty" Type="Int32" />
-          <Property Name="Img" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="Qty" Type="Int32" annotation:StoreGeneratedPattern="Computed" />
+          <Property Name="ImgUrl" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
           <Property Name="Tale" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="CreatedAt" Type="DateTime" Precision="3" annotation:StoreGeneratedPattern="Computed" />
         </EntityType>
         <EntityType Name="BmdRoot">
           <Key>
@@ -744,14 +746,15 @@
           <EntitySetMapping Name="BmdProducts">
             <EntityTypeMapping TypeName="BmdDbModel.BmdProduct">
               <MappingFragment StoreEntitySet="BmdProduct">
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="CreatedAt" ColumnName="CreatedAt" />
+                <ScalarProperty Name="ImgUrl" ColumnName="ImgUrl" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="UserId" ColumnName="UserId" />
-                <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="Category" ColumnName="Category" />
                 <ScalarProperty Name="Tag" ColumnName="Tag" />
                 <ScalarProperty Name="Price" ColumnName="Price" />
                 <ScalarProperty Name="Qty" ColumnName="Qty" />
-                <ScalarProperty Name="Img" ColumnName="Img" />
                 <ScalarProperty Name="Tale" ColumnName="Tale" />
               </MappingFragment>
             </EntityTypeMapping>

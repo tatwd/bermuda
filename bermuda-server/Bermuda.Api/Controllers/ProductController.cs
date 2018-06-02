@@ -2,7 +2,6 @@
 using Bermuda.Api.Models;
 using Bermuda.Bll.Service;
 using Bermuda.Common;
-using Bermuda.Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,28 +11,28 @@ using System.Web.Http;
 
 namespace Bermuda.Api.Controllers
 {
-    [RoutePrefix("api/notices")]
-    public class NoticeController : ApiController
+    [RoutePrefix("api/products")]
+    public class ProductController : ApiController
     {
-        IBmdNoticeService iservice = ServiceFactory.Get<IBmdNoticeService>();
+        IBmdProductService iservice = ServiceFactory.Get<IBmdProductService>();
 
         [Route()]
         public IHttpActionResult Get()
         {
-            var vm = CacheEngine.GetData<IList<NoticeViewModel>>("notices_all", () =>
+            var vm = CacheEngine.GetData<IList<ProductViewModel>>("products_all", () =>
             {
-                var _vm = new List<NoticeViewModel>();
+                var _vm = new List<ProductViewModel>();
                 var userService = ServiceFactory.Get<IBmdUserService>();
-                var notices = iservice
-                    .Select(x => x.IsSolved == 0)
+                var products = iservice
+                    .Select(x => x.Qty > 0)
                     .OrderByDescending(x => x.CreatedAt)
                     .ToList();
 
-                foreach (var notice in notices)
+                foreach (var product in products)
                 {
-                    var user = userService.GetUserById(notice.UserId.Value);
-                    var vmnotice = BaseUtil.DeepParseTo<NoticeViewModel, UserViewModel>(notice, user);
-                    _vm.Add(vmnotice);
+                    var user = userService.GetUserById(product.UserId.Value);
+                    var vmproduct = BaseUtil.DeepParseTo<ProductViewModel, UserViewModel>(product, user);
+                    _vm.Add(vmproduct);
                 }
 
                 return _vm.Count <= 0 ? null : _vm;
@@ -43,17 +42,18 @@ namespace Bermuda.Api.Controllers
         }
 
         [Route("{id}")]
-        public IHttpActionResult Get(Int64 id)
+        public IHttpActionResult Get(int id)
         {
-            var vm = CacheEngine.GetData<NoticeViewModel>($"notice_#{id}", () =>
+            var vm = CacheEngine.GetData<ProductViewModel>($"product_#{id}", () =>
             {
-                var notice = iservice
+                var product = iservice
                     .Select(x => x.Id == id)
                     .SingleOrDefault();
                 var user = ServiceFactory
                     .Get<IBmdUserService>()
-                    .GetUserById(notice.UserId.Value);
-                return BaseUtil.DeepParseTo<NoticeViewModel, UserViewModel>(notice, user);
+                    .GetUserById(product.UserId.Value);
+
+                return BaseUtil.DeepParseTo<ProductViewModel, UserViewModel>(product, user);
             });
 
             return Json(vm);

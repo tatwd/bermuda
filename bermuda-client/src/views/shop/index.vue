@@ -9,9 +9,9 @@
 </template>
 
 <script>
-import ShopCarousel from "@/components/shop/ShopCarousel"
-import ShopCartBtn from "@/components/shop/ShopCartBtn"
-import ShopProducts from "@/components/shop/ShopProducts"
+import ShopCarousel from '@/components/shop/ShopCarousel'
+import ShopCartBtn from '@/components/shop/ShopCartBtn'
+import ShopProducts from '@/components/shop/ShopProducts'
 
 export default {
   components: {
