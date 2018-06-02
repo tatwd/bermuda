@@ -6,7 +6,8 @@ const ErrorLayout = () => import('@/layouts/error')
 // view components
 const Home = () => import('@/views/home')
 const Shop = () => import('@/views/shop')
-const Cart = () => import('@/views/shop/cart')
+const ProductDetail = () => import('@/views/shop/detail')
+const ShoppingCart = () => import('@/views/shop/cart')
 const Topic = () => import('@/views/topic')
 const Search = () => import('@/views/search')
 const CurrentCreate = () => import('@/views/current/create')
@@ -34,7 +35,7 @@ const TopicRoute = {
 }
 
 const ShopRoute = {
-  path: 'shop',
+  path: 'shop/product',
   name: 'Shop',
   component: Shop,
   meta: {
@@ -42,10 +43,19 @@ const ShopRoute = {
   }
 }
 
-const ShopCartRoute = {
+const ProductDetailRoute = {
+  path: 'shop/product/:id',
+  name: 'ProductDetail',
+  component: ProductDetail,
+  meta: {
+    requiresAuth: false
+  }
+}
+
+const ShoppingCartRoute = {
   path: 'shop/cart',
-  name: 'Cart',
-  component: Cart,
+  name: 'ShoppingCart',
+  component: ShoppingCart,
   meta: {
     requiresAuth: false
   }
@@ -93,7 +103,8 @@ const RootRoute = {
     HomeRoute,
     TopicRoute,
     ShopRoute,
-    ShopCartRoute,
+    ProductDetailRoute,
+    ShoppingCartRoute,
     SearchRoute,
     CurrentCreateRoute
   ]
