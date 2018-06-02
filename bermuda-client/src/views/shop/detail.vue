@@ -1,7 +1,17 @@
 <template>
   <v-layout>
     <v-container grid-list-lg>
-      <v-layout row wrap>
+      <v-layout v-if="!product">
+        <v-flex xs12>
+          <v-card>
+            <v-card-title>抱歉，没有该商品！</v-card-title>
+          </v-card>
+        </v-flex>
+      </v-layout>
+      <v-layout
+        v-if="product"
+        row wrap
+      >
         <v-flex xs12>
           <v-breadcrumbs>
             <v-icon slot="divider">chevron_right</v-icon>
@@ -20,7 +30,7 @@
         <v-flex xs12 md7>
           <v-card height="300">
             <v-card-text>
-              <h1 class="headline">测试商品 {{ id }}</h1>
+              <h1 class="headline">{{ product.title }}</h1>
               <h1 class="headline my-3 primary--text">￥{{ id }}</h1>
 
               <v-text-field
@@ -38,13 +48,15 @@
           <p>详细信息</p>
         </v-flex>
       </v-layout>
-      <ShopCartBtn/>
     </v-container>
+
+    <ShopCartBtn/>
   </v-layout>
 </template>
 
 <script>
 import ShopCartBtn from '@/components/shop/ShopCartBtn'
+import { mapGetters  } from 'vuex'
 
 export default {
   components: {
@@ -53,9 +65,15 @@ export default {
   data: () => ({
     id: null
   }),
+  computed: {
+    ...mapGetters({
+      product: 'currentProduct'
+    })
+  },
   beforeRouteEnter (to, from, next) {
     next(vm => {
       vm.id = to.params.id
+      vm.$store.dispatch('getPorductById', { id: to.params.id })
     })
   },
   watch: {
@@ -64,6 +82,9 @@ export default {
   methods: {
     fetchData () {
       this.id = this.$route.params.id
+      this.$store.dispatch('getPorductById', {
+        id: this.$route.params.id
+      })
     }
   }
 }

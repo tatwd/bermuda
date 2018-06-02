@@ -49,9 +49,10 @@ namespace Bermuda.Api.Controllers
                 var product = iservice
                     .Select(x => x.Id == id)
                     .SingleOrDefault();
-                var user = ServiceFactory
-                    .Get<IBmdUserService>()
-                    .GetUserById(product.UserId.Value);
+                var user = product != null
+                    ? ServiceFactory.Get<IBmdUserService>()
+                        .GetUserById(product.UserId.Value)
+                    : null;
 
                 return BaseUtil.DeepParseTo<ProductViewModel, UserViewModel>(product, user);
             });
