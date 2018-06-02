@@ -14,25 +14,31 @@
           </v-card-title>
         </v-card>
       </v-flex>
+
       <v-flex
-        v-for="n in 9"
-        :key="n"
+        v-for="product in products"
+        :key="product.id"
         xs6
         md3
         my-3
       >
         <v-card>
-          <router-link :to="goto(n)">
+          <router-link :to="goto(product.id)">
             <v-card-media
-              src="https://picsum.photos/200/300"
+              :src="product.img_url"
               height="240"
             ></v-card-media>
           </router-link>
           <v-card-text class="text-xs-center">
             <div>
-              <router-link class="black--text" :to="goto(n)">{{ 'name' }}</router-link>
+              <router-link
+                class="black--text"
+                :to="goto(product.id)"
+              >
+                {{ product.title }}
+              </router-link>
             </div>
-            <div class="primary--text">￥{{ n }}</div>
+            <div class="primary--text">￥{{ product.price }}</div>
           </v-card-text>
         </v-card>
       </v-flex>
@@ -47,7 +53,10 @@ export default {
   computed: {
     breakpoint () {
       return this.$vuetify.breakpoint.name
-    }
+    },
+    ...mapGetters({
+      products: 'allProducts'
+    })
   },
   methods: {
     goto(id) {
@@ -58,6 +67,9 @@ export default {
         }
       }
     }
+  },
+  created () {
+    this.$store.dispatch('getAllProducts')
   }
 }
 </script>

@@ -11,12 +11,15 @@ export default function (obj, url) {
 
 // for object
 function forObject (obj, url) {
-  Object.keys(obj)
-  .filter(key => key.includes('url'))
-  .forEach(key => {
-    if (obj[key] && obj[key].startsWith('/'))
-      obj[key] = url + obj[key]
-  })
+  if (toString.call(obj) === '[object Object]') {
+    Object.keys(obj)
+      .forEach(key => {
+        if (key.includes('url') && obj[key] && obj[key].startsWith('/'))
+          obj[key] = url + obj[key]
+        else
+          obj[key] = forObject(obj[key], url)
+      })
+  }
   return obj;
 }
 

@@ -1,4 +1,5 @@
 import { URL, productService } from '@/services'
+import imgUrlFilter from '@/filter/img-url'
 
 // init state
 const state = {
@@ -23,6 +24,7 @@ const actions = {
     productService
       .getAll()
       .then(res => {
+        imgUrlFilter(res.data, URL.ROOT)
         commit('setProducts', res.data)
       })
       .catch(err => console.log('getAllProducts =>', err))
