@@ -77,6 +77,8 @@
     <Compile Include="Dao\BmdNotice\IBmdNoticeDao.cs" />
     <Compile Include="Dao\BmdProduct\BmdProductDao.cs" />
     <Compile Include="Dao\BmdProduct\IBmdProductDao.cs" />
+    <Compile Include="Dao\BmdShoppingCart\BmdShoppingCartDao.cs" />
+    <Compile Include="Dao\BmdShoppingCart\IBmdShoppingCartDao.cs" />
     <Compile Include="Dao\BmdTopic\BmdTopicDao.cs" />
     <Compile Include="Dao\BmdTopic\IBmdTopicDao.cs" />
     <Compile Include="Dao\BmdUser\BmdUserDao.cs" />

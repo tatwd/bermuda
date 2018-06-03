@@ -8,6 +8,7 @@ import NoticeService from './modules/NoticeService'
 import NoticeSpecieService from './modules/NoticeSpecieService'
 import UserService from './modules/UserService'
 import ProductService from './modules/ProductService'
+import ShoppingCartService from './modules/ShoppingCartService'
 import SearchService from './modules/SearchService'
 import FileService from './modules/FileService'
 
@@ -57,15 +58,17 @@ export const noticeService = new NoticeService(Axios, URL.API)
 export const noticeSpecieService = new NoticeSpecieService(Axios, URL.API)
 export const userService = new UserService(Axios, URL.API)
 export const productService = new ProductService(Axios, URL.API)
+export const shoppingCartService = new ShoppingCartService(Axios, URL.API)
 export const searchService = new SearchService(Axios, URL.API)
 export const fileService = new FileService(Axios, URL.API)
 
 export default {
-  topicService: new TopicService(Axios, URL.API),
-  noticeService: new NoticeService(Axios, URL.API),
-  noticeSpecieService: new NoticeSpecieService(Axios, URL.API),
-  userService: new UserService(Axios, URL.API),
-  productService: new ProductService(Axios, URL.API),
-  searchService: new SearchService(Axios, URL.API),
-  fileService: new FileService(Axios, URL.API)
+  topicService,
+  noticeService,
+  noticeSpecieService,
+  userService,
+  productService,
+  shoppingCartService,
+  searchService,
+  fileService
 }

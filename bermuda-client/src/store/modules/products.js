@@ -46,6 +46,12 @@ const actions = {
           commit('setCurrentProduct', res.data)
         })
     }
+  },
+  decrementProductInventory (state, {id, quantity}) {
+    console.log(id)
+    const product = state.all.find(product => product.id === id)
+    product.inventory -= quantity
+    // update to db
   }
 }
 

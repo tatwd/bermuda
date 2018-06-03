@@ -2,11 +2,8 @@
 using Bermuda.Api.Models;
 using Bermuda.Bll.Service;
 using Bermuda.Common;
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Net;
-using System.Net.Http;
 using System.Web.Http;
 
 namespace Bermuda.Api.Controllers
@@ -24,7 +21,7 @@ namespace Bermuda.Api.Controllers
                 var _vm = new List<ProductViewModel>();
                 var userService = ServiceFactory.Get<IBmdUserService>();
                 var products = iservice
-                    .Select(x => x.Qty > 0)
+                    .Select(x => x.Inventory > 0)
                     .OrderByDescending(x => x.CreatedAt)
                     .ToList();
 

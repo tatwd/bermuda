@@ -1,7 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 
 namespace Bermuda.Api.Models
 {
@@ -14,7 +11,7 @@ namespace Bermuda.Api.Models
         public string category { get; set; }
         public string tag { get; set; }
         public decimal price { get; set; }
-        public int qty { get; set; }
+        public int inventory { get; set; }
         public string img_url { get; set; }
         public string tale { get; set; }
         public DateTime created_at { get; set; }

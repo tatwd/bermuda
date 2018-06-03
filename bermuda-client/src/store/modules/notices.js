@@ -19,7 +19,7 @@ const getters = {
 
 // mutations
 const mutations = {
-  setAllNotices (state, notices) {
+  setAllNotices (state, { notices }) {
     state.all = notices
   }
 }
@@ -30,8 +30,8 @@ const actions = {
     noticeService
       .getAll()
       .then(res => {
-        res.data = imgUrlFilter(res.data, URL.ROOT)
-        commit('setAllNotices', res.data)
+        const notices = imgUrlFilter(res.data, URL.ROOT)
+        commit('setAllNotices', { notices })
         payload.bind()
       })
       .catch(err => console.log('getAllNotices => ', err))

@@ -177,6 +177,7 @@
     <Compile Include="Controllers\NoticeSpecieController.cs" />
     <Compile Include="Controllers\ProductController.cs" />
     <Compile Include="Controllers\SearchController.cs" />
+    <Compile Include="Controllers\ShoppingCartController.cs" />
     <Compile Include="Controllers\TopicController.cs" />
     <Compile Include="Controllers\UserController.cs" />
     <Compile Include="DataCache\CacheEngine.cs" />
@@ -187,6 +188,7 @@
     <Compile Include="Models\NoticeSpecieViewModel.cs" />
     <Compile Include="Models\NoticeViewModel.cs" />
     <Compile Include="Models\ProductViewModel.cs" />
+    <Compile Include="Models\ShoppingCartViewModel.cs" />
     <Compile Include="Models\TopicViewModel.cs" />
     <Compile Include="Models\UserViewModel.cs" />
     <Compile Include="OAuth\BaseRefreshTokenProvider.cs" />

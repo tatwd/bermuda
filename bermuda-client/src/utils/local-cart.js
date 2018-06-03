@@ -9,10 +9,20 @@ function getLocalCart () {
   return JSON.parse(cart);
 }
 
-function addProduct (product) {
+function addProduct (product, cb) {
   let cart = getLocalCart() || [];
   cart.push(product)
-  localStorage.setItem(JSON.stringify(cart))
+  localStorage.setItem(KEY, JSON.stringify(cart))
+  cb && cb()
+}
+
+function updateProduct({ product, quantity }) {
+  let cart = getLocalCart();
+  if (cart) {
+    const item = cart.find(i => i.product.id === product.id)
+    item.quantity += Math.round(quantity)
+    localStorage.setItem(KEY, JSON.stringify(cart))
+  }
 }
 
 function removeProduct (productId) {
@@ -23,5 +33,6 @@ function removeProduct (productId) {
 export default {
   getLocalCart,
   addProduct,
+  updateProduct,
   removeProduct
 }

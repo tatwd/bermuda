@@ -178,7 +178,7 @@
           <Property Name="Category" Type="varchar" MaxLength="10" />
           <Property Name="Tag" Type="varchar" MaxLength="10" />
           <Property Name="Price" Type="decimal" Precision="8" Scale="2" />
-          <Property Name="Qty" Type="int" StoreGeneratedPattern="Computed" />
+          <Property Name="Inventory" Type="int" StoreGeneratedPattern="Computed" />
           <Property Name="ImgUrl" Type="varchar" MaxLength="200" />
           <Property Name="Tale" Type="text" />
           <Property Name="CreatedAt" Type="datetime" StoreGeneratedPattern="Computed" />
@@ -202,8 +202,8 @@
           <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="UserId" Type="bigint" />
           <Property Name="ProductId" Type="bigint" />
-          <Property Name="Qty" Type="int" />
-          <Property Name="CreateDate" Type="datetime" />
+          <Property Name="Quantity" Type="int" StoreGeneratedPattern="Computed" />
+          <Property Name="CreatedAt" Type="datetime" StoreGeneratedPattern="Computed" />
         </EntityType>
         <EntityType Name="BmdTopic">
           <Key>
@@ -457,7 +457,7 @@
           <Property Name="Category" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
           <Property Name="Tag" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
           <Property Name="Price" Type="Decimal" Precision="8" Scale="2" />
-          <Property Name="Qty" Type="Int32" annotation:StoreGeneratedPattern="Computed" />
+          <Property Name="Inventory" Type="Int32" annotation:StoreGeneratedPattern="Computed" />
           <Property Name="ImgUrl" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
           <Property Name="Tale" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="CreatedAt" Type="DateTime" Precision="3" annotation:StoreGeneratedPattern="Computed" />
@@ -481,8 +481,8 @@
           <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="UserId" Type="Int64" />
           <Property Name="ProductId" Type="Int64" />
-          <Property Name="Qty" Type="Int32" />
-          <Property Name="CreateDate" Type="DateTime" Precision="3" />
+          <Property Name="Quantity" Type="Int32" annotation:StoreGeneratedPattern="Computed" />
+          <Property Name="CreatedAt" Type="DateTime" Precision="3" annotation:StoreGeneratedPattern="Computed" />
         </EntityType>
         <EntityType Name="BmdTopic">
           <Key>
@@ -746,6 +746,7 @@
           <EntitySetMapping Name="BmdProducts">
             <EntityTypeMapping TypeName="BmdDbModel.BmdProduct">
               <MappingFragment StoreEntitySet="BmdProduct">
+                <ScalarProperty Name="Inventory" ColumnName="Inventory" />
                 <ScalarProperty Name="Title" ColumnName="Title" />
                 <ScalarProperty Name="CreatedAt" ColumnName="CreatedAt" />
                 <ScalarProperty Name="ImgUrl" ColumnName="ImgUrl" />
@@ -754,7 +755,6 @@
                 <ScalarProperty Name="Category" ColumnName="Category" />
                 <ScalarProperty Name="Tag" ColumnName="Tag" />
                 <ScalarProperty Name="Price" ColumnName="Price" />
-                <ScalarProperty Name="Qty" ColumnName="Qty" />
                 <ScalarProperty Name="Tale" ColumnName="Tale" />
               </MappingFragment>
             </EntityTypeMapping>
@@ -775,11 +775,11 @@
           <EntitySetMapping Name="BmdShoppingCarts">
             <EntityTypeMapping TypeName="BmdDbModel.BmdShoppingCart">
               <MappingFragment StoreEntitySet="BmdShoppingCart">
+                <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+                <ScalarProperty Name="CreatedAt" ColumnName="CreatedAt" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="UserId" ColumnName="UserId" />
                 <ScalarProperty Name="ProductId" ColumnName="ProductId" />
-                <ScalarProperty Name="Qty" ColumnName="Qty" />
-                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

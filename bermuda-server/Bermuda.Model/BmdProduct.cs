@@ -20,7 +20,7 @@ namespace Bermuda.Model
         public string Category { get; set; }
         public string Tag { get; set; }
         public Nullable<decimal> Price { get; set; }
-        public Nullable<int> Qty { get; set; }
+        public Nullable<int> Inventory { get; set; }
         public string ImgUrl { get; set; }
         public string Tale { get; set; }
         public Nullable<System.DateTime> CreatedAt { get; set; }

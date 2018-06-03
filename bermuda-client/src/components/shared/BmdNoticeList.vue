@@ -72,17 +72,12 @@ export default {
       type: Array,
       default: null
     }
-  },
-  data: () => ({ })
+  }
 }
 </script>
 
 <style scoped>
 .notice-list {
   margin: 16px 0;
-}
-
-a {
-  text-decoration: none;
 }
 </style>

@@ -60,13 +60,11 @@ export default {
   },
   data: () => ({
     notices: null,
-    cacheData: null,
     filterArr: [
       { text: '所有启示', alias: 'all' },
       { text: '寻物启示', alias: 'lost' },
       { text: '招领启示', alias: 'found' },
     ],
-    filter: 'a'
   }),
   computed: mapGetters({
     allNotices: 'allNotices',

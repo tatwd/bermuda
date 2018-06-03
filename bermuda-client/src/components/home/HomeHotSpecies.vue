@@ -30,24 +30,22 @@
 </template>
 
 <script>
-import { mapGetters } from 'vuex'
+import { URL, noticeSpecieService } from '@/services'
+import imgUrlFilter from '@/filter/img-url'
 
 export default {
   data: () => ({
-    title: '物以类聚'
-  }),
-  computed: mapGetters({
-    species: 'hotNoticeSpecies'
+    title: '物以类聚',
+    species: [],
   }),
   created () {
-    this.$store.dispatch('getAllNoticeSpecies')
+    noticeSpecieService
+      .getTop(10)
+      .then(res => {
+        imgUrlFilter(res.data, URL.ROOT)
+        this.species = res.data
+      })
+      .catch(err => console.log('get hot species =>', err))
   }
 }
 </script>
-
-<!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped>
-#hot-species a {
-  text-decoration: none;
-}
-</style>

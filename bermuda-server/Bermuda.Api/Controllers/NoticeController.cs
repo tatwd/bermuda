@@ -50,9 +50,12 @@ namespace Bermuda.Api.Controllers
                 var notice = iservice
                     .Select(x => x.Id == id)
                     .SingleOrDefault();
-                var user = ServiceFactory
-                    .Get<IBmdUserService>()
-                    .GetUserById(notice.UserId.Value);
+                var user = notice!= null
+                    ? ServiceFactory
+                        .Get<IBmdUserService>()
+                        .GetUserById(notice.UserId.Value)
+                    : null;
+
                 return BaseUtil.DeepParseTo<NoticeViewModel, UserViewModel>(notice, user);
             });
 

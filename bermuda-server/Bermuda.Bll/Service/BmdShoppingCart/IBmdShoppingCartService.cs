@@ -2,7 +2,7 @@
 {
     using Model;
 
-    public interface IBmdNoticeTraceService : IBaseService<BmdNoticeTrace>
+    public interface IBmdShoppingCartService : IBaseService<BmdShoppingCart>
     {
         // add native methods here
     }

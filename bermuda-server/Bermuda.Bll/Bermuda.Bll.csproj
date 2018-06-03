@@ -68,6 +68,8 @@
     <Compile Include="Service\BmdNotice\IBmdNoticeService.cs" />
     <Compile Include="Service\BmdProduct\BmdProductService.cs" />
     <Compile Include="Service\BmdProduct\IBmdProductService.cs" />
+    <Compile Include="Service\BmdShoppingCart\BmdShoppingCartService.cs" />
+    <Compile Include="Service\BmdShoppingCart\IBmdShoppingCartService.cs" />
     <Compile Include="Service\BmdTopic\BmdTopicService.cs" />
     <Compile Include="Service\BmdTopic\IBmdTopicService.cs" />
     <Compile Include="Service\BmdUser\BmdUserService.cs" />

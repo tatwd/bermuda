@@ -7,8 +7,7 @@ const state = {
 
 // getters
 const getters = {
-  allNoticeSpecies: state => state.all,
-  hotNoticeSpecies: state => state.all.sort((a, b) => b.notice_count - a.notice_count)
+  allNoticeSpecies: state => state.all
 }
 
 // mutations

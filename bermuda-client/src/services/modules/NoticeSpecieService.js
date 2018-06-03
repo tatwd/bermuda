@@ -15,4 +15,10 @@ export default class NoticeSpecieService {
     let self = this
     return self.axios.get(`${self.baseUrl}/notice/species`)
   }
+
+  // get hot spceies
+  getTop (count) {
+    let self = this
+    return self.axios.get(`${self.baseUrl}/notice/species/top/${count}`)
+  }
 }

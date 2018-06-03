@@ -11,7 +11,7 @@
       slot="activator"
       v-model="added"
     >
-      <span slot="badge">0</span>
+      <span slot="badge">{{ count }}</span>
       <v-btn
         color="red"
         dark
@@ -28,9 +28,15 @@
 <script>
 export default {
   computed: {
+    count () {
+      return this.$store.state.shoppingCart.added.length
+    },
     added () {
-      return true
+      return this.count > 0
     }
+  },
+  created () {
+    this.$store.dispatch('getCartProducts')
   }
 }
 </script>
