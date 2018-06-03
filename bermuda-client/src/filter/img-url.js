@@ -1,10 +1,10 @@
 /**
- * Format img url of a object.
+ * Format img url of a object or array.
  * @param {Array, Object} obj
  * @param {String} url
  */
 export default function (obj, url) {
-  return  !Array.isArray(obj)
+  return !Array.isArray(obj)
       ? forObject(obj, url)
       : forArray(obj, url);
 }
