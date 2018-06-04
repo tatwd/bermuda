@@ -25,7 +25,7 @@
         <v-card>
           <router-link :to="goto(product.id)">
             <v-card-media
-              :src="product.img_url"
+              :src="product.img_url | urlFilter"
               height="240"
             ></v-card-media>
           </router-link>

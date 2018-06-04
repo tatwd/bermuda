@@ -5,7 +5,7 @@
   >
     <v-carousel-item
       v-for="(caroImg, i) in caroImgs"
-      :src="caroImg.src"
+      :src="caroImg.src | urlFilter"
       :key="i"
     ></v-carousel-item>
   </v-carousel>

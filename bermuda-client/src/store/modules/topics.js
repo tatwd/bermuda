@@ -1,4 +1,4 @@
-import { URL, topicService } from '@/services'
+import { topicService } from '@/services'
 
 // init state
 const state = {
@@ -15,10 +15,7 @@ const getters = {
 // mutations
 const mutations = {
   setAllTopics (state, topics) {
-    state.all = topics.map(topic => {
-      topic.img_url = URL.ROOT + topic.img_url
-      return topic
-    })
+    state.all = topics
   },
   setHotTopics(state, payload) {
     state.hot =  state.all && state.all

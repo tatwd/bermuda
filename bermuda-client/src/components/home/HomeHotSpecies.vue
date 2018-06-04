@@ -19,7 +19,7 @@
             color="primary"
           >
             <v-avatar tile>
-              <img :src="specie.img_url" :alt="specie.name">
+              <img :src="specie.img_url | urlFilter" :alt="specie.name">
             </v-avatar>
             {{ specie.name }}
           </v-chip>
@@ -30,8 +30,7 @@
 </template>
 
 <script>
-import { URL, noticeSpecieService } from '@/services'
-import imgUrlFilter from '@/filter/img-url'
+import { noticeSpecieService } from '@/services'
 
 export default {
   data: () => ({
@@ -42,7 +41,6 @@ export default {
     noticeSpecieService
       .getTop(10)
       .then(res => {
-        imgUrlFilter(res.data, URL.ROOT)
         this.species = res.data
       })
       .catch(err => console.log('get hot species =>', err))

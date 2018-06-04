@@ -4,7 +4,7 @@
       <template v-for="cartProduct in cartProducts">
         <v-list-tile :key="cartProduct.id" avatar to="#">
           <v-list-tile-avatar>
-            <img :src="cartProduct.product.img_url">
+            <img :src="cartProduct.product.img_url | urlFilter">
           </v-list-tile-avatar>
           <v-list-tile-content>
             <v-list-tile-title>

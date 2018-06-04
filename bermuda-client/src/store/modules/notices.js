@@ -1,5 +1,4 @@
-import { URL, noticeService } from '@/services'
-import imgUrlFilter from '@/filter/img-url'
+import { noticeService } from '@/services'
 
 // init state
 const state = {
@@ -30,8 +29,7 @@ const actions = {
     noticeService
       .getAll()
       .then(res => {
-        const notices = imgUrlFilter(res.data, URL.ROOT)
-        commit('setAllNotices', { notices })
+        commit('setAllNotices', { notices: res.data })
         payload.bind()
       })
       .catch(err => console.log('getAllNotices => ', err))

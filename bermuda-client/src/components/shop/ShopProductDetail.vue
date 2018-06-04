@@ -20,7 +20,7 @@
       </v-flex>
       <v-flex xs12 md5>
         <v-card>
-          <v-card-media height="300" :src="product.img_url"></v-card-media>
+          <v-card-media height="300" :src="product.img_url | urlFilter"></v-card-media>
         </v-card>
       </v-flex>
       <v-flex xs12 md7>

@@ -16,7 +16,7 @@
               </h2>
               <v-chip
                 small
-                :color="notice.type.includes('寻物') ? 'red' : 'orange'"
+                :color="typeColor[notice.type]"
                 text-color="white"
               >
                 {{ notice.type }}
@@ -39,7 +39,7 @@
           </v-flex>
           <v-flex xs12 md4 order-xs1 order-md2>
             <v-card-media
-              :src="notice.img_url"
+              :src="notice.img_url | urlFilter"
               height="138px"
             ></v-card-media>
           </v-flex>
@@ -70,9 +70,15 @@ export default {
   props: {
     notices: {
       type: Array,
-      default: null
+      default: () => []
     }
-  }
+  },
+  data: () => ({
+    typeColor: {
+      '寻物启示': 'red',
+      '招领启示': 'orange'
+    }
+  })
 }
 </script>
 

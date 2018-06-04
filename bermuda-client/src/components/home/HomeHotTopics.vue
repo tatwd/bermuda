@@ -10,7 +10,7 @@
           <v-card-media
             class="white--text"
             height="220px"
-            :src="topic.img_url"
+            :src="topic.img_url | urlFilter"
           >
             <v-container
               class="bg-gradient"

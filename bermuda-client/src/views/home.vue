@@ -92,9 +92,8 @@ export default {
       })
     },
     toggleFilter (value) {
-      if(value === 'all') {
+      if (value === 'all') {
         this.notices = this.allNotices
-        return
       } else if (value === 'lost') {
         this.notices = this.lostNotices
       } else {
