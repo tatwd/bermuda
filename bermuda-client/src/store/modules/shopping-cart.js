@@ -41,8 +41,8 @@ const mutations = {
 // actions
 const actions = {
   getCartProducts ({ commit }) {
-    // commit('setAddedProducts', [])
     const user = userAuth.auth().currentUser
+
     if (!user) {
       // add to localStorage
       const cartProducts = localCart.getLocalCart() || []

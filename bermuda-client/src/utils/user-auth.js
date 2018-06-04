@@ -26,6 +26,7 @@ class UserAuth {
   }
 
   updateToken (token) {
+    token.current_user = JSON.parse(token.current_user)
     localStorage.setItem(this.key, JSON.stringify(token));
   }
 

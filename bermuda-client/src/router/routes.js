@@ -9,8 +9,11 @@ const Shop = () => import('@/views/shop')
 const ProductDetail = () => import('@/views/shop/detail')
 const ShoppingCart = () => import('@/views/shop/cart')
 const Topic = () => import('@/views/topic')
-const Search = () => import('@/views/search')
+const NoticeCreate = () => import('@/views/notice/create')
+const NoticeDetail = () => import('@/views/notice/detail')
 const CurrentCreate = () => import('@/views/current/create')
+const CurrentDetail = () => import('@/views/current/detail')
+const Search = () => import('@/views/search')
 const SignIn = () => import('@/views/user/signin')
 const SignUp = () => import('@/views/user/signup')
 
@@ -70,12 +73,39 @@ const SearchRoute = {
   }
 }
 
+const NoticeCreateRoute = {
+  path: 'notice/create',
+  name: 'NoticeCreate',
+  component: NoticeCreate,
+  meta: {
+    requiresAuth: true
+  }
+}
+
+const NoticeDetailRoute = {
+  path: 'notice/:id',
+  name: 'NoticeDetail',
+  component: NoticeDetail,
+  meta: {
+    requiresAuth: false
+  }
+}
+
 const CurrentCreateRoute = {
   path: 'current/create',
   name: 'CurrentCreate',
   component: CurrentCreate,
   meta: {
     requiresAuth: true
+  }
+}
+
+const CurrentDetailRoute = {
+  path: 'current/:id',
+  name: 'CurrentDetail',
+  component: CurrentDetail,
+  meta: {
+    requiresAuth: false
   }
 }
 
@@ -105,8 +135,11 @@ const RootRoute = {
     ShopRoute,
     ProductDetailRoute,
     ShoppingCartRoute,
+    NoticeCreateRoute,
+    NoticeDetailRoute,
+    CurrentCreateRoute,
+    CurrentDetailRoute,
     SearchRoute,
-    CurrentCreateRoute
   ]
 }
 

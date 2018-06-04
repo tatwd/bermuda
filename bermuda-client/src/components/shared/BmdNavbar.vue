@@ -107,6 +107,7 @@
       <v-btn
         class="mr-3 mx-5 hidden-sm-and-down"
         color="primary"
+        :to="{ name: 'NoticeCreate' }"
       >
         <v-icon left>create</v-icon>
         发布启示
@@ -174,9 +175,3 @@ export default {
   }
 }
 </script>
-
-<style scoped>
-a {
-  text-decoration: none;
-}
-</style>
