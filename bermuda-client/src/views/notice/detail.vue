@@ -1,13 +1,15 @@
 <template>
   <v-container>
-    <h2>Notice Detail {{ id }}</h2>
+    <h2 v-if="notice">{{ notice.title }}</h2>
   </v-container>
 </template>
 
 <script>
+import { noticeService } from '@/services'
+
 export default {
   data: () => ({
-    id: null,
+    notice: null
   }),
   beforeRouteEnter (to, from, next) {
     next(vm => {
@@ -19,7 +21,17 @@ export default {
   },
   methods: {
     getNotice () {
-      this.id = this.$route.params.id
+      const id = this.$route.params.id
+      noticeService
+        .getById(id)
+        .then(res => {
+          this.notice = res.data
+        })
+        .catch(err => console.log('get notice by id =>', err))
+    },
+
+    getComment () {
+      // TODO: get notice comment by notice id
     }
   }
 

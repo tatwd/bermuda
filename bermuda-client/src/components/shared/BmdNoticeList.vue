@@ -10,7 +10,7 @@
           <v-flex xs12 md8 order-xs2 order-md1>
             <v-card-title>
               <h2>
-                <router-link class="black--text" to="#">
+                <router-link class="black--text" :to="goto('NoticeDetail', notice.id)">
                   {{ notice.title }}
                 </router-link>
               </h2>
@@ -78,7 +78,17 @@ export default {
       '寻物启示': 'red',
       '招领启示': 'orange'
     }
-  })
+  }),
+  methods: {
+    goto (name, id) {
+      return {
+        name,
+        params: {
+          id
+        }
+      }
+    }
+  }
 }
 </script>
 

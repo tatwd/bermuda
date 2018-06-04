@@ -15,4 +15,10 @@ export default class NoticeService {
     let self = this
     return self.axios.get(`${self.baseUrl}/notices`)
   }
+
+  // get notice by id
+  getById (id) {
+    let self = this
+    return self.axios.get(`${self.baseUrl}/notices/${id}`)
+  }
 }
