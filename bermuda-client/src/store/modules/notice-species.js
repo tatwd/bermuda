@@ -1,4 +1,4 @@
-import { URL, noticeSpecieService } from '@/services'
+import { noticeSpecieService } from '@/services'
 
 // init state
 const state = {
@@ -13,10 +13,7 @@ const getters = {
 // mutations
 const mutations = {
   setAllNoticeSpecies (state, species) {
-    state.all = species.map(specie => {
-      specie.img_url = URL.ROOT + specie.img_url
-      return specie
-    })
+    state.all = species
   }
 }
 

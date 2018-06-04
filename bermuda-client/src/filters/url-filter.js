@@ -1,9 +1,6 @@
-/**
- * Format img url of a object or array.
- * @param {Array, Object} obj
- * @param {String} url
- */
-export default function (obj, url) {
+// old idea
+/*
+function imgUrlify (obj, url) {
   return !Array.isArray(obj)
       ? forObject(obj, url)
       : forArray(obj, url);
@@ -26,4 +23,13 @@ function forObject (obj, url) {
 // for array
 function forArray (arr, url) {
   return arr.map(obj => forObject(obj, url));
+}
+*/
+
+/**
+ * Format url string for starting with `/`
+ * @param {String} value
+ */
+export default function urlFilter (value) {
+  return value.replace(/^\//g, process.env.URL);
 }

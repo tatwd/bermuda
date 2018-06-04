@@ -48,27 +48,13 @@ Axios.interceptors.response.use(
   }
 )
 
-export const URL = {
-  ROOT: 'http://localhost:53595',
-  API: 'http://localhost:53595/api'
-}
+const API_URL = `${process.env.URL}api`
 
-export const topicService = new TopicService(Axios, URL.API)
-export const noticeService = new NoticeService(Axios, URL.API)
-export const noticeSpecieService = new NoticeSpecieService(Axios, URL.API)
-export const userService = new UserService(Axios, URL.API)
-export const productService = new ProductService(Axios, URL.API)
-export const shoppingCartService = new ShoppingCartService(Axios, URL.API)
-export const searchService = new SearchService(Axios, URL.API)
-export const fileService = new FileService(Axios, URL.API)
-
-export default {
-  topicService,
-  noticeService,
-  noticeSpecieService,
-  userService,
-  productService,
-  shoppingCartService,
-  searchService,
-  fileService
-}
+export const topicService = new TopicService(Axios, API_URL)
+export const noticeService = new NoticeService(Axios, API_URL)
+export const noticeSpecieService = new NoticeSpecieService(Axios, API_URL)
+export const userService = new UserService(Axios, API_URL)
+export const productService = new ProductService(Axios, API_URL)
+export const shoppingCartService = new ShoppingCartService(Axios, API_URL)
+export const searchService = new SearchService(Axios, API_URL)
+export const fileService = new FileService(Axios, API_URL)

@@ -23,7 +23,7 @@ import 'vuetify/dist/vuetify.min.css'
 import store from './store'
 
 // import filters
-import { urlFilter } from '@/filter'
+import { urlFilter } from '@/filters'
 
 Vue.filter('urlFilter', urlFilter)
 
