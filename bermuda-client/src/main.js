@@ -23,8 +23,9 @@ import 'vuetify/dist/vuetify.min.css'
 import store from './store'
 
 // import filters
-import { urlFilter } from '@/filters'
+import { dateFilter, urlFilter } from '@/filters'
 
+Vue.filter('dateFilter', dateFilter)
 Vue.filter('urlFilter', urlFilter)
 
 // config theme

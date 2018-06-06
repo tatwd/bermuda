@@ -61,9 +61,9 @@ export default {
   data: () => ({
     notices: null,
     filterArr: [
-      { text: '所有启示', alias: 'all' },
-      { text: '寻物启示', alias: 'lost' },
-      { text: '招领启示', alias: 'found' },
+      { text: '所有启事', alias: 'all' },
+      { text: '寻物启事', alias: 'lost' },
+      { text: '招领启事', alias: 'found' },
     ],
   }),
   computed: mapGetters({
@@ -78,7 +78,7 @@ export default {
     fetchData () {
       // init tmp holder
       this.notices = Array(1).fill({
-        id: null,
+        id: 0,
         title: 'test',
         type: 'lost',
         img_url: '@/assets/tmp.svg',

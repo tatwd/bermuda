@@ -30,6 +30,6 @@ function forArray (arr, url) {
  * Format url string for starting with `/`
  * @param {String} value
  */
-export default function urlFilter (value) {
+export default function (value) {
   return value.replace(/^\//g, process.env.URL);
 }

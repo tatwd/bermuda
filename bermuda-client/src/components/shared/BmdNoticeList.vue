@@ -51,7 +51,7 @@
             </v-avatar>
             <span class="hidden-sm-and-down">{{ notice.user.name }}</span>
           </router-link>
-          <span class="hidden-sm-and-down grey--text">发布于 2018-12-12</span>
+          <span class="hidden-sm-and-down grey--text">发布于 {{ notice.created_at | dateFilter }}</span>
           <v-spacer></v-spacer>
           <router-link to="#" class="mx-2">
             <v-icon color="primary" small left>comment</v-icon>

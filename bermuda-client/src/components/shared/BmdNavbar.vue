@@ -110,7 +110,7 @@
         :to="{ name: 'NoticeCreate' }"
       >
         <v-icon left>create</v-icon>
-        发布启示
+        发布启事
       </v-btn>
     </v-toolbar>
   </div>
