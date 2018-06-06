@@ -17,10 +17,10 @@ namespace Bermuda.Model
         public long Id { get; set; }
         public Nullable<long> UserId { get; set; }
         public string Title { get; set; }
-        public string Contents { get; set; }
-        public Nullable<System.DateTime> PubDate { get; set; }
+        public string Text { get; set; }
         public Nullable<long> CmntCount { get; set; }
         public Nullable<long> StarCount { get; set; }
         public Nullable<long> PraiseCount { get; set; }
+        public Nullable<System.DateTime> CreatedAt { get; set; }
     }
 }

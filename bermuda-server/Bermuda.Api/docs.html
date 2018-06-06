@@ -139,8 +139,29 @@
       <ul class="list-group">
         <li class="list-group-item">
           <span class="badge badge-pill badge-primary">GET</span>
+          <span class="badge badge-pill badge-warning">Auth</span>
           <code class="api-url">/api/cart{/uid}</code>
           <div>Get products of shopping cart by uid(user id). i.e. <a href="/api/cart/10001" target="_blank">uid=10001</a></div>
+        </li>
+      </ul>
+    </section>
+    <section class="mb-5">
+      <h2 class="upper">Current</h2>
+      <ul class="list-group">
+        <li class="list-group-item">
+          <span class="badge badge-pill badge-primary">GET</span>
+          <code class="api-url">/api/currents</code>
+          <div>Get all currents order by `created_at`. i.e. <a href="/api/currents" target="_blank">all</a></div>
+        </li>
+        <li class="list-group-item">
+          <span class="badge badge-pill badge-primary">GET</span>
+          <code class="api-url">/api/currents{/id}</code>
+          <div>Get current by id. i.e. <a href="/api/currents/1" target="_blank">id=1</a></div>
+        </li>
+        <li class="list-group-item">
+          <span class="badge badge-pill badge-primary">GET</span>
+          <code class="api-url">/api/currents/user{/uid}</code>
+          <div>Get current by `user_id`. i.e. <a href="/api/currents/user/10001" target="_blank">id=10001</a></div>
         </li>
       </ul>
     </section>

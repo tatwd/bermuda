@@ -172,6 +172,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\CurrentController.cs" />
     <Compile Include="Controllers\FileController.cs" />
     <Compile Include="Controllers\NoticeController.cs" />
     <Compile Include="Controllers\NoticeSpecieController.cs" />
@@ -185,6 +186,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AccountViewModel.cs" />
+    <Compile Include="Models\CurrentViewModel.cs" />
     <Compile Include="Models\NoticeSpecieViewModel.cs" />
     <Compile Include="Models\NoticeViewModel.cs" />
     <Compile Include="Models\ProductViewModel.cs" />

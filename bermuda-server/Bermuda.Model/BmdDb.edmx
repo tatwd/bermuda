@@ -22,11 +22,11 @@
           <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="UserId" Type="bigint" />
           <Property Name="Title" Type="varchar" MaxLength="100" />
-          <Property Name="Contents" Type="text" />
-          <Property Name="PubDate" Type="datetime" />
-          <Property Name="CmntCount" Type="bigint" />
-          <Property Name="StarCount" Type="bigint" />
-          <Property Name="PraiseCount" Type="bigint" />
+          <Property Name="Text" Type="text" />
+          <Property Name="CmntCount" Type="bigint" StoreGeneratedPattern="Computed" />
+          <Property Name="StarCount" Type="bigint" StoreGeneratedPattern="Computed" />
+          <Property Name="PraiseCount" Type="bigint" StoreGeneratedPattern="Computed" />
+          <Property Name="CreatedAt" Type="datetime" StoreGeneratedPattern="Computed" />
         </EntityType>
         <EntityType Name="BmdCurrentCmnt">
           <Key>
@@ -301,11 +301,11 @@
           <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="UserId" Type="Int64" />
           <Property Name="Title" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-          <Property Name="Contents" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="PubDate" Type="DateTime" Precision="3" />
-          <Property Name="CmntCount" Type="Int64" />
-          <Property Name="StarCount" Type="Int64" />
-          <Property Name="PraiseCount" Type="Int64" />
+          <Property Name="Text" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="CmntCount" Type="Int64" annotation:StoreGeneratedPattern="Computed" />
+          <Property Name="StarCount" Type="Int64" annotation:StoreGeneratedPattern="Computed" />
+          <Property Name="PraiseCount" Type="Int64" annotation:StoreGeneratedPattern="Computed" />
+          <Property Name="CreatedAt" Type="DateTime" Precision="3" annotation:StoreGeneratedPattern="Computed" />
         </EntityType>
         <EntityType Name="BmdCurrentCmnt">
           <Key>
@@ -579,11 +579,11 @@
           <EntitySetMapping Name="BmdCurrents">
             <EntityTypeMapping TypeName="BmdDbModel.BmdCurrent">
               <MappingFragment StoreEntitySet="BmdCurrent">
+                <ScalarProperty Name="CreatedAt" ColumnName="CreatedAt" />
+                <ScalarProperty Name="Text" ColumnName="Text" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="UserId" ColumnName="UserId" />
                 <ScalarProperty Name="Title" ColumnName="Title" />
-                <ScalarProperty Name="Contents" ColumnName="Contents" />
-                <ScalarProperty Name="PubDate" ColumnName="PubDate" />
                 <ScalarProperty Name="CmntCount" ColumnName="CmntCount" />
                 <ScalarProperty Name="StarCount" ColumnName="StarCount" />
                 <ScalarProperty Name="PraiseCount" ColumnName="PraiseCount" />
