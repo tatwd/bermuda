@@ -24,5 +24,10 @@
                 ? hotTopics.Take(count).ToList() 
                 : hotTopics.ToList();
         }
+
+        public BmdTopic GetTopicById(long id)
+        {
+            return idao.Select(x => x.Id == id).SingleOrDefault();
+        }
     }
 }

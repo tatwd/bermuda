@@ -8,6 +8,5 @@
         : BaseService<BmdCurrent, IBmdCurrentDao>, IBmdCurrentService
     {
         public IQueryable<BmdCurrent> GetAll() => idao.GetAll();
-        
     }
 }

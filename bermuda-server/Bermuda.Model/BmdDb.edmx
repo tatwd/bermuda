@@ -225,7 +225,6 @@
           <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="TopicId" Type="bigint" />
           <Property Name="CurrentId" Type="bigint" />
-          <Property Name="JoinDate" Type="datetime" />
         </EntityType>
         <EntityType Name="BmdUser">
           <Key>
@@ -504,7 +503,6 @@
           <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="TopicId" Type="Int64" />
           <Property Name="CurrentId" Type="Int64" />
-          <Property Name="JoinDate" Type="DateTime" Precision="3" />
         </EntityType>
         <EntityType Name="BmdUser">
           <Key>
@@ -803,7 +801,6 @@
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="TopicId" ColumnName="TopicId" />
                 <ScalarProperty Name="CurrentId" ColumnName="CurrentId" />
-                <ScalarProperty Name="JoinDate" ColumnName="JoinDate" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

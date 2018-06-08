@@ -160,8 +160,13 @@
         </li>
         <li class="list-group-item">
           <span class="badge badge-pill badge-primary">GET</span>
-          <code class="api-url">/api/currents/user{/uid}</code>
-          <div>Get current by `user_id`. i.e. <a href="/api/currents/user/10001" target="_blank">id=10001</a></div>
+          <code class="api-url">/api/user{/uid}/currents</code>
+          <div>Get currents by `user_id`. i.e. <a href="/api/user/10001/currents" target="_blank">uid=10001</a></div>
+        </li>
+        <li class="list-group-item">
+          <span class="badge badge-pill badge-primary">GET</span>
+          <code class="api-url">/api/topic{/tid}/currents</code>
+          <div>Get currents of joining topic id equals `tid`. i.e. <a href="/api/topic/2/currents" target="_blank">tid=2</a></div>
         </li>
       </ul>
     </section>

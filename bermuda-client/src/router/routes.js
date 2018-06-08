@@ -9,6 +9,7 @@ const Shop = () => import('@/views/shop')
 const ProductDetail = () => import('@/views/shop/detail')
 const ShoppingCart = () => import('@/views/shop/cart')
 const Topic = () => import('@/views/topic')
+const TopicDetail = () => import('@/views/topic/detail')
 const NoticeCreate = () => import('@/views/notice/create')
 const NoticeDetail = () => import('@/views/notice/detail')
 const CurrentCreate = () => import('@/views/current/create')
@@ -32,6 +33,15 @@ const TopicRoute = {
   path: 'topic',
   name: 'Topic',
   component: Topic,
+  meta: {
+    requiresAuth: false
+  }
+}
+
+const TopicDetailRoute = {
+  path: 'topic/:id',
+  name: 'TopicDetail',
+  component: TopicDetail,
   meta: {
     requiresAuth: false
   }
@@ -132,6 +142,7 @@ const RootRoute = {
   children: [
     HomeRoute,
     TopicRoute,
+    TopicDetailRoute,
     ShopRoute,
     ProductDetailRoute,
     ShoppingCartRoute,
