@@ -11,6 +11,7 @@
         public Int64 join_count { get; set; }
         public string img_url { get; set; }
         public DateTime created_at { get; set; }
+        public UserViewModel user { get; set; }
     }
 
     public class TopicSearchModel

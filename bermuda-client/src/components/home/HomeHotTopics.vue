@@ -2,8 +2,8 @@
   <div id="hot-topics" class="white px-3 py-4 mb-3">
     <v-layout class="hot-topics__slider" row>
       <v-flex
-        v-for="topic in (topics || tmps)"
-        :key="topic.id"
+        v-for="(topic, index) in (topics || tmps)"
+        :key="index"
         class="mr-3"
       >
         <v-card width="160px">
@@ -22,7 +22,7 @@
                 fill-height
               >
                 <v-flex class="text-xs-center">
-                  <router-link to="#" class="title white--text">{{ topic.name }}</router-link>
+                  <router-link :to="goto('TopicDetail', topic.id)" class="title white--text">{{ topic.name }}</router-link>
                 </v-flex>
               </v-layout>
             </v-container>
@@ -36,6 +36,7 @@
 <script>
 import { mapGetters } from 'vuex'
 import cardSlider from '@/utils/card-slider'
+import goto from '@/utils/goto'
 
 export default {
   data: () => ({
@@ -67,13 +68,15 @@ export default {
       // init space topics
       if (!this.topics) {
         this.tmps = Array(10).fill({
-          id: null,
+          id: 0,
           name: '',
           img_url: '@/assets/tmp.svg'
         })
         this.$store.dispatch('getHotTopics', { count: 10 })
       }
-    }
+    },
+
+    goto,
   }
 }
 </script>

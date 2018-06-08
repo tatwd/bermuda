@@ -91,7 +91,7 @@ namespace Bermuda.Api.Controllers
                 var topicService = ServiceFactory.Get<IBmdTopicService>();
                 var topicJoinService = ServiceFactory.Get<IBmdTopicJoinService>();
 
-                vm.topic = BaseUtil.ParseTo<TopicViewModel>(
+                vm.topic = ParseToTopicViewMode(
                     topicService.GetTopicById(tid));
 
                 vm.currents = ParseToCurrentViewModeList(
@@ -125,6 +125,15 @@ namespace Bermuda.Api.Controllers
                 ? userService.GetUserById(current.UserId.Value)
                 : null;
             return BaseUtil.DeepParseTo<CurrentViewModel, UserViewModel>(current, user);
+        }
+
+        private TopicViewModel ParseToTopicViewMode(BmdTopic topic)
+        {
+            var userService = ServiceFactory.Get<IBmdUserService>();
+            var user = topic?.UserId.HasValue ?? false
+                ? userService.GetUserById(topic.UserId.Value)
+                : null;
+            return BaseUtil.DeepParseTo<TopicViewModel, UserViewModel>(topic, user);
         }
     }
 }

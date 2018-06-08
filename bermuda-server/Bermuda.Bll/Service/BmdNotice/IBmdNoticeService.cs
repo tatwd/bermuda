@@ -9,6 +9,8 @@
     {
         // add native methods here
 
+        IQueryable<BmdNotice> GetNotSolvedNotices();
+
         IQueryable<BmdNotice> GetNoticeByPage<type>(int pageSize, int pageIndex,
             Expression<Func<BmdNotice, type>> orderByLambda,
             Expression<Func<BmdNotice, bool>> whereLambda,

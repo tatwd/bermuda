@@ -6,6 +6,7 @@ import userAuth from '@/utils/user-auth'
 import TopicService from './modules/TopicService'
 import NoticeService from './modules/NoticeService'
 import NoticeSpecieService from './modules/NoticeSpecieService'
+import CurrentService from './modules/CurrentService'
 import UserService from './modules/UserService'
 import ProductService from './modules/ProductService'
 import ShoppingCartService from './modules/ShoppingCartService'
@@ -53,6 +54,7 @@ const API_URL = `${process.env.URL}api`
 export const topicService = new TopicService(Axios, API_URL)
 export const noticeService = new NoticeService(Axios, API_URL)
 export const noticeSpecieService = new NoticeSpecieService(Axios, API_URL)
+export const currentService = new CurrentService(Axios, API_URL)
 export const userService = new UserService(Axios, API_URL)
 export const productService = new ProductService(Axios, API_URL)
 export const shoppingCartService = new ShoppingCartService(Axios, API_URL)
