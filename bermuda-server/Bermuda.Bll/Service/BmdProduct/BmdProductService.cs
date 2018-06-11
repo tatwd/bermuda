@@ -1,4 +1,4 @@
-﻿namespace Bermuda.Bll.Service
+namespace Bermuda.Bll.Service
 {
     using Dal.Dao;
     using Model;
@@ -8,4 +8,3 @@
     {
     }
 }
-
