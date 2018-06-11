@@ -1,4 +1,4 @@
-﻿namespace Bermuda.Bll.Service
+namespace Bermuda.Bll.Service
 {
     using Model;
     using System;
