@@ -71,10 +71,77 @@ namespace Bermuda.Api.Controllers
             }
         }
 
+        [HttpPost]
+        [Route("img/upload_for_editor")]
+        public async Task<IHttpActionResult> UploadImgForEditor()
+        {
+            var vm = await UploadImgToServer("~/public/img/current/");
+            return Json(vm);
+        }
+
         private class UplaodResult
         {
             public string file_name { get; set; }
             public string url { get; set; }
         }
+
+        private class EditorUploadResult
+        {
+            public int errno { get; set; }
+            public IList<string> data { get; set; }
+        }
+
+
+        private async Task<EditorUploadResult> UploadImgToServer(string path)
+        {
+            var result = new EditorUploadResult
+            {
+                errno = 0,
+                data = new List<string>()
+            };
+
+            //var savedFilePath = new List<string>();
+            string IMG_DIR = $"{path}";
+
+            if (!Request.Content.IsMimeMultipartContent())
+                throw new HttpResponseException(HttpStatusCode.UnsupportedMediaType);
+
+            var rootPath = HttpContext.Current.Server.MapPath(IMG_DIR);
+            var provider = new MultipartFileStreamProvider(rootPath);
+
+            if (!Directory.Exists(rootPath))
+                Directory.CreateDirectory(rootPath);
+
+            // read data
+            await Request.Content.ReadAsMultipartAsync(provider);
+
+            foreach (var item in provider.FileData)
+            {
+                try
+                {
+                    string name = item.Headers.ContentDisposition.FileName.Replace("\"", "");
+                    string newFileName = Guid.NewGuid() + Path.GetExtension(name);
+                    File.Move(item.LocalFileName, Path.Combine(rootPath, newFileName));
+
+                    Uri baseuri = new Uri(Request.RequestUri.AbsoluteUri.Replace(Request.RequestUri.PathAndQuery, string.Empty));
+
+                    string fileRelativePath = IMG_DIR + newFileName;
+                    Uri fileFullPath = new Uri(baseuri, VirtualPathUtility.ToAbsolute(fileRelativePath));
+                    // savedFilePath.Add(fileFullPath.ToString());
+
+                    result.data.Add(
+                        fileFullPath.ToString());
+
+                }
+                catch (Exception ex)
+                {
+                    string message = ex.Message;
+                    result.errno = 1;
+                }
+            }
+
+            return result;
+        }
+
     }
 }

@@ -221,6 +221,12 @@
       <button id="upload-img" class="btn btn-info">upload</button>
       <div class="img-preview my-3"></div>
     </div>
+
+    <h4>How use wangEditor</h4>
+    <div id="editor">
+      <p>欢迎使用 <b>wangEditor</b> 富文本编辑器</p>
+    </div>
+    <script src="https://unpkg.com/wangeditor/release/wangEditor.min.js"></script>
   </div>
   <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
@@ -267,21 +273,27 @@
 
       $.ajax({
         type: 'POST',
-        url: '/api/files/img/upload',
+        url: '/api/files/img/upload_for_editor',
         data: img,
         processData: false,
         contentType: false,
         success: (data) => {
           console.log(data)
-          imgPreview.innerHTML = `
-            <img src="${data.url}" alt="img preview" width="256">
-          `
+          //imgPreview.innerHTML = `
+          //  <img src="${data.url}" alt="img preview" width="256">
+          //`
         }
       })
     }
 
     fileInput.addEventListener('change', onFileSelected);
     uploadImgBtn.addEventListener('click', onUploadImg);
+
+    // create a wangEditor
+    var E = window.wangEditor
+    var editor = new E('#editor')
+    editor.customConfig.uploadImgServer = '/api/files/img/upload_for_editor'
+    editor.create()
   </script>
 </body>
 </html>
