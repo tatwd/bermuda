@@ -76,8 +76,6 @@
     <Compile Include="Service\BmdProduct\IBmdProductService.cs" />
     <Compile Include="Service\BmdRoot\BmdRootService.cs" />
     <Compile Include="Service\BmdRoot\IBmdRootService.cs" />
-    <Compile Include="Service\BmdProduct\BmdProductService.cs" />
-    <Compile Include="Service\BmdProduct\IBmdProductService.cs" />
     <Compile Include="Service\BmdShoppingCart\BmdShoppingCartService.cs" />
     <Compile Include="Service\BmdShoppingCart\IBmdShoppingCartService.cs" />
     <Compile Include="Service\BmdTopicJoin\BmdTopicJoinService.cs" />
