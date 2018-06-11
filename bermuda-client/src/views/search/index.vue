@@ -75,7 +75,7 @@
 
 <script>
 import { mapGetters } from 'vuex'
-import { getSearchHistory, removeSearchHistory } from '@/assets/js/search-history'
+import { getSearchHistory, removeSearchHistory } from '@/utils/search-history'
 import  SearchNoticesResult from '@/components/search/SearchNoticesResult'
 import  SearchUsersResult from '@/components/search/SearchUsersResult'
 import  SearchTopicsResult from '@/components/search/SearchTopicsResult'
@@ -90,19 +90,23 @@ export default {
   },
   data: () => ({
     msg: '请输入你要搜索的内容！',
-    types: [
-      { id: 1, text: '启示', name: 'notice', icon: 'assignment' },
-      { id: 2, text: '用户', name: 'user', icon: 'assignment_ind' },
-      { id: 3, text: '话题', name: 'topic', icon: 'layers' },
-      { id: 4, text: '动态', name: 'current', icon: 'note' }
-    ],
     currentType: '',
     searchHistory: getSearchHistory(),
     isLoading: false
   }),
-  computed: mapGetters({
-    result: 'currentResult'
-  }),
+  computed: {
+    types () {
+      return [
+        { id: 1, text: '启事', name: 'notice', icon: 'assignment' },
+        { id: 2, text: '用户', name: 'user', icon: 'assignment_ind' },
+        { id: 3, text: '话题', name: 'topic', icon: 'layers' },
+        { id: 4, text: '动态', name: 'current', icon: 'note' }
+      ]
+    },
+    ...mapGetters({
+      result: 'currentResult'
+    })
+  },
   beforeRouteEnter (to, from, next) {
     if (to.query.q && to.query.type) {
       next(vm => {

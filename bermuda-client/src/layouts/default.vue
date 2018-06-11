@@ -5,10 +5,8 @@
       <v-content class="grey lighten-4">
         <router-view/>
       </v-content>
-      <v-footer app>
-        <v-container>
-          footer
-        </v-container>
+      <v-footer height="auto">
+        <BmdFooter/>
       </v-footer>
     </v-app>
   </div>
@@ -16,11 +14,13 @@
 
 <script>
 import BmdNavbar from '@/components/shared/BmdNavbar'
+import BmdFooter from '@/components/shared/BmdFooter'
 
 export default {
   name: 'default',
   components: {
-    BmdNavbar
+    BmdNavbar,
+    BmdFooter
   }
 }
 </script>

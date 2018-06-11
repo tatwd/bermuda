@@ -30,7 +30,7 @@
 </template>
 
 <script>
-import particleAnimation from '@/assets/js/particle-animation'
+import particleAnimation from '@/utils/particle-animation'
 
 export default {
   name: 'account',

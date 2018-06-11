@@ -1,17 +1,40 @@
 <template>
   <div id="bmd-navbar">
     <v-navigation-drawer
+      v-if="show"
       v-model="sidedNav"
       app
+      width="200"
     >
+      <v-toolbar flat class="px-3">
+        <h2 class="primary--text">百慕大</h2>
+      </v-toolbar>
+      <v-divider></v-divider>
       <v-list>
-        <v-list-tile to="#">
+        <v-list-tile
+          v-for="(nav, index) in navs"
+          :key="index"
+          :to="nav.to"
+        >
           <v-list-tile-action>
-            <v-icon>supervisor_account</v-icon>
+            <v-icon>{{ nav.icon }}</v-icon>
           </v-list-tile-action>
-          <v-list-tile-content>test content</v-list-tile-content>
+          <v-list-tile-content>
+            <v-subheader>{{ nav.title }}</v-subheader>
+          </v-list-tile-content>
         </v-list-tile>
+
       </v-list>
+      <v-divider></v-divider>
+      <v-text-field
+        solo
+        solo-inverted
+        flat
+        label="搜索"
+        append-icon="search"
+        v-model="searchText"
+        @keyup.enter="onSearch"
+      ></v-text-field>
     </v-navigation-drawer>
 
     <v-toolbar app>
@@ -23,7 +46,10 @@
           <router-link to="/" style="text-decoration:none;">百慕大</router-link>
         </h3>
       </v-toolbar-title>
-      <v-toolbar-items class="mx-5 hidden-sm-and-down">
+      <v-toolbar-items
+        class="mx-5 hidden-sm-and-down"
+         v-if="!show"
+      >
         <v-btn
           class="subheading"
           flat
@@ -45,12 +71,8 @@
         v-model="searchText"
         @keyup.enter="onSearch"
       ></v-text-field>
-      <v-spacer></v-spacer>
 
-      <v-toolbar-side-icon
-        class="hidden-sm-and-up"
-        @click.native.stop="sidedNav = !sidedNav"
-      ></v-toolbar-side-icon>
+      <v-spacer></v-spacer>
 
       <v-menu
         v-if="isSignIn"
@@ -61,7 +83,10 @@
         full-width
         open-on-hover
       >
-        <v-avatar slot="activator" size="40">
+        <v-avatar
+          slot="activator"
+          size="40"
+        >
           <img src="@/assets/avatar-tmp.svg" alt="avatar">
         </v-avatar>
         <v-list>
@@ -74,51 +99,44 @@
         </v-list>
       </v-menu>
 
-      <v-menu
-        offset-y
-        full-width
-        dark
+      <v-toolbar-side-icon
+        class="hidden-md-and-up"
+        @click.native.stop="sidedNav = !sidedNav"
+      ></v-toolbar-side-icon>
+
+      <v-btn
+        class="mr-3 mx-5 hidden-sm-and-down"
+        color="primary"
+        :to="{ name: 'NoticeCreate' }"
       >
-        <v-btn
-          slot="activator"
-          class="mr-3 mx-5 hidden-sm-and-down"
-          color="primary"
-        >
-          <v-icon left>create</v-icon>
-          发布启示
-        </v-btn>
-        <v-list-tile
-          v-for="item in ['失物招领', '动态']"
-          :key="item"
-          to="#"
-          class="white"
-        >
-          <v-list-tile-title>
-            {{ item }}
-          </v-list-tile-title>
-        </v-list-tile>
-      </v-menu>
+        <v-icon left>create</v-icon>
+        发布启事
+      </v-btn>
     </v-toolbar>
   </div>
 </template>
 
 <script>
-import { updateSearchHistory } from '@/assets/js/search-history'
+import { updateSearchHistory } from '@/utils/search-history'
 
 export default {
   name: 'BmdNavbar',
   data: () => ({
     sidedNav: false,
-    navs: [
-      { title: '首页', to: '/home' },
-      { title: '话题', to: '/topic' },
-      { title: '商城', to: '/shop' }
-    ],
-    searchText: null
+    searchText: null,
   }),
   computed: {
+    navs () {
+      return [
+        { title: '话题', to: { name: 'Topic' }, icon: 'bookmark' },
+        { title: '市场', to: { name: 'Shop' }, icon: 'store' }
+      ]
+    },
     isSignIn () {
-      return this.$store.getters.currentUser ? true : false
+      return this.$store.getters.currentUser != null
+    },
+    show () {
+      return this.$vuetify.breakpoint.smAndDown
     }
   },
   watch: {
@@ -141,7 +159,12 @@ export default {
     },
     onSignout () {
       this.$store.dispatch('signout', {
-        redirect: () => this.$router.push('account/signin')
+        redirect: () => this.$router.push({
+          path: '/account/signin',
+          query: {
+            redirect: this.$route.path
+          }
+        })
       })
     },
     clearSearchText () {
@@ -152,9 +175,3 @@ export default {
   }
 }
 </script>
-
-<style scoped>
-a {
-  text-decoration: none;
-}
-</style>

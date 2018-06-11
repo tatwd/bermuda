@@ -4,6 +4,9 @@
 ## ignore lucene.net index dir
 lucene-index/
 
+## ignore public dir
+[Pp]ublic/
+
 # User-specific files
 *.suo
 *.user

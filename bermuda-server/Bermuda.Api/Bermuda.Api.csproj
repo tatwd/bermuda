@@ -172,10 +172,13 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\CurrentController.cs" />
     <Compile Include="Controllers\FileController.cs" />
     <Compile Include="Controllers\NoticeController.cs" />
     <Compile Include="Controllers\NoticeSpecieController.cs" />
+    <Compile Include="Controllers\ProductController.cs" />
     <Compile Include="Controllers\SearchController.cs" />
+    <Compile Include="Controllers\ShoppingCartController.cs" />
     <Compile Include="Controllers\TopicController.cs" />
     <Compile Include="Controllers\UserController.cs" />
     <Compile Include="DataCache\CacheEngine.cs" />
@@ -183,8 +186,12 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AccountViewModel.cs" />
+    <Compile Include="Models\CurrentViewModel.cs" />
     <Compile Include="Models\NoticeSpecieViewModel.cs" />
     <Compile Include="Models\NoticeViewModel.cs" />
+    <Compile Include="Models\ProductViewModel.cs" />
+    <Compile Include="Models\ShoppingCartViewModel.cs" />
+    <Compile Include="Models\TopicJoinViewModel.cs" />
     <Compile Include="Models\TopicViewModel.cs" />
     <Compile Include="Models\UserViewModel.cs" />
     <Compile Include="OAuth\BaseRefreshTokenProvider.cs" />
@@ -206,6 +213,7 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="assets\img\notices\" />
+    <Folder Include="public\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Bermuda.Bll\Bermuda.Bll.csproj">

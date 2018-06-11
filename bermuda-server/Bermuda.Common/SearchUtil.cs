@@ -11,6 +11,11 @@ using Version = Lucene.Net.Util.Version;
 
 namespace Bermuda.Common
 {
+    public sealed class SearchFieldAttribute : Attribute
+    {
+        // bool isSearched = true;
+    }
+
     public class SearchUtil
     {
         private static Directory directory;
@@ -56,6 +61,11 @@ namespace Bermuda.Common
 
                     foreach (var prop in props)
                     {
+                        // FIXME: check for search field attr
+                        //var isdef = prop.IsDefined(typeof(SearchFieldAttribute), false);
+                        //if (isdef)
+                        //    continue;
+
                         // `id` `url` 不做分词
                         var isAnalyzed = !prop.Name.ToLower().Contains("id") || !prop.Name.ToLower().Contains("url")
                             ? Field.Index.ANALYZED

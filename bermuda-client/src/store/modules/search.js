@@ -1,5 +1,4 @@
-import { URL, searchService } from '../services'
-import imgUrlFilter from '@/filter/img-url'
+import { searchService } from '@/services'
 
 // init state
 const state = {
@@ -24,7 +23,6 @@ const actions = {
     searchService
       .search(payload.query, payload.type)
       .then(res => {
-        res.data = res.data && imgUrlFilter(res.data, URL.ROOT)
         commit('setResult', res.data)
         payload.bind.call(this, res.data)
       })

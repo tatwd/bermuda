@@ -1,6 +1,7 @@
 ﻿namespace Bermuda.Bll.Service
 {
     using Model;
+    using System;
     using System.Collections.Generic;
 
     public interface IBmdTopicService : IBaseService<BmdTopic>
@@ -19,5 +20,7 @@
         /// <param name="count"></param>
         /// <returns></returns>
         IList<BmdTopic> GetHotTopics(int count);
+
+        BmdTopic GetTopicById(Int64 id);
     }
 }

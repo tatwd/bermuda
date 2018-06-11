@@ -22,11 +22,11 @@
           <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="UserId" Type="bigint" />
           <Property Name="Title" Type="varchar" MaxLength="100" />
-          <Property Name="Contents" Type="text" />
-          <Property Name="PubDate" Type="datetime" />
-          <Property Name="CmntCount" Type="bigint" />
-          <Property Name="StarCount" Type="bigint" />
-          <Property Name="PraiseCount" Type="bigint" />
+          <Property Name="Text" Type="text" />
+          <Property Name="CmntCount" Type="bigint" StoreGeneratedPattern="Computed" />
+          <Property Name="StarCount" Type="bigint" StoreGeneratedPattern="Computed" />
+          <Property Name="PraiseCount" Type="bigint" StoreGeneratedPattern="Computed" />
+          <Property Name="CreatedAt" Type="datetime" StoreGeneratedPattern="Computed" />
         </EntityType>
         <EntityType Name="BmdCurrentCmnt">
           <Key>
@@ -174,13 +174,14 @@
           </Key>
           <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="UserId" Type="bigint" />
-          <Property Name="Name" Type="varchar" MaxLength="50" />
+          <Property Name="Title" Type="varchar" MaxLength="50" />
           <Property Name="Category" Type="varchar" MaxLength="10" />
           <Property Name="Tag" Type="varchar" MaxLength="10" />
           <Property Name="Price" Type="decimal" Precision="8" Scale="2" />
-          <Property Name="Qty" Type="int" />
-          <Property Name="Img" Type="varchar" MaxLength="200" />
+          <Property Name="Inventory" Type="int" StoreGeneratedPattern="Computed" />
+          <Property Name="ImgUrl" Type="varchar" MaxLength="200" />
           <Property Name="Tale" Type="text" />
+          <Property Name="CreatedAt" Type="datetime" StoreGeneratedPattern="Computed" />
         </EntityType>
         <EntityType Name="BmdRoot">
           <Key>
@@ -201,8 +202,8 @@
           <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="UserId" Type="bigint" />
           <Property Name="ProductId" Type="bigint" />
-          <Property Name="Qty" Type="int" />
-          <Property Name="CreateDate" Type="datetime" />
+          <Property Name="Quantity" Type="int" StoreGeneratedPattern="Computed" />
+          <Property Name="CreatedAt" Type="datetime" StoreGeneratedPattern="Computed" />
         </EntityType>
         <EntityType Name="BmdTopic">
           <Key>
@@ -224,7 +225,6 @@
           <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="TopicId" Type="bigint" />
           <Property Name="CurrentId" Type="bigint" />
-          <Property Name="JoinDate" Type="datetime" />
         </EntityType>
         <EntityType Name="BmdUser">
           <Key>
@@ -300,11 +300,11 @@
           <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="UserId" Type="Int64" />
           <Property Name="Title" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-          <Property Name="Contents" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="PubDate" Type="DateTime" Precision="3" />
-          <Property Name="CmntCount" Type="Int64" />
-          <Property Name="StarCount" Type="Int64" />
-          <Property Name="PraiseCount" Type="Int64" />
+          <Property Name="Text" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="CmntCount" Type="Int64" annotation:StoreGeneratedPattern="Computed" />
+          <Property Name="StarCount" Type="Int64" annotation:StoreGeneratedPattern="Computed" />
+          <Property Name="PraiseCount" Type="Int64" annotation:StoreGeneratedPattern="Computed" />
+          <Property Name="CreatedAt" Type="DateTime" Precision="3" annotation:StoreGeneratedPattern="Computed" />
         </EntityType>
         <EntityType Name="BmdCurrentCmnt">
           <Key>
@@ -452,13 +452,14 @@
           </Key>
           <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="UserId" Type="Int64" />
-          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Title" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="Category" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
           <Property Name="Tag" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
           <Property Name="Price" Type="Decimal" Precision="8" Scale="2" />
-          <Property Name="Qty" Type="Int32" />
-          <Property Name="Img" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="Inventory" Type="Int32" annotation:StoreGeneratedPattern="Computed" />
+          <Property Name="ImgUrl" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
           <Property Name="Tale" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="CreatedAt" Type="DateTime" Precision="3" annotation:StoreGeneratedPattern="Computed" />
         </EntityType>
         <EntityType Name="BmdRoot">
           <Key>
@@ -479,8 +480,8 @@
           <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="UserId" Type="Int64" />
           <Property Name="ProductId" Type="Int64" />
-          <Property Name="Qty" Type="Int32" />
-          <Property Name="CreateDate" Type="DateTime" Precision="3" />
+          <Property Name="Quantity" Type="Int32" annotation:StoreGeneratedPattern="Computed" />
+          <Property Name="CreatedAt" Type="DateTime" Precision="3" annotation:StoreGeneratedPattern="Computed" />
         </EntityType>
         <EntityType Name="BmdTopic">
           <Key>
@@ -502,7 +503,6 @@
           <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="TopicId" Type="Int64" />
           <Property Name="CurrentId" Type="Int64" />
-          <Property Name="JoinDate" Type="DateTime" Precision="3" />
         </EntityType>
         <EntityType Name="BmdUser">
           <Key>
@@ -577,11 +577,11 @@
           <EntitySetMapping Name="BmdCurrents">
             <EntityTypeMapping TypeName="BmdDbModel.BmdCurrent">
               <MappingFragment StoreEntitySet="BmdCurrent">
+                <ScalarProperty Name="CreatedAt" ColumnName="CreatedAt" />
+                <ScalarProperty Name="Text" ColumnName="Text" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="UserId" ColumnName="UserId" />
                 <ScalarProperty Name="Title" ColumnName="Title" />
-                <ScalarProperty Name="Contents" ColumnName="Contents" />
-                <ScalarProperty Name="PubDate" ColumnName="PubDate" />
                 <ScalarProperty Name="CmntCount" ColumnName="CmntCount" />
                 <ScalarProperty Name="StarCount" ColumnName="StarCount" />
                 <ScalarProperty Name="PraiseCount" ColumnName="PraiseCount" />
@@ -744,14 +744,15 @@
           <EntitySetMapping Name="BmdProducts">
             <EntityTypeMapping TypeName="BmdDbModel.BmdProduct">
               <MappingFragment StoreEntitySet="BmdProduct">
+                <ScalarProperty Name="Inventory" ColumnName="Inventory" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="CreatedAt" ColumnName="CreatedAt" />
+                <ScalarProperty Name="ImgUrl" ColumnName="ImgUrl" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="UserId" ColumnName="UserId" />
-                <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="Category" ColumnName="Category" />
                 <ScalarProperty Name="Tag" ColumnName="Tag" />
                 <ScalarProperty Name="Price" ColumnName="Price" />
-                <ScalarProperty Name="Qty" ColumnName="Qty" />
-                <ScalarProperty Name="Img" ColumnName="Img" />
                 <ScalarProperty Name="Tale" ColumnName="Tale" />
               </MappingFragment>
             </EntityTypeMapping>
@@ -772,11 +773,11 @@
           <EntitySetMapping Name="BmdShoppingCarts">
             <EntityTypeMapping TypeName="BmdDbModel.BmdShoppingCart">
               <MappingFragment StoreEntitySet="BmdShoppingCart">
+                <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+                <ScalarProperty Name="CreatedAt" ColumnName="CreatedAt" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="UserId" ColumnName="UserId" />
                 <ScalarProperty Name="ProductId" ColumnName="ProductId" />
-                <ScalarProperty Name="Qty" ColumnName="Qty" />
-                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -800,7 +801,6 @@
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="TopicId" ColumnName="TopicId" />
                 <ScalarProperty Name="CurrentId" ColumnName="CurrentId" />
-                <ScalarProperty Name="JoinDate" ColumnName="JoinDate" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

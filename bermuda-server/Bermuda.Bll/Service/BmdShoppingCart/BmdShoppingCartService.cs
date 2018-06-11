@@ -1,7 +1,7 @@
-﻿namespace Bermuda.Bll.Service
+namespace Bermuda.Bll.Service
 {
-    using Bermuda.Dal.Dao;
-    using Bermuda.Model;
+    using Dal.Dao;
+    using Model;
 
     public class BmdShoppingCartService
         : BaseService<BmdShoppingCart, IBmdShoppingCartDao>, IBmdShoppingCartService

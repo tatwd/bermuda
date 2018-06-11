@@ -18,7 +18,7 @@
           </div>
           <div v-else>
             <HomeTopicCreate/>
-            <v-btn color="info" large>推送动态</v-btn>
+            <v-btn color="info" large :to="{ name: 'CurrentCreate' }">推送动态</v-btn>
           </div>
         </v-flex>
       </v-layout>

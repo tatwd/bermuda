@@ -13,7 +13,7 @@
       >
         <v-card class="mx-3">
           <v-card-media
-            :src="topic.img_url"
+            :src="topic.img_url | urlFilter"
             height="200px"
           >
             <v-container
@@ -22,7 +22,7 @@
             >
               <v-layout fill-height>
                 <v-flex>
-                  <router-link to="/" class="headline white--text">{{ topic.name }}</router-link>
+                  <router-link :to="goto('TopicDetail', topic.id)" class="headline white--text">{{ topic.name }}</router-link>
                 </v-flex>
               </v-layout>
             </v-container>
@@ -53,15 +53,21 @@ export default {
     if (!this.topics) {
       this.$store.dispatch('getAllTopics')
     }
+  },
+  methods: {
+    goto (name, id) {
+      return {
+        name,
+        params: {
+          id
+        }
+      }
+    }
   }
 }
 </script>
 
 <style scoped>
-a {
-  text-decoration: none;
-}
-
 .topic--detail {
   height: 40px;
   overflow: hidden;

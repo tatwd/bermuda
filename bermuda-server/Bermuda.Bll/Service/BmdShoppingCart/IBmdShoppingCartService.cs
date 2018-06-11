@@ -1,6 +1,6 @@
-﻿namespace Bermuda.Bll.Service
+namespace Bermuda.Bll.Service
 {
-    using Bermuda.Model;
+    using Model;
 
     public interface IBmdShoppingCartService : IBaseService<BmdShoppingCart>
     {

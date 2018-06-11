@@ -9,6 +9,11 @@
     public class BmdNoticeService
         : BaseService<BmdNotice, IBmdNoticeDao>, IBmdNoticeService
     {
+        public IQueryable<BmdNotice> GetNotSolvedNotices()
+        {
+            return idao.Select(x => x.IsSolved == 0);
+        }
+
         public IQueryable<BmdNotice> GetNoticeByPage<type>(int pageSize, int pageIndex,
             Expression<Func<BmdNotice, type>> orderByLambda,
             Expression<Func<BmdNotice, bool>> whereLambda,

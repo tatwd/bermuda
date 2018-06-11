@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Bermuda.Common;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -35,6 +36,8 @@ namespace Bermuda.Api.Models
         public string type { get; set; }
         public string title { get; set; }
         public string place { get; set; }
+
+        //[SearchField]
         //public string full_place { get; set; }
         public string event_time_desc { get; set; }
         public string img_url { get; set; }

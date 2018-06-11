@@ -1,51 +1,23 @@
 <template>
-  <v-container>
-    <h1>Shop Page</h1>
-    <v-carousel
-    >
-      <v-carousel-item
-        v-for="(item,i) in items"
-        :src="item.src"
-        :key="i"
-      ></v-carousel-item>
-    </v-carousel>
-    <v-btn
-      color="red"
-      dark
-      fixed
-      bottom
-      right
-      fab
-      to="/shop/cart"
-    >
-      <v-icon>shopping_cart</v-icon>
-    </v-btn>
-  </v-container>
+  <v-layout>
+    <v-flex xs12>
+      <ShopCarousel/>
+      <ShopProducts/>
+      <ShopCartBtn/>
+    </v-flex>
+  </v-layout>
 </template>
 
 <script>
-  export default {
-    data () {
-      return {
-        items: [
-          {
-            src: 'https://vuetifyjs.com/static/doc-images/carousel/squirrel.jpg'
-          },
-          {
-            src: 'https://vuetifyjs.com/static/doc-images/carousel/sky.jpg'
-          },
-          {
-            src: 'https://vuetifyjs.com/static/doc-images/carousel/bird.jpg'
-          },
-          {
-            src: 'https://vuetifyjs.com/static/doc-images/carousel/planet.jpg'
-          }
-        ]
-      }
-    }
+import ShopCarousel from '@/components/shop/ShopCarousel'
+import ShopCartBtn from '@/components/shop/ShopCartBtn'
+import ShopProducts from '@/components/shop/ShopProducts'
+
+export default {
+  components: {
+    ShopCarousel,
+    ShopCartBtn,
+    ShopProducts
   }
+}
 </script>
-
-<style scoped>
-
-</style>

@@ -10,7 +10,7 @@
         <v-card-title>
           <router-link to="/">
             <v-avatar size="56px" color="grey lighten-4">
-              <img :src="user.avatar_url" alt="avatar">
+              <img :src="user.avatar_url | urlFilter" alt="avatar">
             </v-avatar>
           </router-link>
           <h3 class="mx-3">

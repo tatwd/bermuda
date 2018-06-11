@@ -1,10 +1,9 @@
-import { URL, userService } from '../services'
-import userAuth from '@/assets/js/user-auth'
-import imgUrlFilter from '@/filter/img-url'
+import { userService } from '@/services'
+import userAuth from '@/utils/user-auth'
 
 // init state
 const state = {
-  user: null, // userAuth.auth().currentUser,
+  user: null,
   info: null
 }
 
@@ -42,17 +41,10 @@ const actions = {
     userService
       .signin(payload.user)
       .then(res => {
-        // filter img url
-        let _currentUser = imgUrlFilter(
-          JSON.parse(res.data.current_user),
-          URL.ROOT
-        )
-        res.data.current_user = _currentUser
-
         // save token to localStorage
         userAuth.updateToken(res.data);
 
-        commit('setUser', _currentUser)
+        commit('setUser', res.data.current_user)
         commit('setInfo', { success: true, msg: '登录成功' })
 
         // redirect to home

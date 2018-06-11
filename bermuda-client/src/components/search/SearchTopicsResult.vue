@@ -9,7 +9,7 @@
       >
         <v-card class="mx-3 mb-3">
           <v-card-media
-            :src="topic.img_url"
+            :src="topic.img_url | urlFilter"
             height="136px"
           ></v-card-media>
           <v-card-title>

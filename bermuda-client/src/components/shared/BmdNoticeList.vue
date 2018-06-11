@@ -10,13 +10,13 @@
           <v-flex xs12 md8 order-xs2 order-md1>
             <v-card-title>
               <h2>
-                <router-link class="black--text" to="#">
+                <router-link class="black--text" :to="goto('NoticeDetail', notice.id)">
                   {{ notice.title }}
                 </router-link>
               </h2>
               <v-chip
                 small
-                :color="notice.type.includes('寻物') ? 'red' : 'orange'"
+                :color="typeColor[notice.type]"
                 text-color="white"
               >
                 {{ notice.type }}
@@ -39,7 +39,7 @@
           </v-flex>
           <v-flex xs12 md4 order-xs1 order-md2>
             <v-card-media
-              :src="notice.img_url"
+              :src="notice.img_url | urlFilter"
               height="138px"
             ></v-card-media>
           </v-flex>
@@ -51,7 +51,7 @@
             </v-avatar>
             <span class="hidden-sm-and-down">{{ notice.user.name }}</span>
           </router-link>
-          <span class="hidden-sm-and-down grey--text">发布于 2018-12-12</span>
+          <span class="hidden-sm-and-down grey--text">发布于 {{ notice.created_at | dateFilter }}</span>
           <v-spacer></v-spacer>
           <router-link to="#" class="mx-2">
             <v-icon color="primary" small left>comment</v-icon>
@@ -70,19 +70,30 @@ export default {
   props: {
     notices: {
       type: Array,
-      default: null
+      default: () => []
     }
   },
-  data: () => ({ })
+  data: () => ({
+    typeColor: {
+      '寻物启示': 'red',
+      '招领启示': 'orange'
+    }
+  }),
+  methods: {
+    goto (name, id) {
+      return {
+        name,
+        params: {
+          id
+        }
+      }
+    }
+  }
 }
 </script>
 
 <style scoped>
 .notice-list {
   margin: 16px 0;
-}
-
-a {
-  text-decoration: none;
 }
 </style>

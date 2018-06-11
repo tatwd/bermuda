@@ -17,7 +17,7 @@ namespace Bermuda.Model
         public long Id { get; set; }
         public Nullable<long> UserId { get; set; }
         public Nullable<long> ProductId { get; set; }
-        public Nullable<int> Qty { get; set; }
-        public Nullable<System.DateTime> CreateDate { get; set; }
+        public Nullable<int> Quantity { get; set; }
+        public Nullable<System.DateTime> CreatedAt { get; set; }
     }
 }

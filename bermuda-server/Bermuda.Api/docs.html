@@ -29,7 +29,21 @@
     </div>
   </nav>
   <div class="container mt-3">
-    <!--<p class="mt-3">Which includes the APIs of db tables.</p>-->
+    <section class="mb-5">
+      <h2 class="upper">Auth</h2>
+      <ul class="list-group">
+        <li class="list-group-item">
+          <span class="badge badge-pill badge-info">POST</span>
+          <code class="api-url">/api/token</code>
+          <div>Get a auth token by username and password, which means you are <u>logging in</u> our system.</div>
+        </li>
+        <li class="list-group-item">
+          <span class="badge badge-pill badge-info">POST</span>
+          <code class="api-url">/api/account/register</code>
+          <div>Register by username and password.</div>
+        </li>
+      </ul>
+    </section>
     <section class="mb-5">
       <h2 class="upper">Notice</h2>
       <ul class="list-group">
@@ -83,6 +97,11 @@
           <code class="api-url">/api/topics{/type/count}</code>
           <div>Get topics top list with count var. i.e. <a href="/api/topics/top/5">top/5</a></div>
         </li>
+        <li class="list-group-item">
+          <span class="badge badge-pill badge-info">POST</span>
+          <code class="api-url">/api/topics/create</code>
+          <div>Create a topic for authorized user.</div>
+        </li>
       </ul>
     </section>
     <section class="mb-5">
@@ -100,6 +119,58 @@
         </li>
       </ul>
     </section>
+    <section class="mb-5">
+      <h2 class="upper">Product</h2>
+      <ul class="list-group">
+        <li class="list-group-item">
+          <span class="badge badge-pill badge-primary">GET</span>
+          <code class="api-url">/api/products</code>
+          <div>Get all products. i.e. <a href="/api/products" target="_blank">all</a></div>
+        </li>
+        <li class="list-group-item">
+          <span class="badge badge-pill badge-primary">GET</span>
+          <code class="api-url">/api/products{/id}</code>
+          <div>Get product by id. i.e. <a href="/api/products/1" target="_blank">id=1</a></div>
+        </li>
+      </ul>
+    </section>
+    <section class="mb-5">
+      <h2 class="upper">Shopping Cart</h2>
+      <ul class="list-group">
+        <li class="list-group-item">
+          <span class="badge badge-pill badge-primary">GET</span>
+          <span class="badge badge-pill badge-warning">Auth</span>
+          <code class="api-url">/api/cart{/uid}</code>
+          <div>Get products of shopping cart by uid(user id). i.e. <a href="/api/cart/10001" target="_blank">uid=10001</a></div>
+        </li>
+      </ul>
+    </section>
+    <section class="mb-5">
+      <h2 class="upper">Current</h2>
+      <ul class="list-group">
+        <li class="list-group-item">
+          <span class="badge badge-pill badge-primary">GET</span>
+          <code class="api-url">/api/currents</code>
+          <div>Get all currents order by `created_at`. i.e. <a href="/api/currents" target="_blank">all</a></div>
+        </li>
+        <li class="list-group-item">
+          <span class="badge badge-pill badge-primary">GET</span>
+          <code class="api-url">/api/currents{/id}</code>
+          <div>Get current by id. i.e. <a href="/api/currents/1" target="_blank">id=1</a></div>
+        </li>
+        <li class="list-group-item">
+          <span class="badge badge-pill badge-primary">GET</span>
+          <code class="api-url">/api/user{/uid}/currents</code>
+          <div>Get currents by `user_id`. i.e. <a href="/api/user/10001/currents" target="_blank">uid=10001</a></div>
+        </li>
+        <li class="list-group-item">
+          <span class="badge badge-pill badge-primary">GET</span>
+          <code class="api-url">/api/topic{/tid}/currents</code>
+          <div>Get currents of joining topic id equals `tid`. i.e. <a href="/api/topic/2/currents" target="_blank">tid=2</a></div>
+        </li>
+      </ul>
+    </section>
+
     <section class="mb-5">
       <h2 class="upper">Search</h2>
       <ul class="list-group">
@@ -125,16 +196,30 @@
         </li>
       </ul>
     </section>
+    <section class="mb-5">
+      <h2 class="upper">File</h2>
+      <ul class="list-group">
+        <li class="list-group-item">
+          <span class="badge badge-pill badge-info">POST</span>
+          <code class="api-url">/api/files/img/upload</code>
+          <div>Upload image. Example in playground.</div>
+        </li>
+        <li class="list-group-item">
+          <span class="badge badge-pill badge-danger">Delete</span>
+          <code class="api-url">/api/files/img/delete</code>
+          <div>Delete image that uploaded to server just now.</div>
+        </li>
+      </ul>
+    </section>
 
     <h3>Playgroud</h3>
     <div class="py-3">
       <h4>testing upload img</h4>
-      <form>
-        <div class="form-group">
-          <input type="file" name="img"/>
-        </div>
-        <button id="upload-img" class="btn btn-info">upload</button>
-      </form>
+      <div class="form-group">
+        <input type="file" name="img"/>
+      </div>
+      <button id="upload-img" class="btn btn-info">upload</button>
+      <div class="img-preview my-3"></div>
     </div>
   </div>
   <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
@@ -151,25 +236,46 @@
 
     const uploadImgBtn = document.querySelector('#upload-img');
     const fileInput = document.querySelector('input[type=file]');
+    const imgPreview = document.querySelector('.img-preview');
     let fd = null
 
     function onFileSelected(e) {
-      fd = e.target.files[0];
       e.preventDefault();
+      fd = e.target.files[0];
+      console.log(e.target.files)
+      //let img = new FormData();
+      //img.append('img', fd);
+      //$.ajax({
+      //  type: 'POST',
+      //  url: '/api/files/upload',
+      //  data: img,
+      //  processData: false,
+      //  contentType: false,
+      //  success: (data) => {
+      //    imgPreview.innerHTML = `
+      //      <img src="${data}" alt="img preview" width="256">
+      //    `
+      //  }
+      //})
     }
 
     function onUploadImg(e) {
       e.preventDefault();
 
+      let img = new FormData();
+      img.append('img', fd);
+
       $.ajax({
-        type: 'post',
+        type: 'POST',
         url: '/api/files/img/upload',
-        data: {
-          img: fd
-        },
-        dataType: '',
+        data: img,
+        processData: false,
+        contentType: false,
         success: (data) => {
           console.log(data)
+          imgPreview.innerHTML = `
+            <img src="${data.url}" alt="img preview" width="256">
+          `
         }
       })
     }

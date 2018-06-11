@@ -56,7 +56,14 @@ export default {
             username: this.username,
             password: this.password
           },
-          redirect: () => this.$router.go({ path: this.$router.path })
+          redirect: () => {
+            this.$router.go({
+              path: this.$route.query.redirect || '/'
+            })
+            // this.$router.push({
+            //   path: this.$route.query.redirect || '/'
+            // })
+          }
         })
       }
     }

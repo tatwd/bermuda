@@ -19,7 +19,7 @@
             color="primary"
           >
             <v-avatar tile>
-              <img :src="specie.img_url" :alt="specie.name">
+              <img :src="specie.img_url | urlFilter" :alt="specie.name">
             </v-avatar>
             {{ specie.name }}
           </v-chip>
@@ -30,24 +30,20 @@
 </template>
 
 <script>
-import { mapGetters } from 'vuex'
+import { noticeSpecieService } from '@/services'
 
 export default {
   data: () => ({
-    title: '物以类聚'
-  }),
-  computed: mapGetters({
-    species: 'hotNoticeSpecies'
+    title: '物以类聚',
+    species: [],
   }),
   created () {
-    this.$store.dispatch('getAllNoticeSpecies')
+    noticeSpecieService
+      .getTop(10)
+      .then(res => {
+        this.species = res.data
+      })
+      .catch(err => console.log('get hot species =>', err))
   }
 }
 </script>
-
-<!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped>
-#hot-species a {
-  text-decoration: none;
-}
-</style>
