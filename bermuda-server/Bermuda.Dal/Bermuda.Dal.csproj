@@ -51,6 +51,8 @@
   <ItemGroup>
     <Compile Include="Context\DbContextFactory.cs" />
     <Compile Include="Dao\BaseDao.cs" />
+    <Compile Include="Dao\BmdConsignee\BmdConsigneeDao.cs" />
+    <Compile Include="Dao\BmdConsignee\IBmdConsigneeDao.cs" />
     <Compile Include="Dao\BmdCurrentCmntPraise\BmdCurrentCmntPraiseDao.cs" />
     <Compile Include="Dao\BmdCurrentCmntPraise\IBmdCurrentCmntPraiseDao.cs" />
     <Compile Include="Dao\BmdCurrentCmntReplyPraise\BmdCurrentCmntReplyPraiseDao.cs" />
@@ -75,14 +77,22 @@
     <Compile Include="Dao\BmdNoticeTrace\IBmdNoticeTraceDao.cs" />
     <Compile Include="Dao\BmdNotice\BmdNoticeDao.cs" />
     <Compile Include="Dao\BmdNotice\IBmdNoticeDao.cs" />
+    <Compile Include="Dao\BmdOrderItem\BmdOrderItemDao.cs" />
+    <Compile Include="Dao\BmdOrderItem\IBmdOrderItemDao.cs" />
+    <Compile Include="Dao\BmdOrder\BmdOrderDao.cs" />
+    <Compile Include="Dao\BmdOrder\IBmdOrderDao.cs" />
     <Compile Include="Dao\BmdProduct\BmdProductDao.cs" />
     <Compile Include="Dao\BmdProduct\IBmdProductDao.cs" />
+    <Compile Include="Dao\BmdRoot\BmdRootDao.cs" />
+    <Compile Include="Dao\BmdRoot\IBmdRootDao.cs" />
     <Compile Include="Dao\BmdShoppingCart\BmdShoppingCartDao.cs" />
     <Compile Include="Dao\BmdShoppingCart\IBmdShoppingCartDao.cs" />
     <Compile Include="Dao\BmdTopicJoin\BmdTopicJoinDao.cs" />
     <Compile Include="Dao\BmdTopicJoin\IBmdTopicJoinDao.cs" />
     <Compile Include="Dao\BmdTopic\BmdTopicDao.cs" />
     <Compile Include="Dao\BmdTopic\IBmdTopicDao.cs" />
+    <Compile Include="Dao\BmdUserFollow\BmdUserFollowDao.cs" />
+    <Compile Include="Dao\BmdUserFollow\IBmdUserFollowDao.cs" />
     <Compile Include="Dao\BmdUser\BmdUserDao.cs" />
     <Compile Include="Dao\BmdUser\IBmdUserDao.cs" />
     <Compile Include="Dao\DaoFactory.cs" />
