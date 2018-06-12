@@ -18,7 +18,10 @@ namespace Bermuda.Api.Controllers
         [Route("img/upload")]
         public async Task<IHttpActionResult> UploadImg()
         {
-            UplaodResult result = new UplaodResult();
+            UplaodResult result = new UplaodResult
+            {
+                success = true
+            };
             List<string> savedFilePath = new List<string>();
             string IMG_DIR = $"{ROOT_URL}/img/";
 
@@ -54,6 +57,7 @@ namespace Bermuda.Api.Controllers
                 catch (Exception ex)
                 {
                     string message = ex.Message;
+                    result.success = false;
                 }
             }
 
@@ -81,6 +85,7 @@ namespace Bermuda.Api.Controllers
 
         private class UplaodResult
         {
+            public bool success { get; set; }
             public string file_name { get; set; }
             public string url { get; set; }
         }
