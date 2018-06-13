@@ -2,7 +2,7 @@
   <v-layout d-inline-block>
     <v-dialog v-model="showDialog" persistent max-width="500px">
       <v-btn slot="activator" color="success" dark large>申请话题</v-btn>
-      <v-form ref="from" v-model="valid" lazy-validation>
+      <v-form ref="form" v-model="valid" lazy-validation>
         <v-card>
           <v-card-title>
             <span class="headline mx-auto">创建话题</span>
@@ -59,7 +59,7 @@ export default {
   data: () => ({
     showDialog: false,
     valid: true,
-    image: nul,
+    image: null,
     topic: {
       user_id: null,
       name: null,
@@ -70,15 +70,15 @@ export default {
   methods: {
     onCancel () {
       // delete upload img just now
-      if (this.selected_img) {
+      if (this.image) {
         fileService
-          .deleteImg(this.selected_img)
+          .deleteImg(this.image.file_name)
           .catch(err => console.log(err))
       }
       this.clearData()
     },
     onCreate () {
-      if (this.$refs.from.validate()) {
+      if (this.$refs.form.validate()) {
         this.topic.user_id = this.$store.getters.currentUser.id
         this.topic.img_url = this.image.url
         topicService
@@ -102,4 +102,3 @@ export default {
   }
 }
 </script>
-
