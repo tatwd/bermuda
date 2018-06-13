@@ -11,17 +11,7 @@
             <v-container grid-list-md>
               <v-layout wrap>
                 <v-flex xs12>
-                  <div class="upload-img">
-                    <v-icon v-if="!isUploading && !topic.img_url" size="64px">camera_enhance</v-icon>
-                    <v-progress-circular
-                      v-else-if="isUploading"
-                      indeterminate color="green"
-                      class="pos-y-center"
-                    ></v-progress-circular>
-                    <!-- 上传图片 -->
-                    <input type="file" @change="onImgSelected($event)">
-                    <img v-if="topic.img_url" :src="topic.img_url" alt="img upload">
-                  </div>
+                  <BmdUploadImgPanel  v-model="image"/>
                 </v-flex>
                 <v-flex xs12>
                   <v-text-field
@@ -60,14 +50,16 @@
 
 <script>
 import { fileService, topicService } from '@/services'
+import BmdUploadImgPanel from '@/components/shared/BmdUploadImgPanel'
 
 export default {
+  components: {
+    BmdUploadImgPanel
+  },
   data: () => ({
     showDialog: false,
     valid: true,
-    selected_img: null,
-    isUploading: false,
-
+    image: nul,
     topic: {
       user_id: null,
       name: null,
@@ -76,19 +68,6 @@ export default {
     }
   }),
   methods: {
-    onImgSelected (event) {
-      const fd = new FormData()
-      this.isUploading = true
-      fd.append('img', event.target.files[0])
-
-      fileService
-        .uploadImg(fd)
-        .then(res => {
-          this.isUploading = false
-          this.selected_img = res.data.file_name
-          this.topic.img_url = res.data.url
-        })
-    },
     onCancel () {
       // delete upload img just now
       if (this.selected_img) {
@@ -101,20 +80,21 @@ export default {
     onCreate () {
       if (this.$refs.from.validate()) {
         this.topic.user_id = this.$store.getters.currentUser.id
+        this.topic.img_url = this.image.url
         topicService
           .createTopic(this.topic)
           .then(res => {
             this.clearData()
           })
           .catch(err => {
-            fileService.deleteImg(this.selected_img)
+            fileService.deleteImg(this.image.url)
             console.log(err)
           })
       }
     },
     clearData () {
       this.showDialog = false
-      this.selected_img = null
+      this.image = null
       this.topic.name = null
       this.topic.detail = null
       this.topic.img_url = null
@@ -123,34 +103,3 @@ export default {
 }
 </script>
 
-<style scoped>
-.upload-img {
-  position: relative;
-  min-height: 196px;
-  display: flex;
-  justify-content: center;
-  align-content: center;
-}
-
-.upload-img input {
-  position: absolute;
-  cursor: pointer;
-  opacity: 0;
-  height: 100%;
-  width: 100%;
-}
-
-.upload-img img {
-  max-width: 100%;
-}
-
-.hidden {
-  display: none;
-}
-
-.pos-y-center {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-}
-</style>
