@@ -47,7 +47,7 @@ namespace Bermuda.Api
 #endif
 
                 TokenEndpointPath = new PathString("/api/token"),
-                AccessTokenExpireTimeSpan = TimeSpan.FromMinutes(1), // 1 hours
+                AccessTokenExpireTimeSpan = TimeSpan.FromMinutes(60), // 1 hours
                 Provider = oAuthProvider,
                 //RefreshTokenProvider = refreshTokenProvider
             };

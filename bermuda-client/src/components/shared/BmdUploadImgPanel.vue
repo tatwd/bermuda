@@ -65,6 +65,7 @@ export default {
 
 .upload-img img {
   max-width: 100%;
+  /* height: auto; */
 }
 
 .pos-y-center {
