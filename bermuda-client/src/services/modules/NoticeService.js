@@ -21,4 +21,10 @@ export default class NoticeService {
     let self = this
     return self.axios.get(`${self.baseUrl}/notices/${id}`)
   }
+
+  // create notice
+  createNotice (notice) {
+    let self = this
+    return self.axios.post(`${self.baseUrl}/notice`, notice)
+  }
 }

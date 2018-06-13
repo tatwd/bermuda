@@ -12,23 +12,29 @@ using System.Web.Http;
 
 namespace Bermuda.Api.Controllers
 {
-    [RoutePrefix("api/notices")]
+    [RoutePrefix("")]
     public class NoticeController : ApiController
     {
         IBmdNoticeService iservice = ServiceFactory.Get<IBmdNoticeService>();
 
-        [Route()]
+        [Route("api/notices")]
         public IHttpActionResult Get()
         {
             var vm = GetAllCurrentsFromCache();
             return Json(vm);
         }
 
-        [Route("{id}")]
+        [Route("api/notices/{id}")]
         public IHttpActionResult Get(Int64 id)
         {
             var vm = GetNoticeByIdFromCache(id);
             return Json(vm);
+        }
+
+        [Route("api/notice")]
+        public void Post(NewNoticeViewModel vm)
+        {
+            var tmp = vm;
         }
 
         // 从缓存中获取所有启事
