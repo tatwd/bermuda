@@ -15,6 +15,7 @@ const NoticeDetail = () => import('@/views/notice/detail')
 const CurrentCreate = () => import('@/views/current/create')
 const CurrentDetail = () => import('@/views/current/detail')
 const Search = () => import('@/views/search')
+const UserProfile = () => import('@/views/user/profile')
 const SignIn = () => import('@/views/user/signin')
 const SignUp = () => import('@/views/user/signup')
 
@@ -119,6 +120,15 @@ const CurrentDetailRoute = {
   }
 }
 
+const UserProfileRoute = {
+  path: 'user/:id',
+  name: 'UserProfile',
+  component: UserProfile,
+  meta: {
+    requiresAuth: false
+  }
+}
+
 // chrildren of AccoutRoute
 
 const SigninRoute = {
@@ -151,6 +161,7 @@ const RootRoute = {
     CurrentCreateRoute,
     CurrentDetailRoute,
     SearchRoute,
+    UserProfileRoute
   ]
 }
 
