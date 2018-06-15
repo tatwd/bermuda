@@ -29,8 +29,10 @@ const actions = {
     noticeService
       .getAll()
       .then(res => {
-        commit('setAllNotices', { notices: res.data })
-        payload.bind()
+        if (res.data) {
+          commit('setAllNotices', { notices: res.data })
+          payload.bind()
+        }
       })
       .catch(err => console.log('getAllNotices => ', err))
   }

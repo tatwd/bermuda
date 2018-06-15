@@ -90,7 +90,7 @@
           <img src="@/assets/avatar-tmp.svg" alt="avatar">
         </v-avatar>
         <v-list>
-          <v-list-tile to="#">
+          <v-list-tile :to="goto('UserProfile', $store.getters.currentUser.id)">
             <v-list-tile-title>个人中心</v-list-tile-title>
           </v-list-tile>
           <v-list-tile @click="onSignout">
@@ -118,12 +118,13 @@
 
 <script>
 import { updateSearchHistory } from '@/utils/search-history'
+import goto from '@/utils/goto'
 
 export default {
   name: 'BmdNavbar',
   data: () => ({
     sidedNav: false,
-    searchText: null,
+    searchText: null
   }),
   computed: {
     navs () {
@@ -171,7 +172,9 @@ export default {
       if (this.$route.name !== 'Search') {
         this.searchText = null
       }
-    }
+    },
+
+    goto
   }
 }
 </script>
