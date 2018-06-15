@@ -64,7 +64,7 @@ export default {
       { text: '所有启事', alias: 'all' },
       { text: '寻物启事', alias: 'lost' },
       { text: '招领启事', alias: 'found' },
-    ],
+    ]
   }),
   computed: mapGetters({
     allNotices: 'allNotices',
@@ -72,10 +72,10 @@ export default {
     foundNotices: 'allFoundNotices'
   }),
   created () {
-    this.fetchData()
+    this.fetchNotices()
   },
   methods: {
-    fetchData () {
+    fetchNotices () {
       // init tmp holder
       this.notices = Array(1).fill({
         id: 0,
@@ -91,6 +91,7 @@ export default {
         bind: () => this.notices = this.allNotices
       })
     },
+
     toggleFilter (value) {
       if (value === 'all') {
         this.notices = this.allNotices

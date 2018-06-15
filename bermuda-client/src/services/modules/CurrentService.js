@@ -15,4 +15,10 @@ export default class UserService {
     let self = this
     return self.axios.get(`${self.baseUrl}/topic/${topicId}/currents`)
   }
+
+  // get top
+  getTop (count) {
+    let self = this
+    return self.axios.get(`${self.baseUrl}/currents/top/${count}`)
+  }
 }

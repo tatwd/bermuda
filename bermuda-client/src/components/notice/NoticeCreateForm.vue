@@ -100,7 +100,7 @@
 
 <script>
 import BmdUploadImgPanel from '@/components/shared/BmdUploadImgPanel'
-import { noticeSpecieService } from '@/services'
+import { noticeService, noticeSpecieService } from '@/services'
 
 export default {
   components: {
@@ -167,8 +167,29 @@ export default {
         .catch(console.log)
     },
     onSubmit () {
-      if (this.$refs.form.validate()) {
-        console.log('on submit')
+      if (this.$refs.form.validate() && this.image) {
+        const currentUser = this.$store.getters.currentUser
+        const notice = {
+          user_id: currentUser.id,
+          specie_id: this.specieId,
+          title: this.title,
+          img_url: this.image.url,
+          type: this.type,
+          event_time_desc: this.eventTimeDesc,
+          place: this.place,
+          full_place: this.fullPlace,
+          contact_way: this.contactWay,
+          detail: this.detail,
+        }
+        noticeService
+          .createNotice(notice)
+          .then(res => {
+            console.log(res.data.success)
+          })
+          .catch(console.error)
+
+      } else {
+        window.alert('❤ 请填写完信息！')
       }
     },
     onCancel () {

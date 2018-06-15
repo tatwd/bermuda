@@ -30,6 +30,13 @@ namespace Bermuda.Api.Controllers
             return Json(vm);
         }
 
+        [Route("api/currents/top/{count}")]
+        public IHttpActionResult Get(Int32 count)
+        {
+            var vm = GetTopCurrentsFromCache(count);
+            return Json(vm);
+        }
+
         [Route("api/user/{uid}/currents")]
         public IHttpActionResult GetByUserId(Int64 uid)
         {
@@ -51,6 +58,20 @@ namespace Bermuda.Api.Controllers
             {
                 var currents = iservice.GetAll()
                     .OrderByDescending(x => x.CreatedAt)
+                    .ToList();
+                var _vm = ParseToCurrentViewModeList(currents);
+                return _vm.Count <= 0 ? null : _vm;
+            });
+        }
+
+        // 从缓存中获取热门动态
+        private IList<CurrentViewModel> GetTopCurrentsFromCache(Int32 count)
+        {
+            return CacheEngine.GetData<IList<CurrentViewModel>>($"currents_top_${count}", () =>
+            {
+                var currents = iservice.GetAll()
+                    .OrderByDescending(x => x.PraiseCount)
+                    .Take(count)
                     .ToList();
                 var _vm = ParseToCurrentViewModeList(currents);
                 return _vm.Count <= 0 ? null : _vm;

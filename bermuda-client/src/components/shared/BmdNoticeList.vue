@@ -75,8 +75,8 @@ export default {
   },
   data: () => ({
     typeColor: {
-      '寻物启示': 'red',
-      '招领启示': 'orange'
+      '寻物启事': 'red',
+      '招领启事': 'orange'
     }
   }),
   methods: {

@@ -1,6 +1,7 @@
 ﻿using Bermuda.Common;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
 
@@ -51,6 +52,8 @@ namespace Bermuda.Api.Models
 
     public class NewNoticeViewModel
     {
+        [Required]
+        public Int64 user_id { get; set; }
         public Int64 specie_id { get; set; }
         public string type { get; set; }
         public string title { get; set; }

@@ -31,10 +31,30 @@ namespace Bermuda.Api.Controllers
             return Json(vm);
         }
 
+        [Authorize]
         [Route("api/notice")]
-        public void Post(NewNoticeViewModel vm)
+        public IHttpActionResult Post(NewNoticeViewModel vm)
         {
-            var tmp = vm;
+            bool success = false;
+
+            if (ModelState.IsValid)
+            {
+                success = iservice.Insert(new BmdNotice
+                {
+                    UserId = vm.user_id,
+                    SpecieId = vm.specie_id,
+                    Title = vm.title,
+                    Type = vm.type,
+                    ImgUrl = vm.img_url,
+                    EventTimeDesc = vm.event_time_desc,
+                    Place = vm.place,
+                    FullPlace = vm.full_place,
+                    ContactWay = vm.contact_way,
+                    Detail = vm.detail
+                });
+            }
+
+            return Json(new { success });
         }
 
         // 从缓存中获取所有启事

@@ -1,6 +1,10 @@
 <template>
   <v-container>
-    <NoticeCreateFrom/>
+    <v-layout>
+      <v-flex xs12 md8 offset-md2>
+        <NoticeCreateFrom/>
+      </v-flex>
+    </v-layout>
   </v-container>
 </template>
 
