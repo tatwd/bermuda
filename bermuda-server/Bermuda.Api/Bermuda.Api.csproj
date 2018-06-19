@@ -163,6 +163,8 @@
     <Content Include="assets\img\topics\keji.jpg" />
     <Content Include="assets\img\topics\renwen.jpg" />
     <Content Include="assets\img\topics\sport.jpg" />
+    <Content Include="assets\js\pell\pell.min.css" />
+    <Content Include="assets\js\pell\pell.min.js" />
     <Content Include="assets\template.svg" />
     <Content Include="docs.html" />
     <Content Include="Global.asax" />
