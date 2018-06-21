@@ -1,6 +1,10 @@
 <template>
   <v-container>
-    <NoticeDetail :notice="notice"/>
+    <v-layout>
+      <v-flex xs12 md8 offset-md2>
+        <NoticeDetail :notice="notice"/>
+      </v-flex>
+    </v-layout>
   </v-container>
 </template>
 

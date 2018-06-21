@@ -254,6 +254,7 @@
           <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="UserId" Type="bigint" />
           <Property Name="FollowingId" Type="bigint" />
+          <Property Name="CreatedAt" Type="datetime" StoreGeneratedPattern="Computed" />
         </EntityType>
         <EntityContainer Name="BmdDbModelStoreContainer">
           <EntitySet Name="BmdConsignee" EntityType="Self.BmdConsignee" Schema="dbo" store:Type="Tables" />
@@ -532,6 +533,7 @@
           <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="UserId" Type="Int64" />
           <Property Name="FollowingId" Type="Int64" />
+          <Property Name="CreatedAt" Type="DateTime" Precision="3" annotation:StoreGeneratedPattern="Computed" />
         </EntityType>
         <EntityContainer Name="BmdDbEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="BmdConsignees" EntityType="Self.BmdConsignee" />
@@ -829,6 +831,7 @@
           <EntitySetMapping Name="BmdUserFollows">
             <EntityTypeMapping TypeName="BmdDbModel.BmdUserFollow">
               <MappingFragment StoreEntitySet="BmdUserFollow">
+                <ScalarProperty Name="CreatedAt" ColumnName="CreatedAt" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="UserId" ColumnName="UserId" />
                 <ScalarProperty Name="FollowingId" ColumnName="FollowingId" />
