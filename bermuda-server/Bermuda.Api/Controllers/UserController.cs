@@ -33,25 +33,9 @@ namespace Bermuda.Api.Controllers
         {
             var vm = CacheEngine.GetData<IList<UserViewModel>>("users_top", () =>
             {
-                //var currentUser = AuthUtil.GetIdentityUser();
                 var users = iservice.GetTop(count);
                 var _vm = BaseUtil.ParseToList<UserViewModel>(users);
-
-                //if (currentUser != null)
-                //{
-                //    var userFollowService = ServiceFactory.Get<IBmdUserFollowService>();
-                //    var followingIds = userFollowService.GetFollowing(currentUser.id)
-                //        .Select(x => x.FollowingId);
-
-                //    foreach (var user in _vm)
-                //    {
-                //        if (followingIds.Contains(user.id))
-                //            user.is_following = true;
-                //    }
-                //}
-
                 AuthUtil.CheckFollowingUsers<UserViewModel>(_vm);
-
                 return _vm;
             });
 

@@ -13,10 +13,12 @@
         :key="current.id"
       >
         <v-card-title>
-          <v-avatar size="42">
-            <img :src="current.user.avatar_url | urlFilter" :alt="current.user.name">
-          </v-avatar>
-          <span class="px-3">{{ current.user.name }}</span>
+          <router-link :to="goto('UserProfile', current.user.id)">
+            <v-avatar size="42">
+              <img :src="current.user.avatar_url | urlFilter" :alt="current.user.name">
+            </v-avatar>
+            <span class="px-3">{{ current.user.name }}</span>
+          </router-link>
           <span>发表于 {{ current.created_at | dateFilter }}</span>
         </v-card-title>
         <v-card-text>

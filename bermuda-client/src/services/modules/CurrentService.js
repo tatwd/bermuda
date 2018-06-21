@@ -10,7 +10,13 @@ export default class UserService {
     this.baseUrl = apiUrl
   }
 
-  // get by topic id
+  // get current by id
+  getById (id) {
+    let self = this
+    return self.axios.get(`${self.baseUrl}/current/${id}`)
+  }
+
+  // get currents by topic id
   getByTopicId (topicId) {
     let self = this
     return self.axios.get(`${self.baseUrl}/topic/${topicId}/currents`)

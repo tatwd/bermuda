@@ -4,7 +4,9 @@
       <v-flex>
         <v-card-title>
           <h1 class="mr-3">{{ notice.title }}</h1>
-          <span class="grey--text">{{ notice.user.name }} 发表于 {{ notice.created_at | dateFilter }}</span>
+          <span class="grey--text">
+            {{ notice.user.name }} 发表于 {{ notice.created_at | dateFilter }}
+          </span>
         </v-card-title>
         <v-card-text>
           <p>时间：{{ notice.event_time_desc }}</p>

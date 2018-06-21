@@ -22,7 +22,7 @@ namespace Bermuda.Api.Controllers
             return Json(vm);
         }
 
-        [Route("api/currents/{id}")]
+        [Route("api/current/{id}")]
         public IHttpActionResult Get(Int64 id)
         {
             var vm = GetCurrentByIdFromCache(id);
@@ -32,7 +32,8 @@ namespace Bermuda.Api.Controllers
         [Route("api/currents/top/{count}")]
         public async Task<IHttpActionResult> Get(Int32 count = 10)
         {
-            var vm = await Task.Run(() => GetTopCurrentsFromCache(count));
+            var vm = await Task.Run(
+                () => GetTopCurrentsFromCache(count));
             return Json(vm);
         }
 
