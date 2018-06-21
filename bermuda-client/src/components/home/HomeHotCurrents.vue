@@ -8,7 +8,7 @@
         <v-icon color="primary">whatshot</v-icon>
         <span class="ml-2">{{ title }}</span>
       </v-card-title>
-      <v-card-text>
+      <v-card-text v-if="hotCurrents.length">
         <v-list>
           <v-list-tile
             v-for="current in hotCurrents"

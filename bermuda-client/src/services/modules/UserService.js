@@ -39,4 +39,22 @@ export default class UserService {
     let self = this
     return self.axios.get(`${self.baseUrl}/user/${id}`)
   }
+
+  getTop (count) {
+    let self = this
+    return self.axios.get(`${self.baseUrl}/users/top/${count}`)
+  }
+
+  // follow user
+  followUser (uid) {
+    let self = this
+    return self.axios.post(`${self.baseUrl}/user/following/${uid}`)
+  }
+
+  // unfollow user
+  unfollowUser (uid) {
+    let self = this
+    return self.axios.delete(`${self.baseUrl}/user/following/${uid}`)
+  }
+
 }

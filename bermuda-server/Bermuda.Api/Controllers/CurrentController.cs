@@ -6,8 +6,7 @@ using Bermuda.Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Net;
-using System.Net.Http;
+using System.Threading.Tasks;
 using System.Web.Http;
 
 namespace Bermuda.Api.Controllers
@@ -17,9 +16,9 @@ namespace Bermuda.Api.Controllers
         IBmdCurrentService iservice = ServiceFactory.Get<IBmdCurrentService>();
 
         [Route("api/currents")]
-        public IHttpActionResult Get()
+        public async Task<IHttpActionResult> Get()
         {
-            var vm = GetAllCurrentsFromCache();
+            var vm = await Task.Run(() => GetAllCurrentsFromCache());
             return Json(vm);
         }
 
@@ -31,9 +30,9 @@ namespace Bermuda.Api.Controllers
         }
 
         [Route("api/currents/top/{count}")]
-        public IHttpActionResult Get(Int32 count)
+        public async Task<IHttpActionResult> Get(Int32 count = 10)
         {
-            var vm = GetTopCurrentsFromCache(count);
+            var vm = await Task.Run(() => GetTopCurrentsFromCache(count));
             return Json(vm);
         }
 

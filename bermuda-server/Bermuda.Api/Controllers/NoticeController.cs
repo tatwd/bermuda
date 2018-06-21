@@ -6,13 +6,10 @@ using Bermuda.Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Net;
-using System.Net.Http;
 using System.Web.Http;
 
 namespace Bermuda.Api.Controllers
 {
-    [RoutePrefix("")]
     public class NoticeController : ApiController
     {
         IBmdNoticeService iservice = ServiceFactory.Get<IBmdNoticeService>();
@@ -20,7 +17,7 @@ namespace Bermuda.Api.Controllers
         [Route("api/notices")]
         public IHttpActionResult Get()
         {
-            var vm = GetAllCurrentsFromCache();
+            var vm = GetAllNoticesFromCache();
             return Json(vm);
         }
 
@@ -58,7 +55,7 @@ namespace Bermuda.Api.Controllers
         }
 
         // 从缓存中获取所有启事
-        private IList<NoticeViewModel> GetAllCurrentsFromCache()
+        private IList<NoticeViewModel> GetAllNoticesFromCache()
         {
             return CacheEngine.GetData<IList<NoticeViewModel>>("notices_all", () =>
             {

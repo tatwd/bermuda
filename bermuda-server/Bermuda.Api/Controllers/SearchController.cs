@@ -1,5 +1,6 @@
 ﻿using Bermuda.Api.DataCache;
 using Bermuda.Api.Models;
+using Bermuda.Api.OAuth;
 using Bermuda.Bll.Service;
 using Bermuda.Common;
 using System.Collections.Generic;
@@ -61,6 +62,7 @@ namespace Bermuda.Api.Controllers
             SearchUtil.CreateIndex<UserSearchModel>(vm);
 
             var result = SearchUtil.SearchFullText<UserSearchModel>(q, 10);
+            AuthUtil.CheckFollowingUsers<UserSearchModel>(result);
             return Json(result);
         }
 

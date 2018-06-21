@@ -8,7 +8,7 @@
     >
       <v-card>
         <v-card-title>
-          <router-link to="/">
+          <router-link :to="goto('UserProfile', user.id)">
             <v-avatar size="56px" color="grey lighten-4">
               <img :src="user.avatar_url | urlFilter" alt="avatar">
             </v-avatar>
@@ -26,10 +26,10 @@
             助人 {{ user.help_count }}
           </v-subheader>
           <v-spacer></v-spacer>
-          <v-btn color="green" dark>
-            <v-icon left>add</v-icon>
-            关注
-          </v-btn>
+          <BmdUserFollowBtn
+            v-model="user.is_following"
+            :uid="user.id"
+          />
         </v-card-title>
       </v-card>
     </v-flex>
@@ -37,12 +37,21 @@
 </template>
 
 <script>
+import BmdUserFollowBtn from '@/components/shared/BmdUserFollowBtn'
+import goto from '@/utils/goto'
+
 export default {
   props: {
     users: {
       type: Array,
       default: null
     }
+  },
+  components: {
+    BmdUserFollowBtn
+  },
+  methods: {
+    goto
   }
 }
 </script>

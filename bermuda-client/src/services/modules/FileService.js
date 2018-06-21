@@ -18,11 +18,6 @@ export default class TopicService {
 
   deleteImg (imgName) {
     let self = this
-    // let config = {
-    //   data: {
-    //     img: imgName
-    //   }
-    // }
     return self.axios.delete(`${self.baseUrl}/files/img/delete?img=${imgName}`)
   }
 }

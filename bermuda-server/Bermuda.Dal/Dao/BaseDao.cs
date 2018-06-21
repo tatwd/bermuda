@@ -19,6 +19,7 @@
             {
                 // context.Configuration.ProxyCreationEnabled = false;
                 query = context.Set<T>().Where(whereLambda);
+                // context.Dispose();
             }
             catch (Exception e)
             {

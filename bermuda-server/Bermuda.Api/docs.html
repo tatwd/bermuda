@@ -34,6 +34,7 @@
     </div>
   </nav>
   <div class="container mt-3">
+    <!-- Auth -->
     <section class="mb-5">
       <h2 class="upper">Auth</h2>
       <ul class="list-group">
@@ -49,6 +50,8 @@
         </li>
       </ul>
     </section>
+
+    <!-- Notice -->
     <section class="mb-5">
       <h2 class="upper">Notice</h2>
       <ul class="list-group">
@@ -64,6 +67,8 @@
         </li>
       </ul>
     </section>
+
+    <!-- Notice Specie -->
     <section class="mb-5">
       <h2 class="upper">Notice Specie</h2>
       <ul class="list-group">
@@ -84,6 +89,8 @@
         </li>
       </ul>
     </section>
+
+    <!-- Topic -->
     <section class="mb-5">
       <h2 class="upper">Topic</h2>
       <ul class="list-group">
@@ -109,6 +116,8 @@
         </li>
       </ul>
     </section>
+
+    <!-- User -->
     <section class="mb-5">
       <h2 class="upper">User</h2>
       <ul class="list-group">
@@ -124,6 +133,37 @@
         </li>
       </ul>
     </section>
+
+    <!-- User Follow -->
+    <section class="mb-5">
+      <h2 class="upper">User Follow</h2>
+      <ul class="list-group">
+        <li class="list-group-item">
+          <span class="badge badge-pill badge-primary">GET</span>
+          <code class="api-url">/api/user{/uid}/followers</code>
+          <div>Get user followers by user id. i.e. <a href="/api/user/10002/followers">uid=10002</a></div>
+        </li>
+        <li class="list-group-item">
+          <span class="badge badge-pill badge-primary">GET</span>
+          <code class="api-url">/api/user{/uid}/following</code>
+          <div>Get user following users by user id. i.e. <a href="/api/user/10001/following">uid=10001</a></div>
+        </li>
+        <li class="list-group-item">
+          <span class="badge badge-pill badge-info">POST</span>
+          <span class="badge badge-pill badge-warning">Auth</span>
+          <code class="api-url">/api/user/following{/uid}</code>
+          <div>Current user follows a user where uer id equals `uid`. i.e. <a href="/api/user/following/10001">uid=10001</a></div>
+        </li>
+        <li class="list-group-item">
+          <span class="badge badge-pill badge-danger">Delete</span>
+          <span class="badge badge-pill badge-warning">Auth</span>
+          <code class="api-url">/api/user/following{/uid}</code>
+          <div>Current user unfollows user where uer id equals `uid`. i.e. <a href="/api/user/following/10002">uid=10002</a></div>
+        </li>
+      </ul>
+    </section>
+
+    <!-- Product -->
     <section class="mb-5">
       <h2 class="upper">Product</h2>
       <ul class="list-group">
@@ -139,6 +179,8 @@
         </li>
       </ul>
     </section>
+
+    <!-- Shopping Cart -->
     <section class="mb-5">
       <h2 class="upper">Shopping Cart</h2>
       <ul class="list-group">
@@ -150,6 +192,8 @@
         </li>
       </ul>
     </section>
+
+    <!-- Current -->
     <section class="mb-5">
       <h2 class="upper">Current</h2>
       <ul class="list-group">
@@ -181,6 +225,7 @@
       </ul>
     </section>
 
+    <!-- Search -->
     <section class="mb-5">
       <h2 class="upper">Search</h2>
       <ul class="list-group">
@@ -206,6 +251,8 @@
         </li>
       </ul>
     </section>
+
+    <!-- File -->
     <section class="mb-5">
       <h2 class="upper">File</h2>
       <ul class="list-group">
@@ -231,7 +278,7 @@
     <div class="py-3">
       <h4>testing upload img</h4>
       <div class="form-group">
-        <input type="file" name="img"/>
+        <input type="file" name="img" />
       </div>
       <button id="upload-img" class="btn btn-info">upload</button>
       <div class="img-preview my-3"></div>
