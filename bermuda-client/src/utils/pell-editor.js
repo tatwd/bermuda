@@ -55,7 +55,31 @@ const initUploadImageInput = function (settings) {
   }
 }
 
-export default function initPellEditor (element) {
+const actions = [
+  'bold',
+  'italic',
+  'underline',
+  'strikethrough',
+  'heading1',
+  'heading2',
+  'paragraph',
+  'quote',
+  'olist',
+  'ulist',
+  'code',
+  'line',
+  'link',
+  {
+    name: 'image',
+    result: () => {
+      // const url = window.prompt('Enter the image URL')
+      // if (url) exec('insertImage', url)
+      execInsertImageAction()
+    }
+  },
+]
+
+export default function initPellEditor (element, cb) {
   initUploadImageInput({
     element,
     upload: {
@@ -66,32 +90,10 @@ export default function initPellEditor (element) {
   return init({
     element,
     onChange: html => {
-      console.log(html)
+      cb(html)
     },
     defaultParagraphSeparator: 'p',
     styleWithCSS: true,
-    actions: [
-      'bold',
-      'italic',
-      'underline',
-      'strikethrough',
-      'heading1',
-      'heading2',
-      'paragraph',
-      'quote',
-      'olist',
-      'ulist',
-      'code',
-      'line',
-      'link',
-      {
-        name: 'image',
-        result: () => {
-          // const url = window.prompt('Enter the image URL')
-          // if (url) exec('insertImage', url)
-          execInsertImageAction()
-        }
-      },
-    ]
+    actions
   })
 }

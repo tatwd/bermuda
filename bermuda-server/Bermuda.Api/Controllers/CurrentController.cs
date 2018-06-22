@@ -51,6 +51,17 @@ namespace Bermuda.Api.Controllers
             return Json(vm);
         }
 
+        [Authorize]
+        [Route("api/current")]
+        public IHttpActionResult Post([FromBody]NewCurrentViewModel vm)
+        {
+            var success = false;
+
+            // TODO: create a current and join topic record(s).
+
+            return Json(new { success });
+        }
+
         // 从缓存中获取所有动态
         private IList<CurrentViewModel> GetAllCurrentsFromCache()
         {

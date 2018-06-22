@@ -14,4 +14,11 @@ namespace Bermuda.Api.Models
         public long praise_count { get; set; }
         public DateTime created_at { get; set; }
     }
+
+    public class NewCurrentViewModel
+    {
+        public long user_id { get; set; }
+        public string title { get; set; }
+        public string text { get; set; }
+    }
 }
