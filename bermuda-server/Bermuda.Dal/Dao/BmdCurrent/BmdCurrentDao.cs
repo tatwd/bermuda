@@ -7,11 +7,27 @@
     public class BmdCurrentDao
         : BaseDao<BmdCurrent>, IBmdCurrentDao
     {
-        public bool AddCurrentAndJoinTopics(BmdCurrent current, 
-            Int64 topicId1, Int64? topicId2, Int64? topicId3)
+        public bool AddCurrentAndJoinTopics(BmdCurrent current, Int64[] topicIds)
         {
-            var result = (context as BmdDbEntities).JoinTopicsProc(
-                current.UserId, current.Title, current.Text, topicId1, topicId2, topicId3);
+            var bmdContext = context as BmdDbEntities;
+            var result = 0;
+
+            switch (topicIds.Length)
+            {
+                case 2:
+                    result = bmdContext.JoinTopicsProc(
+                        current.UserId, current.Title, current.Text, topicIds[0], topicIds[1], null);
+                    break;
+                case 3:
+                    result = bmdContext.JoinTopicsProc(
+                        current.UserId, current.Title, current.Text, topicIds[0], topicIds[1], topicIds[2]);
+                    break;
+                default:
+                    result = bmdContext.JoinTopicsProc(
+                        current.UserId, current.Title, current.Text, topicIds[0], null, null);
+                    break;
+            }
+
             return result >= 2; // 至少影响 2 行
         }
 

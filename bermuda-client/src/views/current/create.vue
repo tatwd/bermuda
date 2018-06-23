@@ -3,7 +3,6 @@
     <v-layout>
       <v-flex xs12 md8 offset-md2>
         <v-card>
-
           <v-card-title>
             <v-text-field
               solo
@@ -20,10 +19,11 @@
               :items="topics"
               item-text="name"
               item-value="id"
-              :rules="[() => (joinTopics.length > 0 && joinTopics.length <= 3) || '您最多选择 3 个话题']"
+              :rules="[() => (joinTopics.length > 0 && joinTopics.length <= 3) || '您最多选择 3 个话题！']"
               :search-input.sync="searchTopics"
               v-model="joinTopics"
-              label="搜索您要的话题，最多选择 3 个"
+              no-data-text="没有找到您要的！"
+              label="搜索您要的话题，最多选择 3 个！"
               autocomplete
               multiple
               cache-items
@@ -50,7 +50,7 @@
 </template>
 
 <script>
-import { topicService } from '@/services'
+import { topicService, currentService } from '@/services'
 import CurrentEditor from '@/components/current/CurrentEditor'
 
 export default {
@@ -66,12 +66,36 @@ export default {
     title: null,
     text: null
   }),
+  beforeRouteEnter (to, from, next) {
+    next(vm => {
+      vm.defaultSelectedTopic(to.query.selected)
+    })
+  },
+  beforeRouteUpdate (to, from, next) {
+    this.defaultSelectedTopic(to.query.selected)
+    next();
+  },
   watch: {
     searchTopics (val) {
       val && this.queryTopics(val)
     }
   },
   methods: {
+    defaultSelectedTopic (selected) {
+      if (isNaN(selected)) return
+      selected = Math.round(selected)
+      this.joinTopics.push(selected)
+      topicService
+        .getById(selected)
+        .then(res => {
+          const topic = {
+            id: res.data.id,
+            name: res.data.name
+          }
+          this.topics.push(topic)
+        })
+        .catch(console.error)
+    },
     queryTopics (v) {
       this.loading = true
       window.setTimeout(() => {
@@ -85,9 +109,25 @@ export default {
         })
       }, 500)
     },
-
     onSubmit () {
-      // TODO: create current
+      if (!this.isValided()) {
+        alert('请填写完！')
+        return
+      }
+      const current = {
+        topic_ids: this.joinTopics,
+        title: this.title,
+        text: this.text
+      }
+      currentService
+        .createCurrent(current)
+        .then(res => {
+          console.log(res.data)
+        })
+        .catch(console.error)
+    },
+    isValided () {
+      return this.joinTopics.length && this.title && this.text
     }
   }
 }

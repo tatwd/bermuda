@@ -42,7 +42,7 @@
 <script>
 import { userService } from '@/services'
 import BmdUserFollowBtn from '@/components/shared/BmdUserFollowBtn'
-import goto from '@/utils/goto'
+import { goto } from '@/utils/link'
 
 export default {
   components: {

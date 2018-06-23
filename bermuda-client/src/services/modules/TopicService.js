@@ -23,9 +23,15 @@ export default class TopicService {
     return self.axios.get(`${self.baseUrl}/topics/top${ countStr }`)
   }
 
+  // get by id
+  getById (id) {
+    let self = this
+    return self.axios.get(`${self.baseUrl}/topic/${id}`)
+  }
+
   // create a topic
   createTopic (newTopic) {
     let self = this
-    return self.axios.post(`${self.baseUrl}/topics/create`, newTopic)
+    return self.axios.post(`${self.baseUrl}/topic/create`, newTopic)
   }
 }

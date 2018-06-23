@@ -1,5 +1,6 @@
 ﻿using Bermuda.Api.DataCache;
 using Bermuda.Api.Models;
+using Bermuda.Api.OAuth;
 using Bermuda.Bll.Service;
 using Bermuda.Common;
 using Bermuda.Model;
@@ -52,13 +53,21 @@ namespace Bermuda.Api.Controllers
         }
 
         [Authorize]
-        [Route("api/current")]
+        [Route("api/current/create")]
         public IHttpActionResult Post([FromBody]NewCurrentViewModel vm)
         {
             var success = false;
-
-            // TODO: create a current and join topic record(s).
-
+            if (ModelState.IsValid)
+            {
+                var currentUser = AuthUtil.GetIdentityUser();
+                var current = new BmdCurrent
+                {
+                    UserId = currentUser.id,
+                    Title = vm.title,
+                    Text = vm.text
+                };
+                success = iservice.AddCurrentAndJoinTopics(current, vm.topic_ids);
+            }
             return Json(new { success });
         }
 

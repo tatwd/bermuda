@@ -19,9 +19,6 @@ namespace Bermuda.Api.Models
     public class NewCurrentViewModel
     {
         [Required]
-        public long user_id { get; set; }
-
-        [Required]
         public string title { get; set; }
 
         [Required]

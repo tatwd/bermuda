@@ -10,12 +10,11 @@ using System.Web.Http;
 
 namespace Bermuda.Api.Controllers
 {
-    [RoutePrefix("api/topics")]
     public class TopicController : ApiController
     {
         IBmdTopicService iservice = ServiceFactory.Get<IBmdTopicService>();
 
-        [Route()]
+        [Route("api/topics")]
         public IHttpActionResult Get()
         {
             var vm = CacheEngine.GetData<IList<TopicViewModel>>("topics_all", () =>
@@ -29,7 +28,7 @@ namespace Bermuda.Api.Controllers
             return Json(vm);
         }
 
-        [Route("{id}")]
+        [Route("api/topic/{id}")]
         public IHttpActionResult Get(int id)
         {
             var vm = CacheEngine.GetData<TopicViewModel>($"topic_#{id}", () =>
@@ -43,7 +42,7 @@ namespace Bermuda.Api.Controllers
             return Json(vm);
         }
 
-        [Route("{type}/{count}")]
+        [Route("api/topics/{type}/{count}")]
         public IHttpActionResult Get(string type, int count = 10)
         {
             var vm = CacheEngine.GetData<IList<TopicViewModel>>($"topics_{type}_{count}", () =>
@@ -66,7 +65,7 @@ namespace Bermuda.Api.Controllers
         }
 
         [Authorize]
-        [Route("create")]
+        [Route("api/topic/create")]
         public IHttpActionResult Post([FromBody]NewTopicViewModel newTopic)
         {
             var isOk = iservice.Insert(new BmdTopic
@@ -78,16 +77,6 @@ namespace Bermuda.Api.Controllers
             });
 
             return Json(isOk);
-        }
-
-        // PUT api/<controller>/5
-        public void Put(int id, [FromBody]string value)
-        {
-        }
-
-        // DELETE api/<controller>/5
-        public void Delete(int id)
-        {
         }
     }
 }

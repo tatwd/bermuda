@@ -33,7 +33,7 @@
             </div>
           </v-card-title>
           <v-card-actions>
-            <v-btn color="primary">参与</v-btn>
+            <v-btn color="primary" :to="queryto('CurrentCreate', { selected: topic.id })">参与</v-btn>
             <span class="grey--text">{{ topic.join_count }} 人参与</span>
           </v-card-actions>
         </v-card>
@@ -44,6 +44,7 @@
 
 <script>
 import { mapGetters } from 'vuex'
+import { goto, queryto } from '@/utils/link'
 
 export default {
   computed: mapGetters({
@@ -55,14 +56,8 @@ export default {
     }
   },
   methods: {
-    goto (name, id) {
-      return {
-        name,
-        params: {
-          id
-        }
-      }
-    }
+    goto,
+    queryto
   }
 }
 </script>

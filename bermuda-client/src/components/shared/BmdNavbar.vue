@@ -118,7 +118,7 @@
 
 <script>
 import { updateSearchHistory } from '@/utils/search-history'
-import goto from '@/utils/goto'
+import { goto } from '@/utils/link'
 
 export default {
   name: 'BmdNavbar',

@@ -33,7 +33,7 @@
 
 <script>
 import { currentService } from '@/services'
-import goto from '@/utils/goto'
+import { goto } from '@/utils/link'
 
 export default {
   data: () => ({

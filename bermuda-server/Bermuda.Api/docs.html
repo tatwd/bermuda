@@ -97,21 +97,22 @@
         <li class="list-group-item">
           <span class="badge badge-pill badge-primary">GET</span>
           <code class="api-url">/api/topics</code>
-          <div>Get all topics. i.e. <a href="/api/topics">all</a></div>
+          <div>Get all topics. i.e. <a href="/api/topics" target="_blank">all</a></div>
         </li>
         <li class="list-group-item">
           <span class="badge badge-pill badge-primary">GET</span>
-          <code class="api-url">/api/topics{/id}</code>
-          <div>Get topic by id. i.e. <a href="/api/topics/1">id=1</a></div>
+          <code class="api-url">/api/topic{/id}</code>
+          <div>Get topic by id. i.e. <a href="/api/topic/1" target="_blank">id=1</a></div>
         </li>
         <li class="list-group-item">
           <span class="badge badge-pill badge-primary">GET</span>
           <code class="api-url">/api/topics{/type/count}</code>
-          <div>Get topics top list with count var. i.e. <a href="/api/topics/top/5">top/5</a></div>
+          <div>Get topics top list with count var. i.e. <a href="/api/topics/top/5" target="_blank">top/5</a></div>
         </li>
         <li class="list-group-item">
           <span class="badge badge-pill badge-info">POST</span>
-          <code class="api-url">/api/topics/create</code>
+          <span class="badge badge-pill badge-warning">Auth</span>
+          <code class="api-url">/api/topic/create</code>
           <div>Create a topic for authorized user.</div>
         </li>
       </ul>
@@ -152,13 +153,13 @@
           <span class="badge badge-pill badge-info">POST</span>
           <span class="badge badge-pill badge-warning">Auth</span>
           <code class="api-url">/api/user/following{/uid}</code>
-          <div>Current user follows a user where uer id equals `uid`. i.e. <a href="/api/user/following/10001">uid=10001</a></div>
+          <div>Current user follows a user where uer id equals `uid`.</div>
         </li>
         <li class="list-group-item">
           <span class="badge badge-pill badge-danger">Delete</span>
           <span class="badge badge-pill badge-warning">Auth</span>
           <code class="api-url">/api/user/following{/uid}</code>
-          <div>Current user unfollows user where uer id equals `uid`. i.e. <a href="/api/user/following/10002">uid=10002</a></div>
+          <div>Current user unfollows user where uer id equals `uid`.</div>
         </li>
       </ul>
     </section>
@@ -221,6 +222,12 @@
           <span class="badge badge-pill badge-primary">GET</span>
           <code class="api-url">/api/topic{/tid}/currents</code>
           <div>Get currents of joining topic id equals `tid`. i.e. <a href="/api/topic/2/currents" target="_blank">tid=2</a></div>
+        </li>
+        <li class="list-group-item">
+          <span class="badge badge-pill badge-info">POST</span>
+          <span class="badge badge-pill badge-warning">Auth</span>
+          <code class="api-url">/api/current/create</code>
+          <div>Create a currents and join topics.</div>
         </li>
       </ul>
     </section>

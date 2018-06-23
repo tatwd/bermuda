@@ -36,7 +36,7 @@
 <script>
 import { mapGetters } from 'vuex'
 import cardSlider from '@/utils/card-slider'
-import goto from '@/utils/goto'
+import { goto } from '@/utils/link'
 
 export default {
   data: () => ({

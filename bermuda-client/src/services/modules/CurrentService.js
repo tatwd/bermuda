@@ -27,4 +27,9 @@ export default class UserService {
     let self = this
     return self.axios.get(`${self.baseUrl}/currents/top/${count}`)
   }
+
+  createCurrent (current) {
+    let self = this
+    return self.axios.post(`${self.baseUrl}/current/create`, current)
+  }
 }

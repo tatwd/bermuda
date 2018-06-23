@@ -24,7 +24,7 @@
         <v-card-text>
           <h1>{{ current.title }}</h1>
           <section>
-            <p>{{ current.text }}</p>
+            <div v-html="current.text"></div>
           </section>
         </v-card-text>
         <v-card-actions>
@@ -43,7 +43,7 @@
 </template>
 
 <script>
-import goto from '@/utils/goto'
+import { goto } from '@/utils/link'
 
 export default {
   props: {

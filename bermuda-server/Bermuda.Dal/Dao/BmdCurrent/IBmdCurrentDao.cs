@@ -8,6 +8,6 @@
     {
         // add native methods here
         IQueryable<BmdCurrent> GetAll();
-        bool AddCurrentAndJoinTopics(BmdCurrent current, Int64 topicId1, Int64? topicId2, Int64? topicId3);
+        bool AddCurrentAndJoinTopics(BmdCurrent current, Int64[] topicIds);
     }
 }
