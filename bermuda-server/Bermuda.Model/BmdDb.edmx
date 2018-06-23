@@ -23,6 +23,7 @@
           <Property Name="UserId" Type="bigint" />
           <Property Name="Title" Type="varchar" MaxLength="100" />
           <Property Name="Text" Type="text" />
+          <Property Name="BriefText" Type="varchar" MaxLength="280" />
           <Property Name="CmntCount" Type="bigint" StoreGeneratedPattern="Computed" />
           <Property Name="StarCount" Type="bigint" StoreGeneratedPattern="Computed" />
           <Property Name="PraiseCount" Type="bigint" StoreGeneratedPattern="Computed" />
@@ -310,6 +311,7 @@
           <Property Name="UserId" Type="Int64" />
           <Property Name="Title" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
           <Property Name="Text" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="BriefText" Type="String" MaxLength="280" FixedLength="false" Unicode="false" />
           <Property Name="CmntCount" Type="Int64" annotation:StoreGeneratedPattern="Computed" />
           <Property Name="StarCount" Type="Int64" annotation:StoreGeneratedPattern="Computed" />
           <Property Name="PraiseCount" Type="Int64" annotation:StoreGeneratedPattern="Computed" />
@@ -595,6 +597,7 @@
           <EntitySetMapping Name="BmdCurrents">
             <EntityTypeMapping TypeName="BmdDbModel.BmdCurrent">
               <MappingFragment StoreEntitySet="BmdCurrent">
+                <ScalarProperty Name="BriefText" ColumnName="BriefText" />
                 <ScalarProperty Name="CreatedAt" ColumnName="CreatedAt" />
                 <ScalarProperty Name="Text" ColumnName="Text" />
                 <ScalarProperty Name="Id" ColumnName="Id" />

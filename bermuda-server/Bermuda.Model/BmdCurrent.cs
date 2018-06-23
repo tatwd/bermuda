@@ -18,6 +18,7 @@ namespace Bermuda.Model
         public Nullable<long> UserId { get; set; }
         public string Title { get; set; }
         public string Text { get; set; }
+        public string BriefText { get; set; }
         public Nullable<long> CmntCount { get; set; }
         public Nullable<long> StarCount { get; set; }
         public Nullable<long> PraiseCount { get; set; }
