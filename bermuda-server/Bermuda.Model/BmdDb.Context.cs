@@ -12,6 +12,8 @@ namespace Bermuda.Model
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
+    using System.Data.Entity.Core.Objects;
+    using System.Linq;
     
     public partial class BmdDbEntities : DbContext
     {
@@ -47,5 +49,34 @@ namespace Bermuda.Model
         public virtual DbSet<BmdTopicJoin> BmdTopicJoins { get; set; }
         public virtual DbSet<BmdUser> BmdUsers { get; set; }
         public virtual DbSet<BmdUserFollow> BmdUserFollows { get; set; }
+    
+        public virtual int JoinTopicsProc(Nullable<long> user_id, string title, string text, Nullable<long> topic1_id, Nullable<long> topic2_id, Nullable<long> topic3_id)
+        {
+            var user_idParameter = user_id.HasValue ?
+                new ObjectParameter("user_id", user_id) :
+                new ObjectParameter("user_id", typeof(long));
+    
+            var titleParameter = title != null ?
+                new ObjectParameter("title", title) :
+                new ObjectParameter("title", typeof(string));
+    
+            var textParameter = text != null ?
+                new ObjectParameter("text", text) :
+                new ObjectParameter("text", typeof(string));
+    
+            var topic1_idParameter = topic1_id.HasValue ?
+                new ObjectParameter("topic1_id", topic1_id) :
+                new ObjectParameter("topic1_id", typeof(long));
+    
+            var topic2_idParameter = topic2_id.HasValue ?
+                new ObjectParameter("topic2_id", topic2_id) :
+                new ObjectParameter("topic2_id", typeof(long));
+    
+            var topic3_idParameter = topic3_id.HasValue ?
+                new ObjectParameter("topic3_id", topic3_id) :
+                new ObjectParameter("topic3_id", typeof(long));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("JoinTopicsProc", user_idParameter, titleParameter, textParameter, topic1_idParameter, topic2_idParameter, topic3_idParameter);
+        }
     }
 }

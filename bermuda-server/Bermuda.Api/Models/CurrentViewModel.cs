@@ -1,4 +1,5 @@
 ﻿using System;
+using System.ComponentModel.DataAnnotations;
 
 namespace Bermuda.Api.Models
 {
@@ -17,8 +18,16 @@ namespace Bermuda.Api.Models
 
     public class NewCurrentViewModel
     {
+        [Required]
         public long user_id { get; set; }
+
+        [Required]
         public string title { get; set; }
+
+        [Required]
         public string text { get; set; }
+
+        [Required]
+        public Int64[] topic_ids = new Int64[3];
     }
 }

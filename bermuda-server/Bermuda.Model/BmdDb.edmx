@@ -256,6 +256,14 @@
           <Property Name="FollowingId" Type="bigint" />
           <Property Name="CreatedAt" Type="datetime" StoreGeneratedPattern="Computed" />
         </EntityType>
+        <Function Name="JoinTopicsProc" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="user_id" Type="bigint" Mode="In" />
+          <Parameter Name="title" Type="varchar" Mode="In" />
+          <Parameter Name="text" Type="text" Mode="In" />
+          <Parameter Name="topic1_id" Type="bigint" Mode="In" />
+          <Parameter Name="topic2_id" Type="bigint" Mode="In" />
+          <Parameter Name="topic3_id" Type="bigint" Mode="In" />
+        </Function>
         <EntityContainer Name="BmdDbModelStoreContainer">
           <EntitySet Name="BmdConsignee" EntityType="Self.BmdConsignee" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="BmdCurrent" EntityType="Self.BmdCurrent" Schema="dbo" store:Type="Tables" />
@@ -558,6 +566,14 @@
           <EntitySet Name="BmdTopicJoins" EntityType="Self.BmdTopicJoin" />
           <EntitySet Name="BmdUsers" EntityType="Self.BmdUser" />
           <EntitySet Name="BmdUserFollows" EntityType="Self.BmdUserFollow" />
+          <FunctionImport Name="JoinTopicsProc">
+            <Parameter Name="user_id" Mode="In" Type="Int64" />
+            <Parameter Name="title" Mode="In" Type="String" />
+            <Parameter Name="text" Mode="In" Type="String" />
+            <Parameter Name="topic1_id" Mode="In" Type="Int64" />
+            <Parameter Name="topic2_id" Mode="In" Type="Int64" />
+            <Parameter Name="topic3_id" Mode="In" Type="Int64" />
+          </FunctionImport>
         </EntityContainer>
       </Schema>
     </edmx:ConceptualModels>
@@ -838,6 +854,7 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="JoinTopicsProc" FunctionName="BmdDbModel.Store.JoinTopicsProc" />
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
