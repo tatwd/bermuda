@@ -3,7 +3,7 @@
     v-bind="{ [`grid-list-${breakpoint}`]: true }"
   >
     <v-layout row wrap>
-      <v-flex
+      <!-- <v-flex
         v-for="x in ['test 1', 'test 2', 'test 3']"
         :key="x"
         xs4
@@ -13,7 +13,7 @@
             {{ x }}
           </v-card-title>
         </v-card>
-      </v-flex>
+      </v-flex> -->
 
       <v-flex
         v-for="product in products"
