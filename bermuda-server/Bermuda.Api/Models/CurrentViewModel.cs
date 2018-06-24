@@ -19,11 +19,14 @@ namespace Bermuda.Api.Models
 
     public class NewCurrentViewModel
     {
-        [Required]
+        [Required, MaxLength(50)]
         public string title { get; set; }
 
         [Required]
         public string text { get; set; }
+
+        [Required, MaxLength(280)]
+        public string brief_text { get; set; }
 
         [Required]
         public Int64[] topic_ids = new Int64[3];

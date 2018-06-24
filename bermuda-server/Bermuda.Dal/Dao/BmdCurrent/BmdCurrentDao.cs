@@ -16,15 +16,15 @@
             {
                 case 2:
                     result = bmdContext.JoinTopicsProc(
-                        current.UserId, current.Title, current.Text, topicIds[0], topicIds[1], null);
+                        current.UserId, current.Title, current.Text, current.BriefText, topicIds[0], topicIds[1], null);
                     break;
                 case 3:
                     result = bmdContext.JoinTopicsProc(
-                        current.UserId, current.Title, current.Text, topicIds[0], topicIds[1], topicIds[2]);
+                        current.UserId, current.Title, current.Text, current.BriefText, topicIds[0], topicIds[1], topicIds[2]);
                     break;
                 default:
                     result = bmdContext.JoinTopicsProc(
-                        current.UserId, current.Title, current.Text, topicIds[0], null, null);
+                        current.UserId, current.Title, current.Text, current.BriefText, topicIds[0], null, null);
                     break;
             }
 

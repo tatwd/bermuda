@@ -50,7 +50,7 @@ namespace Bermuda.Model
         public virtual DbSet<BmdUser> BmdUsers { get; set; }
         public virtual DbSet<BmdUserFollow> BmdUserFollows { get; set; }
     
-        public virtual int JoinTopicsProc(Nullable<long> user_id, string title, string text, Nullable<long> topic1_id, Nullable<long> topic2_id, Nullable<long> topic3_id)
+        public virtual int JoinTopicsProc(Nullable<long> user_id, string title, string text, string brief_text, Nullable<long> topic1_id, Nullable<long> topic2_id, Nullable<long> topic3_id)
         {
             var user_idParameter = user_id.HasValue ?
                 new ObjectParameter("user_id", user_id) :
@@ -64,6 +64,10 @@ namespace Bermuda.Model
                 new ObjectParameter("text", text) :
                 new ObjectParameter("text", typeof(string));
     
+            var brief_textParameter = brief_text != null ?
+                new ObjectParameter("brief_text", brief_text) :
+                new ObjectParameter("brief_text", typeof(string));
+    
             var topic1_idParameter = topic1_id.HasValue ?
                 new ObjectParameter("topic1_id", topic1_id) :
                 new ObjectParameter("topic1_id", typeof(long));
@@ -76,7 +80,7 @@ namespace Bermuda.Model
                 new ObjectParameter("topic3_id", topic3_id) :
                 new ObjectParameter("topic3_id", typeof(long));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("JoinTopicsProc", user_idParameter, titleParameter, textParameter, topic1_idParameter, topic2_idParameter, topic3_idParameter);
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("JoinTopicsProc", user_idParameter, titleParameter, textParameter, brief_textParameter, topic1_idParameter, topic2_idParameter, topic3_idParameter);
         }
     }
 }

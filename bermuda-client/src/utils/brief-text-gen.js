@@ -1,52 +1,104 @@
+import lengthCounter from './length-counter'
+
 /**
- * 摘要生成器
+ * 摘要生成器，用于动态内容的摘要
  */
-const TWO_LABEL_RE = /<(\/?)(BODY|SCRIPT|P|DIV|H1|H2|H3|H4|H5|H6|ADDRESS|PRE|TABLE|TR|TD|TH|INPUT|SELECT|TEXTAREA|OBJECT|A|UL|OL|LI|BASE|META|LINK|HR|BR|PARAM|IMG|AREA|INPUT|SPAN)[^>]*(>?)/ig;
-const ONE_LABEL_RE = /BASE|META|LINK|HR|BR|PARAM|IMG|AREA|INPUT/i
+const DOUBLE_LABEL_RE = /<(\/?)(BODY|SCRIPT|P|DIV|H1|H2|H3|H4|H5|H6|ADDRESS|PRE|TABLE|TR|TD|TH|INPUT|SELECT|TEXTAREA|OBJECT|A|UL|OL|LI|BASE|META|LINK|HR|BR|PARAM|IMG|AREA|INPUT|SPAN|BLOCKQUOTE)[^>]*(>?)/ig;
+const SINGLE_LABEL_RE = /BASE|META|LINK|HR|BR|PARAM|IMG|AREA|INPUT/i
 
 export default function (text, length) {
   if (text.length < length)
     return text;
 
-  let foremost = text.substr(0,length);
+  let foremost = lengthCounter(text).getByLength(length); // text.substr(0, length);
 
-  let Stack = new Array();
-  let posStack = new Array();
+  let stack = [];
+  let posStack = [];
+  let pos = 0;
 
   while (true) {
-    var newone = TWO_LABEL_RE.exec(foremost);
+    let matched = DOUBLE_LABEL_RE.exec(foremost);
 
-    if (newone == null)
+    if (matched == null)
       break;
-
-    if (newone[1] == '') {
-      var Elem = newone[2];
-      if (Elem.match(ONE_LABEL_RE) && newone[3]!= ''){
+    pos = matched.index
+    if (matched[1] == '') {
+      let element = matched[2];
+      if (element.match(SINGLE_LABEL_RE) && matched[3]!= '') {
         continue;
       }
 
-      Stack.push(newone[2].toUpperCase());
-      posStack.push(newone.index);
+      stack.push(matched[2].toUpperCase());
+      posStack.push(matched.index);
 
-      if (newone[3] == '')
+      if (matched[3] == '')
         break;
     } else {
-      var StackTop = Stack[Stack.length-1];
-      var End = newone[2].toUpperCase();
+      let stackTop = stack[stack.length - 1];
+      let end = matched[2].toUpperCase();
 
-      if (StackTop == End){
-        Stack.pop();
+      if (stackTop == end){
+        stack.pop();
         posStack.pop();
 
-        if (newone[3] == ''){
+        if (matched[3] == '') {
           foremost = foremost + '>';
         }
       }
-
     }
   }
-  var cutpos = posStack.shift();
-  foremost = foremost.substring(0, cutpos);
+  // debugger
+  // get labels string
+  let labels = endWith(stack)
+
+  // substring from 0 -> posStack[posStack.length - 1]
+  let cutpos = posStack.pop();
+  if (cutpos) {
+    if (stack.length > 1)
+      foremost = foremost.substring(0, cutpos);
+    foremost = appendLabels(
+        length,
+        foremost,
+        labels
+      )
+  } else {
+    if (pos !== cutpos)
+      foremost = foremost.substring(0, pos);
+    foremost = appendLabels(
+      length,
+      foremost,
+      labels
+    )
+  }
 
   return foremost;
+}
+
+function appendLabels (maxLength, str, labels) {
+  const strLength = lengthCounter(str).length;
+  const labelsLength = labels.length;
+  const computedLength = function () {
+    let dist = maxLength - strLength
+    return dist >= labelsLength  ? 0 : labelsLength - dist
+  }
+  const RE = new RegExp(`.{${ computedLength() }}$`)
+  return str.replace(RE, labels)
+}
+
+function endWith (arr) {
+  let str = ''
+  let len = arr.length
+  let isTrue = function (i) {
+    return len > 1
+      ? i < len - 1
+      : i <= len - 1;
+  }
+
+  for (let i = 0; isTrue(i); i++) {
+    if (!SINGLE_LABEL_RE.test(arr[i])) {
+      let label = `</${arr[i].toLowerCase()}>`
+      str = label + str
+    }
+  }
+  return str;
 }

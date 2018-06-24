@@ -261,6 +261,7 @@
           <Parameter Name="user_id" Type="bigint" Mode="In" />
           <Parameter Name="title" Type="varchar" Mode="In" />
           <Parameter Name="text" Type="text" Mode="In" />
+          <Parameter Name="brief_text" Type="varchar" Mode="In" />
           <Parameter Name="topic1_id" Type="bigint" Mode="In" />
           <Parameter Name="topic2_id" Type="bigint" Mode="In" />
           <Parameter Name="topic3_id" Type="bigint" Mode="In" />
@@ -572,6 +573,7 @@
             <Parameter Name="user_id" Mode="In" Type="Int64" />
             <Parameter Name="title" Mode="In" Type="String" />
             <Parameter Name="text" Mode="In" Type="String" />
+            <Parameter Name="brief_text" Mode="In" Type="String" />
             <Parameter Name="topic1_id" Mode="In" Type="Int64" />
             <Parameter Name="topic2_id" Mode="In" Type="Int64" />
             <Parameter Name="topic3_id" Mode="In" Type="Int64" />

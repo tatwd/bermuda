@@ -52,6 +52,7 @@
 <script>
 import { topicService, currentService } from '@/services'
 import CurrentEditor from '@/components/current/CurrentEditor'
+import briefTextGen from '@/utils/brief-text-gen'
 
 export default {
   components: {
@@ -112,12 +113,16 @@ export default {
     onSubmit () {
       if (!this.isValided()) {
         alert('请填写完！')
+        console.log(
+          briefTextGen(this.text, 240)
+        )
         return
       }
       const current = {
         topic_ids: this.joinTopics,
         title: this.title,
-        text: this.text
+        text: this.text,
+        brief_text: briefTextGen(this.text, 240) // max: 280
       }
       currentService
         .createCurrent(current)

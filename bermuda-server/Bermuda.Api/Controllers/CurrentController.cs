@@ -64,11 +64,16 @@ namespace Bermuda.Api.Controllers
                 {
                     UserId = currentUser.id,
                     Title = vm.title,
-                    Text = vm.text
+                    Text = vm.text,
+                    BriefText = vm.brief_text
                 };
                 success = iservice.AddCurrentAndJoinTopics(current, vm.topic_ids);
+                return Json(new { success });
             }
-            return Json(new { success });
+            else
+            {
+                return BadRequest(ModelState);
+            }
         }
 
         // 从缓存中获取所有动态
