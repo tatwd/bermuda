@@ -15,7 +15,7 @@
         发表于 {{ current.created_at | dateFilter }}
       </v-subheader>
     <v-card-text>
-      <div v-html="current.brief_text"></div>
+      <div v-html="current.text"></div>
     </v-card-text>
   </v-card>
 </template>

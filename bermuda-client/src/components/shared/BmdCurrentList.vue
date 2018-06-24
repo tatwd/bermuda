@@ -12,6 +12,7 @@
         v-for="current in currents"
         :key="current.id"
       >
+        <v-divider></v-divider>
         <v-card-title>
           <router-link :to="goto('UserProfile', current.user.id)">
             <v-avatar size="42">
@@ -24,7 +25,7 @@
         <v-card-text>
           <h1>{{ current.title }}</h1>
           <section>
-            <div v-html="current.text"></div>
+            <div v-html="current.brief_text"></div>
           </section>
         </v-card-text>
         <v-card-actions>
@@ -36,6 +37,8 @@
             <v-icon small>thumb_up</v-icon>
           </v-btn>
           <span>{{ current.praise_count }}</span>
+          <v-spacer></v-spacer>
+          <v-btn color="primary" flat :to="goto('CurrentDetail', current.id)">阅读更多</v-btn>
         </v-card-actions>
       </v-card>
     </v-flex>

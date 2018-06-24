@@ -9,7 +9,7 @@
       <v-card>
         <v-card-title>
           <h2>
-            <router-link class="black--text" to="/">
+            <router-link class="black--text" :to="goto('NoticeDetail', notice.id)">
               {{ notice.title }}
             </router-link>
           </h2>
@@ -55,6 +55,8 @@
 </template>
 
 <script>
+import { goto } from '@/utils/link'
+
 export default {
   props: {
     notices: {
@@ -67,6 +69,9 @@ export default {
       '寻物启事': 'red',
       '招领启事': 'orange'
     }
-  })
+  }),
+  methods: {
+    goto
+  }
 }
 </script>

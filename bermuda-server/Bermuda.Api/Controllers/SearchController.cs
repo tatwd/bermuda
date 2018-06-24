@@ -95,7 +95,24 @@ namespace Bermuda.Api.Controllers
         [Route("currents/{q}")]
         public IHttpActionResult Currents(string q)
         {
-            return Json($"q={q}");
+            var vm = CacheEngine.GetData<IList<CurrentSearchModel>>($"search_currents_all", () =>
+            {
+                var currents = ServiceFactory.Get<IBmdCurrentService>()
+                    .GetAll()
+                    .OrderByDescending(x => x.CreatedAt)
+                    .ToList();
+                return BaseUtil.ParseToList<CurrentSearchModel>(currents);
+            });
+
+            if (vm == null)
+                return Json(vm);
+
+            var path = HttpContext.Current.Server.MapPath($"{INDEX_DIR}/currents");
+            SearchUtil.LoadFSDirectory(path);
+            SearchUtil.CreateIndex<CurrentSearchModel>(vm);
+
+            var result = SearchUtil.SearchFullText<CurrentSearchModel>(q, 5);
+            return Json(result);
         }
     }
 }

@@ -31,4 +31,17 @@ namespace Bermuda.Api.Models
         [Required]
         public Int64[] topic_ids = new Int64[3];
     }
+
+    public class CurrentSearchModel
+    {
+        public long id { get; set; }
+        //public UserViewModel user { get; set; }
+        public string title { get; set; }
+        //public string text { get; set; }
+        public string brief_text { get; set; }
+        public long cmnt_count { get; set; }
+        public long star_count { get; set; }
+        public long praise_count { get; set; }
+        public DateTime created_at { get; set; }
+    }
 }
