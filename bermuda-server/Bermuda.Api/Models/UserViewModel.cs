@@ -49,4 +49,11 @@ namespace Bermuda.Api.Models
         [Required]
         public Int64 following_id { get; set; }
     }
+
+    public class SimpleUserViewModel
+    {
+        public Int64 id { get; set; }
+        public string name { get; set; }
+        public string avatar_url { get; set; }
+    }
 }

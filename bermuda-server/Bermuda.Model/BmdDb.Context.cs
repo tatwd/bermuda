@@ -33,7 +33,6 @@ namespace Bermuda.Model
         public virtual DbSet<BmdCurrentCmntPraise> BmdCurrentCmntPraises { get; set; }
         public virtual DbSet<BmdCurrentCmntReply> BmdCurrentCmntReplies { get; set; }
         public virtual DbSet<BmdCurrentCmntReplyPraise> BmdCurrentCmntReplyPraises { get; set; }
-        public virtual DbSet<BmdCurrentPraise> BmdCurrentPraises { get; set; }
         public virtual DbSet<BmdCurrentStar> BmdCurrentStars { get; set; }
         public virtual DbSet<BmdNotice> BmdNotices { get; set; }
         public virtual DbSet<BmdNoticeCmnt> BmdNoticeCmnts { get; set; }
@@ -49,6 +48,7 @@ namespace Bermuda.Model
         public virtual DbSet<BmdTopicJoin> BmdTopicJoins { get; set; }
         public virtual DbSet<BmdUser> BmdUsers { get; set; }
         public virtual DbSet<BmdUserFollow> BmdUserFollows { get; set; }
+        public virtual DbSet<BmdCurrentPraise> BmdCurrentPraises { get; set; }
     
         public virtual int JoinTopicsProc(Nullable<long> user_id, string title, string text, string brief_text, Nullable<long> topic1_id, Nullable<long> topic2_id, Nullable<long> topic3_id)
         {

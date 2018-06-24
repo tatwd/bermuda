@@ -18,8 +18,8 @@ namespace Bermuda.Model
         public Nullable<long> CmntId { get; set; }
         public Nullable<long> AimsId { get; set; }
         public Nullable<long> UserId { get; set; }
-        public string Contents { get; set; }
-        public Nullable<System.DateTime> ReplyDate { get; set; }
+        public string Text { get; set; }
         public Nullable<long> PraiseCount { get; set; }
+        public Nullable<System.DateTime> CreatedAt { get; set; }
     }
 }

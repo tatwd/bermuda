@@ -17,9 +17,9 @@ namespace Bermuda.Model
         public long Id { get; set; }
         public Nullable<long> CurrentId { get; set; }
         public Nullable<long> UserId { get; set; }
-        public string Contents { get; set; }
-        public Nullable<System.DateTime> CmntDate { get; set; }
+        public string Text { get; set; }
         public Nullable<long> PraiseCount { get; set; }
         public Nullable<long> ReplyCount { get; set; }
+        public Nullable<System.DateTime> CreatedAt { get; set; }
     }
 }

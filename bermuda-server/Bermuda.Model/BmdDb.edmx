@@ -36,10 +36,10 @@
           <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="CurrentId" Type="bigint" />
           <Property Name="UserId" Type="bigint" />
-          <Property Name="Contents" Type="varchar" MaxLength="280" />
-          <Property Name="CmntDate" Type="datetime" />
-          <Property Name="PraiseCount" Type="bigint" />
-          <Property Name="ReplyCount" Type="bigint" />
+          <Property Name="Text" Type="varchar" MaxLength="280" />
+          <Property Name="PraiseCount" Type="bigint" StoreGeneratedPattern="Computed" />
+          <Property Name="ReplyCount" Type="bigint" StoreGeneratedPattern="Computed" />
+          <Property Name="CreatedAt" Type="datetime" StoreGeneratedPattern="Computed" />
         </EntityType>
         <EntityType Name="BmdCurrentCmntPraise">
           <Key>
@@ -48,7 +48,7 @@
           <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="CmntId" Type="bigint" />
           <Property Name="UserId" Type="bigint" />
-          <Property Name="PraiseDate" Type="datetime" />
+          <Property Name="CreatedAt" Type="datetime" StoreGeneratedPattern="Computed" />
         </EntityType>
         <EntityType Name="BmdCurrentCmntReply">
           <Key>
@@ -58,9 +58,9 @@
           <Property Name="CmntId" Type="bigint" />
           <Property Name="AimsId" Type="bigint" />
           <Property Name="UserId" Type="bigint" />
-          <Property Name="Contents" Type="varchar" MaxLength="280" />
-          <Property Name="ReplyDate" Type="datetime" />
-          <Property Name="PraiseCount" Type="bigint" />
+          <Property Name="Text" Type="varchar" MaxLength="280" />
+          <Property Name="PraiseCount" Type="bigint" StoreGeneratedPattern="Computed" />
+          <Property Name="CreatedAt" Type="datetime" StoreGeneratedPattern="Computed" />
         </EntityType>
         <EntityType Name="BmdCurrentCmntReplyPraise">
           <Key>
@@ -69,7 +69,7 @@
           <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="ReplyId" Type="bigint" />
           <Property Name="UserId" Type="bigint" />
-          <Property Name="PraiseDate" Type="datetime" />
+          <Property Name="CreatedAt" Type="datetime" StoreGeneratedPattern="Computed" />
         </EntityType>
         <EntityType Name="BmdCurrentPraise">
           <Key>
@@ -78,7 +78,7 @@
           <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="CurrentId" Type="bigint" />
           <Property Name="UserId" Type="bigint" />
-          <Property Name="PraiseDate" Type="datetime" />
+          <Property Name="CreatedAt" Type="datetime" StoreGeneratedPattern="Computed" />
         </EntityType>
         <EntityType Name="BmdCurrentStar">
           <Key>
@@ -87,7 +87,7 @@
           <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="CurrentId" Type="bigint" />
           <Property Name="UserId" Type="bigint" />
-          <Property Name="StarDate" Type="datetime" />
+          <Property Name="CreatedAt" Type="datetime" StoreGeneratedPattern="Computed" />
         </EntityType>
         <EntityType Name="BmdNotice">
           <Key>
@@ -118,7 +118,7 @@
           <Property Name="NoticeId" Type="bigint" />
           <Property Name="Contents" Type="varchar" MaxLength="280" />
           <Property Name="CmntDate" Type="datetime" />
-          <Property Name="ReplyCount" Type="bigint" />
+          <Property Name="ReplyCount" Type="bigint" StoreGeneratedPattern="Computed" />
         </EntityType>
         <EntityType Name="BmdNoticeCmntReply">
           <Key>
@@ -325,10 +325,10 @@
           <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="CurrentId" Type="Int64" />
           <Property Name="UserId" Type="Int64" />
-          <Property Name="Contents" Type="String" MaxLength="280" FixedLength="false" Unicode="false" />
-          <Property Name="CmntDate" Type="DateTime" Precision="3" />
-          <Property Name="PraiseCount" Type="Int64" />
-          <Property Name="ReplyCount" Type="Int64" />
+          <Property Name="Text" Type="String" MaxLength="280" FixedLength="false" Unicode="false" />
+          <Property Name="PraiseCount" Type="Int64" annotation:StoreGeneratedPattern="Computed" />
+          <Property Name="ReplyCount" Type="Int64" annotation:StoreGeneratedPattern="Computed" />
+          <Property Name="CreatedAt" Type="DateTime" Precision="3" annotation:StoreGeneratedPattern="Computed" />
         </EntityType>
         <EntityType Name="BmdCurrentCmntPraise">
           <Key>
@@ -337,7 +337,7 @@
           <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="CmntId" Type="Int64" />
           <Property Name="UserId" Type="Int64" />
-          <Property Name="PraiseDate" Type="DateTime" Precision="3" />
+          <Property Name="CreatedAt" Type="DateTime" Precision="3" annotation:StoreGeneratedPattern="Computed" />
         </EntityType>
         <EntityType Name="BmdCurrentCmntReply">
           <Key>
@@ -347,9 +347,9 @@
           <Property Name="CmntId" Type="Int64" />
           <Property Name="AimsId" Type="Int64" />
           <Property Name="UserId" Type="Int64" />
-          <Property Name="Contents" Type="String" MaxLength="280" FixedLength="false" Unicode="false" />
-          <Property Name="ReplyDate" Type="DateTime" Precision="3" />
-          <Property Name="PraiseCount" Type="Int64" />
+          <Property Name="Text" Type="String" MaxLength="280" FixedLength="false" Unicode="false" />
+          <Property Name="PraiseCount" Type="Int64" annotation:StoreGeneratedPattern="Computed" />
+          <Property Name="CreatedAt" Type="DateTime" Precision="3" annotation:StoreGeneratedPattern="Computed" />
         </EntityType>
         <EntityType Name="BmdCurrentCmntReplyPraise">
           <Key>
@@ -358,16 +358,7 @@
           <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="ReplyId" Type="Int64" />
           <Property Name="UserId" Type="Int64" />
-          <Property Name="PraiseDate" Type="DateTime" Precision="3" />
-        </EntityType>
-        <EntityType Name="BmdCurrentPraise">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="CurrentId" Type="Int64" />
-          <Property Name="UserId" Type="Int64" />
-          <Property Name="PraiseDate" Type="DateTime" Precision="3" />
+          <Property Name="CreatedAt" Type="DateTime" Precision="3" annotation:StoreGeneratedPattern="Computed" />
         </EntityType>
         <EntityType Name="BmdCurrentStar">
           <Key>
@@ -376,7 +367,7 @@
           <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="CurrentId" Type="Int64" />
           <Property Name="UserId" Type="Int64" />
-          <Property Name="StarDate" Type="DateTime" Precision="3" />
+          <Property Name="CreatedAt" Type="DateTime" Precision="3" annotation:StoreGeneratedPattern="Computed" />
         </EntityType>
         <EntityType Name="BmdNotice">
           <Key>
@@ -407,7 +398,7 @@
           <Property Name="NoticeId" Type="Int64" />
           <Property Name="Contents" Type="String" MaxLength="280" FixedLength="false" Unicode="false" />
           <Property Name="CmntDate" Type="DateTime" Precision="3" />
-          <Property Name="ReplyCount" Type="Int64" />
+          <Property Name="ReplyCount" Type="Int64" annotation:StoreGeneratedPattern="Computed" />
         </EntityType>
         <EntityType Name="BmdNoticeCmntReply">
           <Key>
@@ -553,7 +544,6 @@
           <EntitySet Name="BmdCurrentCmntPraises" EntityType="Self.BmdCurrentCmntPraise" />
           <EntitySet Name="BmdCurrentCmntReplies" EntityType="Self.BmdCurrentCmntReply" />
           <EntitySet Name="BmdCurrentCmntReplyPraises" EntityType="Self.BmdCurrentCmntReplyPraise" />
-          <EntitySet Name="BmdCurrentPraises" EntityType="Self.BmdCurrentPraise" />
           <EntitySet Name="BmdCurrentStars" EntityType="Self.BmdCurrentStar" />
           <EntitySet Name="BmdNotices" EntityType="Self.BmdNotice" />
           <EntitySet Name="BmdNoticeCmnts" EntityType="Self.BmdNoticeCmnt" />
@@ -578,7 +568,17 @@
             <Parameter Name="topic2_id" Mode="In" Type="Int64" />
             <Parameter Name="topic3_id" Mode="In" Type="Int64" />
           </FunctionImport>
+          <EntitySet Name="BmdCurrentPraises" EntityType="BmdDbModel.BmdCurrentPraise" />
         </EntityContainer>
+        <EntityType Name="BmdCurrentPraise">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CurrentId" Type="Int64" />
+          <Property Name="UserId" Type="Int64" />
+          <Property Name="CreatedAt" Type="DateTime" Precision="3" annotation:StoreGeneratedPattern="Computed" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -614,11 +614,11 @@
           <EntitySetMapping Name="BmdCurrentCmnts">
             <EntityTypeMapping TypeName="BmdDbModel.BmdCurrentCmnt">
               <MappingFragment StoreEntitySet="BmdCurrentCmnt">
+                <ScalarProperty Name="CreatedAt" ColumnName="CreatedAt" />
+                <ScalarProperty Name="Text" ColumnName="Text" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="CurrentId" ColumnName="CurrentId" />
                 <ScalarProperty Name="UserId" ColumnName="UserId" />
-                <ScalarProperty Name="Contents" ColumnName="Contents" />
-                <ScalarProperty Name="CmntDate" ColumnName="CmntDate" />
                 <ScalarProperty Name="PraiseCount" ColumnName="PraiseCount" />
                 <ScalarProperty Name="ReplyCount" ColumnName="ReplyCount" />
               </MappingFragment>
@@ -627,22 +627,22 @@
           <EntitySetMapping Name="BmdCurrentCmntPraises">
             <EntityTypeMapping TypeName="BmdDbModel.BmdCurrentCmntPraise">
               <MappingFragment StoreEntitySet="BmdCurrentCmntPraise">
+                <ScalarProperty Name="CreatedAt" ColumnName="CreatedAt" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="CmntId" ColumnName="CmntId" />
                 <ScalarProperty Name="UserId" ColumnName="UserId" />
-                <ScalarProperty Name="PraiseDate" ColumnName="PraiseDate" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="BmdCurrentCmntReplies">
             <EntityTypeMapping TypeName="BmdDbModel.BmdCurrentCmntReply">
               <MappingFragment StoreEntitySet="BmdCurrentCmntReply">
+                <ScalarProperty Name="CreatedAt" ColumnName="CreatedAt" />
+                <ScalarProperty Name="Text" ColumnName="Text" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="CmntId" ColumnName="CmntId" />
                 <ScalarProperty Name="AimsId" ColumnName="AimsId" />
                 <ScalarProperty Name="UserId" ColumnName="UserId" />
-                <ScalarProperty Name="Contents" ColumnName="Contents" />
-                <ScalarProperty Name="ReplyDate" ColumnName="ReplyDate" />
                 <ScalarProperty Name="PraiseCount" ColumnName="PraiseCount" />
               </MappingFragment>
             </EntityTypeMapping>
@@ -650,30 +650,20 @@
           <EntitySetMapping Name="BmdCurrentCmntReplyPraises">
             <EntityTypeMapping TypeName="BmdDbModel.BmdCurrentCmntReplyPraise">
               <MappingFragment StoreEntitySet="BmdCurrentCmntReplyPraise">
+                <ScalarProperty Name="CreatedAt" ColumnName="CreatedAt" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="ReplyId" ColumnName="ReplyId" />
                 <ScalarProperty Name="UserId" ColumnName="UserId" />
-                <ScalarProperty Name="PraiseDate" ColumnName="PraiseDate" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="BmdCurrentPraises">
-            <EntityTypeMapping TypeName="BmdDbModel.BmdCurrentPraise">
-              <MappingFragment StoreEntitySet="BmdCurrentPraise">
-                <ScalarProperty Name="Id" ColumnName="Id" />
-                <ScalarProperty Name="CurrentId" ColumnName="CurrentId" />
-                <ScalarProperty Name="UserId" ColumnName="UserId" />
-                <ScalarProperty Name="PraiseDate" ColumnName="PraiseDate" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="BmdCurrentStars">
             <EntityTypeMapping TypeName="BmdDbModel.BmdCurrentStar">
               <MappingFragment StoreEntitySet="BmdCurrentStar">
+                <ScalarProperty Name="CreatedAt" ColumnName="CreatedAt" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="CurrentId" ColumnName="CurrentId" />
                 <ScalarProperty Name="UserId" ColumnName="UserId" />
-                <ScalarProperty Name="StarDate" ColumnName="StarDate" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -860,6 +850,16 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <FunctionImportMapping FunctionImportName="JoinTopicsProc" FunctionName="BmdDbModel.Store.JoinTopicsProc" />
+          <EntitySetMapping Name="BmdCurrentPraises">
+            <EntityTypeMapping TypeName="BmdDbModel.BmdCurrentPraise">
+              <MappingFragment StoreEntitySet="BmdCurrentPraise">
+                <ScalarProperty Name="CreatedAt" ColumnName="CreatedAt" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="CurrentId" ColumnName="CurrentId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

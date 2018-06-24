@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
 namespace Bermuda.Api.Models
@@ -42,6 +43,29 @@ namespace Bermuda.Api.Models
         public long cmnt_count { get; set; }
         public long star_count { get; set; }
         public long praise_count { get; set; }
+        public DateTime created_at { get; set; }
+    }
+
+    public class CurrentCmntViewModel
+    {
+        public Int64 id { get; set; }
+        public SimpleUserViewModel user { get; set; }
+        public string text { get; set; }
+        public Int64 praise_count { get; set; }
+        public Int64 reply_count { get; set; }
+        public DateTime created_at { get; set; }
+        public IList<CurrentCmntReplyViewModel> replies { get; set; }
+    }
+
+    public class CurrentCmntReplyViewModel
+    {
+        public Int64 id { get; set; }
+        public Int64 cmnt_id { get; set; }
+        //public Int64 aims_id { get; set; }
+        public SimpleUserViewModel user { get; set; }
+        public SimpleUserViewModel aims_user { get; set; }
+        public string text { get; set; }
+        public Int64 praise_count { get; set; }
         public DateTime created_at { get; set; }
     }
 }

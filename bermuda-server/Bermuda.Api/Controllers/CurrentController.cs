@@ -38,6 +38,7 @@ namespace Bermuda.Api.Controllers
             return Json(vm);
         }
 
+        [HttpGet]
         [Route("api/user/{uid}/currents")]
         public IHttpActionResult GetByUserId(Int64 uid)
         {
@@ -74,6 +75,14 @@ namespace Bermuda.Api.Controllers
             {
                 return BadRequest(ModelState);
             }
+        }
+
+        [HttpGet]
+        [Route("api/current/{id}/comments")]
+        public IHttpActionResult GetComments(Int64 id)
+        {
+            var vm = GetAllCurrentCmntsFromCache(id);
+            return Json(vm);
         }
 
         // 从缓存中获取所有动态
@@ -147,6 +156,17 @@ namespace Bermuda.Api.Controllers
             });
         }
 
+        private IList<CurrentCmntViewModel> GetAllCurrentCmntsFromCache(Int64 id)
+        {
+            return CacheEngine.GetData<IList<CurrentCmntViewModel>>($"current_cmnt_{id}", () =>
+            {
+                var cmntService = ServiceFactory.Get<IBmdCurrentCmntService>();
+                var comments = cmntService.GetByCurrentId(id);
+                var _vm = ParseToCurrentCmntViewModeList(comments);
+                return _vm.Count <= 0 ? null : _vm;
+            });
+        }
+
         private IList<CurrentViewModel> ParseToCurrentViewModeList(IEnumerable<BmdCurrent> currents)
         {
             var vmlist = new List<CurrentViewModel>();
@@ -161,6 +181,53 @@ namespace Bermuda.Api.Controllers
                     BaseUtil.DeepParseTo<CurrentViewModel, UserViewModel>(current, user));
             }
 
+            return vmlist;
+        }
+
+        private IList<CurrentCmntViewModel> ParseToCurrentCmntViewModeList(IEnumerable<BmdCurrentCmnt> comments)
+        {
+            var vmlist = new List<CurrentCmntViewModel>();
+            var userService = ServiceFactory.Get<IBmdUserService>();
+            var cmntReplyService = ServiceFactory.Get<IBmdCurrentCmntReplyService>();
+
+            foreach (var comment in comments)
+            {
+                var user = comment?.UserId.HasValue ?? false
+                    ? userService.GetUserById(comment.UserId.Value)
+                    : null;
+
+                var vm = BaseUtil.DeepParseTo<CurrentCmntViewModel, SimpleUserViewModel>(comment, user);
+                var replies = cmntReplyService.GetByCmntId(comment.Id);
+                vm.replies = ParseToCurrentCmntReplyViewModeList(replies);
+                vmlist.Add(vm);
+            }
+
+            return vmlist;
+        }
+
+        private IList<CurrentCmntReplyViewModel> ParseToCurrentCmntReplyViewModeList(IEnumerable<BmdCurrentCmntReply> replies)
+        {
+            var vmlist = new List<CurrentCmntReplyViewModel>();
+            var userService = ServiceFactory.Get<IBmdUserService>();
+            foreach (var reply in replies)
+            {
+                var _user = userService.GetUserById(reply.UserId.Value);
+                var _aimsUser = reply.AimsId.HasValue
+                    ? userService.GetUserById(
+                        replies.SingleOrDefault(x => x.Id == reply.AimsId.Value)
+                            .UserId
+                            .Value
+                    )
+                    : null;
+
+                var user = BaseUtil.ParseTo<SimpleUserViewModel>(_user);
+                var aimsUser = BaseUtil.ParseTo<SimpleUserViewModel>(_aimsUser);
+                var vm = BaseUtil.ParseTo<CurrentCmntReplyViewModel>(reply);
+
+                vm.user = user;
+                vm.aims_user = aimsUser;
+                vmlist.Add(vm);
+            }
             return vmlist;
         }
 
