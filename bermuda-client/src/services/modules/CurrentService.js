@@ -32,4 +32,9 @@ export default class UserService {
     let self = this
     return self.axios.post(`${self.baseUrl}/current/create`, current)
   }
+
+  getComments (currentId) {
+    let self = this
+    return self.axios.get(`${self.baseUrl}/current/${currentId}/comments`)
+  }
 }
