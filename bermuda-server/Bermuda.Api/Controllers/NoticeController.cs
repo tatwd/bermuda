@@ -1,5 +1,6 @@
 ﻿using Bermuda.Api.DataCache;
 using Bermuda.Api.Models;
+using Bermuda.Api.OAuth;
 using Bermuda.Bll.Service;
 using Bermuda.Common;
 using Bermuda.Model;
@@ -51,6 +52,24 @@ namespace Bermuda.Api.Controllers
                 });
             }
 
+            return Json(new { success });
+        }
+
+        [Authorize]
+        [Route("api/notice/{id}/trace")]
+        public IHttpActionResult Post(Int64 id)
+        {
+            var success = false;
+            if (id <= 0)
+            {
+                var currentUser = AuthUtil.GetIdentityUser();
+                var noticeTraceService = ServiceFactory.Get<IBmdNoticeTraceService>();
+                success = noticeTraceService.Insert(new BmdNoticeTrace
+                {
+                    NoticeId = id,
+                    UserId = currentUser.id
+                });
+            }
             return Json(new { success });
         }
 

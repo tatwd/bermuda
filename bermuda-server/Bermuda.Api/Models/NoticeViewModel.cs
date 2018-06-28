@@ -54,15 +54,42 @@ namespace Bermuda.Api.Models
     {
         [Required]
         public Int64 user_id { get; set; }
+
+        [Required]
         public Int64 specie_id { get; set; }
+
+        [Required]
         public string type { get; set; }
+
+        [Required]
         public string title { get; set; }
+
+        [Required]
         public string place { get; set; }
+
+        [Required]
         public string full_place { get; set; }
+
+        [Required]
         public string event_time_desc { get; set; }
+
+        [Required]
         public string img_url { get; set; }
+
+        [Required]
         public string contact_way { get; set; }
+
+        [Required]
         public string detail { get; set; }
         //public DateTime created_at { get; set; }
+    }
+
+    public class NewNoticeTraceViewModel
+    {
+        [Required]
+        public Int64 user_id { get; set; }
+
+        [Required]
+        public Int64 notice_id { get; set; }
     }
 }

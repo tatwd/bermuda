@@ -147,7 +147,7 @@
           <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="NoticeId" Type="bigint" />
           <Property Name="UserId" Type="bigint" />
-          <Property Name="TraceDate" Type="datetime" />
+          <Property Name="CreatedAt" Type="datetime" />
         </EntityType>
         <EntityType Name="BmdOrder">
           <Key>
@@ -427,7 +427,7 @@
           <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="NoticeId" Type="Int64" />
           <Property Name="UserId" Type="Int64" />
-          <Property Name="TraceDate" Type="DateTime" Precision="3" />
+          <Property Name="CreatedAt" Type="DateTime" Precision="3" />
         </EntityType>
         <EntityType Name="BmdOrder">
           <Key>
@@ -725,10 +725,10 @@
           <EntitySetMapping Name="BmdNoticeTraces">
             <EntityTypeMapping TypeName="BmdDbModel.BmdNoticeTrace">
               <MappingFragment StoreEntitySet="BmdNoticeTrace">
+                <ScalarProperty Name="CreatedAt" ColumnName="CreatedAt" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="NoticeId" ColumnName="NoticeId" />
                 <ScalarProperty Name="UserId" ColumnName="UserId" />
-                <ScalarProperty Name="TraceDate" ColumnName="TraceDate" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
