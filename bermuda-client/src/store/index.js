@@ -4,7 +4,6 @@ import Vuex from 'vuex'
 import auth from './modules/auth'
 import topics from './modules/topics'
 import notices from './modules/notices'
-import noticeSpecies from './modules/notice-species'
 import products from './modules/products'
 import shoppingCart from './modules/shopping-cart'
 import search from './modules/search'
@@ -18,7 +17,6 @@ export default new Vuex.Store({
     auth,
     topics,
     notices,
-    noticeSpecies,
     products,
     shoppingCart,
     search

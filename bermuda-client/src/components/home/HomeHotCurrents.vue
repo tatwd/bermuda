@@ -41,12 +41,14 @@ export default {
     hotCurrents: []
   }),
   created () {
-    currentService
-      .getTop(10)
-      .then(({ data }) => {
-        this.hotCurrents = data
-      })
-      .catch(console.error)
+    setTimeout(() => {
+      currentService
+        .getTop(10)
+        .then(({ data }) => {
+          this.hotCurrents = data
+        })
+        .catch(console.error)
+    }, 500);
   },
   methods: { goto }
 }

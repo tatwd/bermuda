@@ -4,7 +4,10 @@
       <v-flex xs12 md8 offset-md2>
         <CurrentDetail :current="current"/>
         <v-spacer class="my-3"></v-spacer>
-        <BmdCommentList :comments="comments"/>
+        <BmdCommentList
+          :comments="comments"
+          @comment="onComment"
+        />
       </v-flex>
     </v-layout>
   </v-container>
@@ -39,20 +42,38 @@ export default {
       this.getComments(id)
     },
     getCurrent (id) {
-      currentService
+      setTimeout(() => {
+        currentService
         .getById(id)
         .then(res => {
           this.current = res.data
         })
         .catch(console.error)
+      }, 500)
     },
     getComments (id) {
       currentService
         .getComments(id)
         .then(res => {
-          this.comments = res.data
+          this.comments = res.data || []
         })
         .catch(console.error)
+    },
+    onComment (text) {
+      const comment = {
+        current_id: this.$route.params.id,
+        text
+      }
+      currentService
+        .createComment(comment)
+        .then(res => {
+          if (res.data.success) {
+            this.getComments()
+          } else {
+            alert('评论失败！')
+          }
+        })
+        .catch(console.err)
     }
   }
 }

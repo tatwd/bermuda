@@ -87,19 +87,20 @@ export default {
         }
       })
 
-      this.$store.dispatch('getAllNotices', {
-        bind: () => this.notices = this.allNotices
-      })
+      setTimeout(() => {
+        this.$store.dispatch('getAllNotices', {
+          bind: () => this.notices = this.allNotices
+        })
+      }, 500)
     },
 
     toggleFilter (value) {
-      if (value === 'all') {
-        this.notices = this.allNotices
-      } else if (value === 'lost') {
-        this.notices = this.lostNotices
-      } else {
-        this.notices = this.foundNotices
+      const data = {
+        'all': this.allNotices,
+        'lost': this.lostNotices,
+        'found': this.foundNotices
       }
+      this.notices = data[value]
     },
   }
 }

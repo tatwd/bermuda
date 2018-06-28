@@ -85,6 +85,28 @@ namespace Bermuda.Api.Controllers
             return Json(vm);
         }
 
+        [HttpPost]
+        [Authorize]
+        [Route("api/current/comment/create")]
+        public IHttpActionResult Post([FromBody]NewCurrentCmntViewModel vm)
+        {
+            var success = false;
+            if (ModelState.IsValid)
+            {
+                var currentUser = AuthUtil.GetIdentityUser();
+                var comment = new BmdCurrentCmnt
+                {
+                    CurrentId = vm.current_id,
+                    UserId = currentUser.id,
+                    Text = vm.text
+                };
+                var currentCmntService = ServiceFactory.Get<IBmdCurrentCmntService>();
+                success = currentCmntService.Insert(comment);
+                return Json(new { success });
+            }
+            return Json(new { success });
+        }
+
         // 从缓存中获取所有动态
         private IList<CurrentViewModel> GetAllCurrentsFromCache()
         {

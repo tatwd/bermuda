@@ -57,6 +57,15 @@ namespace Bermuda.Api.Models
         public IList<CurrentCmntReplyViewModel> replies { get; set; }
     }
 
+    public class NewCurrentCmntViewModel
+    {
+        [Required]
+        public Int64 current_id { get; set; }
+
+        [Required, MaxLength(140)]
+        public string text { get; set; }
+    }
+
     public class CurrentCmntReplyViewModel
     {
         public Int64 id { get; set; }

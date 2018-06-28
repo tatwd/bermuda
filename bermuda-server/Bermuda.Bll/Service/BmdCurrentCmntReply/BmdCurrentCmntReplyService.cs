@@ -13,7 +13,7 @@
         {
             return this
                 .Select(x => x.CmntId == cmntId)
-                .OrderByDescending(x => x.CreatedAt)
+                .OrderBy(x => x.CreatedAt)
                 .ToList();
         }
     }

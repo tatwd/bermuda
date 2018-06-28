@@ -1,5 +1,10 @@
 <template>
-  <v-card v-if="current">
+  <v-card v-if="!current">
+    <v-card-text class="text-xs-center">
+      <v-progress-circular indeterminate color="primary"></v-progress-circular>
+    </v-card-text>
+  </v-card>
+  <v-card v-else>
     <v-card-title>
       <h1 class="mr-3">{{ current.title }}</h1>
     </v-card-title>
