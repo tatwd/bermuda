@@ -19,6 +19,7 @@
           <div v-else>
             <HomeTopicCreate/>
             <v-btn color="info" large :to="{ name: 'CurrentCreate' }">推送动态</v-btn>
+            <!-- <v-btn color="primary" class="h" large :to="goto('NoticeCreate')">发布启事</v-btn> -->
           </div>
         </v-flex>
       </v-layout>
@@ -28,6 +29,7 @@
 
 <script>
 import HomeTopicCreate from './HomeTopicCreate'
+import { goto } from '@/utils/link'
 
 export default {
   components: {
@@ -50,6 +52,9 @@ export default {
 
       this.showSignBtn = false
     }
+  },
+  methods: {
+    goto
   }
 }
 </script>
